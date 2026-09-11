@@ -287,7 +287,7 @@ export default function AdminProductForm() {
                   Información básica
                 </h2>
                 <div className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 min-w-0">
                     <div>
                       <label htmlFor="name" className="label">Nombre del producto *</label>
                       <input
@@ -321,7 +321,7 @@ export default function AdminProductForm() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 min-w-0">
                     <div>
                       <label htmlFor="slug" className="label">Slug (URL amigable) *</label>
                       <div className="flex flex-wrap gap-2 min-w-0">
@@ -391,7 +391,7 @@ export default function AdminProductForm() {
                   <Tag className="w-6 h-6 text-red-500" />
                   Precio e inventario
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 min-w-0">
                   <div>
                     <label htmlFor="price" className="label">Precio actual *</label>
                     <div className="relative">
@@ -454,7 +454,7 @@ export default function AdminProductForm() {
                       placeholder="5"
                     />
                   </div>
-                    <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-3 min-w-0">
                     <label className="flex items-center gap-3 cursor-pointer">
                       <input
                         type="checkbox"
@@ -479,7 +479,7 @@ export default function AdminProductForm() {
                   <Layers className="w-6 h-6 text-red-500" />
                   Características y especificaciones
                 </h2>
-            <div className="space-y-8 min-w-0">
+                  <div className="space-y-8 min-w-0">
                   <div>
                     <label htmlFor="warranty" className="label">Garantía</label>
                     <input
@@ -508,7 +508,7 @@ export default function AdminProductForm() {
                         <Plus className="w-5 h-5" />
                       </button>
                     </div>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 min-w-0">
                       {form.features.map((feature, index) => (
                         <span key={index} className="inline-flex min-w-0 max-w-full items-center gap-2 px-3 py-2 bg-primary-700 border border-dark-border rounded-full text-sm text-white">
                           <span className="truncate">{feature}</span>
@@ -522,7 +522,7 @@ export default function AdminProductForm() {
 
                   <div>
                     <h3 className="label mb-3">Especificaciones técnicas</h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3 min-w-0">
                       <input
                         type="text"
                         value={specKey}
@@ -546,7 +546,7 @@ export default function AdminProductForm() {
                     </div>
                     <div className="space-y-2">
                       {Object.entries(form.specifications).map(([key, value]) => (
-                          <div className="flex min-w-0 flex-wrap items-center justify-between gap-2 p-3 bg-primary-700/50 border border-dark-border rounded-xl">
+                        <div className="flex min-w-0 flex-wrap items-center justify-between gap-2 p-3 bg-primary-700/50 border border-dark-border rounded-xl">
                           <div className="min-w-0">
                             <p className="font-medium text-white truncate">{key}</p>
                             <p className="text-white text-sm truncate">{value}</p>

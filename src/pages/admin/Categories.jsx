@@ -161,17 +161,17 @@ export default function AdminCategories() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8"
+            className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
           >
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="font-display font-semibold text-xl text-white">{editingId ? 'Editar categoría' : 'Nueva categoría'}</h2>
-              <button onClick={closeForm} className="p-2 text-white hover:text-red-400 transition-colors" aria-label="Cerrar formulario">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-6 min-w-0">
+              <h2 className="font-display font-semibold text-lg sm:text-xl text-white min-w-0">{editingId ? 'Editar categoría' : 'Nueva categoría'}</h2>
+              <button onClick={closeForm} className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 transition-colors flex-shrink-0" aria-label="Cerrar formulario">
                 <Trash2 className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-6 min-w-0">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 min-w-0">
                 <div>
                   <label htmlFor="name" className="label">Nombre *</label>
                   <input
@@ -186,17 +186,17 @@ export default function AdminCategories() {
                 </div>
                 <div>
                   <label htmlFor="slug" className="label">Slug *</label>
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2 min-w-0">
                     <input
                       id="slug"
                       name="slug"
                       type="text"
                       value={formData.slug}
                       onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
-                      className="input flex-1"
+                      className="input min-w-0 flex-1"
                       required
                     />
-                    <button type="button" onClick={generateSlug} className="btn-secondary px-4" aria-label="Generar slug">
+                    <button type="button" onClick={generateSlug} className="btn-secondary px-4 flex-shrink-0" aria-label="Generar slug">
                       <Sparkles className="w-5 h-5" />
                     </button>
                   </div>
@@ -216,13 +216,13 @@ export default function AdminCategories() {
 
               <div>
                 <label htmlFor="image" className="label">Imagen</label>
-                <div className="flex items-center gap-4">
+                <div className="flex flex-wrap items-center gap-4 min-w-0">
                   {preview && (
-                    <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-primary-700 border border-dark-border">
+                    <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-primary-700 border border-dark-border flex-shrink-0">
                       <img src={preview} alt="Vista previa" className="w-full h-full object-cover" />
                     </div>
                   )}
-                  <label className="flex-1 border-2 border-dashed border-dark-border hover:border-red-600/50 rounded-xl p-4 text-center cursor-pointer transition-colors">
+                  <label className="flex-1 min-w-0 border-2 border-dashed border-dark-border hover:border-red-600/50 rounded-xl p-4 text-center cursor-pointer transition-colors">
                     <ImageIcon className="w-8 h-8 text-primary-500 mx-auto mb-2" />
                     <p className="text-white text-sm font-medium">Subir imagen</p>
                     <p className="text-white text-xs">PNG, JPG, WebP</p>
@@ -231,7 +231,7 @@ export default function AdminCategories() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 min-w-0">
                 <div>
                   <label htmlFor="seoTitle" className="label">SEO title</label>
                   <input
@@ -257,9 +257,9 @@ export default function AdminCategories() {
                 </div>
               </div>
 
-            <div className="flex flex-wrap justify-end gap-3 sm:gap-4 pt-4 border-t border-dark-border">
-              <button type="button" onClick={closeForm} className="btn-secondary w-full sm:w-auto">Cancelar</button>
-              <button type="submit" disabled={saving} className="btn-primary w-full sm:w-auto">
+              <div className="flex flex-wrap justify-end gap-3 sm:gap-4 pt-4 border-t border-dark-border">
+                <button type="button" onClick={closeForm} className="btn-secondary w-full sm:w-auto">Cancelar</button>
+                <button type="submit" disabled={saving} className="btn-primary w-full sm:w-auto">
                   {saving ? (
                     <>
                       <Loader2 className="w-5 h-5 animate-spin" />
@@ -316,8 +316,7 @@ export default function AdminCategories() {
                               <ImageIcon className="w-5 h-5 text-primary-500" />
                             </div>
                           )}
-                          <div>
-                            <p className="font-medium text-white">{category.name}</p>
+                          <div className="min-w-0">
                             <p className="text-white text-xs">{category.description || 'Sin descripción'}</p>
                           </div>
                         </div>
