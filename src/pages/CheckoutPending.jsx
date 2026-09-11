@@ -115,7 +115,7 @@ export default function CheckoutPending() {
               className="flex flex-col sm:flex-row items-center justify-center gap-3"
             >
               <a
-                href={`https://wa.me/5491100000000?text=${encodeURIComponent(`Hola, consulto por el estado de mi pago del pedido ${orderNumber || ''}.`)}`}
+                href={`https://wa.me/573209088777?text=${encodeURIComponent(`Hola, consulto por el estado de mi pago del pedido ${orderNumber || ''}.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-whatsapp w-full sm:w-auto flex items-center justify-center gap-2"

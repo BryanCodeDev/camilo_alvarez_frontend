@@ -8,7 +8,7 @@ import toast from 'react-hot-toast'
 const defaultSettings = {
   site_name: 'TechStore',
   site_url: 'https://techstore.com',
-  whatsapp_number: '5491100000000',
+  whatsapp_number: '573209088777',
   free_shipping_threshold: 100000,
   default_currency: 'ARS',
   tax_rate: 0.21,
@@ -194,7 +194,7 @@ export default function AdminSettings() {
                       value={settings.whatsapp_number}
                       onChange={handleChange}
                       className="input"
-                      placeholder="5491100000000"
+                      placeholder="573209088777"
                     />
                     <p className="text-white text-xs mt-1">Incluye código de país sin el símbolo +</p>
                   </div>

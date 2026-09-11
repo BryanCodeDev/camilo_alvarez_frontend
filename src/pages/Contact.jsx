@@ -118,7 +118,7 @@ export default function Contact() {
               className="mt-12 text-center"
             >
               <a
-                href="https://wa.me/5491100000000?text=Hola,%20me%20gustaría%20recibir%20asesoramiento%20personalizado."
+                href="https://wa.me/573209088777?text=Hola,%20me%20gustaría%20recibir%20asesoramiento%20personalizado."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 btn-whatsapp px-8 py-4 text-lg"
