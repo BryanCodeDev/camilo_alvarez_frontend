@@ -1,0 +1,310 @@
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts'
+import { ShoppingCart, Package, Users, TrendingUp, AlertTriangle, DollarSign, Clock, CheckCircle } from 'lucide-react'
+import SEO from '../../components/seo/SEO'
+import { adminDashboardService } from '../../services/admin'
+import { formatPrice, formatDate } from '../../utils/helpers'
+import toast from 'react-hot-toast'
+
+const COLORS = ['#c9a227', '#e5c76b', '#8c6a18', '#4d4d4d', '#666666']
+
+export default function AdminDashboard() {
+  const [stats, setStats] = useState(null)
+  const [salesChart, setSalesChart] = useState(null)
+  const [ordersChart, setOrdersChart] = useState(null)
+  const [topProducts, setTopProducts] = useState([])
+  const [lowStock, setLowStock] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetchDashboard()
+  }, [])
+
+  const fetchDashboard = async () => {
+    setLoading(true)
+    try {
+      const [statsData, salesData, ordersData, topData, lowData] = await Promise.all([
+        adminDashboardService.getStats(),
+        adminDashboardService.getSalesChart({ days: 30 }),
+        adminDashboardService.getOrdersChart({ days: 30 }),
+        adminDashboardService.getTopProducts(10),
+        adminDashboardService.getLowStock(10),
+      ])
+      setStats(statsData.stats)
+      setSalesChart(salesData)
+      setOrdersChart(ordersData)
+      setTopProducts(topData.products || [])
+      setLowStock(lowData.products || [])
+    } catch (error) {
+      console.error('Fetch dashboard error:', error)
+      toast.error('Error al cargar el dashboard')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-primary-900 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-red-600 border-t-transparent" />
+      </div>
+    )
+  }
+
+  const statCards = [
+    { label: 'Ventas totales', value: stats.totalSales, icon: DollarSign, color: 'red', format: 'money' },
+    { label: 'Ventas de hoy', value: stats.todaySales, icon: TrendingUp, color: 'green', format: 'money' },
+    { label: 'Ventas del mes', value: stats.monthSales, icon: ShoppingCart, color: 'blue', format: 'money' },
+    { label: 'Pedidos totales', value: stats.totalOrders, icon: Package, color: 'purple', format: 'number' },
+    { label: 'Pedidos pendientes', value: stats.pendingOrders, icon: Clock, color: 'red', format: 'number' },
+    { label: 'Productos', value: stats.totalProducts, icon: Package, color: 'red', format: 'number' },
+    { label: 'Usuarios', value: stats.totalUsers, icon: Users, color: 'blue', format: 'number' },
+    { label: 'Stock bajo', value: stats.lowStockCount, icon: AlertTriangle, color: 'red', format: 'number' },
+  ]
+
+  const salesData = salesChart?.labels?.map((label, index) => ({
+    name: label,
+    ventas: salesChart.data[index],
+    pedidos: salesChart.counts[index],
+  })) || []
+
+  const ordersData = ordersChart?.labels?.map((label, index) => ({
+    name: label,
+    total: ordersChart.total[index],
+    pendientes: ordersChart.pending[index],
+    pagados: ordersChart.paid[index],
+    cancelados: ordersChart.cancelled[index],
+  })) || []
+
+  const pieData = [
+    { name: 'Pagados', value: stats.totalOrders - stats.pendingOrders },
+    { name: 'Pendientes', value: stats.pendingOrders },
+  ]
+
+  return (
+    <>
+      <SEO
+        title="Dashboard | TechStore Admin"
+        description="Panel de administración de TechStore."
+        noindex
+      />
+
+      <div className="space-y-8">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="font-display font-bold text-3xl text-white">Dashboard</h1>
+          <p className="text-white mt-2">Bienvenido al panel de administración de TechStore</p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {statCards.map((card, index) => {
+            const Icon = card.icon
+            const value = card.format === 'money' ? formatPrice(card.value) : card.value
+            const colorClasses = {
+              red: 'bg-red-600/20 text-red-400 border-red-600/30',
+              green: 'bg-green-600/20 text-green-400 border-green-600/30',
+              blue: 'bg-blue-600/20 text-blue-400 border-blue-600/30',
+              purple: 'bg-purple-600/20 text-purple-400 border-purple-600/30',
+            }
+            return (
+              <motion.div
+                key={card.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl hover:border-red-600/50 hover:shadow-red transition-all duration-300"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${colorClasses[card.color]}`}>
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <span className={`text-xs font-medium px-2 py-1 rounded-full ${colorClasses[card.color]}`}>
+                    {card.label}
+                  </span>
+                </div>
+                <p className="font-display font-bold text-2xl text-white mb-1">{value}</p>
+                <p className="text-white text-sm">{card.label}</p>
+              </motion.div>
+            )
+          })}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="lg:col-span-2 p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
+          >
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="font-display font-semibold text-xl text-white">Ventas de los últimos 30 días</h2>
+              <span className="text-white text-sm">Últimos 30 días</span>
+            </div>
+            <ResponsiveContainer width="100%" height={320}>
+              <BarChart data={salesData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#333" />
+                <XAxis dataKey="name" stroke="#808080" fontSize={12} />
+                <YAxis stroke="#808080" fontSize={12} tickFormatter={(value) => `$${value / 1000}k`} />
+                <Tooltip
+                  contentStyle={{ background: '#111', border: '1px solid #333', borderRadius: '12px', color: '#fff' }}
+                  formatter={(value) => formatPrice(value)}
+                />
+                <Legend />
+                <Bar dataKey="ventas" fill="#c9a227" radius={[8, 8, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
+          >
+            <h2 className="font-display font-semibold text-xl text-white mb-6">Estado de pedidos</h2>
+            <ResponsiveContainer width="100%" height={260}>
+              <PieChart>
+                <Pie
+                  data={pieData}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={100}
+                  fill="#8884d8"
+                  paddingAngle={5}
+                  dataKey="value"
+                >
+                  {pieData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip
+                  contentStyle={{ background: '#111', border: '1px solid #333', borderRadius: '12px', color: '#fff' }}
+                  formatter={(value) => `${value} pedidos`}
+                />
+              </PieChart>
+            </ResponsiveContainer>
+            <div className="flex justify-center gap-6 mt-4">
+              {pieData.map((entry, index) => (
+                <div key={entry.name} className="flex items-center gap-2 text-sm">
+                  <span className="w-3 h-3 rounded-full" style={{ background: COLORS[index] }} />
+                  <span className="text-white">{entry.name}</span>
+                  <span className="text-white font-medium">{entry.value}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
+          >
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="font-display font-semibold text-xl text-white">Pedidos por estado</h2>
+              <span className="text-white text-sm">Últimos 30 días</span>
+            </div>
+            <ResponsiveContainer width="100%" height={280}>
+              <LineChart data={ordersData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#333" />
+                <XAxis dataKey="name" stroke="#808080" fontSize={12} />
+                <YAxis stroke="#808080" fontSize={12} />
+                <Tooltip
+                  contentStyle={{ background: '#111', border: '1px solid #333', borderRadius: '12px', color: '#fff' }}
+                />
+                <Legend />
+                <Line type="monotone" dataKey="total" stroke="#c9a227" strokeWidth={2} dot={{ r: 3 }} />
+                <Line type="monotone" dataKey="pendientes" stroke="#ef4444" strokeWidth={2} dot={{ r: 3 }} />
+                <Line type="monotone" dataKey="pagados" stroke="#22c55e" strokeWidth={2} dot={{ r: 3 }} />
+              </LineChart>
+            </ResponsiveContainer>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
+          >
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="font-display font-semibold text-xl text-white">Productos más vendidos</h2>
+              <Link to="/admin/productos" className="text-red-400 hover:text-red-300 text-sm font-medium transition-colors">Ver todos</Link>
+            </div>
+            <div className="space-y-4">
+              {topProducts.length === 0 ? (
+                <p className="text-white text-center py-8">No hay productos vendidos aún</p>
+              ) : topProducts.slice(0, 5).map((product, index) => (
+                <div key={product.id} className="flex items-center gap-4 p-3 bg-primary-700/50 rounded-xl border border-dark-border">
+                  <div className="w-10 h-10 rounded-lg bg-primary-800 flex items-center justify-center text-red-400 font-bold">
+                    {index + 1}
+                  </div>
+                  <img src={product.image || '/placeholder-product.svg'} alt={product.name} className="w-12 h-12 rounded-lg object-cover" />
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-white truncate">{product.name}</p>
+                    <p className="text-white text-sm">{product.total_sold} vendidos</p>
+                  </div>
+                  <span className="font-display font-bold text-red-400">{formatPrice(product.revenue)}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
+          className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
+        >
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="font-display font-semibold text-xl text-white">Alertas de stock bajo</h2>
+            <Link to="/admin/productos?filter=low-stock" className="text-red-400 hover:text-red-300 text-sm font-medium transition-colors">Ver inventario</Link>
+          </div>
+          {lowStock.length === 0 ? (
+            <div className="flex items-center gap-3 text-green-500">
+              <CheckCircle className="w-6 h-6" />
+              <p className="font-medium">No hay productos con stock bajo</p>
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-dark-border text-left text-white">
+                    <th className="py-3 pr-4">Producto</th>
+                    <th className="py-3 pr-4">SKU</th>
+                    <th className="py-3 pr-4">Stock</th>
+                    <th className="py-3 pr-4">Mínimo</th>
+                    <th className="py-3 pr-4">Precio</th>
+                    <th className="py-3 pr-4">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {lowStock.map((product) => (
+                    <tr key={product.id} className="border-b border-dark-border/50 hover:bg-primary-900/50">
+                      <td className="py-3 pr-4 font-medium text-white truncate max-w-xs">{product.name}</td>
+                      <td className="py-3 pr-4 text-white">{product.sku}</td>
+                      <td className={`py-3 pr-4 font-medium ${product.stock <= product.min_stock ? 'text-red-400' : 'text-white'}`}>{product.stock}</td>
+                      <td className="py-3 pr-4 text-white">{product.min_stock}</td>
+                      <td className="py-3 pr-4 text-red-400">{formatPrice(product.price)}</td>
+                      <td className="py-3 pr-4">
+                        <span className="px-2 py-1 rounded-full text-xs font-medium bg-red-600/20 text-red-400 border border-red-600/30">Bajo</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </motion.div>
+      </div>
+    </>
+  )
+}

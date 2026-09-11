@@ -1,0 +1,312 @@
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { Link, useSearchParams } from 'react-router-dom'
+import { Plus, Search, Edit, Trash2, Copy, Eye, AlertTriangle, Package, Loader2 } from 'lucide-react'
+import SEO from '../../components/seo/SEO'
+import { adminProductService } from '../../services/admin'
+import { formatPrice, getStockStatus } from '../../utils/helpers'
+import toast from 'react-hot-toast'
+
+export default function AdminProducts() {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [search, setSearch] = useState('')
+  const [status, setStatus] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
+  const [totalProducts, setTotalProducts] = useState(0)
+  const [selectedProduct, setSelectedProduct] = useState(null)
+  const [deleteConfirm, setDeleteConfirm] = useState(null)
+
+  useEffect(() => {
+    fetchProducts()
+  }, [currentPage, status, searchParams.get('filter')])
+
+  const fetchProducts = async () => {
+    setLoading(true)
+    try {
+      const params = {
+        page: currentPage,
+        limit: 20,
+        status: status || undefined,
+        ...(searchParams.get('filter') === 'low-stock' && { lowStock: 'true' }),
+        ...(search && { search }),
+      }
+      const data = await adminProductService.getAll(params)
+      setProducts(data.products || [])
+      setTotalPages(data.pagination?.totalPages || 1)
+      setTotalProducts(data.pagination?.total || 0)
+    } catch (error) {
+      console.error('Fetch products error:', error)
+      toast.error('Error al cargar productos')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleDelete = async (id, name) => {
+    if (deleteConfirm !== id) {
+      setDeleteConfirm(id)
+      return
+    }
+    try {
+      await adminProductService.delete(id)
+      toast.success('Producto eliminado correctamente')
+      setDeleteConfirm(null)
+      fetchProducts()
+    } catch (error) {
+      console.error('Delete product error:', error)
+      toast.error('Error al eliminar producto')
+    } finally {
+      setDeleteConfirm(null)
+    }
+  }
+
+  const handleDuplicate = async (id) => {
+    try {
+      await adminProductService.duplicate(id)
+      toast.success('Producto duplicado correctamente')
+      fetchProducts()
+    } catch (error) {
+      console.error('Duplicate product error:', error)
+      toast.error('Error al duplicar producto')
+    }
+  }
+
+  const handleToggleFeatured = async (id) => {
+    try {
+      await adminProductService.toggleFeatured(id)
+      toast.success('Estado destacado actualizado')
+      fetchProducts()
+    } catch (error) {
+      console.error('Toggle featured error:', error)
+      toast.error('Error al actualizar producto')
+    }
+  }
+
+  const handleToggleStatus = async (id) => {
+    try {
+      await adminProductService.toggleStatus(id)
+      toast.success('Estado actualizado')
+      fetchProducts()
+    } catch (error) {
+      console.error('Toggle status error:', error)
+      toast.error('Error al actualizar producto')
+    }
+  }
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault()
+    setCurrentPage(1)
+    fetchProducts()
+  }
+
+  const clearFilters = () => {
+    setSearch('')
+    setStatus('')
+    setCurrentPage(1)
+    setSearchParams({})
+    fetchProducts()
+  }
+
+  const hasFilters = search || status || searchParams.get('filter') === 'low-stock'
+
+  return (
+    <>
+      <SEO
+        title="Productos | TechStore Admin"
+        description="Gestiona el catálogo de productos de TechStore."
+        noindex
+      />
+
+      <div className="space-y-8">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+        >
+          <div>
+            <h1 className="font-display font-bold text-3xl text-white">Productos</h1>
+            <p className="text-white mt-2">{totalProducts} productos en el catálogo</p>
+          </div>
+          <Link to="/admin/productos/nuevo" className="btn-primary w-full sm:w-auto justify-center">
+            <Plus className="w-5 h-5" />
+            <span>Nuevo producto</span>
+          </Link>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
+        >
+          <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-4">
+            <div className="relative flex-1">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary-500" />
+              <input
+                type="search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Buscar por nombre, SKU o slug..."
+                className="w-full pl-12 pr-4 py-3 bg-primary-700 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+              />
+            </div>
+            <select
+              value={status}
+              onChange={(e) => { setStatus(e.target.value); setCurrentPage(1) }}
+              className="input py-3 px-4 bg-primary-700"
+            >
+              <option value="">Todos los estados</option>
+              <option value="active">Activos</option>
+              <option value="inactive">Inactivos</option>
+            </select>
+            {hasFilters && (
+              <button type="button" onClick={clearFilters} className="btn-secondary px-6">
+                Limpiar filtros
+              </button>
+            )}
+          </form>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="bg-primary-800/50 border border-dark-border rounded-2xl overflow-hidden"
+        >
+          {loading ? (
+            <div className="p-6 space-y-4" role="list" aria-busy="true">
+              {[...Array(8)].map((_, i) => (
+                <motion.div key={i} className="skeleton h-20 rounded-xl" />
+              ))}
+            </div>
+          ) : products.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-20 px-4 text-center">
+              <Package className="w-20 h-20 text-primary-600 mb-4" />
+              <h2 className="font-display font-bold text-2xl text-white mb-2">No se encontraron productos</h2>
+              <p className="text-white mb-6">Prueba con otros filtros o crea un nuevo producto</p>
+              <Link to="/admin/productos/nuevo" className="btn-primary">Crear producto</Link>
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-dark-border bg-primary-900/50 text-left text-white">
+                    <th className="py-4 px-6 font-medium">Producto</th>
+                    <th className="py-4 px-6 font-medium">SKU</th>
+                    <th className="py-4 px-6 font-medium">Categoría</th>
+                    <th className="py-4 px-6 font-medium">Precio</th>
+                    <th className="py-4 px-6 font-medium">Stock</th>
+                    <th className="py-4 px-6 font-medium">Estado</th>
+                    <th className="py-4 px-6 font-medium text-right">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {products.map((product, index) => {
+                    const stockStatus = getStockStatus(product.stock, product.min_stock)
+                    return (
+                      <motion.tr
+                        key={product.id}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.03 }}
+                        className="border-b border-dark-border/50 hover:bg-primary-900/50"
+                      >
+                        <td className="py-4 px-6">
+                          <div className="flex items-center gap-4">
+                            <div className="w-14 h-14 rounded-xl overflow-hidden bg-primary-700 flex-shrink-0">
+                              <img src={product.main_image || '/placeholder-product.svg'} alt={product.name} className="w-full h-full object-cover" />
+                            </div>
+                            <div className="min-w-0">
+                              <p className="font-medium text-white truncate max-w-xs">{product.name}</p>
+                              <p className="text-white text-xs truncate">{product.slug}</p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="py-4 px-6 text-white">{product.sku}</td>
+                        <td className="py-4 px-6 text-white">{product.category_name || 'Sin categoría'}</td>
+                        <td className="py-4 px-6">
+                          <div>
+                            <p className="font-medium text-red-400">{formatPrice(product.price)}</p>
+                            {product.original_price && product.original_price > product.price && (
+                              <p className="text-white text-xs line-through">{formatPrice(product.original_price)}</p>
+                            )}
+                          </div>
+                        </td>
+                        <td className="py-4 px-6">
+                          <div className="flex items-center gap-2">
+                            <span className={`font-medium ${stockStatus.level === 'out' ? 'text-red-400' : stockStatus.level === 'low' ? 'text-yellow-400' : 'text-green-400'}`}>
+                              {product.stock}
+                            </span>
+                            {stockStatus.level === 'low' && <AlertTriangle className="w-4 h-4 text-yellow-400" />}
+                            {stockStatus.level === 'out' && <AlertTriangle className="w-4 h-4 text-red-400" />}
+                          </div>
+                        </td>
+                        <td className="py-4 px-6">
+                          <div className="flex items-center gap-2">
+                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${product.is_active ? 'bg-green-600/20 text-green-400 border border-green-600/30' : 'bg-red-600/20 text-red-400 border border-red-600/30'}`}>
+                              {product.is_active ? 'Activo' : 'Inactivo'}
+                            </span>
+                            {product.is_featured && (
+                              <span className="px-2 py-1 rounded-full text-xs font-medium bg-red-600/20 text-red-400 border border-red-600/30">
+                                Destacado
+                              </span>
+                            )}
+                          </div>
+                        </td>
+                        <td className="py-4 px-6">
+                          <div className="flex items-center justify-end gap-2">
+                            <Link to={`/admin/productos/${product.id}/editar`} className="p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Editar ${product.name}`}>
+                              <Edit className="w-5 h-5" />
+                            </Link>
+                            <Link to={`/producto/${product.slug}`} target="_blank" className="p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Ver ${product.name}`}>
+                              <Eye className="w-5 h-5" />
+                            </Link>
+                            <button onClick={() => handleDuplicate(product.id)} className="p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Duplicar ${product.name}`}>
+                              <Copy className="w-5 h-5" />
+                            </button>
+                            <button onClick={() => handleToggleFeatured(product.id)} className={`p-2 rounded-lg transition-colors ${product.is_featured ? 'text-red-400 hover:bg-red-600/10' : 'text-white hover:text-red-400 hover:bg-primary-700'}`} aria-label={`Marcar como destacado ${product.name}`}>
+                              <Package className="w-5 h-5" />
+                            </button>
+                            <button onClick={() => handleToggleStatus(product.id)} className={`p-2 rounded-lg transition-colors ${product.is_active ? 'text-white hover:text-red-400 hover:bg-red-600/10' : 'text-white hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${product.is_active ? 'Desactivar' : 'Activar'} ${product.name}`}>
+                              {product.is_active ? <Trash2 className="w-5 h-5" /> : <Package className="w-5 h-5" />}
+                            </button>
+                            <button onClick={() => handleDelete(product.id, product.name)} className={`p-2 rounded-lg transition-colors ${deleteConfirm === product.id ? 'text-red-400 bg-red-600/10' : 'text-white hover:text-red-400 hover:bg-red-600/10'}`} aria-label={`Eliminar ${product.name}`}>
+                              <Trash2 className="w-5 h-5" />
+                            </button>
+                          </div>
+                        </td>
+                      </motion.tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-2 p-6 border-t border-dark-border">
+              <button onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={currentPage === 1} className="btn-secondary px-4 py-2 disabled:opacity-50">Anterior</button>
+              {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
+                let pageNum
+                if (totalPages <= 5) pageNum = i + 1
+                else if (currentPage <= 3) pageNum = i + 1
+                else if (currentPage >= totalPages - 2) pageNum = totalPages - 4 + i
+                else pageNum = currentPage - 2 + i
+                return (
+                  <button key={pageNum} onClick={() => setCurrentPage(pageNum)} className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-red-600 text-white' : 'bg-primary-700 text-white hover:bg-primary-600 hover:text-white border border-dark-border'}`}>
+                    {pageNum}
+                  </button>
+                )
+              })}
+              <button onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} disabled={currentPage === totalPages} className="btn-secondary px-4 py-2 disabled:opacity-50">Siguiente</button>
+            </div>
+          )}
+        </motion.div>
+      </div>
+    </>
+  )
+}

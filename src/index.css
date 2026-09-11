@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-dark-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-primary-900 text-white antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    @apply bg-red-600 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-primary-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-500 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-red-600;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-medium rounded-lg transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-900 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-red-600 to-red-500 text-white hover:from-red-500 hover:to-red-400 hover:shadow-red focus-visible:ring-red-500;
+  }
+
+  .btn-secondary {
+    @apply btn bg-primary-700 text-white border border-dark-border hover:bg-primary-600 focus-visible:ring-red-500;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-red-600 text-red-500 hover:bg-red-600 hover:text-white focus-visible:ring-red-500;
+  }
+
+  .btn-ghost {
+    @apply btn text-white hover:bg-primary-700 focus-visible:ring-white;
+  }
+
+  .btn-whatsapp {
+    @apply btn bg-green-600 text-white hover:bg-green-500 focus-visible:ring-green-500;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 bg-primary-800 border border-dark-border text-white placeholder:text-primary-400 rounded-lg transition-all duration-300 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-white mb-1;
+  }
+
+  .card {
+    @apply bg-primary-800/50 backdrop-blur-sm border border-dark-border rounded-xl overflow-hidden transition-all duration-500 hover:border-red-600/50 hover:shadow-card-hover;
+  }
+
+  .card-image {
+    @apply relative overflow-hidden bg-primary-700;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-red {
+    @apply badge bg-red-600/20 text-red-400 border border-red-600/30;
+  }
+
+  .badge-new {
+    @apply badge bg-blue-600/20 text-blue-400 border border-blue-600/30;
+  }
+
+  .badge-sale {
+    @apply badge bg-red-600/20 text-red-400 border border-red-600/30;
+  }
+
+  .badge-stock {
+    @apply badge bg-green-600/20 text-green-400 border border-green-600/30;
+  }
+
+  .link {
+    @apply text-red-400 hover:text-red-300 transition-colors duration-300;
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl font-display font-bold text-white relative inline-block;
+  }
+
+  .section-title::after {
+    @apply content-[''] absolute bottom-0 left-0 w-1/2 h-1 bg-gradient-to-r from-red-600 to-red-400 rounded-full;
+  }
+
+  .glass {
+    @apply bg-primary-800/80 backdrop-blur-md border border-dark-border/50;
+  }
+
+  .text-gradient-red {
+    @apply bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .animate-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .stagger-1 { animation-delay: 100ms; }
+  .stagger-2 { animation-delay: 200ms; }
+  .stagger-3 { animation-delay: 300ms; }
+  .stagger-4 { animation-delay: 400ms; }
+  .stagger-5 { animation-delay: 500ms; }
+  .stagger-6 { animation-delay: 600ms; }
+
+  .skeleton {
+    @apply bg-gradient-to-r from-primary-700 via-primary-600 to-primary-700 bg-[length:200%_100%] animate-shimmer rounded;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
