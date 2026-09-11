@@ -78,9 +78,7 @@ export default function ProductDetail() {
     )
   }
 
-  const images = product.images && product.images.length > 0
-    ? product.images.map(img => img.url)
-    : [product.image || '/placeholder-product.svg']
+  const images = ['/images/producto1.webp']
 
   const discount = product.discount || (product.originalPrice && product.price < product.originalPrice
     ? calculateDiscount(product.originalPrice, product.price)
@@ -218,7 +216,7 @@ export default function ProductDetail() {
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={selectedImage}
-                    src={images[selectedImage]}
+                    src="/images/producto1.webp"
                     alt={product.name}
                     className="w-full h-full object-cover"
                     initial={{ opacity: 0, scale: 1.05 }}
@@ -230,7 +228,7 @@ export default function ProductDetail() {
                 {zoomActive && (
                   <div className="absolute inset-0 bg-black/50 z-10 flex items-center justify-center">
                     <img
-                      src={images[selectedImage]}
+                      src="/images/producto1.webp"
                       alt={product.name}
                       className="max-h-[90vh] max-w-[90vw] object-contain"
                     />
