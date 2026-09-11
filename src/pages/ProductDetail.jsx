@@ -218,7 +218,7 @@ export default function ProductDetail() {
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={selectedImage}
-                    src="/images/producto1.webp"
+                    src={images[selectedImage] || '/assets/images/producto1.webp'}
                     alt={product.name}
                     className="w-full h-full object-cover"
                     initial={{ opacity: 0, scale: 1.05 }}
@@ -230,7 +230,7 @@ export default function ProductDetail() {
                 {zoomActive && (
                   <div className="absolute inset-0 bg-black/50 z-10 flex items-center justify-center">
                     <img
-                      src="/images/producto1.webp"
+                      src={images[selectedImage] || '/assets/images/producto1.webp'}
                       alt={product.name}
                       className="max-h-[90vh] max-w-[90vw] object-contain"
                     />
