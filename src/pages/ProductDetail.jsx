@@ -7,6 +7,7 @@ import { useCart } from '../context/CartContext'
 import { useWishlist } from '../context/WishlistContext'
 import { productService } from '../services/products'
 import SEO from '../components/seo/SEO'
+import ProductCard from '../components/products/ProductCard'
 import ProductSkeleton from '../components/products/ProductSkeleton'
 import toast from 'react-hot-toast'
 

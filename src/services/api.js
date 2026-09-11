@@ -12,7 +12,9 @@ api.interceptors.response.use(
   response => response,
   error => {
     if (error.response?.status === 401) {
-      if (window.location.pathname !== '/login' && window.location.pathname !== '/registro') {
+      const url = error.config?.url || ''
+      const isAuthMe = url.includes('/auth/me')
+      if (!isAuthMe && window.location.pathname !== '/login' && window.location.pathname !== '/registro') {
         window.location.href = `/login?redirect=${encodeURIComponent(window.location.pathname)}`
       }
     }
