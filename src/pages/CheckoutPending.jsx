@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import { Clock, ArrowLeft, CreditCard, MessageSquare, Loader2 } from 'lucide-react'
 import SEO from '../components/seo/SEO'
 
+const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER
+
 export default function CheckoutPending() {
   const [searchParams] = useSearchParams()
   const orderNumber = searchParams.get('order')
@@ -115,7 +117,7 @@ export default function CheckoutPending() {
               className="flex flex-col sm:flex-row items-center justify-center gap-3"
             >
               <a
-                href={`https://wa.me/573209088777?text=${encodeURIComponent(`Hola, consulto por el estado de mi pago del pedido ${orderNumber || ''}.`)}`}
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, consulto por el estado de mi pago del pedido ${orderNumber || ''}.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-whatsapp w-full sm:w-auto flex items-center justify-center gap-2"

@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import { XCircle, ArrowLeft, RefreshCw, CreditCard, MessageSquare } from 'lucide-react'
 import SEO from '../components/seo/SEO'
 
+const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER
+
 export default function CheckoutFailure() {
   const [searchParams] = useSearchParams()
   const orderNumber = searchParams.get('order')
@@ -73,7 +75,7 @@ export default function CheckoutFailure() {
                 Reintentar pago
               </Link>
               <a
-                href={`https://wa.me/573209088777?text=${encodeURIComponent(`Hola, tuve un problema con mi pago del pedido ${orderNumber || ''}. ¿Pueden ayudarme?`)}`}
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, tuve un problema con mi pago del pedido ${orderNumber || ''}. ¿Pueden ayudarme?`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-whatsapp w-full sm:w-auto flex items-center justify-center gap-2"

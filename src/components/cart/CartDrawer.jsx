@@ -202,6 +202,6 @@ function getWhatsAppUrlForCart(items, total) {
     `- ${item.name} x${item.quantity} = $${((item.discountPrice || item.price) * item.quantity).toLocaleString('es-AR')}`
   ).join('\n')
   const text = `Hola, quiero realizar el siguiente pedido:\n\n${productsText}\n\nTotal: $${total.toLocaleString('es-AR')}\n\n¿Me pueden brindar información para finalizar la compra?`
-  const number = '573209088777'
+  const number = import.meta.env.VITE_WHATSAPP_NUMBER
   return `https://wa.me/${number}?text=${encodeURIComponent(text)}`
 }

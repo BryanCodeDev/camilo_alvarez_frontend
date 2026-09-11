@@ -4,6 +4,8 @@ import { Mail, Phone, MapPin, Clock, MessageSquare, Send, Loader2, CheckCircle }
 import SEO from '../components/seo/SEO'
 import toast from 'react-hot-toast'
 
+const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER
+
 const contactInfo = [
   { icon: Mail, title: 'Email', value: 'hola@techstore.com', desc: 'Respondemos en menos de 24hs' },
   { icon: Phone, title: 'Teléfono', value: '+54 11 0000-0000', desc: 'Lunes a Viernes 9:00 - 18:00' },
@@ -118,7 +120,7 @@ export default function Contact() {
               className="mt-12 text-center"
             >
               <a
-                href="https://wa.me/573209088777?text=Hola,%20me%20gustaría%20recibir%20asesoramiento%20personalizado."
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola, me gustaría recibir asesoramiento personalizado.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 btn-whatsapp px-8 py-4 text-lg"

@@ -169,7 +169,7 @@ export const authService = {
 
 export const whatsappService = {
   generateProductMessage(product, quantity = 1) {
-    const number = import.meta.env.VITE_WHATSAPP_NUMBER || '573209088777'
+    const number = import.meta.env.VITE_WHATSAPP_NUMBER
     const text = `Hola, estoy interesado en comprar:
 
 Producto: ${product.name}
@@ -181,7 +181,7 @@ Cantidad: ${quantity}
   },
 
   generateCartMessage(items, total) {
-    const number = import.meta.env.VITE_WHATSAPP_NUMBER || '573209088777'
+    const number = import.meta.env.VITE_WHATSAPP_NUMBER
     const productsText = items.map(item =>
       `- ${item.name} x${item.quantity} = $${(item.discountPrice || item.price) * item.quantity}`
     ).join('\n')
@@ -196,7 +196,7 @@ Total: $${total}
   },
 
   generateGeneralMessage() {
-    const number = import.meta.env.VITE_WHATSAPP_NUMBER || '573209088777'
+    const number = import.meta.env.VITE_WHATSAPP_NUMBER
     const text = 'Hola, me gustaría recibir información sobre sus productos.'
     return `https://wa.me/${number}?text=${encodeURIComponent(text)}`
   },
