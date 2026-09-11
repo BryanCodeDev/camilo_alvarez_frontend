@@ -174,7 +174,7 @@ export default function Checkout() {
                 >
                   <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold transition-all ${
                     step >= s.number
-                      ? 'bg-red-600 text-white'
+                      ? 'bg-gold-600 text-white'
                       : 'bg-primary-800 border border-dark-border text-white'
                   }`}>
                     {step > s.number ? <CheckCircle className="w-6 h-6" /> : <s.Icon className="w-6 h-6" />}
@@ -183,7 +183,7 @@ export default function Checkout() {
                     {s.label}
                   </span>
                   {index < steps.length - 1 && (
-                    <div className={`absolute top-6 left-1/2 w-full h-1 -translate-x-1/2 ${step > index + 1 ? 'bg-red-600' : 'bg-dark-border'} hidden md:block`} />
+                    <div className={`absolute top-6 left-1/2 w-full h-1 -translate-x-1/2 ${step > index + 1 ? 'bg-gold-600' : 'bg-dark-border'} hidden md:block`} />
                   )}
                 </motion.div>
               ))}
@@ -199,7 +199,7 @@ export default function Checkout() {
                   className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
                 >
                   <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
-                    <Truck className="w-6 h-6 text-red-500" />
+                    <Truck className="w-6 h-6 text-gold-500" />
                     Información de envío
                   </h2>
 
@@ -326,7 +326,7 @@ export default function Checkout() {
                     {!isAuthenticated && (
                       <div className="p-4 bg-primary-700/50 border border-dark-border rounded-xl">
                         <p className="text-white text-sm">
-                          ¿Ya tienes cuenta? <Link to="/login?redirect=/checkout" className="text-red-400 hover:underline font-medium">Inicia sesión</Link> para guardar tus datos y ver tu historial de pedidos.
+                          ¿Ya tienes cuenta? <Link to="/login?redirect=/checkout" className="text-gold-400 hover:underline font-medium">Inicia sesión</Link> para guardar tus datos y ver tu historial de pedidos.
                         </p>
                       </div>
                     )}
@@ -350,7 +350,7 @@ export default function Checkout() {
                     className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
                   >
                     <h2 className="font-display font-semibold text-xl text-white mb-5 flex items-center gap-2">
-                      <CreditCard className="w-6 h-6 text-red-500" />
+                      <CreditCard className="w-6 h-6 text-gold-500" />
                       Método de pago
                     </h2>
 
@@ -361,13 +361,13 @@ export default function Checkout() {
                           onClick={() => setPaymentMethod(method.id)}
                           className={`relative p-4 rounded-xl border-2 transition-all ${
                             paymentMethod === method.id
-                              ? 'border-red-500 bg-red-600/10'
-                              : 'border-dark-border hover:border-red-600/50'
+                              ? 'border-gold-500 bg-gold-600/10'
+                              : 'border-dark-border hover:border-gold-600/50'
                           }`}
                         >
                           <div className="flex items-center gap-3">
                             <div className="w-12 h-12 rounded-xl bg-primary-700 flex items-center justify-center flex-shrink-0">
-                              <method.icon className="w-6 h-6 text-red-400" />
+                              <method.icon className="w-6 h-6 text-gold-400" />
                             </div>
                             <div className="min-w-0">
                               <p className="font-medium text-white truncate">{method.label}</p>
@@ -375,7 +375,7 @@ export default function Checkout() {
                             </div>
                           </div>
                           {paymentMethod === method.id && (
-                            <div className="absolute top-2 right-2 w-6 h-6 bg-red-600 rounded-full flex items-center justify-center">
+                            <div className="absolute top-2 right-2 w-6 h-6 bg-gold-600 rounded-full flex items-center justify-center">
                               <CheckCircle className="w-4 h-4 text-primary-900" />
                             </div>
                           )}
@@ -391,7 +391,7 @@ export default function Checkout() {
                     className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
                   >
                     <h2 className="font-display font-semibold text-xl text-white mb-4 flex items-center gap-2">
-                      <Shield className="w-6 h-6 text-red-500" />
+                      <Shield className="w-6 h-6 text-gold-500" />
                       Resumen del pedido
                     </h2>
 
@@ -425,7 +425,7 @@ export default function Checkout() {
                       </div>
                       <div className="flex justify-between text-xl font-bold border-t border-dark-border pt-3">
                         <span className="text-white">Total</span>
-                        <span className="text-red-400">{formatPrice(total)}</span>
+                        <span className="text-gold-400">{formatPrice(total)}</span>
                       </div>
                     </div>
                   </motion.div>
@@ -539,20 +539,20 @@ export default function Checkout() {
 
                 <div className="flex justify-between text-xl font-bold mt-4 border-t border-dark-border pt-4">
                   <span className="text-white">Total</span>
-                  <span className="text-red-400">{formatPrice(total)}</span>
+                  <span className="text-gold-400">{formatPrice(total)}</span>
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-dark-border space-y-3">
                   <div className="flex items-center gap-3 text-sm text-white">
-                    <Shield className="w-5 h-5 text-red-500" />
+                    <Shield className="w-5 h-5 text-gold-500" />
                     <span>Pago seguro garantizado</span>
                   </div>
                   <div className="flex items-center gap-3 text-sm text-white">
-                    <Truck className="w-5 h-5 text-red-500" />
+                    <Truck className="w-5 h-5 text-gold-500" />
                     <span>Envío a todo el país</span>
                   </div>
                   <div className="flex items-center gap-3 text-sm text-white">
-                    <AlertCircle className="w-5 h-5 text-red-500" />
+                    <AlertCircle className="w-5 h-5 text-gold-500" />
                     <span>30 días para devoluciones</span>
                   </div>
                 </div>

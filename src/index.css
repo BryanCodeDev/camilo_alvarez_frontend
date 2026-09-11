@@ -17,7 +17,7 @@
   }
 
   ::selection {
-    @apply bg-red-600 text-white;
+    @apply bg-gold-500 text-primary-900;
   }
 
   ::-webkit-scrollbar {
@@ -29,11 +29,11 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary-500 rounded-full;
+    @apply bg-gold-500 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-red-600;
+    @apply bg-gold-500;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -58,19 +58,19 @@
   }
 
   .btn-primary {
-    @apply btn bg-gradient-to-r from-red-600 to-red-500 text-white hover:from-red-500 hover:to-red-400 hover:shadow-red focus-visible:ring-red-500;
+    @apply btn bg-gradient-to-r from-gold-600 to-gold-500 text-primary-900 hover:from-gold-500 hover:to-gold-400 hover:shadow-gold focus-visible:ring-gold-500 font-semibold tracking-wide shadow-gold-sm;
   }
 
   .btn-secondary {
-    @apply btn bg-primary-700 text-white border border-dark-border hover:bg-primary-600 focus-visible:ring-red-500;
+    @apply btn bg-primary-700 text-white border border-dark-border hover:border-gold-500/40 hover:bg-primary-600 focus-visible:ring-gold-500;
   }
 
   .btn-outline {
-    @apply btn border-2 border-red-600 text-red-500 hover:bg-red-600 hover:text-white focus-visible:ring-red-500;
+    @apply btn border-2 border-gold-500 text-gold-400 hover:bg-gold-500 hover:text-primary-900 focus-visible:ring-gold-500;
   }
 
   .btn-ghost {
-    @apply btn text-white hover:bg-primary-700 focus-visible:ring-white;
+    @apply btn text-white hover:bg-primary-700 focus-visible:ring-gold-500;
   }
 
   .btn-whatsapp {
@@ -78,7 +78,7 @@
   }
 
   .input {
-    @apply w-full px-4 py-3 bg-primary-800 border border-dark-border text-white placeholder:text-primary-400 rounded-lg transition-all duration-300 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500;
+    @apply w-full px-4 py-3 bg-primary-800 border border-dark-border text-white placeholder:text-primary-400 rounded-lg transition-all duration-300 focus:outline-none focus:border-gold-500 focus:ring-2 focus:ring-gold-500;
   }
 
   .label {
@@ -86,7 +86,7 @@
   }
 
   .card {
-    @apply bg-primary-800/50 backdrop-blur-sm border border-dark-border rounded-xl overflow-hidden transition-all duration-500 hover:border-red-600/50 hover:shadow-card-hover;
+    @apply bg-primary-800/50 backdrop-blur-sm border border-dark-border/60 rounded-2xl overflow-hidden transition-all duration-500 hover:border-gold-500/70 hover:shadow-gold-lg;
   }
 
   .card-image {
@@ -94,27 +94,43 @@
   }
 
   .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium shadow-sm;
   }
 
-  .badge-red {
-    @apply badge bg-red-600/20 text-red-400 border border-red-600/30;
+  .badge-gold {
+    @apply badge bg-gold-500/20 text-gold-400 border border-gold-500/30;
   }
 
   .badge-new {
-    @apply badge bg-blue-600/20 text-blue-400 border border-blue-600/30;
+    @apply badge bg-silver-500/20 text-silver-300 border border-silver-500/30;
   }
 
   .badge-sale {
-    @apply badge bg-red-600/20 text-red-400 border border-red-600/30;
+    @apply badge bg-gold-500/20 text-gold-400 border border-gold-500/30;
   }
 
   .badge-stock {
     @apply badge bg-green-600/20 text-green-400 border border-green-600/30;
   }
 
+  .badge-yellow {
+    @apply badge bg-gold-500/20 text-gold-400 border border-gold-500/30;
+  }
+
+  .badge-green {
+    @apply badge bg-green-600/20 text-green-400 border border-green-600/30;
+  }
+
+  .badge-red {
+    @apply badge bg-red-600/20 text-red-400 border border-red-600/30;
+  }
+
+  .badge-blue {
+    @apply badge bg-silver-500/20 text-silver-300 border border-silver-500/30;
+  }
+
   .link {
-    @apply text-red-400 hover:text-red-300 transition-colors duration-300;
+    @apply text-gold-400 hover:text-gold-300 transition-colors duration-300;
   }
 
   .section-title {
@@ -122,15 +138,19 @@
   }
 
   .section-title::after {
-    @apply content-[''] absolute bottom-0 left-0 w-1/2 h-1 bg-gradient-to-r from-red-600 to-red-400 rounded-full;
+    @apply content-[''] absolute bottom-0 left-0 w-1/2 h-1 bg-gradient-to-r from-gold-500 to-gold-400 rounded-full;
   }
 
   .glass {
-    @apply bg-primary-800/80 backdrop-blur-md border border-dark-border/50;
+    @apply bg-primary-800/80 backdrop-blur-md border border-gold-500/20 shadow-card;
   }
 
-  .text-gradient-red {
-    @apply bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent;
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-luxury {
+    @apply bg-gradient-to-r from-gold-300 via-gold-500 to-silver-400 bg-clip-text text-transparent;
   }
 }
 

@@ -27,13 +27,13 @@ export default function CheckoutPending() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: 'spring', damping: 15, stiffness: 200, delay: 0.2 }}
-              className="w-24 h-24 rounded-full bg-red-600/20 border border-red-500 flex items-center justify-center mx-auto mb-8"
+              className="w-24 h-24 rounded-full bg-gold-600/20 border border-gold-500 flex items-center justify-center mx-auto mb-8"
             >
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
               >
-                <Loader2 className="w-12 h-12 text-red-500" />
+                <Loader2 className="w-12 h-12 text-gold-500" />
               </motion.div>
             </motion.div>
 
@@ -63,7 +63,7 @@ export default function CheckoutPending() {
                 className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 mb-8"
               >
                 <p className="font-medium text-white mb-2">Número de pedido</p>
-                <p className="font-mono text-2xl font-bold text-red-400 tracking-wider">{orderNumber}</p>
+                <p className="font-mono text-2xl font-bold text-gold-400 tracking-wider">{orderNumber}</p>
               </motion.div>
             )}
 
@@ -74,17 +74,17 @@ export default function CheckoutPending() {
               className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8"
             >
               <div className="p-4 bg-primary-800/50 border border-dark-border rounded-xl">
-                <Clock className="w-8 h-8 text-red-500 mb-2" />
+                <Clock className="w-8 h-8 text-gold-500 mb-2" />
                 <p className="font-medium text-white">Tiempo estimado</p>
                 <p className="text-white text-sm">5-30 minutos</p>
               </div>
               <div className="p-4 bg-primary-800/50 border border-dark-border rounded-xl">
-                <CreditCard className="w-8 h-8 text-red-500 mb-2" />
+                <CreditCard className="w-8 h-8 text-gold-500 mb-2" />
                 <p className="font-medium text-white">Métodos rápidos</p>
                 <p className="text-white text-sm">Tarjeta, efectivo</p>
               </div>
               <div className="p-4 bg-primary-800/50 border border-dark-border rounded-xl">
-                <Clock className="w-8 h-8 text-red-500 mb-2" />
+                <Clock className="w-8 h-8 text-gold-500 mb-2" />
                 <p className="font-medium text-white">Transferencia</p>
                 <p className="text-white text-sm">Hasta 24hs</p>
               </div>
@@ -97,7 +97,7 @@ export default function CheckoutPending() {
               className="p-4 bg-primary-800/50 border border-dark-border rounded-xl text-left mb-8"
             >
               <h3 className="font-medium text-white mb-3 flex items-center gap-2">
-                <MessageSquare className="w-5 h-5 text-red-500" />
+                <MessageSquare className="w-5 h-5 text-gold-500" />
                 ¿Qué sucede ahora?
               </h3>
               <ul className="space-y-2 text-white text-sm">

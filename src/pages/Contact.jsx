@@ -98,10 +98,10 @@ export default function Contact() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-100px' }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl hover:border-red-600/50 transition-all duration-300"
+                  className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl hover:border-gold-600/50 transition-all duration-300"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-600/20 to-red-500/10 border border-red-600/30 flex items-center justify-center mb-4">
-                    <info.icon className="w-6 h-6 text-red-400" aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold-600/20 to-gold-500/10 border border-gold-600/30 flex items-center justify-center mb-4">
+                    <info.icon className="w-6 h-6 text-gold-400" aria-hidden="true" />
                   </div>
                   <h3 className="font-display font-semibold text-lg text-white mb-2">{info.title}</h3>
                   <p className="text-white font-medium mb-1">{info.value}</p>
@@ -284,7 +284,7 @@ function DetailsFAQ({ question, answer, index }) {
     <details className="group bg-primary-800/50 border border-dark-border rounded-xl overflow-hidden">
       <summary className="flex items-center justify-between p-5 cursor-pointer list-none">
         <span className="font-medium text-white pr-4">{question}</span>
-        <span className="flex-shrink-0 w-6 h-6 text-red-400 transition-transform duration-300 group-open:rotate-180">
+        <span className="flex-shrink-0 w-6 h-6 text-gold-400 transition-transform duration-300 group-open:rotate-180">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
         </span>
       </summary>

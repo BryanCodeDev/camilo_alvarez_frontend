@@ -42,7 +42,7 @@ export default function Categories() {
             >
               <Link
                 to={`/categoria/${category.slug}`}
-                className="block relative aspect-[4/3] rounded-2xl overflow-hidden bg-primary-800 border border-dark-border hover:border-red-600/50 transition-all duration-500"
+                className="block relative aspect-[4/3] rounded-2xl overflow-hidden bg-primary-800 border border-dark-border hover:border-gold-600/50 transition-all duration-500"
                 aria-label={`${category.name} - ${formatNumber(category.count)} productos`}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-900/20 to-transparent z-10" />
@@ -56,7 +56,7 @@ export default function Categories() {
                 <div className="absolute inset-0 p-6 flex flex-col justify-end z-20">
                   <div className="text-center">
                     <span className="text-4xl sm:text-5xl mb-2 block"><category.Icon className="w-10 h-10 sm:w-12 sm:h-12" /></span>
-                    <h3 className="font-display font-bold text-xl sm:text-2xl text-white mb-1 group-hover:text-red-400 transition-colors">
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-white mb-1 group-hover:text-gold-400 transition-colors">
                       {category.name}
                     </h3>
                     <p className="text-white text-sm font-medium">
@@ -65,7 +65,7 @@ export default function Categories() {
                   </div>
                 </div>
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
-                  <span className="px-4 py-2 bg-red-600 text-white text-sm font-semibold rounded-full">
+                  <span className="px-4 py-2 bg-gold-600 text-white text-sm font-semibold rounded-full">
                     Ver categoría
                   </span>
                 </div>

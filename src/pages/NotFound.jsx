@@ -26,14 +26,14 @@ export default function NotFound() {
               transition={{ type: 'spring', damping: 15, stiffness: 200, delay: 0.2 }}
               className="w-32 h-32 rounded-full bg-primary-800/50 border border-dark-border flex items-center justify-center mx-auto mb-8"
             >
-              <SearchX className="w-16 h-16 text-red-500" />
+              <SearchX className="w-16 h-16 text-gold-500" />
             </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="font-display font-bold text-8xl text-red-400 mb-2"
+              className="font-display font-bold text-8xl text-gold-400 mb-2"
             >
               404
             </motion.p>

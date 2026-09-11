@@ -113,7 +113,7 @@ export default function LegalPage({ pageKey }) {
                 className="mt-10 p-5 bg-primary-800/50 border border-dark-border rounded-xl text-center"
               >
                 <p className="text-white text-sm">
-                  ¿Dudas sobre esta política? <a href="/contacto" className="text-red-400 hover:underline">Contactanos</a>
+                  ¿Dudas sobre esta política? <a href="/contacto" className="text-gold-400 hover:underline">Contactanos</a>
                 </p>
               </motion.div>
             </motion.div>

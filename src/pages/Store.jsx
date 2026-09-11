@@ -155,9 +155,9 @@ export default function Store() {
             className="mb-8"
           >
             <nav className="flex items-center gap-2 text-sm text-white mb-4" aria-label="Breadcrumb">
-              <Link to="/" className="hover:text-red-400 transition-colors">Inicio</Link>
+              <Link to="/" className="hover:text-gold-400 transition-colors">Inicio</Link>
               <span>/</span>
-              <Link to="/tienda" className="hover:text-red-400 transition-colors">Tienda</Link>
+              <Link to="/tienda" className="hover:text-gold-400 transition-colors">Tienda</Link>
               {category && (
                 <>
                   <span>/</span>
@@ -188,7 +188,7 @@ export default function Store() {
                   {hasActiveFilters && (
                     <button
                       onClick={clearFilters}
-                      className="text-xs text-red-400 hover:text-red-300 transition-colors"
+                      className="text-xs text-gold-400 hover:text-gold-300 transition-colors"
                     >
                       Limpiar todo
                     </button>
@@ -198,7 +198,7 @@ export default function Store() {
                 <div className="space-y-6">
                   <div>
                     <h3 className="font-medium text-white mb-3 flex items-center gap-2">
-                      <Filter className="w-4 h-4 text-red-500" aria-hidden="true" />
+                      <Filter className="w-4 h-4 text-gold-500" aria-hidden="true" />
                       Categoría
                     </h3>
                     <div className="space-y-2 max-h-48 overflow-y-auto">
@@ -210,7 +210,7 @@ export default function Store() {
                             value={cat.slug}
                             checked={category === cat.slug}
                             onChange={(e) => handleCategoryChange(e.target.value)}
-                            className="w-4 h-4 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500"
+                            className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500"
                           />
                           <span className="text-sm text-white flex-1 truncate">{cat.name}</span>
                           <span className="text-white text-xs">({cat.productCount || 0})</span>
@@ -229,7 +229,7 @@ export default function Store() {
                             name="priceRange"
                             checked={minPrice == range.min && (maxPrice == range.max || (range.max === 0 && !maxPrice))}
                             onChange={() => handlePriceRangeChange(range.min === 0 ? null : range.min, range.max === 0 ? null : range.max)}
-                            className="w-4 h-4 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500"
+                            className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500"
                           />
                           <span className="text-sm text-white">{range.label}</span>
                         </label>
@@ -264,7 +264,7 @@ export default function Store() {
                             type="checkbox"
                             checked={brand === brandItem}
                             onChange={(e) => handleBrandChange(e.target.checked ? brandItem : null)}
-                            className="w-4 h-4 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                            className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
                           />
                           <span className="text-sm text-white">{brandItem}</span>
                         </label>
@@ -280,7 +280,7 @@ export default function Store() {
                           type="checkbox"
                           checked={inStock}
                           onChange={(e) => handleInStockChange(e.target.checked)}
-                          className="w-4 h-4 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                          className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
                         />
                         <span className="text-sm text-white">Solo en stock</span>
                       </label>
@@ -289,7 +289,7 @@ export default function Store() {
                           type="checkbox"
                           checked={onSale}
                           onChange={(e) => handleOnSaleChange(e.target.checked)}
-                          className="w-4 h-4 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                          className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
                         />
                         <span className="text-sm text-white">Solo ofertas</span>
                       </label>
@@ -322,7 +322,7 @@ export default function Store() {
                     <Filter className="w-4 h-4" aria-hidden="true" />
                     <span>Filtros</span>
                     {hasActiveFilters && (
-                      <span className="w-5 h-5 bg-red-600 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                      <span className="w-5 h-5 bg-gold-600 text-white text-xs font-bold rounded-full flex items-center justify-center">
                         {activeFiltersCount}
                       </span>
                     )}
@@ -331,7 +331,7 @@ export default function Store() {
                   <div className="hidden sm:flex items-center gap-2 ml-auto">
                     <button
                       onClick={() => setViewMode('grid')}
-                      className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? 'bg-red-600/20 text-red-400 border border-red-600/30' : 'text-white hover:text-white hover:bg-primary-700'}`}
+                      className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? 'bg-gold-600/20 text-gold-400 border border-gold-600/30' : 'text-white hover:text-white hover:bg-primary-700'}`}
                       aria-label="Vista en cuadrícula"
                       aria-pressed={viewMode === 'grid'}
                     >
@@ -339,7 +339,7 @@ export default function Store() {
                     </button>
                     <button
                       onClick={() => setViewMode('list')}
-                      className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? 'bg-red-600/20 text-red-400 border border-red-600/30' : 'text-white hover:text-white hover:bg-primary-700'}`}
+                      className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? 'bg-gold-600/20 text-gold-400 border border-gold-600/30' : 'text-white hover:text-white hover:bg-primary-700'}`}
                       aria-label="Vista en lista"
                       aria-pressed={viewMode === 'list'}
                     >
@@ -416,7 +416,7 @@ export default function Store() {
                           <button
                             key={pageNum}
                             onClick={() => handlePageChange(pageNum)}
-                            className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-red-600 text-white' : 'bg-primary-800 text-white hover:bg-primary-700 hover:text-white border border-dark-border'}`}
+                            className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-gold-600 text-white' : 'bg-primary-800 text-white hover:bg-primary-700 hover:text-white border border-dark-border'}`}
                             aria-label={`Página ${pageNum}`}
                             aria-current={currentPage === pageNum ? 'page' : undefined}
                           >
@@ -467,7 +467,7 @@ export default function Store() {
               <h2 className="font-display font-semibold text-lg text-white">Filtros</h2>
               <button
                 onClick={() => setMobileFiltersOpen(false)}
-                className="p-2 text-white hover:text-red-400"
+                className="p-2 text-white hover:text-gold-400"
               >
                 <X className="w-6 h-6" aria-hidden="true" />
               </button>
@@ -485,7 +485,7 @@ export default function Store() {
                           value={cat.slug}
                           checked={category === cat.slug}
                           onChange={(e) => { handleCategoryChange(e.target.value); setMobileFiltersOpen(false) }}
-                          className="w-4 h-4 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500"
+                          className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500"
                         />
                         <span className="text-sm text-white flex-1 truncate">{cat.name}</span>
                         <span className="text-white text-xs">({cat.productCount || 0})</span>
@@ -504,7 +504,7 @@ export default function Store() {
                           name="priceRange"
                           checked={minPrice == range.min && (maxPrice == range.max || (range.max === 0 && !maxPrice))}
                           onChange={() => { handlePriceRangeChange(range.min === 0 ? null : range.min, range.max === 0 ? null : range.max); setMobileFiltersOpen(false) }}
-                          className="w-4 h-4 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500"
+                          className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500"
                         />
                         <span className="text-sm text-white">{range.label}</span>
                       </label>
@@ -520,7 +520,7 @@ export default function Store() {
                         type="checkbox"
                         checked={inStock}
                         onChange={(e) => handleInStockChange(e.target.checked)}
-                        className="w-4 h-4 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                        className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
                       />
                       <span className="text-sm text-white">Solo en stock</span>
                     </label>
@@ -529,7 +529,7 @@ export default function Store() {
                         type="checkbox"
                         checked={onSale}
                         onChange={(e) => handleOnSaleChange(e.target.checked)}
-                        className="w-4 h-4 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                        className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
                       />
                       <span className="text-sm text-white">Solo ofertas</span>
                     </label>

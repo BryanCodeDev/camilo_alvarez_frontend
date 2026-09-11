@@ -8,7 +8,7 @@ import { formatPrice, formatDate, formatDateTime } from '../../utils/helpers'
 import toast from 'react-hot-toast'
 
 const statusConfig = {
-  pending: { label: 'Pendiente', bg: 'bg-red-600/20', text: 'text-red-400', border: 'border-red-600/30' },
+  pending: { label: 'Pendiente', bg: 'bg-blue-600/20', text: 'text-blue-400', border: 'border-blue-600/30' },
   paid: { label: 'Pagado', bg: 'bg-blue-600/20', text: 'text-blue-400', border: 'border-blue-600/30' },
   preparing: { label: 'Preparando', bg: 'bg-purple-600/20', text: 'text-purple-400', border: 'border-purple-600/30' },
   shipped: { label: 'Enviado', bg: 'bg-indigo-600/20', text: 'text-indigo-400', border: 'border-indigo-600/30' },
@@ -18,7 +18,7 @@ const statusConfig = {
 }
 
 const paymentConfig = {
-  pending: { label: 'Pendiente', bg: 'bg-red-600/20', text: 'text-red-400', border: 'border-red-600/30' },
+  pending: { label: 'Pendiente', bg: 'bg-blue-600/20', text: 'text-blue-400', border: 'border-blue-600/30' },
   approved: { label: 'Aprobado', bg: 'bg-green-600/20', text: 'text-green-400', border: 'border-green-600/30' },
   rejected: { label: 'Rechazado', bg: 'bg-red-600/20', text: 'text-red-400', border: 'border-red-600/30' },
   cancelled: { label: 'Cancelado', bg: 'bg-gray-600/20', text: 'text-white', border: 'border-gray-600/30' },
@@ -48,7 +48,7 @@ export default function OrderDetail() {
   if (loading) {
     return (
       <div className="min-h-screen bg-primary-900 pt-20 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-red-600 border-t-transparent" />
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-gold-600 border-t-transparent" />
       </div>
     )
   }
@@ -84,7 +84,7 @@ export default function OrderDetail() {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <Link to="/cuenta" className="inline-flex items-center gap-2 text-white hover:text-red-400 transition-colors mb-4">
+            <Link to="/cuenta" className="inline-flex items-center gap-2 text-white hover:text-gold-400 transition-colors mb-4">
               <ArrowLeft className="w-5 h-5" />
               Volver a mi cuenta
             </Link>
@@ -112,7 +112,7 @@ export default function OrderDetail() {
                 className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
               >
                 <h2 className="font-display font-semibold text-xl text-white mb-5 flex items-center gap-2">
-                  <Package className="w-6 h-6 text-red-500" />
+                  <Package className="w-6 h-6 text-gold-500" />
                   Productos
                 </h2>
                 <div className="space-y-3">
@@ -126,7 +126,7 @@ export default function OrderDetail() {
                         <p className="text-white text-sm">SKU: {item.product_sku || 'N/A'}</p>
                         <p className="text-white text-sm">Cantidad: {item.quantity} × {formatPrice(item.discount_price || item.unit_price)}</p>
                       </div>
-                      <span className="font-display font-bold text-lg text-red-400 whitespace-nowrap">{formatPrice(item.subtotal)}</span>
+                      <span className="font-display font-bold text-lg text-gold-400 whitespace-nowrap">{formatPrice(item.subtotal)}</span>
                     </div>
                   ))}
                 </div>
@@ -139,14 +139,14 @@ export default function OrderDetail() {
                 className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
               >
                 <h2 className="font-display font-semibold text-xl text-white mb-5 flex items-center gap-2">
-                  <Clock className="w-6 h-6 text-red-500" />
+                  <Clock className="w-6 h-6 text-gold-500" />
                   Historial de cambios
                 </h2>
                 <div className="space-y-0">
                   {(order.history || []).map((event, index) => (
                     <div key={index} className="flex gap-3">
                       <div className="flex flex-col items-center">
-                        <div className={`w-2.5 h-2.5 rounded-full ${index === 0 ? 'bg-red-500' : 'bg-primary-600'}`} />
+                        <div className={`w-2.5 h-2.5 rounded-full ${index === 0 ? 'bg-gold-500' : 'bg-primary-600'}`} />
                         {index < (order.history || []).length - 1 && <div className="w-px flex-1 bg-dark-border my-1" />}
                       </div>
                       <div className="flex-1 pb-4 min-w-0">
@@ -188,7 +188,7 @@ export default function OrderDetail() {
                 </div>
                 <div className="flex justify-between text-xl font-bold border-t border-dark-border pt-4">
                   <span className="text-white">Total</span>
-                  <span className="text-red-400">{formatPrice(order.total)}</span>
+                  <span className="text-gold-400">{formatPrice(order.total)}</span>
                 </div>
               </motion.section>
 
@@ -200,7 +200,7 @@ export default function OrderDetail() {
               >
                 <h2 className="font-display font-semibold text-xl text-white">Información del cliente</h2>
                 <div className="flex flex-col sm:flex-row items-start gap-3">
-                  <User className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
+                  <User className="w-5 h-5 text-gold-500 mt-0.5 flex-shrink-0" />
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-white truncate">{order.customer_name}</p>
                     <p className="text-white text-sm truncate">{order.customer_email}</p>
@@ -208,14 +208,14 @@ export default function OrderDetail() {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row items-start gap-3">
-                  <MapPin className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
+                  <MapPin className="w-5 h-5 text-gold-500 mt-0.5 flex-shrink-0" />
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-white truncate">{order.address}</p>
                     <p className="text-white text-sm truncate">{order.city}, {order.province}</p>
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row items-start gap-3">
-                  <CreditCard className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
+                  <CreditCard className="w-5 h-5 text-gold-500 mt-0.5 flex-shrink-0" />
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-white capitalize truncate">{order.payment_method}</p>
                     <p className="text-white text-sm truncate">{order.payment_status === 'approved' ? 'Pago confirmado' : 'Pago pendiente'}</p>
@@ -239,13 +239,13 @@ export default function OrderDetail() {
                   </div>
                 ) : order.status === 'shipped' ? (
                   <div className="space-y-2">
-                    <Truck className="w-8 h-8 text-red-500" />
+                    <Truck className="w-8 h-8 text-gold-500" />
                     <p className="font-medium text-white">Tu pedido está en camino</p>
                     <p className="text-white text-sm">Recibirás el código de seguimiento por email.</p>
                   </div>
                 ) : (
                   <div className="space-y-2">
-                    <Calendar className="w-8 h-8 text-red-500" />
+                    <Calendar className="w-8 h-8 text-gold-500" />
                     <p className="font-medium text-white">Procesando tu pedido</p>
                     <p className="text-white text-sm">Te notificaremos cada actualización por email.</p>
                   </div>

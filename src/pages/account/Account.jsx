@@ -115,7 +115,7 @@ export default function Account() {
 
   const getStatusConfig = (status) => {
     const configs = {
-      pending: { label: 'Pendiente', color: 'red', bg: 'bg-red-600/20', text: 'text-red-400', border: 'border-red-600/30' },
+      pending: { label: 'Pendiente', color: 'blue', bg: 'bg-blue-600/20', text: 'text-blue-400', border: 'border-blue-600/30' },
       paid: { label: 'Pagado', color: 'blue', bg: 'bg-blue-600/20', text: 'text-blue-400', border: 'border-blue-600/30' },
       preparing: { label: 'Preparando', color: 'purple', bg: 'bg-purple-600/20', text: 'text-purple-400', border: 'border-purple-600/30' },
       shipped: { label: 'Enviado', color: 'indigo', bg: 'bg-indigo-600/20', text: 'text-indigo-400', border: 'border-indigo-600/30' },
@@ -128,7 +128,7 @@ export default function Account() {
 
   const getPaymentStatusConfig = (status) => {
     const configs = {
-      pending: { label: 'Pendiente', color: 'red' },
+      pending: { label: 'Pendiente', color: 'blue' },
       approved: { label: 'Aprobado', color: 'green' },
       rejected: { label: 'Rechazado', color: 'red' },
       cancelled: { label: 'Cancelado', color: 'gray' },
@@ -140,7 +140,7 @@ export default function Account() {
   if (authLoading) {
     return (
       <div className="min-h-screen bg-primary-900 pt-20 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-red-600 border-t-transparent" />
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-gold-600 border-t-transparent" />
       </div>
     )
   }
@@ -169,13 +169,13 @@ export default function Account() {
             <aside className="lg:w-64 flex-shrink-0">
               <div className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 sticky top-24">
                 <div className="flex items-center gap-3 mb-5 pb-5 border-b border-dark-border">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center text-white font-bold text-xl">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gold-600 to-gold-400 flex items-center justify-center text-white font-bold text-xl">
                     {user?.firstName?.charAt(0)}{user?.lastName?.charAt(0)}
                   </div>
                   <div className="min-w-0">
                     <h2 className="font-display font-semibold text-lg text-white truncate">{user?.firstName} {user?.lastName}</h2>
                     <p className="text-white text-sm truncate">{user?.email}</p>
-                    <span className="inline-block mt-1 px-2 py-0.5 bg-red-600/20 text-red-400 text-xs font-medium rounded-full border border-red-600/30">
+                    <span className="inline-block mt-1 px-2 py-0.5 bg-gold-600/20 text-gold-400 text-xs font-medium rounded-full border border-gold-600/30">
                       {user?.role === 'admin' ? 'Administrador' : 'Cliente'}
                     </span>
                   </div>
@@ -191,8 +191,8 @@ export default function Account() {
                         onClick={() => setActiveTab(tab.id)}
                         className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                           isActive
-                            ? 'bg-red-600/20 text-red-400 border border-red-600/30'
-                            : 'text-white hover:bg-primary-700 hover:text-white hover:border-red-600/30'
+                            ? 'bg-gold-600/20 text-gold-400 border border-gold-600/30'
+                            : 'text-white hover:bg-primary-700 hover:text-white hover:border-gold-600/30'
                         }`}
                         aria-current={isActive ? 'page' : undefined}
                       >
@@ -206,7 +206,7 @@ export default function Account() {
                 <div className="mt-5 pt-5 border-t border-dark-border">
                   <button
                     onClick={handleLogout}
-                    className="w-full flex items-center gap-3 px-3 py-2.5 text-white hover:text-red-400 hover:bg-red-600/10 rounded-xl transition-colors"
+                    className="w-full flex items-center gap-3 px-3 py-2.5 text-white hover:text-gold-400 hover:bg-gold-600/10 rounded-xl transition-colors"
                   >
                     <LogOut className="w-5 h-5" />
                     Cerrar sesión
@@ -346,12 +346,12 @@ export default function Account() {
                           <Link
                             key={order.id}
                             to={`/cuenta/pedido/${order.id}`}
-                            className="block p-4 bg-primary-700/50 border border-dark-border rounded-xl hover:border-red-600/50 transition-all"
+                            className="block p-4 bg-primary-700/50 border border-dark-border rounded-xl hover:border-gold-600/50 transition-all"
                           >
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                               <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 rounded-lg bg-primary-800 flex items-center justify-center flex-shrink-0">
-                                  <Package className="w-5 h-5 text-red-500" />
+                                  <Package className="w-5 h-5 text-gold-500" />
                                 </div>
                                 <div className="min-w-0">
                                   <p className="font-medium text-white truncate">Pedido #{order.order_number}</p>
@@ -362,10 +362,10 @@ export default function Account() {
                                 <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${statusConfig.bg} ${statusConfig.text} ${statusConfig.border}`}>
                                   {statusConfig.label}
                                 </span>
-                                <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${paymentConfig.color === 'green' ? 'bg-green-600/20 text-green-400 border border-green-600/30' : paymentConfig.color === 'red' ? 'bg-red-600/20 text-red-400 border border-red-600/30' : 'bg-red-600/20 text-red-400 border border-red-600/30'}`}>
+                                <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${paymentConfig.color === 'green' ? 'bg-green-600/20 text-green-400 border border-green-600/30' : paymentConfig.color === 'red' ? 'bg-gold-600/20 text-gold-400 border border-gold-600/30' : 'bg-gold-600/20 text-gold-400 border border-gold-600/30'}`}>
                                   {paymentConfig.label}
                                 </span>
-                                <span className="font-display font-bold text-lg text-red-400 whitespace-nowrap">{formatPrice(order.total)}</span>
+                                <span className="font-display font-bold text-lg text-gold-400 whitespace-nowrap">{formatPrice(order.total)}</span>
                                 <ChevronRight className="w-4 h-4 text-primary-500 flex-shrink-0" />
                               </div>
                             </div>
@@ -393,7 +393,7 @@ export default function Account() {
                             <p className="font-medium text-white">{addr.address}</p>
                             <p className="text-white text-sm">{addr.city}, {addr.province}</p>
                           </div>
-                          <span className="px-2 py-1 bg-red-600/20 text-red-400 text-xs font-medium rounded-full border border-red-600/30">Predeterminada</span>
+                          <span className="px-2 py-1 bg-gold-600/20 text-gold-400 text-xs font-medium rounded-full border border-gold-600/30">Predeterminada</span>
                         </div>
                       </div>
                     ))}
@@ -473,7 +473,7 @@ export default function Account() {
                         <input
                           type="checkbox"
                           defaultChecked={i < 2}
-                          className="w-5 h-5 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded flex-shrink-0"
+                          className="w-5 h-5 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded flex-shrink-0"
                         />
                       </label>
                     ))}

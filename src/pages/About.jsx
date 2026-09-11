@@ -35,7 +35,7 @@ export default function About() {
             >
               <h1 id="about-hero" className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white mb-6">
                 MÁS QUE UNA TIENDA,<br />
-                <span className="bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 bg-clip-text text-transparent">
                   TU SOCIO TECNOLÓGICO
                 </span>
               </h1>
@@ -68,10 +68,10 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-100px' }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group p-6 lg:p-8 bg-primary-800/50 border border-dark-border rounded-2xl hover:border-red-600/50 hover:shadow-red transition-all duration-500"
+                  className="group p-6 lg:p-8 bg-primary-800/50 border border-dark-border rounded-2xl hover:border-gold-600/50 hover:shadow-gold transition-all duration-500"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-red-600/20 to-red-500/10 border border-red-600/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="w-7 h-7 text-red-400" aria-hidden="true" />
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-gold-600/20 to-gold-500/10 border border-gold-600/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <feature.icon className="w-7 h-7 text-gold-400" aria-hidden="true" />
                   </div>
                   <h3 className="font-display font-semibold text-xl text-white mb-3">{feature.title}</h3>
                   <p className="text-white leading-relaxed">{feature.desc}</p>
@@ -139,11 +139,11 @@ export default function About() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl text-center"
                 >
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-red-600/20 to-red-500/10 border border-red-600/30 flex items-center justify-center mx-auto mb-4">
-                    <Sparkles className="w-12 h-12 text-red-400" />
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-gold-600/20 to-gold-500/10 border border-gold-600/30 flex items-center justify-center mx-auto mb-4">
+                    <Sparkles className="w-12 h-12 text-gold-400" />
                   </div>
                   <h3 className="font-display font-semibold text-xl text-white">{member.name}</h3>
-                  <p className="text-red-400 text-sm mb-2">{member.role}</p>
+                  <p className="text-gold-400 text-sm mb-2">{member.role}</p>
                   <p className="text-white">{member.desc}</p>
                 </motion.article>
               ))}

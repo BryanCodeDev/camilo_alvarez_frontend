@@ -38,7 +38,7 @@ function NavLink({ to, label, active, index, children }) {
       <Link
         to={to}
         className={`text-sm font-medium transition-colors duration-300 ${
-          active ? 'text-red-400' : 'text-white hover:text-red-400'
+          active ? 'text-gold-400' : 'text-white hover:text-gold-400'
         }`}
       >
         {children || label}
@@ -123,7 +123,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 lg:h-20">
             <Link to="/" className="flex items-center gap-2 z-10" aria-label="TechStore - Inicio">
               <motion.div
-                className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center"
+                className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-600 to-gold-400 flex items-center justify-center"
                 initial={{ scale: 0, rotate: -180 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ type: 'spring', damping: 15, stiffness: 200 }}
@@ -137,13 +137,13 @@ export default function Navbar() {
 
             <div className="flex items-center gap-3 lg:gap-4">
               <div className="lg:hidden flex items-center gap-2">
-                <Link to="/carrito" onClick={toggleCart} className="relative p-2 text-white hover:text-red-400 transition-colors" aria-label={`Carrito: ${itemCount} productos`}>
+                <Link to="/carrito" onClick={toggleCart} className="relative p-2 text-white hover:text-gold-400 transition-colors" aria-label={`Carrito: ${itemCount} productos`}>
                   <ShoppingCart className="w-6 h-6" aria-hidden="true" />
                   {itemCount > 0 && (
                     <motion.span
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className="absolute -top-1 -right-1 w-5 h-5 bg-red-600 text-white text-xs font-bold rounded-full flex items-center justify-center"
+                      className="absolute -top-1 -right-1 w-5 h-5 bg-gold-600 text-white text-xs font-bold rounded-full flex items-center justify-center"
                     >
                       {itemCount > 99 ? '99+' : itemCount}
                     </motion.span>
@@ -153,7 +153,7 @@ export default function Navbar() {
 
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="lg:hidden p-2 text-white hover:text-red-400 transition-colors flex items-center gap-1"
+                className="lg:hidden p-2 text-white hover:text-gold-400 transition-colors flex items-center gap-1"
                 aria-label="Abrir menú"
                 aria-expanded={mobileMenuOpen}
               >
@@ -198,11 +198,11 @@ export default function Navbar() {
                               <Link
                                 key={cat.slug}
                                 to={`/categoria/${cat.slug}`}
-                                className="flex flex-col items-center gap-2 p-4 bg-primary-800 border border-dark-border rounded-xl hover:border-red-600/50 hover:shadow-red transition-all duration-300 group"
+                                className="flex flex-col items-center gap-2 p-4 bg-primary-800 border border-dark-border rounded-xl hover:border-gold-600/50 hover:shadow-gold transition-all duration-300 group"
                                 onClick={() => setDropdownOpen(null)}
                               >
                                 <span className="text-3xl group-hover:scale-110 transition-transform"><cat.Icon className="w-8 h-8" /></span>
-                                <span className="text-sm font-medium text-white group-hover:text-red-400 transition-colors">{cat.name}</span>
+                                <span className="text-sm font-medium text-white group-hover:text-gold-400 transition-colors">{cat.name}</span>
                               </Link>
                             ))}
                           </div>
@@ -217,7 +217,7 @@ export default function Navbar() {
                 <div className="relative">
                   <button
                     onClick={() => setSearchOpen(!searchOpen)}
-                    className="flex items-center gap-2 px-4 py-2 bg-primary-800 border border-dark-border rounded-full text-white hover:border-red-600 hover:text-white transition-all duration-300"
+                    className="flex items-center gap-2 px-4 py-2 bg-primary-800 border border-dark-border rounded-full text-white hover:border-gold-600 hover:text-white transition-all duration-300"
                     aria-label="Buscar productos"
                   >
                     <Search className="w-5 h-5" aria-hidden="true" />
@@ -237,13 +237,13 @@ export default function Navbar() {
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder="Buscar productos..."
-                            className="w-full px-4 py-3 pr-12 bg-primary-800 border border-dark-border rounded-xl text-white placeholder:text-primary-400 focus:outline-none focus:border-red-500"
+                            className="w-full px-4 py-3 pr-12 bg-primary-800 border border-dark-border rounded-xl text-white placeholder:text-primary-400 focus:outline-none focus:border-gold-500"
                             autoFocus
                             aria-label="Buscar productos"
                           />
                           <button
                             type="submit"
-                            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-white hover:text-red-400"
+                            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-white hover:text-gold-400"
                             aria-label="Buscar"
                           >
                             <Search className="w-5 h-5" aria-hidden="true" />
@@ -261,11 +261,11 @@ export default function Navbar() {
                         e.stopPropagation()
                         setDropdownOpen(dropdownOpen === 'user' ? null : 'user')
                       }}
-                      className="flex items-center gap-2 px-4 py-2 bg-primary-800 border border-dark-border rounded-full hover:border-red-600 transition-all duration-300"
+                      className="flex items-center gap-2 px-4 py-2 bg-primary-800 border border-dark-border rounded-full hover:border-gold-600 transition-all duration-300"
                       aria-haspopup="true"
                       aria-expanded={dropdownOpen === 'user'}
                     >
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center text-white font-medium text-sm">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gold-600 to-gold-400 flex items-center justify-center text-white font-medium text-sm">
                         {user?.name?.charAt(0).toUpperCase()}
                       </div>
                       <span className="hidden sm:inline text-sm font-medium text-white">{user?.name}</span>
@@ -279,18 +279,18 @@ export default function Navbar() {
                           exit={{ opacity: 0, y: -10 }}
                           className="absolute right-0 top-full mt-2 w-56 max-w-[90vw] bg-primary-800 border border-dark-border rounded-xl py-2 shadow-card"
                         >
-                          <Link to="/cuenta" className="flex items-center gap-3 px-4 py-2 text-white hover:text-red-400 hover:bg-primary-700" onClick={() => setDropdownOpen(null)}>
+                          <Link to="/cuenta" className="flex items-center gap-3 px-4 py-2 text-white hover:text-gold-400 hover:bg-primary-700" onClick={() => setDropdownOpen(null)}>
                             <User className="w-5 h-5" aria-hidden="true" />
                             Mi cuenta
                           </Link>
                           {isAdmin && (
-                            <Link to="/admin" className="flex items-center gap-3 px-4 py-2 text-white hover:text-red-400 hover:bg-primary-700" onClick={() => setDropdownOpen(null)}>
+                            <Link to="/admin" className="flex items-center gap-3 px-4 py-2 text-white hover:text-gold-400 hover:bg-primary-700" onClick={() => setDropdownOpen(null)}>
                               <LayoutDashboard className="w-5 h-5" aria-hidden="true" />
                               Panel Admin
                             </Link>
                           )}
                           <hr className="my-2 border-dark-border" />
-                          <button onClick={logout} className="w-full flex items-center gap-3 px-4 py-2 text-white hover:text-red-400 hover:bg-primary-700 text-left">
+                          <button onClick={logout} className="w-full flex items-center gap-3 px-4 py-2 text-white hover:text-gold-400 hover:bg-primary-700 text-left">
                             <LogOut className="w-5 h-5" aria-hidden="true" />
                             Cerrar sesión
                           </button>
@@ -300,7 +300,7 @@ export default function Navbar() {
                   </div>
                 ) : (
                   <div className="flex items-center gap-2">
-                    <Link to="/login" className="px-4 py-2 text-sm font-medium text-white hover:text-red-400 transition-colors">Iniciar sesión</Link>
+                    <Link to="/login" className="px-4 py-2 text-sm font-medium text-white hover:text-gold-400 transition-colors">Iniciar sesión</Link>
                     <Link to="/registro" className="btn-primary text-sm">Registrarse</Link>
                   </div>
                 )}
@@ -331,7 +331,7 @@ export default function Navbar() {
             >
               <div className="p-6 flex items-center justify-between border-b border-dark-border">
                 <Link to="/" className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-500 to-gold-400 flex items-center justify-center">
                     <svg className="w-6 h-6 text-primary-900" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
                     </svg>
@@ -340,7 +340,7 @@ export default function Navbar() {
                 </Link>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 text-white hover:text-red-400 transition-colors"
+                  className="p-2 text-white hover:text-gold-400 transition-colors"
                   aria-label="Cerrar menú"
                 >
                   <X className="w-7 h-7" aria-hidden="true" />
@@ -354,13 +354,13 @@ export default function Navbar() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Buscar productos..."
-                    className="w-full px-4 py-3 pr-12 bg-primary-800 border border-dark-border rounded-xl text-white placeholder:text-primary-400 focus:outline-none focus:border-red-500"
+                    className="w-full px-4 py-3 pr-12 bg-primary-800 border border-dark-border rounded-xl text-white placeholder:text-primary-400 focus:outline-none focus:border-gold-500"
                     autoFocus
                     aria-label="Buscar productos"
                   />
                   <button
                     type="submit"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-white hover:text-red-400"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-white hover:text-gold-400"
                     aria-label="Buscar"
                   >
                     <Search className="w-5 h-5" aria-hidden="true" />
@@ -375,7 +375,7 @@ export default function Navbar() {
                     to={link.path}
                     className={`block px-4 py-3 rounded-xl text-lg font-medium transition-colors duration-200 touch-manipulation ${
                       isActive(link.path)
-                        ? 'bg-red-600/20 text-red-400 border border-red-600/30'
+                        ? 'bg-gold-600/20 text-gold-400 border border-gold-600/30'
                         : 'text-white hover:bg-primary-800 hover:text-white'
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
@@ -387,7 +387,7 @@ export default function Navbar() {
                 <div className="pt-4 border-t border-dark-border">
                   <button
                     onClick={() => setMobileCategoriesOpen(!mobileCategoriesOpen)}
-                    className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-red-400 uppercase tracking-wider"
+                    className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-gold-400 uppercase tracking-wider"
                     aria-expanded={mobileCategoriesOpen}
                   >
                     <span>Categorías</span>
@@ -406,7 +406,7 @@ export default function Navbar() {
                             <Link
                               key={cat.slug}
                               to={`/categoria/${cat.slug}`}
-                              className="flex flex-col items-center gap-2 p-4 bg-primary-800 border border-dark-border rounded-xl hover:border-red-600/50 hover:shadow-red transition-all duration-300 touch-manipulation"
+                              className="flex flex-col items-center gap-2 p-4 bg-primary-800 border border-dark-border rounded-xl hover:border-gold-600/50 hover:shadow-gold transition-all duration-300 touch-manipulation"
                               onClick={() => { setMobileMenuOpen(false); setMobileCategoriesOpen(false); }}
                             >
                               <span className="text-2xl"><cat.Icon className="w-7 h-7" /></span>
@@ -421,21 +421,21 @@ export default function Navbar() {
 
                 {isAuthenticated ? (
                   <div className="pt-4 border-t border-dark-border space-y-2">
-                    <Link to="/cuenta" className="block px-4 py-3 rounded-xl bg-primary-800 border border-dark-border text-white hover:border-red-600 transition-all touch-manipulation" onClick={() => setMobileMenuOpen(false)}>
+                    <Link to="/cuenta" className="block px-4 py-3 rounded-xl bg-primary-800 border border-dark-border text-white hover:border-gold-600 transition-all touch-manipulation" onClick={() => setMobileMenuOpen(false)}>
                       Mi cuenta
                     </Link>
                     {isAdmin && (
-                      <Link to="/admin" className="block px-4 py-3 rounded-xl bg-primary-800 border border-dark-border text-white hover:border-red-600 transition-all touch-manipulation" onClick={() => setMobileMenuOpen(false)}>
+                      <Link to="/admin" className="block px-4 py-3 rounded-xl bg-primary-800 border border-dark-border text-white hover:border-gold-600 transition-all touch-manipulation" onClick={() => setMobileMenuOpen(false)}>
                         Panel Admin
                       </Link>
                     )}
-                    <button onClick={() => { logout(); setMobileMenuOpen(false); }} className="w-full block px-4 py-3 rounded-xl bg-primary-800 border border-dark-border text-red-400 hover:bg-red-600/20 hover:border-red-600/30 transition-all text-left touch-manipulation">
+                    <button onClick={() => { logout(); setMobileMenuOpen(false); }} className="w-full block px-4 py-3 rounded-xl bg-primary-800 border border-dark-border text-gold-400 hover:bg-gold-600/20 hover:border-gold-600/30 transition-all text-left touch-manipulation">
                       Cerrar sesión
                     </button>
                   </div>
                 ) : (
                   <div className="pt-4 border-t border-dark-border space-y-2">
-                    <Link to="/login" className="block w-full px-4 py-3 rounded-xl bg-primary-800 border border-dark-border text-white text-center hover:border-red-600 transition-all touch-manipulation" onClick={() => setMobileMenuOpen(false)}>
+                    <Link to="/login" className="block w-full px-4 py-3 rounded-xl bg-primary-800 border border-dark-border text-white text-center hover:border-gold-600 transition-all touch-manipulation" onClick={() => setMobileMenuOpen(false)}>
                       Iniciar sesión
                     </Link>
                     <Link to="/registro" className="block w-full btn-primary text-center touch-manipulation" onClick={() => setMobileMenuOpen(false)}>

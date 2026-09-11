@@ -71,7 +71,7 @@ export default function Category() {
       <>
         <SEO title="Cargando..." />
         <div className="min-h-screen bg-primary-900 pt-20 flex items-center justify-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-red-600 border-t-transparent" />
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-gold-600 border-t-transparent" />
         </div>
       </>
     )
@@ -110,9 +110,9 @@ export default function Category() {
             className="mb-8"
           >
             <nav className="flex items-center gap-2 text-sm text-white mb-4" aria-label="Breadcrumb">
-              <Link to="/" className="hover:text-red-400 transition-colors">Inicio</Link>
+              <Link to="/" className="hover:text-gold-400 transition-colors">Inicio</Link>
               <span>/</span>
-              <Link to="/tienda" className="hover:text-red-400 transition-colors">Tienda</Link>
+              <Link to="/tienda" className="hover:text-gold-400 transition-colors">Tienda</Link>
               <span>/</span>
               <span className="text-white">{category.name}</span>
             </nav>
@@ -137,7 +137,7 @@ export default function Category() {
               <div className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 sticky top-24">
                 <div className="flex items-center justify-between mb-4 lg:hidden">
                   <h2 className="font-display font-semibold text-lg text-white">Filtros</h2>
-                  <button onClick={() => setMobileFiltersOpen(false)} className="p-2 text-white hover:text-red-400" aria-label="Cerrar filtros">
+                  <button onClick={() => setMobileFiltersOpen(false)} className="p-2 text-white hover:text-gold-400" aria-label="Cerrar filtros">
                     <X className="w-5 h-5" />
                   </button>
                 </div>
@@ -172,7 +172,7 @@ export default function Category() {
                           type="checkbox"
                           checked={filters.onSale}
                           onChange={(e) => setFilters({...filters, onSale: e.target.checked})}
-                          className="w-4 h-4 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                          className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
                         />
                         <span className="text-sm text-white">Solo ofertas</span>
                       </label>
@@ -181,7 +181,7 @@ export default function Category() {
                           type="checkbox"
                           checked={filters.inStock}
                           onChange={(e) => setFilters({...filters, inStock: e.target.checked})}
-                          className="w-4 h-4 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                          className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
                         />
                         <span className="text-sm text-white">Solo en stock</span>
                       </label>
@@ -189,7 +189,7 @@ export default function Category() {
                   </div>
                   <button
                     onClick={() => setFilters({ minPrice: '', maxPrice: '', brand: '', onSale: false, inStock: false })}
-                    className="w-full text-sm text-red-400 hover:text-red-300 transition-colors"
+                    className="w-full text-sm text-gold-400 hover:text-gold-300 transition-colors"
                   >
                     Limpiar filtros
                   </button>
@@ -226,14 +226,14 @@ export default function Category() {
                   <div className="hidden sm:flex items-center gap-2 ml-auto">
                     <button
                       onClick={() => setViewMode('grid')}
-                      className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? 'bg-red-600/20 text-red-400 border border-red-600/30' : 'text-white hover:text-white hover:bg-primary-700'}`}
+                      className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? 'bg-gold-600/20 text-gold-400 border border-gold-600/30' : 'text-white hover:text-white hover:bg-primary-700'}`}
                       aria-label="Vista en cuadrícula"
                     >
                       <Grid className="w-5 h-5" />
                     </button>
                     <button
                       onClick={() => setViewMode('list')}
-                      className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? 'bg-red-600/20 text-red-400 border border-red-600/30' : 'text-white hover:text-white hover:bg-primary-700'}`}
+                      className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? 'bg-gold-600/20 text-gold-400 border border-gold-600/30' : 'text-white hover:text-white hover:bg-primary-700'}`}
                       aria-label="Vista en lista"
                     >
                       <List className="w-5 h-5" />
@@ -303,7 +303,7 @@ export default function Category() {
                           <button
                             key={pageNum}
                             onClick={() => setCurrentPage(pageNum)}
-                            className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-red-600 text-white' : 'bg-primary-800 text-white hover:bg-primary-700 hover:text-white border border-dark-border'}`}
+                            className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-gold-600 text-white' : 'bg-primary-800 text-white hover:bg-primary-700 hover:text-white border border-dark-border'}`}
                             aria-label={`Página ${pageNum}`}
                           >
                             {pageNum}
@@ -353,7 +353,7 @@ export default function Category() {
               <h2 className="font-display font-semibold text-lg text-white">Filtros</h2>
               <button
                 onClick={() => setMobileFiltersOpen(false)}
-                className="p-2 text-white hover:text-red-400"
+                className="p-2 text-white hover:text-gold-400"
               >
                 <X className="w-6 h-6" aria-hidden="true" />
               </button>
@@ -389,7 +389,7 @@ export default function Category() {
                         type="checkbox"
                         checked={filters.onSale}
                         onChange={(e) => setFilters({...filters, onSale: e.target.checked})}
-                        className="w-4 h-4 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                        className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
                       />
                       <span className="text-sm text-white">Solo ofertas</span>
                     </label>
@@ -398,7 +398,7 @@ export default function Category() {
                         type="checkbox"
                         checked={filters.inStock}
                         onChange={(e) => setFilters({...filters, inStock: e.target.checked})}
-                        className="w-4 h-4 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                        className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
                       />
                       <span className="text-sm text-white">Solo en stock</span>
                     </label>
@@ -406,7 +406,7 @@ export default function Category() {
                 </div>
                 <button
                   onClick={() => setFilters({ minPrice: '', maxPrice: '', brand: '', onSale: false, inStock: false })}
-                  className="w-full text-sm text-red-400 hover:text-red-300 transition-colors"
+                  className="w-full text-sm text-gold-400 hover:text-gold-300 transition-colors"
                 >
                   Limpiar filtros
                 </button>

@@ -48,7 +48,7 @@ export default function ProductCard({ product, variant = 'default' }) {
   const badges = []
   if (product.onSale || discount > 0) badges.push({ label: `${discount}% OFF`, class: 'badge-sale' })
   if (product.isNew) badges.push({ label: 'NUEVO', class: 'badge-new' })
-  if (product.featured) badges.push({ label: 'DESTACADO', class: 'badge-red' })
+  if (product.featured) badges.push({ label: 'DESTACADO', class: 'badge-gold' })
   if (product.stock > 0 && product.stock <= 5) badges.push({ label: `Últimos ${product.stock}`, class: 'badge-stock' })
 
   if (variant === 'featured') {
@@ -123,8 +123,8 @@ export default function ProductCard({ product, variant = 'default' }) {
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleItem(product) }}
             className={`absolute top-3 right-3 p-2 rounded-full transition-all duration-300 ${
               isInWishlist(product.id)
-                ? 'bg-red-600/90 text-white'
-                : 'bg-primary-900/80 text-white hover:text-red-500 hover:bg-primary-900'
+                ? 'bg-gold-600/90 text-white'
+                : 'bg-primary-900/80 text-white hover:text-gold-500 hover:bg-primary-900'
             }`}
             aria-label={isInWishlist(product.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'}
             aria-pressed={isInWishlist(product.id)}
@@ -145,7 +145,7 @@ export default function ProductCard({ product, variant = 'default' }) {
           </div>
 
           <Link to={`/producto/${product.slug}`} className="block">
-            <h3 id={`product-${product.id}-title`} className="font-display font-semibold text-base sm:text-lg text-white line-clamp-2 group-hover:text-red-400 transition-colors">
+            <h3 id={`product-${product.id}-title`} className="font-display font-semibold text-base sm:text-lg text-white line-clamp-2 group-hover:text-gold-400 transition-colors">
               {product.name}
             </h3>
           </Link>
@@ -159,7 +159,7 @@ export default function ProductCard({ product, variant = 'default' }) {
           )}
 
           <div className="flex items-baseline gap-3">
-            <span className="font-display font-bold text-xl text-red-400">{formatPrice(product.price)}</span>
+            <span className="font-display font-bold text-xl text-gold-400">{formatPrice(product.price)}</span>
             {product.originalPrice && product.price < product.originalPrice && (
               <span className="text-white line-through text-sm">{formatPrice(product.originalPrice)}</span>
             )}
@@ -268,8 +268,8 @@ export default function ProductCard({ product, variant = 'default' }) {
           onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleItem(product) }}
           className={`absolute top-3 right-3 p-2 rounded-full transition-all duration-300 ${
             isInWishlist(product.id)
-              ? 'bg-red-600/90 text-white'
-              : 'bg-primary-900/80 text-white hover:text-red-500 hover:bg-primary-900'
+              ? 'bg-gold-600/90 text-white'
+              : 'bg-primary-900/80 text-white hover:text-gold-500 hover:bg-primary-900'
           }`}
           aria-label={isInWishlist(product.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'}
           aria-pressed={isInWishlist(product.id)}
@@ -290,7 +290,7 @@ export default function ProductCard({ product, variant = 'default' }) {
         </div>
 
         <Link to={`/producto/${product.slug}`} className="block">
-          <h3 id={`product-${product.id}-title`} className="font-display font-semibold text-base text-white line-clamp-2 group-hover:text-red-400 transition-colors">
+          <h3 id={`product-${product.id}-title`} className="font-display font-semibold text-base text-white line-clamp-2 group-hover:text-gold-400 transition-colors">
             {product.name}
           </h3>
         </Link>
@@ -304,7 +304,7 @@ export default function ProductCard({ product, variant = 'default' }) {
         )}
 
         <div className="flex items-baseline gap-3">
-          <span className="font-display font-bold text-lg text-red-400">{formatPrice(product.price)}</span>
+          <span className="font-display font-bold text-lg text-gold-400">{formatPrice(product.price)}</span>
           {product.originalPrice && product.price < product.originalPrice && (
             <span className="text-white line-through text-sm">{formatPrice(product.originalPrice)}</span>
           )}

@@ -8,7 +8,7 @@ import { adminDashboardService } from '../../services/admin'
 import { formatPrice, formatDate } from '../../utils/helpers'
 import toast from 'react-hot-toast'
 
-const COLORS = ['#c9a227', '#e5c76b', '#8c6a18', '#4d4d4d', '#666666']
+const COLORS = ['#C9A860', '#D9BC82', '#AE8B4A', '#4d4d4d', '#666666']
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState(null)
@@ -155,7 +155,7 @@ export default function AdminDashboard() {
                   formatter={(value) => formatPrice(value)}
                 />
                 <Legend />
-                <Bar dataKey="ventas" fill="#c9a227" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="ventas" fill="#C9A860" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </motion.div>
@@ -221,7 +221,7 @@ export default function AdminDashboard() {
                   contentStyle={{ background: '#111', border: '1px solid #333', borderRadius: '12px', color: '#fff' }}
                 />
                 <Legend />
-                <Line type="monotone" dataKey="total" stroke="#c9a227" strokeWidth={2} dot={{ r: 3 }} />
+                <Line type="monotone" dataKey="total" stroke="#C9A860" strokeWidth={2} dot={{ r: 3 }} />
                 <Line type="monotone" dataKey="pendientes" stroke="#ef4444" strokeWidth={2} dot={{ r: 3 }} />
                 <Line type="monotone" dataKey="pagados" stroke="#22c55e" strokeWidth={2} dot={{ r: 3 }} />
               </LineChart>

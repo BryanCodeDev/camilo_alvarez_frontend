@@ -38,7 +38,7 @@ export default function Newsletter() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto text-center relative"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-red-600/10 via-transparent to-transparent rounded-3xl" aria-hidden="true" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold-600/10 via-transparent to-transparent rounded-3xl" aria-hidden="true" />
           <div className="relative p-8 lg:p-12 bg-primary-900/50 backdrop-blur-sm border border-dark-border rounded-3xl">
             {subscribed ? (
               <motion.div
@@ -72,7 +72,7 @@ export default function Newsletter() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="tu@email.com"
-                      className="w-full pl-10 pr-4 py-3 sm:py-4 bg-primary-800 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                      className="w-full pl-10 pr-4 py-3 sm:py-4 bg-primary-800 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500"
                       required
                       autoComplete="email"
                       aria-label="Correo electrónico"
@@ -94,7 +94,7 @@ export default function Newsletter() {
                     )}
                   </button>
                 </div>
-                <p className="text-white text-xs">Al suscribirte aceptas nuestra <a href="/politica-privacidad" className="underline hover:text-red-400">Política de privacidad</a>. Sin spam, solo lo mejor.</p>
+                <p className="text-white text-xs">Al suscribirte aceptas nuestra <a href="/politica-privacidad" className="underline hover:text-gold-400">Política de privacidad</a>. Sin spam, solo lo mejor.</p>
               </form>
             )}
           </div>

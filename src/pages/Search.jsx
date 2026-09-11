@@ -81,7 +81,7 @@ export default function Search() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Buscar productos, marcas, categorías..."
-                  className="w-full px-6 py-4 pl-14 pr-14 bg-primary-800 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 text-lg"
+                  className="w-full px-6 py-4 pl-14 pr-14 bg-primary-800 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 text-lg"
                   autoFocus
                   autoComplete="off"
                 />
@@ -90,7 +90,7 @@ export default function Search() {
                   <button
                     type="button"
                     onClick={clearSearch}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 p-1 text-white hover:text-red-400 transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-1 text-white hover:text-gold-400 transition-colors"
                     aria-label="Limpiar búsqueda"
                   >
                     <X className="w-6 h-6" />
@@ -120,7 +120,7 @@ export default function Search() {
                   <button
                     key={term}
                     onClick={() => { setQuery(term); setSearchParams({ q: term }) }}
-                    className="px-4 py-2 bg-primary-800 border border-dark-border rounded-full text-white hover:border-red-600 hover:text-white transition-colors text-sm"
+                    className="px-4 py-2 bg-primary-800 border border-dark-border rounded-full text-white hover:border-gold-600 hover:text-white transition-colors text-sm"
                   >
                     {term}
                   </button>

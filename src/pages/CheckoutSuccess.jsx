@@ -62,10 +62,10 @@ export default function CheckoutSuccess() {
                 className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 mb-8"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <Package className="w-8 h-8 text-red-500" />
+                  <Package className="w-8 h-8 text-gold-500" />
                   <span className="font-display font-semibold text-xl text-white">Número de pedido</span>
                 </div>
-                <p className="font-mono text-2xl font-bold text-red-400 tracking-wider">{orderNumber}</p>
+                <p className="font-mono text-2xl font-bold text-gold-400 tracking-wider">{orderNumber}</p>
                 <p className="text-white text-sm mt-2">Guarda este número para consultas futuras</p>
               </motion.div>
             )}
@@ -77,17 +77,17 @@ export default function CheckoutSuccess() {
               className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8"
             >
               <div className="p-4 bg-primary-800/50 border border-dark-border rounded-xl">
-                <CreditCard className="w-8 h-8 text-red-500 mb-2" />
+                <CreditCard className="w-8 h-8 text-gold-500 mb-2" />
                 <p className="font-medium text-white">Pago confirmado</p>
                 <p className="text-white text-sm">Mercado Pago</p>
               </div>
               <div className="p-4 bg-primary-800/50 border border-dark-border rounded-xl">
-                <Package className="w-8 h-8 text-red-500 mb-2" />
+                <Package className="w-8 h-8 text-gold-500 mb-2" />
                 <p className="font-medium text-white">Preparando envío</p>
                 <p className="text-white text-sm">24-48hs hábiles</p>
               </div>
               <div className="p-4 bg-primary-800/50 border border-dark-border rounded-xl">
-                <Clock className="w-8 h-8 text-red-500 mb-2" />
+                <Clock className="w-8 h-8 text-gold-500 mb-2" />
                 <p className="font-medium text-white">Seguimiento</p>
                 <p className="text-white text-sm">Email con tracking</p>
               </div>

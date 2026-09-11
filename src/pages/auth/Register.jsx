@@ -75,14 +75,14 @@ export default function Register() {
           transition={{ duration: 0.6 }}
           className="w-full max-w-md"
         >
-          <Link to="/" className="inline-flex items-center gap-2 text-white hover:text-red-400 transition-colors mb-6">
+          <Link to="/" className="inline-flex items-center gap-2 text-white hover:text-gold-400 transition-colors mb-6">
             <ArrowLeft className="w-5 h-5" />
             Volver al inicio
           </Link>
 
           <div className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 sm:p-8 shadow-card">
             <div className="text-center mb-6">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center mx-auto mb-5">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold-600 to-gold-400 flex items-center justify-center mx-auto mb-5">
                 <UserPlus className="w-7 h-7 text-primary-900" />
               </div>
               <h1 className="font-display font-bold text-2xl sm:text-3xl text-white mb-2">Crea tu cuenta</h1>
@@ -163,7 +163,7 @@ export default function Register() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-red-400 transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gold-400 transition-colors"
                     aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                   >
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -190,7 +190,7 @@ export default function Register() {
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-red-400 transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gold-400 transition-colors"
                     aria-label={showConfirmPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                   >
                     {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -220,7 +220,7 @@ export default function Register() {
             <div className="text-center">
               <p className="text-white text-sm">
                 ¿Ya tienes cuenta?{' '}
-                <Link to="/login" className="text-red-400 hover:text-red-300 font-medium transition-colors">
+                <Link to="/login" className="text-gold-400 hover:text-gold-300 font-medium transition-colors">
                   Inicia sesión aquí
                 </Link>
               </p>
@@ -228,7 +228,7 @@ export default function Register() {
           </div>
 
           <div className="mt-5 text-center text-white text-xs">
-            <p>Al crear una cuenta aceptas nuestros <Link to="/terminos" className="underline hover:text-red-400">Términos y condiciones</Link> y la <Link to="/politica-privacidad" className="underline hover:text-red-400">Política de privacidad</Link>.</p>
+            <p>Al crear una cuenta aceptas nuestros <Link to="/terminos" className="underline hover:text-gold-400">Términos y condiciones</Link> y la <Link to="/politica-privacidad" className="underline hover:text-gold-400">Política de privacidad</Link>.</p>
           </div>
         </motion.div>
       </div>

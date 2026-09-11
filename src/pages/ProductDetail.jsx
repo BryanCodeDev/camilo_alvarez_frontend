@@ -200,7 +200,7 @@ export default function ProductDetail() {
                   {index === breadcrumbs.length - 1 ? (
                     <span className="text-white truncate max-w-xs" aria-current="page">{crumb.name}</span>
                   ) : (
-                    <Link to={crumb.url} className="hover:text-red-400 transition-colors">{crumb.name}</Link>
+                    <Link to={crumb.url} className="hover:text-gold-400 transition-colors">{crumb.name}</Link>
                   )}
                 </li>
               ))}
@@ -260,8 +260,8 @@ export default function ProductDetail() {
                       onClick={() => setSelectedImage(index)}
                       className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
                         selectedImage === index
-                          ? 'border-red-500 shadow-red'
-                          : 'border-dark-border hover:border-red-600/50'
+                          ? 'border-gold-500 shadow-gold'
+                          : 'border-dark-border hover:border-gold-600/50'
                       }`}
                       aria-label={`Ver imagen ${index + 1}`}
                       aria-current={selectedImage === index}
@@ -280,7 +280,7 @@ export default function ProductDetail() {
                 </button>
                 <button
                   onClick={() => toggleItem(product)}
-                  className={`btn-secondary px-3 sm:px-4 ${isInWishlist(product.id) ? 'bg-red-600/20 border-red-600/30 text-red-400' : ''}`}
+                  className={`btn-secondary px-3 sm:px-4 ${isInWishlist(product.id) ? 'bg-gold-600/20 border-gold-600/30 text-gold-400' : ''}`}
                   aria-label={isInWishlist(product.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'}
                   aria-pressed={isInWishlist(product.id)}
                 >
@@ -316,7 +316,7 @@ export default function ProductDetail() {
                 )}
 
                 <div className="flex items-baseline gap-4 flex-wrap mb-4">
-                  <motion.span className="font-display font-bold text-3xl sm:text-4xl text-red-400">
+                  <motion.span className="font-display font-bold text-3xl sm:text-4xl text-gold-400">
                     {formatPrice(product.price)}
                   </motion.span>
                   {product.originalPrice && product.price < product.originalPrice && (
@@ -346,7 +346,7 @@ export default function ProductDetail() {
                       <button
                         onClick={() => setQuantity(Math.max(1, quantity - 1))}
                         disabled={quantity <= 1}
-                        className="px-3 sm:px-4 py-2 sm:py-3 text-white hover:text-red-400 hover:bg-primary-700 disabled:opacity-50 transition-colors"
+                        className="px-3 sm:px-4 py-2 sm:py-3 text-white hover:text-gold-400 hover:bg-primary-700 disabled:opacity-50 transition-colors"
                         aria-label="Disminuir cantidad"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" /></svg>
@@ -364,7 +364,7 @@ export default function ProductDetail() {
                       <button
                         onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
                         disabled={quantity >= product.stock}
-                        className="px-3 sm:px-4 py-2 sm:py-3 text-white hover:text-red-400 hover:bg-primary-700 disabled:opacity-50 transition-colors"
+                        className="px-3 sm:px-4 py-2 sm:py-3 text-white hover:text-gold-400 hover:bg-primary-700 disabled:opacity-50 transition-colors"
                         aria-label="Aumentar cantidad"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
@@ -409,21 +409,21 @@ export default function ProductDetail() {
 
               <div className="border-t border-dark-border pt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                 <div className="flex items-start gap-3 p-3 sm:p-4 bg-primary-800/50 rounded-xl">
-                  <Truck className="w-5 h-5 sm:w-6 sm:h-6 text-red-500 flex-shrink-0" />
+                  <Truck className="w-5 h-5 sm:w-6 sm:h-6 text-gold-500 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-white">Envío gratis</p>
                     <p className="text-white text-sm">En compras mayores a $100.000</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 p-3 sm:p-4 bg-primary-800/50 rounded-xl">
-                  <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-red-500 flex-shrink-0" />
+                  <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-gold-500 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-white">Garantía oficial</p>
                     <p className="text-white text-sm">{product.warranty || '12 meses de garantía'}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 p-3 sm:p-4 bg-primary-800/50 rounded-xl">
-                  <RotateCcw className="w-5 h-5 sm:w-6 sm:h-6 text-red-500 flex-shrink-0" />
+                  <RotateCcw className="w-5 h-5 sm:w-6 sm:h-6 text-gold-500 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-white">Devoluciones fáciles</p>
                     <p className="text-white text-sm">30 días sin complicaciones</p>
@@ -483,7 +483,7 @@ export default function ProductDetail() {
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {product.features.map((feature, index) => (
                           <li key={index} className="flex items-center gap-3 p-3 sm:p-4 bg-primary-800/50 rounded-xl">
-                            <svg className="w-5 h-5 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                            <svg className="w-5 h-5 text-gold-500 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                             <span className="text-white">{feature}</span>
                           </li>
                         ))}

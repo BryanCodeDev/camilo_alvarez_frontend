@@ -97,7 +97,7 @@ export function getStockStatus(stock) {
 
 export function getOrderStatusConfig(status) {
   const configs = {
-    pending: { label: 'Pendiente', color: 'red', bg: 'bg-red-600/20', text: 'text-red-400', border: 'border-red-600/30' },
+    pending: { label: 'Pendiente', color: 'blue', bg: 'bg-blue-600/20', text: 'text-blue-400', border: 'border-blue-600/30' },
     paid: { label: 'Pagado', color: 'blue', bg: 'bg-blue-600/20', text: 'text-blue-400', border: 'border-blue-600/30' },
     preparing: { label: 'Preparando', color: 'purple', bg: 'bg-purple-600/20', text: 'text-purple-400', border: 'border-purple-600/30' },
     shipped: { label: 'Enviado', color: 'indigo', bg: 'bg-indigo-600/20', text: 'text-indigo-400', border: 'border-indigo-600/30' },
@@ -110,7 +110,7 @@ export function getOrderStatusConfig(status) {
 
 export function getPaymentStatusConfig(status) {
   const configs = {
-    pending: { label: 'Pendiente', color: 'red' },
+    pending: { label: 'Pendiente', color: 'blue' },
     approved: { label: 'Aprobado', color: 'green' },
     rejected: { label: 'Rechazado', color: 'red' },
     cancelled: { label: 'Cancelado', color: 'gray' },

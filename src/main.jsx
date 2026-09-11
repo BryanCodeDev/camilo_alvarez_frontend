@@ -25,8 +25,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             },
             success: {
               iconTheme: {
-                primary: '#c9a227',
-                secondary: '#fff',
+                primary: '#C9A860',
+                secondary: '#1a1a1a',
               },
             },
             error: {

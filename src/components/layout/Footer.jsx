@@ -73,7 +73,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12">
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-6" aria-label="TechStore - Inicio">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold-600 to-gold-400 flex items-center justify-center">
                 <svg className="w-7 h-7 text-primary-900" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
                 </svg>
@@ -90,7 +90,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl bg-primary-800 border border-dark-border flex items-center justify-center text-white hover:border-red-600 hover:text-red-400 transition-all duration-300"
+                  className="w-10 h-10 rounded-xl bg-primary-800 border border-dark-border flex items-center justify-center text-white hover:border-gold-600 hover:text-gold-400 transition-all duration-300"
                   aria-label={social.label}
                 >
                   <social.icon className="w-5 h-5" aria-hidden="true" />
@@ -105,7 +105,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {footerLinks.tienda.map(link => (
                   <li key={link.href}>
-                    <Link to={link.href} className="text-white hover:text-red-400 transition-colors text-sm">{link.label}</Link>
+                    <Link to={link.href} className="text-white hover:text-gold-400 transition-colors text-sm">{link.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -118,7 +118,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {footerLinks.categorias.map(link => (
                   <li key={link.href}>
-                    <Link to={link.href} className="text-white hover:text-red-400 transition-colors text-sm">{link.label}</Link>
+                    <Link to={link.href} className="text-white hover:text-gold-400 transition-colors text-sm">{link.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -131,7 +131,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {footerLinks.ayuda.map(link => (
                   <li key={link.href}>
-                    <Link to={link.href} className="text-white hover:text-red-400 transition-colors text-sm">{link.label}</Link>
+                    <Link to={link.href} className="text-white hover:text-gold-400 transition-colors text-sm">{link.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -144,7 +144,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {footerLinks.empresa.map(link => (
                   <li key={link.href}>
-                    <Link to={link.href} className="text-white hover:text-red-400 transition-colors text-sm">{link.label}</Link>
+                    <Link to={link.href} className="text-white hover:text-gold-400 transition-colors text-sm">{link.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -156,14 +156,14 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div>
               <h4 className="font-display font-semibold text-white mb-4 flex items-center gap-2">
-                <Truck className="w-6 h-6 text-red-500" aria-hidden="true" />
+                <Truck className="w-6 h-6 text-gold-500" aria-hidden="true" />
                 Compra con confianza
               </h4>
               <ul className="space-y-3">
                 {trustItems.map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-xl bg-primary-800 border border-dark-border flex items-center justify-center flex-shrink-0">
-                      <item.icon className="w-5 h-5 text-red-500" aria-hidden="true" />
+                      <item.icon className="w-5 h-5 text-gold-500" aria-hidden="true" />
                     </div>
                     <div>
                       <p className="font-medium text-white text-sm">{item.title}</p>
@@ -176,14 +176,14 @@ export default function Footer() {
 
             <div className="md:col-span-2">
               <h4 className="font-display font-semibold text-white mb-4 flex items-center gap-2">
-                <Mail className="w-6 h-6 text-red-500" aria-hidden="true" />
+                <Mail className="w-6 h-6 text-gold-500" aria-hidden="true" />
                 Contacto
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-xl bg-primary-800 border border-dark-border flex items-center justify-center flex-shrink-0">
-                      <info.icon className="w-5 h-5 text-red-500" aria-hidden="true" />
+                      <info.icon className="w-5 h-5 text-gold-500" aria-hidden="true" />
                     </div>
                     <p className="text-white text-sm">{info.text}</p>
                   </div>
@@ -204,7 +204,7 @@ export default function Footer() {
                     Suscribirse
                   </button>
                 </div>
-                <p className="text-white text-xs">Al suscribirte aceptas nuestra <Link to="/politica-privacidad" className="underline hover:text-red-400">Política de privacidad</Link>.</p>
+                <p className="text-white text-xs">Al suscribirte aceptas nuestra <Link to="/politica-privacidad" className="underline hover:text-gold-400">Política de privacidad</Link>.</p>
               </form>
             </div>
           </div>
@@ -215,7 +215,7 @@ export default function Footer() {
             </p>
             <nav aria-label="Enlaces legales" className="flex flex-wrap items-center gap-4 md:gap-6">
               {footerLinks.legal.map(link => (
-                <Link key={link.href} to={link.href} className="text-white hover:text-red-400 transition-colors text-sm">
+                <Link key={link.href} to={link.href} className="text-white hover:text-gold-400 transition-colors text-sm">
                   {link.label}
                 </Link>
               ))}

@@ -37,7 +37,7 @@ export default function CartDrawer() {
     <>
       <button
         onClick={toggleCart}
-        className="lg:hidden fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-to-br from-red-600 to-red-400 text-primary-900 shadow-red flex items-center justify-center"
+        className="lg:hidden fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-to-br from-gold-600 to-gold-400 text-primary-900 shadow-gold flex items-center justify-center"
         aria-label={`Carrito: ${itemCount} productos`}
       >
         <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a2 2 0 00-2-2H5a2 2 0 00-2 2v4m0 0h14m-5 5v1a2 2 0 01-2 2H7a2 2 0 01-2-2v-1m14-5l-3.5-3.5a2 2 0 00-2.828 0L8 11m7 0l-3.5 3.5a2 2 0 01-2.828 0"/></svg>
@@ -45,7 +45,7 @@ export default function CartDrawer() {
           <motion.span
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center"
+            className="absolute -top-1 -right-1 w-5 h-5 bg-gold-500 text-white text-xs font-bold rounded-full flex items-center justify-center"
           >
             {itemCount > 99 ? '99+' : itemCount}
           </motion.span>
@@ -80,7 +80,7 @@ export default function CartDrawer() {
               <h2 className="font-display font-bold text-xl text-white">Carrito ({itemCount})</h2>
               <button
                 onClick={toggleCart}
-                className="p-2 rounded-lg text-white hover:text-red-400 hover:bg-primary-700 transition-colors lg:hidden"
+                className="p-2 rounded-lg text-white hover:text-gold-400 hover:bg-primary-700 transition-colors lg:hidden"
                 aria-label="Cerrar carrito"
               >
                 <X className="w-6 h-6" aria-hidden="true" />
@@ -114,11 +114,11 @@ export default function CartDrawer() {
                         />
                       </Link>
                       <div className="flex-1 min-w-0">
-                        <Link to={`/producto/${item.slug}`} onClick={toggleCart} className="font-medium text-white text-sm line-clamp-2 hover:text-red-400 transition-colors">
+                        <Link to={`/producto/${item.slug}`} onClick={toggleCart} className="font-medium text-white text-sm line-clamp-2 hover:text-gold-400 transition-colors">
                           {item.name}
                         </Link>
                         <div className="flex items-center gap-2 mt-1">
-                          <span className="text-red-500 font-semibold text-sm">{formatPrice(item.discountPrice || item.price)}</span>
+                          <span className="text-gold-500 font-semibold text-sm">{formatPrice(item.discountPrice || item.price)}</span>
                           {item.discountPrice && item.price > item.discountPrice && (
                             <span className="text-white text-xs line-through">{formatPrice(item.price)}</span>
                           )}
@@ -127,7 +127,7 @@ export default function CartDrawer() {
                           <button
                             onClick={() => updateQuantity(item.productId, item.quantity - 1)}
                             disabled={item.quantity <= 1}
-                            className="w-8 h-8 rounded-lg bg-primary-700 border border-dark-border flex items-center justify-center text-white hover:border-red-600 hover:text-red-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            className="w-8 h-8 rounded-lg bg-primary-700 border border-dark-border flex items-center justify-center text-white hover:border-gold-600 hover:text-gold-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                             aria-label="Disminuir cantidad"
                           >
                             <Minus className="w-4 h-4" aria-hidden="true" />
@@ -136,7 +136,7 @@ export default function CartDrawer() {
                           <button
                             onClick={() => updateQuantity(item.productId, item.quantity + 1)}
                             disabled={item.quantity >= item.stock}
-                            className="w-8 h-8 rounded-lg bg-primary-700 border border-dark-border flex items-center justify-center text-white hover:border-red-600 hover:text-red-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            className="w-8 h-8 rounded-lg bg-primary-700 border border-dark-border flex items-center justify-center text-white hover:border-gold-600 hover:text-gold-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                             aria-label="Aumentar cantidad"
                           >
                             <Plus className="w-4 h-4" aria-hidden="true" />
@@ -148,7 +148,7 @@ export default function CartDrawer() {
                       </div>
                       <button
                         onClick={() => removeItem(item.productId)}
-                        className="p-2 text-white hover:text-red-400 transition-colors flex-shrink-0"
+                        className="p-2 text-white hover:text-gold-400 transition-colors flex-shrink-0"
                         aria-label={`Eliminar ${item.name}`}
                       >
                         <Trash2 className="w-5 h-5" aria-hidden="true" />
@@ -177,12 +177,12 @@ export default function CartDrawer() {
                 </div>
                 <div className="flex justify-between text-lg font-bold">
                   <span className="text-white">Total</span>
-                  <span className="text-red-400">{formatPrice(total)}</span>
+                  <span className="text-gold-400">{formatPrice(total)}</span>
                 </div>
                 <button onClick={handleCheckout} className="btn-primary w-full py-4 text-lg">
                   Ir al checkout
                 </button>
-                <button onClick={clearCart} className="w-full py-3 text-sm text-white hover:text-red-400 transition-colors">
+                <button onClick={clearCart} className="w-full py-3 text-sm text-white hover:text-gold-400 transition-colors">
                   Vaciar carrito
                 </button>
                 <p className="text-center text-white text-xs">

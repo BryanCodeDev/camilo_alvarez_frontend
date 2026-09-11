@@ -34,10 +34,10 @@ export default function TrustSection() {
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               role="listitem"
-              className="group p-6 bg-primary-800/50 border border-dark-border rounded-2xl hover:border-red-600/50 hover:shadow-red transition-all duration-500"
+              className="group p-6 bg-primary-800/50 border border-dark-border rounded-2xl hover:border-gold-600/50 hover:shadow-gold transition-all duration-500"
             >
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-red-600/20 to-red-500/10 border border-red-600/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <item.icon className="w-7 h-7 text-red-400" aria-hidden="true" />
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-gold-600/20 to-gold-500/10 border border-gold-600/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <item.icon className="w-7 h-7 text-gold-400" aria-hidden="true" />
               </div>
               <h3 className="font-display font-semibold text-xl text-white mb-2">{item.title}</h3>
               <p className="text-white leading-relaxed">{item.desc}</p>

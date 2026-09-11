@@ -113,7 +113,7 @@ export default function Cart() {
                                   <button
                                     onClick={() => updateQuantity(item.productId, item.quantity - 1)}
                                     disabled={item.quantity <= 1}
-                                    className="w-9 h-9 rounded-lg bg-primary-700 border border-dark-border flex items-center justify-center text-white hover:border-red-600 hover:text-red-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                    className="w-9 h-9 rounded-lg bg-primary-700 border border-dark-border flex items-center justify-center text-white hover:border-gold-600 hover:text-gold-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                                     aria-label="Disminuir cantidad"
                                   >
                                     <Minus className="w-4 h-4" />
@@ -127,13 +127,13 @@ export default function Cart() {
                                     }}
                                     min="1"
                                     max={item.stock}
-                                    className="w-14 text-center bg-primary-700 border border-dark-border rounded-lg text-white focus:outline-none focus:border-red-500"
+                                    className="w-14 text-center bg-primary-700 border border-dark-border rounded-lg text-white focus:outline-none focus:border-gold-500"
                                     aria-label="Cantidad"
                                   />
                                   <button
                                     onClick={() => updateQuantity(item.productId, item.quantity + 1)}
                                     disabled={item.quantity >= item.stock}
-                                    className="w-9 h-9 rounded-lg bg-primary-700 border border-dark-border flex items-center justify-center text-white hover:border-red-600 hover:text-red-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                    className="w-9 h-9 rounded-lg bg-primary-700 border border-dark-border flex items-center justify-center text-white hover:border-gold-600 hover:text-gold-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                                     aria-label="Aumentar cantidad"
                                   >
                                     <Plus className="w-4 h-4" />
@@ -146,7 +146,7 @@ export default function Cart() {
                               <td className="px-4 py-3 text-center">
                                 <button
                                   onClick={() => removeItem(item.productId)}
-                                  className="p-2 text-white hover:text-red-400 hover:bg-red-600/10 rounded-lg transition-colors"
+                                  className="p-2 text-white hover:text-gold-400 hover:bg-gold-600/10 rounded-lg transition-colors"
                                   aria-label={`Eliminar ${item.name}`}
                                 >
                                   <Trash2 className="w-5 h-5" />
@@ -162,7 +162,7 @@ export default function Cart() {
                       <div className="p-6 border-t border-dark-border flex justify-end">
                         <button
                           onClick={clearCart}
-                          className="text-white hover:text-red-400 text-sm font-medium transition-colors"
+                          className="text-white hover:text-gold-400 text-sm font-medium transition-colors"
                         >
                           Vaciar carrito
                         </button>
@@ -206,7 +206,7 @@ export default function Cart() {
 
                     <div className="flex justify-between text-xl font-bold mb-6 border-t border-dark-border pt-4">
                       <span className="text-white">Total</span>
-                      <span className="text-red-400">{formatPrice(total)}</span>
+                      <span className="text-gold-400">{formatPrice(total)}</span>
                     </div>
 
                     <button
@@ -227,15 +227,15 @@ export default function Cart() {
 
                     <div className="mt-6 pt-6 border-t border-dark-border space-y-3 text-sm">
                       <div className="flex items-center gap-3 text-white">
-                        <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                        <svg className="w-5 h-5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                         <span>Pago seguro con Mercado Pago</span>
                       </div>
                       <div className="flex items-center gap-3 text-white">
-                        <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                        <svg className="w-5 h-5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                         <span>Envíos a todo el país</span>
                       </div>
                       <div className="flex items-center gap-3 text-white">
-                        <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                        <svg className="w-5 h-5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                         <span>Garantía oficial en todos los productos</span>
                       </div>
                     </div>
