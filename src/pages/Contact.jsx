@@ -7,10 +7,9 @@ import toast from 'react-hot-toast'
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER
 
 const contactInfo = [
-  { icon: Mail, title: 'Email', value: 'hola@techstore.com', desc: 'Respondemos en menos de 24hs' },
-  { icon: Phone, title: 'Teléfono', value: '+57 320 9088777', desc: 'Lunes a Viernes 9:00 - 18:00' },
-  { icon: MapPin, title: 'Tienda Virtual', value: 'Bogotá, Mosquera, Funza, Ibagué y Madrid', desc: 'Envíos a todo Colombia' },
-  { icon: Clock, title: 'Horarios', value: 'Lun-Vie 9:00-18:00', desc: 'Sábados 10:00-14:00' },
+  { icon: Phone, title: 'Atención 24/7', value: '+57 320 9088777', desc: 'WhatsApp y llamadas las 24 horas' },
+  { icon: Mail, title: 'Email', value: 'hola@techstore.com', desc: 'Respuesta en menos de 2 horas' },
+  { icon: MapPin, title: 'Zonas de Atención', value: 'Bogotá, Mosquera, Funza, Ibagué, Madrid', desc: 'Envíos a todo Colombia' },
 ]
 
 const faqs = [
@@ -18,7 +17,8 @@ const faqs = [
   { q: '¿Cuál es la política de devoluciones?', a: 'Tienes 30 días para devolver o cambiar cualquier producto. Debe estar en su estado original, con embalaje y accesorios completos. Los costos de envío de devolución corren por nuestra cuenta si el producto tiene falla de fábrica.' },
   { q: '¿Los productos tienen garantía oficial?', a: 'Sí, todos nuestros productos cuentan con garantía oficial del fabricante (generalmente 12 meses). Nosotros gestionamos el trámite directamente con el service oficial.' },
   { q: '¿Puedo pagar en cuotas?', a: 'Sí, a través de Mercado Pago puedes pagar en hasta 12 cuotas sin interés con tarjetas seleccionadas, o en cuotas con interés según la tarjeta.' },
-  { q: '¿Tienen showroom físico?', a: 'Somos una tienda virtual con presencia en Bogotá, Mosquera, Funza, Ibagué y Madrid. Puedes coordinar una visita previa por WhatsApp para conocernos y ver los productos en exhibición.' },
+  { q: '¿Atendemos 24/7?', a: 'Sí, nuestro equipo de atención al cliente está disponible las 24 horas todos los días a través de WhatsApp al +57 320 9088777. Puedes contactarnos en cualquier momento, incluso fines de semana y festivos.' },
+  { q: '¿Tienen showroom físico?', a: 'Somos una tienda virtual con cobertura en Bogotá, Mosquera, Funza, Ibagué y Madrid. Atendemos y enviamos a todo el territorio nacional colombiano. Puedes coordinar una visita previa por WhatsApp para conocernos y ver los productos en exhibición.' },
   { q: '¿Cómo funciona la compra por WhatsApp?', a: 'Al hacer clic en "Comprar por WhatsApp" en cualquier producto, se abre una conversación con nuestro equipo con el mensaje pre-cargado. Te asesoramos, confirmas stock y coordinas pago/envío.' },
 ]
 
@@ -55,8 +55,8 @@ export default function Contact() {
   return (
     <>
       <SEO
-        title="Contacto | TechStore"
-        description="Contacta a TechStore: tienda virtual en Colombia (Bogotá, Mosquera, Funza, Ibagué, Madrid), teléfono, email y WhatsApp. Atención personalizada para tus consultas tecnológicas."
+        title="Contacto 24/7 | TechStore - Bogotá, Mosquera, Funza, Ibagué, Madrid"
+        description="TechStore atiende 24/7 por WhatsApp al +57 320 9088777. Tienda virtual en Bogotá, Mosquera, Funza, Ibagué y Madrid. Envíos a todo Colombia. Email, WhatsApp y asesoramiento personalizado."
       />
 
       <div className="min-h-screen bg-primary-900 pt-20">
@@ -126,9 +126,43 @@ export default function Contact() {
                 className="inline-flex items-center gap-3 btn-whatsapp px-8 py-4 text-lg"
               >
                 <MessageSquare className="w-6 h-6" />
-                <span>Escribirnos por WhatsApp</span>
+                <span>Escribirnos por WhatsApp 24/7</span>
               </a>
             </motion.div>
+          </div>
+        </section>
+
+        <section className="py-20 lg:py-28 bg-primary-900/50" aria-labelledby="zones-title">
+          <div className="container-custom">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 id="zones-title" className="section-title mx-auto mb-4">ZONAS DE ATENCIÓN Y ENVÍO</h2>
+              <p className="text-white max-w-2xl mx-auto">Atendemos las 24 horas en Bogotá, Mosquera, Funza, Ibagué y Madrid. Envíos a todo Colombia.</p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {serviceZones.map((zone, index) => (
+                <motion.article
+                  key={zone.zone}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-100px' }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl hover:border-gold-600/50 transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold-600/20 to-gold-500/10 border border-gold-600/30 flex items-center justify-center mb-4">
+                    <zone.icon className="w-6 h-6 text-gold-400" aria-hidden="true" />
+                  </div>
+                  <h3 className="font-display font-semibold text-lg text-white mb-2">{zone.zone}</h3>
+                  <p className="text-white text-sm">{zone.desc}</p>
+                </motion.article>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -141,7 +175,7 @@ export default function Contact() {
                 transition={{ duration: 0.6 }}
               >
                 <h2 id="form-title" className="section-title mb-6">ENVIANOS UN MENSAJE</h2>
-                <p className="text-white mb-8">Completa el formulario y te responderemos en menos de 24 horas hábiles.</p>
+                <p className="text-white mb-8">Completa el formulario y te responderemos en menos de 2 horas. También puedes contactarnos por WhatsApp las 24 horas al +57 320 9088777.</p>
 
                 {submitted ? (
                   <motion.div
