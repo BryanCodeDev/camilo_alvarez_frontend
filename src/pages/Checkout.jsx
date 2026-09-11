@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { CreditCard, Truck, Shield, AlertCircle, CheckCircle, Loader2, Zap, MessageSquare, User } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'

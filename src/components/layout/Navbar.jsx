@@ -166,6 +166,18 @@ export default function Navbar() {
                 ))}
               </div>
               <div className="hidden lg:flex items-center gap-4">
+                <Link to="/carrito" onClick={toggleCart} className="relative p-2 text-white hover:text-[#C9A860] transition-colors" aria-label={`Carrito: ${itemCount} productos`}>
+                  <ShoppingCart className="w-6 h-6" aria-hidden="true" />
+                  {itemCount > 0 && (
+                    <motion.span
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="absolute -top-1 -right-1 w-5 h-5 bg-[#C9A860] text-white text-xs font-bold rounded-full flex items-center justify-center"
+                    >
+                      {itemCount > 99 ? '99+' : itemCount}
+                    </motion.span>
+                  )}
+                </Link>
                 <div className="relative">
                   <button
                     onClick={() => setSearchOpen(!searchOpen)}
