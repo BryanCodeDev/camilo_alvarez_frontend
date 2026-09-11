@@ -9,16 +9,16 @@ const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER
 const contactInfo = [
   { icon: Mail, title: 'Email', value: 'hola@techstore.com', desc: 'Respondemos en menos de 24hs' },
   { icon: Phone, title: 'Teléfono', value: '+57 320 9088777', desc: 'Lunes a Viernes 9:00 - 18:00' },
-  { icon: MapPin, title: 'Showroom', value: 'Av. Corrientes 1234, CABA', desc: 'Visítanos con cita previa' },
+  { icon: MapPin, title: 'Tienda Virtual', value: 'Bogotá, Mosquera, Funza, Ibagué y Madrid', desc: 'Envíos a todo Colombia' },
   { icon: Clock, title: 'Horarios', value: 'Lun-Vie 9:00-18:00', desc: 'Sábados 10:00-14:00' },
 ]
 
 const faqs = [
-  { q: '¿Hacen envíos a todo el país?', a: 'Sí, enviamos a todo Argentina. El envío es gratis en compras superiores a $100.000. Los tiempos de entrega varían según la localidad: 24-48hs en CABA/GBA, 3-5 días en el interior.' },
+  { q: '¿Hacen envíos a todo el país?', a: 'Sí, enviamos a todo Colombia. El envío es gratis en compras superiores a $100.000. Los tiempos de entrega varían según la localidad: 24-48hs en Bogotá/Área Metropolitana, 3-5 días en el interior.' },
   { q: '¿Cuál es la política de devoluciones?', a: 'Tienes 30 días para devolver o cambiar cualquier producto. Debe estar en su estado original, con embalaje y accesorios completos. Los costos de envío de devolución corren por nuestra cuenta si el producto tiene falla de fábrica.' },
   { q: '¿Los productos tienen garantía oficial?', a: 'Sí, todos nuestros productos cuentan con garantía oficial del fabricante (generalmente 12 meses). Nosotros gestionamos el trámite directamente con el service oficial.' },
   { q: '¿Puedo pagar en cuotas?', a: 'Sí, a través de Mercado Pago puedes pagar en hasta 12 cuotas sin interés con tarjetas seleccionadas, o en cuotas con interés según la tarjeta.' },
-  { q: '¿Tienen showroom físico?', a: 'Sí, tenemos showroom en Av. Corrientes 1234, CABA. Recomendamos coordinar visita previa por WhatsApp para asegurarte que el producto que buscas esté en exhibición.' },
+  { q: '¿Tienen showroom físico?', a: 'Somos una tienda virtual con presencia en Bogotá, Mosquera, Funza, Ibagué y Madrid. Puedes coordinar una visita previa por WhatsApp para conocernos y ver los productos en exhibición.' },
   { q: '¿Cómo funciona la compra por WhatsApp?', a: 'Al hacer clic en "Comprar por WhatsApp" en cualquier producto, se abre una conversación con nuestro equipo con el mensaje pre-cargado. Te asesoramos, confirmas stock y coordinas pago/envío.' },
 ]
 
@@ -56,7 +56,7 @@ export default function Contact() {
     <>
       <SEO
         title="Contacto | TechStore"
-        description="Contacta a TechStore: showroom en CABA, teléfono, email y WhatsApp. Atención personalizada para tus consultas tecnológicas."
+        description="Contacta a TechStore: tienda virtual en Colombia (Bogotá, Mosquera, Funza, Ibagué, Madrid), teléfono, email y WhatsApp. Atención personalizada para tus consultas tecnológicas."
       />
 
       <div className="min-h-screen bg-primary-900 pt-20">

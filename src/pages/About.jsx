@@ -98,12 +98,12 @@ export default function About() {
                   artículo tuviera un propósito y una razón de ser.
                 </p>
                 <p>
-                  Empezamos como un pequeño showroom en Buenos Aires, donde cada cliente recibía atención personalizada
+Empezamos como un pequeño espacio en Bogotá, donde cada cliente recibía atención personalizada
                   y podía probar los productos antes de comprar. Esa filosofía —el trato humano, el asesoramiento honesto,
-                  la curación experta— sigue siendo nuestro core aunque ahora operemos online en todo el país.
+                  la curación experta— sigue siendo nuestro core aunque ahora operamos online en todo el país.
                 </p>
                 <p>
-                  Hoy, TechStore es referente en tecnología premium en Argentina. Trabajamos directamente con fabricantes
+                  Hoy, TechStore es referente en tecnología premium en Colombia. Trabajamos directamente con fabricantes
                   y distribuidores oficiales para garantizar autenticidad, garantía y el mejor precio. Cada producto en
                   nuestro catálogo ha pasado por nuestro filtro de calidad: si no lo recomendaríamos a un familiar, no lo vendemos.
                 </p>

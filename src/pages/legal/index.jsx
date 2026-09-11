@@ -5,7 +5,7 @@ const legalPages = {
   'politica-privacidad': {
     title: 'Política de Privacidad',
     sections: [
-      { h2: '1. Responsable del tratamiento', content: 'TechStore (en adelante, "nosotros"), con domicilio en Av. Corrientes 1234, CABA, Argentina, es responsable del tratamiento de tus datos personales.' },
+      { h2: '1. Responsable del tratamiento', content: 'TechStore (en adelante, "nosotros"), tienda virtual con presencia en Bogotá, Mosquera, Funza, Ibagué y Madrid, Colombia, es responsable del tratamiento de tus datos personales.' },
       { h2: '2. Datos que recopilamos', content: 'Recopilamos: datos de identificación (nombre, apellido, email, teléfono), datos de facturación y envío, historial de compras, datos de navegación (cookies), y comunicaciones con soporte.' },
       { h2: '3. Finalidad y base legal', content: 'Tratamos tus datos para: gestionar pedidos y pagos (contractual), enviar comunicaciones comerciales (consentimiento), mejorar nuestra web (interés legítimo), y cumplir obligaciones legales.' },
       { h2: '4. Compartición de datos', content: 'Compartimos datos con: procesadores de pago (Mercado Pago), empresas de logística, proveedores de servicios cloud, y autoridades cuando lo requiera la ley.' },
@@ -29,7 +29,7 @@ const legalPages = {
       { h2: '7. Devoluciones', content: '30 días para cambio/devolución. Producto debe estar nuevo, con embalaje y accesorios. Costos de envío a nuestro cargo si hay falla de fábrica; a cargo del cliente por cambio de opinión.' },
       { h2: '8. Responsabilidad', content: 'No nos hacemos responsables por: daños indirectos, lucro cesante, fallas de conectividad, o uso indebido de productos. Responsabilidad máxima: monto del pedido.' },
       { h2: '9. Propiedad intelectual', content: 'Contenido del sitio (textos, imágenes, código, diseño) es propiedad de TechStore o usado con licencia. Prohibida su reproducción sin autorización.' },
-      { h2: '10. Ley aplicable y jurisdicción', content: 'Ley Argentina. Jurisdicción: tribunales ordinarios de CABA.' },
+      { h2: '10. Ley aplicable y jurisdicción', content: 'Ley Colombiana. Jurisdicción: tribunales ordinarios de Bogotá, Colombia.' },
     ]
   },
   'cambios-devoluciones': {

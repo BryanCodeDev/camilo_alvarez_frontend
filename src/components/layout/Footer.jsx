@@ -59,7 +59,7 @@ const trustItems = [
 ]
 
 const contactInfo = [
-  { icon: MapPin, text: 'Av. Corrientes 1234, CABA, Argentina' },
+  { icon: MapPin, text: 'Tienda Virtual - Bogotá, Mosquera, Funza, Ibagué y Madrid, Colombia' },
   { icon: Phone, text: '+57 320 9088777' },
   { icon: Mail, text: 'hola@techstore.com' },
 ]
