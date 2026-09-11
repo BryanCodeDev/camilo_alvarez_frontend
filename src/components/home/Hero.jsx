@@ -5,7 +5,7 @@ import { ArrowRight, MousePointer2 } from 'lucide-react'
 const MotionLink = motion.create(Link)
 
 const heroImages = [
-  'https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1920&q=80',
+  '/assets/images/herosection.webp',
 ]
 
 export default function Hero() {
