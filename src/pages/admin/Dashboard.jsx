@@ -246,7 +246,7 @@ export default function AdminDashboard() {
                   <div className="w-10 h-10 rounded-lg bg-primary-800 flex items-center justify-center text-red-400 font-bold flex-shrink-0">
                     {index + 1}
                   </div>
-                  <img src={product.image || '/placeholder-product.svg'} alt={product.name} className="w-12 h-12 rounded-lg object-cover flex-shrink-0" />
+                  <img src={product.image || '/assets/images/producto1.webp'} alt={product.name} className="w-12 h-12 rounded-lg object-cover flex-shrink-0" />
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-white truncate">{product.name}</p>
                     <p className="text-white text-sm">{product.total_sold} vendidos</p>

@@ -80,7 +80,7 @@ export default function ProductDetail() {
 
   const images = product.images && product.images.length > 0
     ? product.images.map(img => img.url || img)
-    : [product.image || '/placeholder-product.svg']
+    : [product.image || '/assets/images/producto1.webp']
 
   const discount = product.discount || (product.originalPrice && product.price < product.originalPrice
     ? calculateDiscount(product.originalPrice, product.price)

@@ -119,7 +119,7 @@ export default function OrderDetail() {
                   {order.items.map((item, index) => (
                     <div key={index} className="flex items-center gap-3 p-3 bg-primary-700/50 border border-dark-border rounded-xl">
                       <div className="w-14 h-14 rounded-lg overflow-hidden bg-primary-700 flex-shrink-0">
-                        <img src={item.main_image || item.image || '/placeholder-product.svg'} alt={item.product_name} className="w-full h-full object-cover" />
+                        <img src={item.main_image || item.image || '/assets/images/producto1.webp'} alt={item.product_name} className="w-full h-full object-cover" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="font-medium text-white truncate">{item.product_name}</p>

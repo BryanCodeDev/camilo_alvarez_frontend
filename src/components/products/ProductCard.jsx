@@ -18,7 +18,7 @@ export default function ProductCard({ product, variant = 'default' }) {
 
   const stockStatus = getStockStatus(product.stock)
   const imageIndex = hovered && product.images && product.images.length > 1 ? 1 : 0
-  const image = product.images?.[imageIndex] || product.image || '/placeholder-product.svg'
+  const image = product.images?.[imageIndex] || product.image || '/assets/images/producto1.webp'
 
   const handleAddToCart = (e) => {
     e.preventDefault()

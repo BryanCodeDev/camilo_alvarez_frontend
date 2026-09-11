@@ -176,7 +176,7 @@ export function generateSKU(category, brand) {
 }
 
 export function getImageUrl(path, options = {}) {
-  if (!path) return '/placeholder-product.svg'
+  if (!path) return '/assets/images/producto1.webp'
   if (path.startsWith('http')) return path
   const base = import.meta.env.VITE_CLOUDINARY_URL || ''
   const { width, height, quality = 'auto', format = 'auto' } = options
@@ -194,7 +194,7 @@ export function getProductImage(product, index = 0) {
   if (product.images && product.images.length > index) {
     return product.images[index].url
   }
-  return product.image || '/placeholder-product.svg'
+  return product.image || '/assets/images/producto1.webp'
 }
 
 export function getWhatsAppUrl(message) {

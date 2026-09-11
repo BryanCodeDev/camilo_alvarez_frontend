@@ -218,7 +218,7 @@ export default function AdminProducts() {
                         <td className="py-4 px-6">
                           <div className="flex items-center gap-4">
                             <div className="w-14 h-14 rounded-xl overflow-hidden bg-primary-700 flex-shrink-0">
-                              <img src={product.main_image || '/placeholder-product.svg'} alt={product.name} className="w-full h-full object-cover" />
+                              <img src={product.main_image || '/assets/images/producto1.webp'} alt={product.name} className="w-full h-full object-cover" />
                             </div>
                             <div className="min-w-0">
                               <p className="font-medium text-white truncate max-w-xs">{product.name}</p>
