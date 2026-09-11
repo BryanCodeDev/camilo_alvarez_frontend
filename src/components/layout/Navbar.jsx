@@ -135,18 +135,42 @@ export default function Navbar() {
               <span className="font-display font-bold text-xl lg:text-2xl text-white hidden sm:block">TechStore</span>
             </Link>
 
-            <div className="hidden lg:flex items-center gap-8 whitespace-nowrap">
-              {navLinks.map((link, index) => (
-                <div key={link.path} className="relative flex items-center">
-                  <NavLink
-                    to={link.path}
-                    label={link.label}
-                    active={isActive(link.path)}
-                    index={index}
-                  >
-                    {link.path === '/tienda' && dropdownOpen === 'categories' ? (
-                      <>
-                        Tienda
+            <div className="flex items-center gap-3 lg:gap-4">
+              <div className="lg:hidden flex items-center gap-2">
+                <Link to="/carrito" onClick={toggleCart} className="relative p-2 text-white hover:text-red-400 transition-colors" aria-label={`Carrito: ${itemCount} productos`}>
+                  <ShoppingCart className="w-6 h-6" aria-hidden="true" />
+                  {itemCount > 0 && (
+                    <motion.span
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="absolute -top-1 -right-1 w-5 h-5 bg-red-600 text-white text-xs font-bold rounded-full flex items-center justify-center"
+                    >
+                      {itemCount > 99 ? '99+' : itemCount}
+                    </motion.span>
+                  )}
+                </Link>
+              </div>
+
+              <button
+                onClick={() => setMobileMenuOpen(true)}
+                className="lg:hidden p-2 text-white hover:text-red-400 transition-colors flex items-center gap-1"
+                aria-label="Abrir menú"
+                aria-expanded={mobileMenuOpen}
+              >
+                <Menu className="w-7 h-7" aria-hidden="true" />
+                <span className="text-sm font-medium hidden">Menú</span>
+              </button>
+
+              <div className="hidden lg:flex items-center gap-8 whitespace-nowrap">
+                {navLinks.map((link, index) => (
+                  <div key={link.path} className="relative flex items-center">
+                    <NavLink
+                      to={link.path}
+                      label={link.label}
+                      active={isActive(link.path)}
+                      index={index}
+                    >
+                      {link.path === '/tienda' && (
                         <button
                           onClick={(e) => {
                             e.stopPropagation()
@@ -159,171 +183,133 @@ export default function Navbar() {
                         >
                           <ChevronDown className={`w-4 h-4 transition-transform ${dropdownOpen === 'categories' ? 'rotate-180' : ''}`} aria-hidden="true" />
                         </button>
-                      </>
-                    ) : (
-                      <>
-                        {link.label}
-                        {link.path === '/tienda' && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              e.preventDefault()
-                              setDropdownOpen(dropdownOpen === 'categories' ? null : 'categories')
-                            }}
-                            className="flex items-center gap-1 ml-1"
-                            aria-haspopup="true"
-                            aria-expanded={dropdownOpen === 'categories'}
-                          >
-                            <ChevronDown className={`w-4 h-4 transition-transform ${dropdownOpen === 'categories' ? 'rotate-180' : ''}`} aria-hidden="true" />
-                          </button>
-                        )}
-                      </>
-                    )}
-                  </NavLink>
-                  <AnimatePresence>
-                    {dropdownOpen === 'categories' && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="absolute left-0 right-0 top-full bg-primary-900 border-b border-dark-border py-6"
-                      >
-                        <div className="container-custom grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
-                          {categories.map((cat) => (
-                            <Link
-                              key={cat.slug}
-                              to={`/categoria/${cat.slug}`}
-                              className="flex flex-col items-center gap-2 p-4 bg-primary-800 border border-dark-border rounded-xl hover:border-red-600/50 hover:shadow-red transition-all duration-300 group"
-                              onClick={() => setDropdownOpen(null)}
-                            >
-                              <span className="text-3xl group-hover:scale-110 transition-transform"><cat.Icon className="w-8 h-8" /></span>
-                              <span className="text-sm font-medium text-white group-hover:text-red-400 transition-colors">{cat.name}</span>
-                            </Link>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
-            </div>
-
-            <div className="hidden lg:flex items-center gap-4">
-              <div className="relative">
-                <button
-                  onClick={() => setSearchOpen(!searchOpen)}
-                  className="flex items-center gap-2 px-4 py-2 bg-primary-800 border border-dark-border rounded-full text-white hover:border-red-600 hover:text-white transition-all duration-300"
-                  aria-label="Buscar productos"
-                >
-                  <Search className="w-5 h-5" aria-hidden="true" />
-                  <span className="hidden sm:inline">Buscar</span>
-                </button>
-                <AnimatePresence>
-                  {searchOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 20 }}
-                      className="absolute right-0 top-full mt-2 w-72 max-w-[90vw]"
-                    >
-                      <form onSubmit={handleSearch} className="relative">
-                        <input
-                          type="search"
-                          value={searchQuery}
-                          onChange={(e) => setSearchQuery(e.target.value)}
-                          placeholder="Buscar productos..."
-                          className="w-full px-4 py-3 pr-12 bg-primary-800 border border-dark-border rounded-xl text-white placeholder:text-primary-400 focus:outline-none focus:border-red-500"
-                          autoFocus
-                          aria-label="Buscar productos"
-                        />
-                        <button
-                          type="submit"
-                          className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-white hover:text-red-400"
-                          aria-label="Buscar"
+                      )}
+                    </NavLink>
+                    <AnimatePresence>
+                      {dropdownOpen === 'categories' && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="absolute left-0 right-0 top-full bg-primary-900 border-b border-dark-border py-6"
                         >
-                          <Search className="w-5 h-5" aria-hidden="true" />
-                        </button>
-                      </form>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                          <div className="container-custom grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
+                            {categories.map((cat) => (
+                              <Link
+                                key={cat.slug}
+                                to={`/categoria/${cat.slug}`}
+                                className="flex flex-col items-center gap-2 p-4 bg-primary-800 border border-dark-border rounded-xl hover:border-red-600/50 hover:shadow-red transition-all duration-300 group"
+                                onClick={() => setDropdownOpen(null)}
+                              >
+                                <span className="text-3xl group-hover:scale-110 transition-transform"><cat.Icon className="w-8 h-8" /></span>
+                                <span className="text-sm font-medium text-white group-hover:text-red-400 transition-colors">{cat.name}</span>
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
               </div>
 
-              {isAuthenticated ? (
+              <div className="hidden lg:flex items-center gap-4">
                 <div className="relative">
                   <button
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      setDropdownOpen(dropdownOpen === 'user' ? null : 'user')
-                    }}
-                    className="flex items-center gap-2 px-4 py-2 bg-primary-800 border border-dark-border rounded-full hover:border-red-600 transition-all duration-300"
-                    aria-haspopup="true"
-                    aria-expanded={dropdownOpen === 'user'}
+                    onClick={() => setSearchOpen(!searchOpen)}
+                    className="flex items-center gap-2 px-4 py-2 bg-primary-800 border border-dark-border rounded-full text-white hover:border-red-600 hover:text-white transition-all duration-300"
+                    aria-label="Buscar productos"
                   >
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center text-white font-medium text-sm">
-                      {user?.name?.charAt(0).toUpperCase()}
-                    </div>
-                    <span className="hidden sm:inline text-sm font-medium text-white">{user?.name}</span>
-                    <ChevronDown className={`w-4 h-4 transition-transform ${dropdownOpen === 'user' ? 'rotate-180' : ''}`} aria-hidden="true" />
+                    <Search className="w-5 h-5" aria-hidden="true" />
+                    <span className="hidden sm:inline">Buscar</span>
                   </button>
                   <AnimatePresence>
-                    {dropdownOpen === 'user' && (
+                    {searchOpen && (
                       <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        className="absolute right-0 top-full mt-2 w-56 max-w-[90vw] bg-primary-800 border border-dark-border rounded-xl py-2 shadow-card"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        className="absolute right-0 top-full mt-2 w-72 max-w-[90vw]"
                       >
-                        <Link to="/cuenta" className="flex items-center gap-3 px-4 py-2 text-white hover:text-red-400 hover:bg-primary-700" onClick={() => setDropdownOpen(null)}>
-                          <User className="w-5 h-5" aria-hidden="true" />
-                          Mi cuenta
-                        </Link>
-                        {isAdmin && (
-                          <Link to="/admin" className="flex items-center gap-3 px-4 py-2 text-white hover:text-red-400 hover:bg-primary-700" onClick={() => setDropdownOpen(null)}>
-                            <LayoutDashboard className="w-5 h-5" aria-hidden="true" />
-                            Panel Admin
-                          </Link>
-                        )}
-                        <hr className="my-2 border-dark-border" />
-                        <button onClick={logout} className="w-full flex items-center gap-3 px-4 py-2 text-white hover:text-red-400 hover:bg-primary-700 text-left">
-                          <LogOut className="w-5 h-5" aria-hidden="true" />
-                          Cerrar sesión
-                        </button>
+                        <form onSubmit={handleSearch} className="relative">
+                          <input
+                            type="search"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            placeholder="Buscar productos..."
+                            className="w-full px-4 py-3 pr-12 bg-primary-800 border border-dark-border rounded-xl text-white placeholder:text-primary-400 focus:outline-none focus:border-red-500"
+                            autoFocus
+                            aria-label="Buscar productos"
+                          />
+                          <button
+                            type="submit"
+                            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-white hover:text-red-400"
+                            aria-label="Buscar"
+                          >
+                            <Search className="w-5 h-5" aria-hidden="true" />
+                          </button>
+                        </form>
                       </motion.div>
                     )}
                   </AnimatePresence>
                 </div>
-              ) : (
-                <div className="flex items-center gap-2">
-                  <Link to="/login" className="px-4 py-2 text-sm font-medium text-white hover:text-red-400 transition-colors">Iniciar sesión</Link>
-                  <Link to="/registro" className="btn-primary text-sm">Registrarse</Link>
-                </div>
-              )}
 
-              <Link to="/carrito" onClick={toggleCart} className="relative p-2 text-white hover:text-red-400 transition-colors" aria-label={`Carrito: ${itemCount} productos`}>
-                <ShoppingCart className="w-6 h-6" aria-hidden="true" />
-                {itemCount > 0 && (
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="absolute -top-1 -right-1 w-5 h-5 bg-red-600 text-white text-xs font-bold rounded-full flex items-center justify-center"
-                  >
-                    {itemCount > 99 ? '99+' : itemCount}
-                  </motion.span>
+                {isAuthenticated ? (
+                  <div className="relative">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        setDropdownOpen(dropdownOpen === 'user' ? null : 'user')
+                      }}
+                      className="flex items-center gap-2 px-4 py-2 bg-primary-800 border border-dark-border rounded-full hover:border-red-600 transition-all duration-300"
+                      aria-haspopup="true"
+                      aria-expanded={dropdownOpen === 'user'}
+                    >
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center text-white font-medium text-sm">
+                        {user?.name?.charAt(0).toUpperCase()}
+                      </div>
+                      <span className="hidden sm:inline text-sm font-medium text-white">{user?.name}</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform ${dropdownOpen === 'user' ? 'rotate-180' : ''}`} aria-hidden="true" />
+                    </button>
+                    <AnimatePresence>
+                      {dropdownOpen === 'user' && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          className="absolute right-0 top-full mt-2 w-56 max-w-[90vw] bg-primary-800 border border-dark-border rounded-xl py-2 shadow-card"
+                        >
+                          <Link to="/cuenta" className="flex items-center gap-3 px-4 py-2 text-white hover:text-red-400 hover:bg-primary-700" onClick={() => setDropdownOpen(null)}>
+                            <User className="w-5 h-5" aria-hidden="true" />
+                            Mi cuenta
+                          </Link>
+                          {isAdmin && (
+                            <Link to="/admin" className="flex items-center gap-3 px-4 py-2 text-white hover:text-red-400 hover:bg-primary-700" onClick={() => setDropdownOpen(null)}>
+                              <LayoutDashboard className="w-5 h-5" aria-hidden="true" />
+                              Panel Admin
+                            </Link>
+                          )}
+                          <hr className="my-2 border-dark-border" />
+                          <button onClick={logout} className="w-full flex items-center gap-3 px-4 py-2 text-white hover:text-red-400 hover:bg-primary-700 text-left">
+                            <LogOut className="w-5 h-5" aria-hidden="true" />
+                            Cerrar sesión
+                          </button>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <Link to="/login" className="px-4 py-2 text-sm font-medium text-white hover:text-red-400 transition-colors">Iniciar sesión</Link>
+                    <Link to="/registro" className="btn-primary text-sm">Registrarse</Link>
+                  </div>
                 )}
-              </Link>
+
+              </div>
             </div>
           </div>
         </nav>
       </header>
-
-      <button
-        onClick={() => setMobileMenuOpen(true)}
-        className="lg:hidden fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-to-br from-red-600 to-red-400 text-primary-900 shadow-red flex items-center justify-center"
-        aria-label="Abrir menú"
-      >
-        <Menu className="w-7 h-7" aria-hidden="true" />
-      </button>
 
       <AnimatePresence>
         {mobileMenuOpen && (

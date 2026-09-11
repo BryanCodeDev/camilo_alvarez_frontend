@@ -632,7 +632,7 @@ export default function AdminProductForm() {
                     </select>
                   </div>
 
-                  <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-3 min-w-0">
                     <label className="flex items-center gap-3 cursor-pointer">
                       <input
                         type="checkbox"
@@ -695,7 +695,7 @@ export default function AdminProductForm() {
                     <input type="file" multiple accept="image/*" onChange={handleImageChange} className="hidden" />
                   </label>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 min-w-0">
                     {previews.map((preview, index) => (
                       <div key={index} className="relative aspect-square rounded-xl overflow-hidden bg-primary-700 border border-dark-border group">
                         <img src={preview} alt={`Vista previa ${index + 1}`} className="w-full h-full object-cover" />

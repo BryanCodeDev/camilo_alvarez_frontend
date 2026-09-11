@@ -317,7 +317,8 @@ export default function AdminCategories() {
                             </div>
                           )}
                           <div className="min-w-0">
-                            <p className="text-white text-xs">{category.description || 'Sin descripción'}</p>
+                            <p className="font-medium text-white truncate">{category.name}</p>
+                            <p className="text-white text-xs truncate">{category.description || 'Sin descripción'}</p>
                           </div>
                         </div>
                       </td>
@@ -330,16 +331,16 @@ export default function AdminCategories() {
                       </td>
                       <td className="py-4 px-6">
                         <div className="flex items-center justify-end gap-2">
-                          <Link to={`/categoria/${category.slug}`} target="_blank" className="p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Ver ${category.name}`}>
+                          <Link to={`/categoria/${category.slug}`} target="_blank" className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Ver ${category.name}`}>
                             <Eye className="w-5 h-5" />
                           </Link>
-                          <button onClick={() => openForm(category)} className="p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Editar ${category.name}`}>
+                          <button onClick={() => openForm(category)} className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Editar ${category.name}`}>
                             <Edit className="w-5 h-5" />
                           </button>
-                          <button onClick={() => handleToggleStatus(category.id)} className={`p-2 rounded-lg transition-colors ${category.is_active ? 'text-white hover:text-red-400 hover:bg-red-600/10' : 'text-white hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${category.is_active ? 'Desactivar' : 'Activar'} ${category.name}`}>
+                          <button onClick={() => handleToggleStatus(category.id)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${category.is_active ? 'text-white hover:text-red-400 hover:bg-red-600/10' : 'text-white hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${category.is_active ? 'Desactivar' : 'Activar'} ${category.name}`}>
                             {category.is_active ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                           </button>
-                          <button onClick={() => handleDelete(category.id)} className="p-2 text-white hover:text-red-400 hover:bg-red-600/10 rounded-lg transition-colors" aria-label={`Eliminar ${category.name}`}>
+                          <button onClick={() => handleDelete(category.id)} className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 hover:bg-red-600/10 rounded-lg transition-colors" aria-label={`Eliminar ${category.name}`}>
                             <Trash2 className="w-5 h-5" />
                           </button>
                         </div>
