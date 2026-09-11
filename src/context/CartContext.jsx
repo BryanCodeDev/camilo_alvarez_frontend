@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react'
 import api from '../services/api'
+import { useAuth } from './AuthContext'
 
 const CartContext = createContext(null)
 
@@ -19,6 +20,7 @@ function setStoredCart(cart) {
 }
 
 export function CartProvider({ children }) {
+  const { isAuthenticated } = useAuth()
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
   const [synced, setSynced] = useState(false)
@@ -30,6 +32,10 @@ export function CartProvider({ children }) {
   }, [])
 
   const syncWithBackend = useCallback(async () => {
+    if (!isAuthenticated) {
+      setSynced(true)
+      return
+    }
     try {
       const response = await api.get('/cart')
       if (response.data.items?.length) {
@@ -43,13 +49,17 @@ export function CartProvider({ children }) {
       console.error('Cart sync failed:', error)
       setSynced(true)
     }
-  }, [items])
+  }, [items, isAuthenticated])
 
   useEffect(() => {
     if (items.length && !synced) {
       syncWithBackend()
     }
   }, [items, synced, syncWithBackend])
+
+  useEffect(() => {
+    setSynced(false)
+  }, [isAuthenticated])
 
   const addItem = useCallback((product, quantity = 1) => {
     setItems(prev => {
