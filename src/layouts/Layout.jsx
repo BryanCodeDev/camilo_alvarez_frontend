@@ -8,7 +8,7 @@ export default function Layout() {
   return (
     <div className="min-h-screen flex flex-col bg-primary-900 overflow-x-hidden">
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 min-h-0">
         <ScrollToTop />
         <Outlet />
       </main>

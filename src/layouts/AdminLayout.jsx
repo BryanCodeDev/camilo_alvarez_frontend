@@ -1,6 +1,6 @@
 import { Link, Outlet, NavLink, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import { LayoutDashboard, Package, Tag, ShoppingCart, Users, Settings, LogOut, BarChart2, Box } from 'lucide-react'
+import { LayoutDashboard, Package, Tag, ShoppingCart, Users, Settings, LogOut, Box } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -31,7 +31,7 @@ export default function AdminLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-primary-900 flex overflow-x-hidden">
+    <div className="min-h-screen bg-primary-900 flex h-screen overflow-x-hidden">
       <AnimatePresence>
         {sidebarOpen && (
           <motion.div
@@ -45,13 +45,7 @@ export default function AdminLayout() {
         )}
       </AnimatePresence>
 
-      <motion.aside
-        initial={{ x: -280 }}
-        animate={{ x: isMobile ? (sidebarOpen ? 0 : -280) : 0 }}
-        transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-        className="fixed lg:static z-50 w-72 bg-primary-800 border-r border-dark-border flex flex-col h-screen lg:h-full transition-transform duration-300"
-        style={{ overflow: 'hidden' }}
-      >
+      <aside className="fixed lg:static z-50 w-72 bg-primary-800 border-r border-dark-border flex flex-col h-full transition-transform duration-300 lg:translate-x-0">
         <div className="p-6 border-b border-dark-border flex-shrink-0">
           <Link to="/admin" className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-600 to-gold-400 flex items-center justify-center">
@@ -61,7 +55,7 @@ export default function AdminLayout() {
           </Link>
         </div>
 
-        <nav className="flex-1 p-4 space-y-1 overflow-y-auto min-h-0" style={{ overflowY: 'auto' }}>
+        <nav className="flex-1 p-4 space-y-1 overflow-y-auto min-h-0">
           {adminNavItems.map(item => {
             const Icon = item.icon
             const isActive = location.pathname === item.path || (item.path !== '/admin' && location.pathname.startsWith(item.path))
@@ -101,9 +95,9 @@ export default function AdminLayout() {
             Cerrar sesión
           </button>
         </div>
-      </motion.aside>
+      </aside>
 
-      <div className="flex-1 flex flex-col min-w-0">
+      <div className="flex-1 flex flex-col min-w-0 lg:ml-0">
         <header className="lg:hidden bg-primary-800 border-b border-dark-border px-4 py-3 flex items-center justify-between">
           <button
             onClick={() => setSidebarOpen(true)}
