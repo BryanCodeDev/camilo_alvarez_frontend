@@ -55,28 +55,28 @@ export default function Login() {
         noindex
       />
 
-      <div className="min-h-screen bg-primary-900 pt-20 flex items-center justify-center py-12 px-4">
+      <div className="min-h-screen bg-primary-900 pt-20 flex items-center justify-center py-8 px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="w-full max-w-md"
         >
-          <Link to="/" className="inline-flex items-center gap-2 text-white hover:text-red-400 transition-colors mb-8">
+          <Link to="/" className="inline-flex items-center gap-2 text-white hover:text-red-400 transition-colors mb-6">
             <ArrowLeft className="w-5 h-5" />
             Volver al inicio
           </Link>
 
-          <div className="bg-primary-800/50 border border-dark-border rounded-2xl p-8 shadow-card">
-            <div className="text-center mb-8">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center mx-auto mb-6">
-                <LockKeyhole className="w-8 h-8 text-primary-900" />
+          <div className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 sm:p-8 shadow-card">
+            <div className="text-center mb-6">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center mx-auto mb-5">
+                <LockKeyhole className="w-7 h-7 text-primary-900" />
               </div>
-              <h1 className="font-display font-bold text-3xl text-white mb-2">Bienvenido de nuevo</h1>
+              <h1 className="font-display font-bold text-2xl sm:text-3xl text-white mb-2">Bienvenido de nuevo</h1>
               <p className="text-white">Inicia sesión para continuar comprando</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+            <form onSubmit={handleSubmit} className="space-y-5" noValidate>
               <div>
                 <label htmlFor="email" className="label">Email</label>
                 <div className="relative">
@@ -123,7 +123,7 @@ export default function Login() {
                 {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <label className="flex items-center gap-2 text-sm text-white cursor-pointer">
                   <input type="checkbox" className="w-4 h-4 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded" />
                   Recordarme
@@ -149,7 +149,7 @@ export default function Login() {
               </button>
             </form>
 
-            <div className="my-6 border-t border-dark-border" />
+            <div className="my-5 border-t border-dark-border" />
 
             <div className="text-center">
               <p className="text-white text-sm">
@@ -161,7 +161,7 @@ export default function Login() {
             </div>
           </div>
 
-          <div className="mt-6 text-center text-white text-xs">
+          <div className="mt-5 text-center text-white text-xs">
             <p>Al iniciar sesión aceptas nuestros <Link to="/terminos" className="underline hover:text-red-400">Términos y condiciones</Link>.</p>
           </div>
         </motion.div>

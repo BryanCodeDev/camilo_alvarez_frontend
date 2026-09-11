@@ -66,13 +66,13 @@ export default function Newsletter() {
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
                   <div className="relative flex-1">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary-500" aria-hidden="true" />
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-primary-500" aria-hidden="true" />
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="tu@email.com"
-                      className="w-full pl-12 pr-4 py-4 bg-primary-800 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                      className="w-full pl-10 pr-4 py-3 sm:py-4 bg-primary-800 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
                       required
                       autoComplete="email"
                       aria-label="Correo electrónico"

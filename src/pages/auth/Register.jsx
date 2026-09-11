@@ -68,29 +68,29 @@ export default function Register() {
         noindex
       />
 
-      <div className="min-h-screen bg-primary-900 pt-20 flex items-center justify-center py-12 px-4">
+      <div className="min-h-screen bg-primary-900 pt-20 flex items-center justify-center py-8 px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="w-full max-w-md"
         >
-          <Link to="/" className="inline-flex items-center gap-2 text-white hover:text-red-400 transition-colors mb-8">
+          <Link to="/" className="inline-flex items-center gap-2 text-white hover:text-red-400 transition-colors mb-6">
             <ArrowLeft className="w-5 h-5" />
             Volver al inicio
           </Link>
 
-          <div className="bg-primary-800/50 border border-dark-border rounded-2xl p-8 shadow-card">
-            <div className="text-center mb-8">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center mx-auto mb-6">
-                <UserPlus className="w-8 h-8 text-primary-900" />
+          <div className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 sm:p-8 shadow-card">
+            <div className="text-center mb-6">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center mx-auto mb-5">
+                <UserPlus className="w-7 h-7 text-primary-900" />
               </div>
-              <h1 className="font-display font-bold text-3xl text-white mb-2">Crea tu cuenta</h1>
+              <h1 className="font-display font-bold text-2xl sm:text-3xl text-white mb-2">Crea tu cuenta</h1>
               <p className="text-white">Únete a TechStore y empieza a disfrutar</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="firstName" className="label">Nombre *</label>
                   <div className="relative">
@@ -215,7 +215,7 @@ export default function Register() {
               </button>
             </form>
 
-            <div className="my-6 border-t border-dark-border" />
+            <div className="my-5 border-t border-dark-border" />
 
             <div className="text-center">
               <p className="text-white text-sm">
@@ -227,7 +227,7 @@ export default function Register() {
             </div>
           </div>
 
-          <div className="mt-6 text-center text-white text-xs">
+          <div className="mt-5 text-center text-white text-xs">
             <p>Al crear una cuenta aceptas nuestros <Link to="/terminos" className="underline hover:text-red-400">Términos y condiciones</Link> y la <Link to="/politica-privacidad" className="underline hover:text-red-400">Política de privacidad</Link>.</p>
           </div>
         </motion.div>

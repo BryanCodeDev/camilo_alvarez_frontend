@@ -238,7 +238,7 @@ export default function AdminProductForm() {
         noindex
       />
 
-      <div className="space-y-8">
+      <div className="space-y-8 min-w-0">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -247,12 +247,12 @@ export default function AdminProductForm() {
         >
           <div>
             <div className="flex items-center gap-2 text-white mb-2">
-              <Link to="/admin/productos" className="hover:text-red-400 transition-colors">
+              <Link to="/admin/productos" className="min-h-10 min-w-10 inline-flex items-center justify-center hover:text-red-400 transition-colors" aria-label="Volver a productos">
                 <ArrowLeft className="w-5 h-5" />
               </Link>
               <span>Productos</span>
             </div>
-            <h1 className="font-display font-bold text-3xl text-white">{isEditing ? 'Editar producto' : 'Nuevo producto'}</h1>
+            <h1 className="font-display font-bold text-2xl sm:text-3xl text-white">{isEditing ? 'Editar producto' : 'Nuevo producto'}</h1>
           </div>
           <button
             onClick={handleSubmit}
@@ -273,16 +273,16 @@ export default function AdminProductForm() {
           </button>
         </motion.div>
 
-        <form onSubmit={handleSubmit} className="space-y-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2 space-y-8">
+        <form onSubmit={handleSubmit} className="space-y-8 min-w-0">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 min-w-0">
+            <div className="lg:col-span-2 space-y-8 min-w-0">
               <motion.section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8"
+                className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
-                <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
+                <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
                   <Sparkles className="w-6 h-6 text-red-500" />
                   Información básica
                 </h2>
@@ -303,18 +303,18 @@ export default function AdminProductForm() {
                     </div>
                     <div>
                       <label htmlFor="sku" className="label">SKU *</label>
-                      <div className="flex gap-2">
+                      <div className="flex flex-wrap gap-2 min-w-0">
                         <input
                           id="sku"
                           name="sku"
                           type="text"
                           value={form.sku}
                           onChange={handleChange}
-                          className="input flex-1"
+                          className="input min-w-0 flex-1"
                           required
                           placeholder="AUD-APP-001"
                         />
-                        <button type="button" onClick={generateSKU} className="btn-secondary px-4" aria-label="Generar SKU">
+                        <button type="button" onClick={generateSKU} className="btn-secondary px-4 flex-shrink-0" aria-label="Generar SKU">
                           <Sparkles className="w-5 h-5" />
                         </button>
                       </div>
@@ -324,18 +324,18 @@ export default function AdminProductForm() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="slug" className="label">Slug (URL amigable) *</label>
-                      <div className="flex gap-2">
+                      <div className="flex flex-wrap gap-2 min-w-0">
                         <input
                           id="slug"
                           name="slug"
                           type="text"
                           value={form.slug}
                           onChange={handleChange}
-                          className="input flex-1"
+                          className="input min-w-0 flex-1"
                           required
                           placeholder="airpods-pro-2"
                         />
-                        <button type="button" onClick={generateSlug} className="btn-secondary px-4" aria-label="Generar slug">
+                        <button type="button" onClick={generateSlug} className="btn-secondary px-4 flex-shrink-0" aria-label="Generar slug">
                           <LinkIcon className="w-5 h-5" />
                         </button>
                       </div>
@@ -385,9 +385,9 @@ export default function AdminProductForm() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8"
+                className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
-                <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
+                <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
                   <Tag className="w-6 h-6 text-red-500" />
                   Precio e inventario
                 </h2>
@@ -454,7 +454,7 @@ export default function AdminProductForm() {
                       placeholder="5"
                     />
                   </div>
-                  <div className="flex items-end">
+                    <div className="flex flex-col gap-3">
                     <label className="flex items-center gap-3 cursor-pointer">
                       <input
                         type="checkbox"
@@ -473,13 +473,13 @@ export default function AdminProductForm() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8"
+                className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
-                <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
+                <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
                   <Layers className="w-6 h-6 text-red-500" />
                   Características y especificaciones
                 </h2>
-                <div className="space-y-8">
+            <div className="space-y-8 min-w-0">
                   <div>
                     <label htmlFor="warranty" className="label">Garantía</label>
                     <input
@@ -495,24 +495,24 @@ export default function AdminProductForm() {
 
                   <div>
                     <h3 className="label mb-3">Características destacadas</h3>
-                    <div className="flex gap-2 mb-3">
+                    <div className="flex flex-wrap gap-2 min-w-0 mb-3">
                       <input
                         type="text"
                         value={featureInput}
                         onChange={(e) => setFeatureInput(e.target.value)}
                         onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addFeature() } }}
-                        className="input flex-1"
+                        className="input min-w-0 flex-1"
                         placeholder="Ej: Cancelación de ruido activa"
                       />
-                      <button type="button" onClick={addFeature} className="btn-secondary px-4" aria-label="Agregar característica">
+                      <button type="button" onClick={addFeature} className="btn-secondary px-4 flex-shrink-0" aria-label="Agregar característica">
                         <Plus className="w-5 h-5" />
                       </button>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {form.features.map((feature, index) => (
-                        <span key={index} className="inline-flex items-center gap-2 px-3 py-2 bg-primary-700 border border-dark-border rounded-full text-sm text-white">
-                          {feature}
-                          <button type="button" onClick={() => removeFeature(index)} className="text-white hover:text-red-400 transition-colors" aria-label={`Eliminar ${feature}`}>
+                        <span key={index} className="inline-flex min-w-0 max-w-full items-center gap-2 px-3 py-2 bg-primary-700 border border-dark-border rounded-full text-sm text-white">
+                          <span className="truncate">{feature}</span>
+                          <button type="button" onClick={() => removeFeature(index)} className="min-h-8 min-w-8 text-white hover:text-red-400 transition-colors flex-shrink-0" aria-label={`Eliminar ${feature}`}>
                             <X className="w-4 h-4" />
                           </button>
                         </span>
@@ -530,28 +530,28 @@ export default function AdminProductForm() {
                         placeholder="Clave (Ej: Batería)"
                         className="input"
                       />
-                      <div className="flex gap-2">
+                      <div className="flex flex-wrap gap-2 min-w-0">
                         <input
                           type="text"
                           value={specValue}
                           onChange={(e) => setSpecValue(e.target.value)}
                           onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addSpecification() } }}
                           placeholder="Valor (Ej: 30 horas)"
-                          className="input flex-1"
+                          className="input min-w-0 flex-1"
                         />
-                        <button type="button" onClick={addSpecification} className="btn-secondary px-4" aria-label="Agregar especificación">
+                        <button type="button" onClick={addSpecification} className="btn-secondary px-4 flex-shrink-0" aria-label="Agregar especificación">
                           <Plus className="w-5 h-5" />
                         </button>
                       </div>
                     </div>
                     <div className="space-y-2">
                       {Object.entries(form.specifications).map(([key, value]) => (
-                        <div key={key} className="flex items-center justify-between p-3 bg-primary-700/50 border border-dark-border rounded-xl">
+                          <div className="flex min-w-0 flex-wrap items-center justify-between gap-2 p-3 bg-primary-700/50 border border-dark-border rounded-xl">
                           <div className="min-w-0">
                             <p className="font-medium text-white truncate">{key}</p>
                             <p className="text-white text-sm truncate">{value}</p>
                           </div>
-                          <button type="button" onClick={() => removeSpecification(key)} className="p-2 text-white hover:text-red-400 transition-colors flex-shrink-0" aria-label={`Eliminar ${key}`}>
+                          <button type="button" onClick={() => removeSpecification(key)} className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 transition-colors flex-shrink-0" aria-label={`Eliminar ${key}`}>
                             <X className="w-5 h-5" />
                           </button>
                         </div>
@@ -565,9 +565,9 @@ export default function AdminProductForm() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8"
+                className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
-                <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
+                <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
                   <Tag className="w-6 h-6 text-red-500" />
                   SEO
                 </h2>
@@ -603,14 +603,14 @@ export default function AdminProductForm() {
               </motion.section>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-8 min-w-0">
               <motion.section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8"
+                className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
-                <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
+                <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
                   <Tag className="w-6 h-6 text-red-500" />
                   Categoría y estado
                 </h2>
@@ -681,21 +681,21 @@ export default function AdminProductForm() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8"
+                className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
-                <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
+                <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
                   <ImageIcon className="w-6 h-6 text-red-500" />
                   Imágenes
                 </h2>
                 <div className="space-y-4">
-                  <label className="block w-full border-2 border-dashed border-dark-border hover:border-red-600/50 rounded-xl p-8 text-center cursor-pointer transition-colors">
+                  <label className="block w-full border-2 border-dashed border-dark-border hover:border-red-600/50 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-colors">
                     <Upload className="w-8 h-8 text-primary-500 mx-auto mb-3" />
                     <p className="text-white font-medium mb-1">Subir imágenes</p>
                     <p className="text-white text-sm">PNG, JPG, WebP · Máx 10MB cada una</p>
                     <input type="file" multiple accept="image/*" onChange={handleImageChange} className="hidden" />
                   </label>
 
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {previews.map((preview, index) => (
                       <div key={index} className="relative aspect-square rounded-xl overflow-hidden bg-primary-700 border border-dark-border group">
                         <img src={preview} alt={`Vista previa ${index + 1}`} className="w-full h-full object-cover" />
@@ -703,10 +703,10 @@ export default function AdminProductForm() {
                           <span className="absolute top-2 left-2 px-2 py-1 bg-red-600 text-white text-xs font-bold rounded-full">Principal</span>
                         )}
                         <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-                          <button type="button" onClick={() => setMainImage(index)} className="p-2 bg-primary-800 hover:bg-red-600 rounded-lg transition-colors" aria-label="Establecer como principal">
+                          <button type="button" onClick={() => setMainImage(index)} className="min-h-10 min-w-10 p-2 bg-primary-800 hover:bg-red-600 rounded-lg transition-colors" aria-label="Establecer como principal">
                             <Sparkles className="w-5 h-5 text-primary-500" />
                           </button>
-                          <button type="button" onClick={() => removeImage(index)} className="p-2 bg-primary-800 hover:bg-red-600 rounded-lg transition-colors" aria-label={`Eliminar imagen ${index + 1}`}>
+                          <button type="button" onClick={() => removeImage(index)} className="min-h-10 min-w-10 p-2 bg-primary-800 hover:bg-red-600 rounded-lg transition-colors" aria-label={`Eliminar imagen ${index + 1}`}>
                             <Trash2 className="w-5 h-5 text-primary-500" />
                           </button>
                         </div>

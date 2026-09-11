@@ -71,7 +71,7 @@ export default function CheckoutPending() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8"
             >
               <div className="p-4 bg-primary-800/50 border border-dark-border rounded-xl">
                 <Clock className="w-8 h-8 text-red-500 mb-2" />
@@ -112,7 +112,7 @@ export default function CheckoutPending() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              className="flex flex-col sm:flex-row items-center justify-center gap-3"
             >
               <a
                 href={`https://wa.me/5491100000000?text=${encodeURIComponent(`Hola, consulto por el estado de mi pago del pedido ${orderNumber || ''}.`)}`}

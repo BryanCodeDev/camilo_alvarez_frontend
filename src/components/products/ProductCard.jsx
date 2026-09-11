@@ -86,7 +86,7 @@ export default function ProductCard({ product, variant = 'default' }) {
             </div>
           )}
 
-          <div className="absolute bottom-3 left-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-10">
+          <div className="absolute bottom-3 left-3 right-3 flex flex-col sm:flex-row gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-10">
             <button
               onClick={handleAddToCart}
               disabled={adding || product.stock <= 0}
@@ -138,14 +138,14 @@ export default function ProductCard({ product, variant = 'default' }) {
           </button>
         </div>
 
-        <div className="p-4 sm:p-5 space-y-3">
+        <div className="p-3 sm:p-4 space-y-2 sm:space-y-3">
           <div className="flex items-center gap-2 text-xs text-white">
             <span className="px-2 py-0.5 bg-primary-800 rounded-full">{product.category}</span>
             {product.brand && <span>· {product.brand}</span>}
           </div>
 
           <Link to={`/producto/${product.slug}`} className="block">
-            <h3 id={`product-${product.id}-title`} className="font-display font-semibold text-lg text-white line-clamp-2 group-hover:text-red-400 transition-colors">
+            <h3 id={`product-${product.id}-title`} className="font-display font-semibold text-base sm:text-lg text-white line-clamp-2 group-hover:text-red-400 transition-colors">
               {product.name}
             </h3>
           </Link>
@@ -231,7 +231,7 @@ export default function ProductCard({ product, variant = 'default' }) {
           </div>
         )}
 
-        <div className="absolute bottom-3 left-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-10">
+        <div className="absolute bottom-3 left-3 right-3 flex flex-col sm:flex-row gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-10">
           <button
             onClick={handleAddToCart}
             disabled={adding || product.stock <= 0}

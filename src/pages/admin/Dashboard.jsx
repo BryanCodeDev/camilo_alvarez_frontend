@@ -91,17 +91,17 @@ export default function AdminDashboard() {
         noindex
       />
 
-      <div className="space-y-8">
+      <div className="space-y-8 min-w-0">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="font-display font-bold text-3xl text-white">Dashboard</h1>
+          <h1 className="font-display font-bold text-2xl sm:text-3xl text-white">Dashboard</h1>
           <p className="text-white mt-2">Bienvenido al panel de administración de TechStore</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {statCards.map((card, index) => {
             const Icon = card.icon
             const value = card.format === 'money' ? formatPrice(card.value) : card.value
@@ -117,17 +117,17 @@ export default function AdminDashboard() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl hover:border-red-600/50 hover:shadow-red transition-all duration-300"
+                className="min-w-0 p-4 sm:p-6 bg-primary-800/50 border border-dark-border rounded-2xl hover:border-red-600/50 hover:shadow-red transition-all duration-300"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${colorClasses[card.color]}`}>
-                    <Icon className="w-6 h-6" />
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center ${colorClasses[card.color]}`}>
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
-                  <span className={`text-xs font-medium px-2 py-1 rounded-full ${colorClasses[card.color]}`}>
+                  <span className={`min-w-0 text-xs font-medium px-2 py-1 rounded-full ${colorClasses[card.color]}`}>
                     {card.label}
                   </span>
                 </div>
-                <p className="font-display font-bold text-2xl text-white mb-1">{value}</p>
+                <p className="min-w-0 font-display font-bold text-xl sm:text-2xl text-white mb-1 break-words">{value}</p>
                 <p className="text-white text-sm">{card.label}</p>
               </motion.div>
             )
@@ -139,9 +139,9 @@ export default function AdminDashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="lg:col-span-2 p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
+            className="min-w-0 lg:col-span-2 p-4 sm:p-6 bg-primary-800/50 border border-dark-border rounded-2xl overflow-hidden"
           >
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
               <h2 className="font-display font-semibold text-xl text-white">Ventas de los últimos 30 días</h2>
               <span className="text-white text-sm">Últimos 30 días</span>
             </div>
@@ -164,9 +164,9 @@ export default function AdminDashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
+            className="min-w-0 p-4 sm:p-6 bg-primary-800/50 border border-dark-border rounded-2xl overflow-hidden"
           >
-            <h2 className="font-display font-semibold text-xl text-white mb-6">Estado de pedidos</h2>
+            <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6">Estado de pedidos</h2>
             <ResponsiveContainer width="100%" height={260}>
               <PieChart>
                 <Pie
@@ -189,7 +189,7 @@ export default function AdminDashboard() {
                 />
               </PieChart>
             </ResponsiveContainer>
-            <div className="flex justify-center gap-6 mt-4">
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mt-4">
               {pieData.map((entry, index) => (
                 <div key={entry.name} className="flex items-center gap-2 text-sm">
                   <span className="w-3 h-3 rounded-full" style={{ background: COLORS[index] }} />
@@ -206,9 +206,9 @@ export default function AdminDashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
+            className="min-w-0 p-4 sm:p-6 bg-primary-800/50 border border-dark-border rounded-2xl overflow-hidden"
           >
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
               <h2 className="font-display font-semibold text-xl text-white">Pedidos por estado</h2>
               <span className="text-white text-sm">Últimos 30 días</span>
             </div>
@@ -232,9 +232,9 @@ export default function AdminDashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
+            className="min-w-0 p-4 sm:p-6 bg-primary-800/50 border border-dark-border rounded-2xl overflow-hidden"
           >
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
               <h2 className="font-display font-semibold text-xl text-white">Productos más vendidos</h2>
               <Link to="/admin/productos" className="text-red-400 hover:text-red-300 text-sm font-medium transition-colors">Ver todos</Link>
             </div>
@@ -242,16 +242,16 @@ export default function AdminDashboard() {
               {topProducts.length === 0 ? (
                 <p className="text-white text-center py-8">No hay productos vendidos aún</p>
               ) : topProducts.slice(0, 5).map((product, index) => (
-                <div key={product.id} className="flex items-center gap-4 p-3 bg-primary-700/50 rounded-xl border border-dark-border">
-                  <div className="w-10 h-10 rounded-lg bg-primary-800 flex items-center justify-center text-red-400 font-bold">
+                <div key={product.id} className="flex flex-wrap items-center gap-3 p-3 bg-primary-700/50 rounded-xl border border-dark-border">
+                  <div className="w-10 h-10 rounded-lg bg-primary-800 flex items-center justify-center text-red-400 font-bold flex-shrink-0">
                     {index + 1}
                   </div>
-                  <img src={product.image || '/placeholder-product.svg'} alt={product.name} className="w-12 h-12 rounded-lg object-cover" />
+                  <img src={product.image || '/placeholder-product.svg'} alt={product.name} className="w-12 h-12 rounded-lg object-cover flex-shrink-0" />
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-white truncate">{product.name}</p>
                     <p className="text-white text-sm">{product.total_sold} vendidos</p>
                   </div>
-                  <span className="font-display font-bold text-red-400">{formatPrice(product.revenue)}</span>
+                  <span className="flex-shrink-0 font-display font-bold text-red-400 text-sm sm:text-base">{formatPrice(product.revenue)}</span>
                 </div>
               ))}
             </div>
@@ -262,20 +262,20 @@ export default function AdminDashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.7 }}
-          className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
+          className="min-w-0 p-4 sm:p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
         >
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
             <h2 className="font-display font-semibold text-xl text-white">Alertas de stock bajo</h2>
             <Link to="/admin/productos?filter=low-stock" className="text-red-400 hover:text-red-300 text-sm font-medium transition-colors">Ver inventario</Link>
           </div>
           {lowStock.length === 0 ? (
-            <div className="flex items-center gap-3 text-green-500">
+            <div className="flex flex-wrap items-center gap-3 text-green-500">
               <CheckCircle className="w-6 h-6" />
-              <p className="font-medium">No hay productos con stock bajo</p>
+                <p className="font-medium min-w-0">No hay productos con stock bajo</p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+            <div className="overflow-x-auto min-w-0">
+              <table className="w-full min-w-[720px] text-sm">
                 <thead>
                   <tr className="border-b border-dark-border text-left text-white">
                     <th className="py-3 pr-4">Producto</th>

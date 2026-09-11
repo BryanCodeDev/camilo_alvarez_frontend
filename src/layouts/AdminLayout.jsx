@@ -1,7 +1,7 @@
 import { Link, Outlet, NavLink, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { LayoutDashboard, Package, Tag, ShoppingCart, Users, Settings, LogOut, BarChart2, Box } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const adminNavItems = [
@@ -17,13 +17,21 @@ export default function AdminLayout() {
   const { user, logout } = useAuth()
   const location = useLocation()
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024)
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const handleLogout = async () => {
     await logout()
   }
 
   return (
-    <div className="min-h-screen bg-primary-900 flex">
+    <div className="min-h-screen bg-primary-900 flex overflow-x-hidden">
       <AnimatePresence>
         {sidebarOpen && (
           <motion.div
@@ -39,9 +47,9 @@ export default function AdminLayout() {
 
       <motion.aside
         initial={{ x: -280 }}
-        animate={{ x: sidebarOpen ? 0 : -280 }}
+        animate={{ x: isMobile ? (sidebarOpen ? 0 : -280) : 0 }}
         transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-        className="fixed lg:relative z-50 w-72 bg-primary-800 border-r border-dark-border flex flex-col h-screen transition-transform duration-300"
+        className="fixed lg:static z-50 w-72 bg-primary-800 border-r border-dark-border flex flex-col h-screen transition-transform duration-300"
       >
         <div className="p-6 border-b border-dark-border">
           <Link to="/admin" className="flex items-center gap-3">
@@ -94,7 +102,7 @@ export default function AdminLayout() {
         </div>
       </motion.aside>
 
-      <div className="flex-1 flex flex-col lg:ml-0">
+      <div className="flex-1 flex flex-col min-w-0">
         <header className="lg:hidden bg-primary-800 border-b border-dark-border px-4 py-3 flex items-center justify-between">
           <button
             onClick={() => setSidebarOpen(true)}
@@ -107,7 +115,7 @@ export default function AdminLayout() {
           <div className="w-10" />
         </header>
 
-        <main className="flex-1 p-6 lg:p-8 overflow-y-auto">
+        <main className="flex-1 p-6 lg:p-8 overflow-y-auto min-w-0">
           <Outlet />
         </main>
       </div>

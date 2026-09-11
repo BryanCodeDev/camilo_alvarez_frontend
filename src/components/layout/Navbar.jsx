@@ -81,7 +81,7 @@ export default function Navbar() {
               <span className="font-display font-bold text-xl lg:text-2xl text-white hidden sm:block">TechStore</span>
             </Link>
 
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-8 whitespace-nowrap">
               {navLinks.map((link, index) => (
                 <MotionLink
                   key={link.path}
@@ -130,7 +130,7 @@ export default function Navbar() {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: 20 }}
-                      className="absolute right-0 top-full mt-2 w-72"
+                      className="absolute right-0 top-full mt-2 w-72 max-w-[90vw]"
                     >
                       <form onSubmit={handleSearch} className="relative">
                         <input
@@ -178,7 +178,7 @@ export default function Navbar() {
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        className="absolute right-0 top-full mt-2 w-56 bg-primary-800 border border-dark-border rounded-xl py-2 shadow-card"
+                        className="absolute right-0 top-full mt-2 w-56 max-w-[90vw] bg-primary-800 border border-dark-border rounded-xl py-2 shadow-card"
                       >
                         <Link to="/cuenta" className="flex items-center gap-3 px-4 py-2 text-white hover:text-red-400 hover:bg-primary-700" onClick={() => setDropdownOpen(null)}>
                           <User className="w-5 h-5" aria-hidden="true" />
@@ -280,6 +280,27 @@ export default function Navbar() {
               >
                 <X className="w-7 h-7" aria-hidden="true" />
               </button>
+            </div>
+
+            <div className="px-6 pt-4 pb-2">
+              <form onSubmit={handleSearch} className="relative">
+                <input
+                  type="search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Buscar productos..."
+                  className="w-full px-4 py-3 pr-12 bg-primary-800 border border-dark-border rounded-xl text-white placeholder:text-primary-400 focus:outline-none focus:border-red-500"
+                  autoFocus
+                  aria-label="Buscar productos"
+                />
+                <button
+                  type="submit"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-white hover:text-red-400"
+                  aria-label="Buscar"
+                >
+                  <Search className="w-5 h-5" aria-hidden="true" />
+                </button>
+              </form>
             </div>
 
             <nav className="flex-1 overflow-y-auto p-6 space-y-4">

@@ -80,7 +80,7 @@ export default function AdminUsers() {
         noindex
       />
 
-      <div className="space-y-8">
+      <div className="space-y-8 min-w-0">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -88,7 +88,7 @@ export default function AdminUsers() {
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
         >
           <div>
-            <h1 className="font-display font-bold text-3xl text-white">Usuarios</h1>
+            <h1 className="font-display font-bold text-2xl sm:text-3xl text-white">Usuarios</h1>
             <p className="text-white mt-2">Gestiona cuentas, roles y permisos</p>
           </div>
         </motion.div>
@@ -135,8 +135,8 @@ export default function AdminUsers() {
               ))}
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+            <div className="overflow-x-auto min-w-0">
+              <table className="w-full min-w-[720px] text-sm">
                 <thead>
                   <tr className="border-b border-dark-border bg-primary-900/50 text-left text-white">
                     <th className="py-4 px-6 font-medium">Usuario</th>
@@ -197,8 +197,8 @@ export default function AdminUsers() {
           )}
 
           {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-2 p-6 border-t border-dark-border">
-              <button onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={currentPage === 1} className="btn-secondary px-4 py-2 disabled:opacity-50">Anterior</button>
+            <div className="flex flex-wrap items-center justify-center gap-2 p-4 sm:p-6 border-t border-dark-border">
+              <button onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={currentPage === 1} className="btn-secondary px-4 py-2 min-h-10 disabled:opacity-50">Anterior</button>
               {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
                 let pageNum
                 if (totalPages <= 5) pageNum = i + 1
@@ -211,7 +211,7 @@ export default function AdminUsers() {
                   </button>
                 )
               })}
-              <button onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} disabled={currentPage === totalPages} className="btn-secondary px-4 py-2 disabled:opacity-50">Siguiente</button>
+              <button onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} disabled={currentPage === totalPages} className="btn-secondary px-4 py-2 min-h-10 disabled:opacity-50">Siguiente</button>
             </div>
           )}
         </motion.div>

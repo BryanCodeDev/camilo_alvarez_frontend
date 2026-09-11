@@ -54,7 +54,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-tight text-white mb-6"
+            className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-white mb-6"
           >
             TECNOLOGÍA QUE{' '}
             <span className="bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent">
@@ -75,20 +75,20 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full"
           >
             <MotionLink
               to="/tienda"
-              className="group btn-primary px-8 py-4 text-lg gap-3"
+              className="group btn-primary px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg gap-2 w-full sm:w-auto"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
               VER PRODUCTOS
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </MotionLink>
             <MotionLink
               to="/tienda?category=ofertas"
-              className="btn-outline px-8 py-4 text-lg"
+              className="btn-outline px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg w-full sm:w-auto"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -100,7 +100,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="mt-16 flex flex-wrap items-center justify-center gap-8 text-white text-sm"
+            className="mt-10 sm:mt-16 flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-white text-xs sm:text-sm"
           >
             <div className="flex items-center gap-2">
               <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>

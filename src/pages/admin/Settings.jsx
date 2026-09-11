@@ -99,13 +99,13 @@ export default function AdminSettings() {
         noindex
       />
 
-      <div className="space-y-8">
+      <div className="space-y-8 min-w-0">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="font-display font-bold text-3xl text-white">Configuración</h1>
+          <h1 className="font-display font-bold text-2xl sm:text-3xl text-white">Configuración</h1>
           <p className="text-white mt-2">Ajustes generales de la tienda</p>
         </motion.div>
 

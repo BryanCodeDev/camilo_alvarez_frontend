@@ -60,7 +60,7 @@ export default function About() {
               <p className="text-white max-w-2xl mx-auto">Lo que nos diferencia y nos impulsa cada día</p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {features.map((feature, index) => (
                 <motion.article
                   key={feature.title}
@@ -129,7 +129,7 @@ export default function About() {
               <p className="text-white max-w-2xl mx-auto">Personas reales detrás de cada pedido</p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {team.map((member, index) => (
                 <motion.article
                   key={member.name}

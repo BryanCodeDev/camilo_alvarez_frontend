@@ -140,7 +140,7 @@ export default function AdminCategories() {
         noindex
       />
 
-      <div className="space-y-8">
+      <div className="space-y-8 min-w-0">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -148,7 +148,7 @@ export default function AdminCategories() {
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
         >
           <div>
-            <h1 className="font-display font-bold text-3xl text-white">Categorías</h1>
+            <h1 className="font-display font-bold text-2xl sm:text-3xl text-white">Categorías</h1>
             <p className="text-white mt-2">{categories.length} categorías en el catálogo</p>
           </div>
           <button onClick={() => openForm()} className="btn-primary w-full sm:w-auto justify-center">
@@ -257,9 +257,9 @@ export default function AdminCategories() {
                 </div>
               </div>
 
-              <div className="flex justify-end gap-4 pt-4 border-t border-dark-border">
-                <button type="button" onClick={closeForm} className="btn-secondary">Cancelar</button>
-                <button type="submit" disabled={saving} className="btn-primary">
+            <div className="flex flex-wrap justify-end gap-3 sm:gap-4 pt-4 border-t border-dark-border">
+              <button type="button" onClick={closeForm} className="btn-secondary w-full sm:w-auto">Cancelar</button>
+              <button type="submit" disabled={saving} className="btn-primary w-full sm:w-auto">
                   {saving ? (
                     <>
                       <Loader2 className="w-5 h-5 animate-spin" />
@@ -287,8 +287,8 @@ export default function AdminCategories() {
               ))}
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+            <div className="overflow-x-auto min-w-0">
+              <table className="w-full min-w-[720px] text-sm">
                 <thead>
                   <tr className="border-b border-dark-border bg-primary-900/50 text-left text-white">
                     <th className="py-4 px-6 font-medium">Categoría</th>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
-import { ChevronLeft, Grid, List } from 'lucide-react'
+import { ChevronLeft, Grid, List, Filter, X } from 'lucide-react'
 import SEO from '../components/seo/SEO'
 import ProductCard from '../components/products/ProductCard'
 import ProductSkeleton from '../components/products/ProductSkeleton'
@@ -24,6 +24,7 @@ export default function Category() {
     onSale: false,
     inStock: false,
   })
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
   const totalPages = Math.ceil(totalProducts / 12)
 
@@ -132,9 +133,15 @@ export default function Category() {
           </motion.div>
 
           <div className="flex flex-col lg:flex-row gap-8">
-            <aside className="lg:w-64 flex-shrink-0 hidden lg:block">
-              <div className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 sticky top-24">
-                <h2 className="font-display font-semibold text-lg text-white mb-4">Filtros</h2>
+            <aside className={`lg:w-64 flex-shrink-0 ${mobileFiltersOpen ? 'block' : 'hidden'} lg:block`} aria-label="Filtros">
+              <div className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 sticky top-24">
+                <div className="flex items-center justify-between mb-4 lg:hidden">
+                  <h2 className="font-display font-semibold text-lg text-white">Filtros</h2>
+                  <button onClick={() => setMobileFiltersOpen(false)} className="p-2 text-white hover:text-red-400" aria-label="Cerrar filtros">
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+                <h2 className="font-display font-semibold text-lg text-white mb-4 hidden lg:block">Filtros</h2>
                 <div className="space-y-6">
                   <div>
                     <h3 className="font-medium text-white mb-3">Rango de precio</h3>
@@ -208,6 +215,14 @@ export default function Category() {
                     <option value="name-desc">Nombre: Z-A</option>
                   </select>
 
+                  <button
+                    onClick={() => setMobileFiltersOpen(true)}
+                    className="lg:hidden btn-secondary px-4 py-2"
+                  >
+                    <Filter className="w-4 h-4" aria-hidden="true" />
+                    <span>Filtros</span>
+                  </button>
+
                   <div className="hidden sm:flex items-center gap-2 ml-auto">
                     <button
                       onClick={() => setViewMode('grid')}
@@ -228,7 +243,7 @@ export default function Category() {
               </div>
 
               {loading ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" role="list" aria-busy="true">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6" role="list" aria-busy="true">
                   {[...Array(8)].map((_, i) => (
                     <ProductSkeleton key={i} variant={viewMode} />
                   ))}
@@ -246,7 +261,7 @@ export default function Category() {
               ) : (
                 <>
                   <div
-                    className={`grid gap-6 ${viewMode === 'grid' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'grid-cols-1'}`}
+                    className={`grid gap-4 sm:gap-6 ${viewMode === 'grid' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'grid-cols-1'}`}
                     role="list"
                   >
                     {products.map((product, index) => (
@@ -312,6 +327,94 @@ export default function Category() {
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {mobileFiltersOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/50 lg:hidden"
+            onClick={() => setMobileFiltersOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {mobileFiltersOpen && (
+          <motion.aside
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            className="fixed right-0 top-0 h-full w-full max-w-sm z-50 bg-primary-800 border-l border-dark-border flex flex-col lg:hidden"
+          >
+            <div className="p-4 border-b border-dark-border flex items-center justify-between">
+              <h2 className="font-display font-semibold text-lg text-white">Filtros</h2>
+              <button
+                onClick={() => setMobileFiltersOpen(false)}
+                className="p-2 text-white hover:text-red-400"
+              >
+                <X className="w-6 h-6" aria-hidden="true" />
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto p-4">
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-medium text-white mb-3">Rango de precio</h3>
+                  <div className="flex gap-2">
+                    <input
+                      type="number"
+                      placeholder="Mín"
+                      value={filters.minPrice}
+                      onChange={(e) => setFilters({...filters, minPrice: e.target.value})}
+                      className="flex-1 input text-sm py-2"
+                      min="0"
+                    />
+                    <input
+                      type="number"
+                      placeholder="Máx"
+                      value={filters.maxPrice}
+                      onChange={(e) => setFilters({...filters, maxPrice: e.target.value})}
+                      className="flex-1 input text-sm py-2"
+                      min="0"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="font-medium text-white mb-3">Opciones</h3>
+                  <div className="space-y-2">
+                    <label className="flex items-center gap-3 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={filters.onSale}
+                        onChange={(e) => setFilters({...filters, onSale: e.target.checked})}
+                        className="w-4 h-4 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                      />
+                      <span className="text-sm text-white">Solo ofertas</span>
+                    </label>
+                    <label className="flex items-center gap-3 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={filters.inStock}
+                        onChange={(e) => setFilters({...filters, inStock: e.target.checked})}
+                        className="w-4 h-4 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                      />
+                      <span className="text-sm text-white">Solo en stock</span>
+                    </label>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setFilters({ minPrice: '', maxPrice: '', brand: '', onSale: false, inStock: false })}
+                  className="w-full text-sm text-red-400 hover:text-red-300 transition-colors"
+                >
+                  Limpiar filtros
+                </button>
+              </div>
+            </div>
+          </motion.aside>
+        )}
+      </AnimatePresence>
     </>
   )
 }

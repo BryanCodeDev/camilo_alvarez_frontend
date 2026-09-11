@@ -120,7 +120,7 @@ export default function AdminProducts() {
         noindex
       />
 
-      <div className="space-y-8">
+      <div className="space-y-8 min-w-0">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ export default function AdminProducts() {
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
         >
           <div>
-            <h1 className="font-display font-bold text-3xl text-white">Productos</h1>
+            <h1 className="font-display font-bold text-2xl sm:text-3xl text-white">Productos</h1>
             <p className="text-white mt-2">{totalProducts} productos en el catálogo</p>
           </div>
           <Link to="/admin/productos/nuevo" className="btn-primary w-full sm:w-auto justify-center">
@@ -141,10 +141,10 @@ export default function AdminProducts() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
+          className="min-w-0 p-4 sm:p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
         >
-          <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-4">
-            <div className="relative flex-1">
+          <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-4 min-w-0">
+            <div className="relative flex-1 min-w-0">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary-500" />
               <input
                 type="search"
@@ -157,14 +157,14 @@ export default function AdminProducts() {
             <select
               value={status}
               onChange={(e) => { setStatus(e.target.value); setCurrentPage(1) }}
-              className="input py-3 px-4 bg-primary-700"
+              className="input py-3 px-4 bg-primary-700 w-full sm:w-auto"
             >
               <option value="">Todos los estados</option>
               <option value="active">Activos</option>
               <option value="inactive">Inactivos</option>
             </select>
             {hasFilters && (
-              <button type="button" onClick={clearFilters} className="btn-secondary px-6">
+              <button type="button" onClick={clearFilters} className="btn-secondary px-6 w-full sm:w-auto">
                 Limpiar filtros
               </button>
             )}
@@ -188,11 +188,11 @@ export default function AdminProducts() {
               <Package className="w-20 h-20 text-primary-600 mb-4" />
               <h2 className="font-display font-bold text-2xl text-white mb-2">No se encontraron productos</h2>
               <p className="text-white mb-6">Prueba con otros filtros o crea un nuevo producto</p>
-              <Link to="/admin/productos/nuevo" className="btn-primary">Crear producto</Link>
+              <Link to="/admin/productos/nuevo" className="btn-primary w-full sm:w-auto">Crear producto</Link>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+            <div className="overflow-x-auto min-w-0">
+              <table className="w-full min-w-[840px] text-sm">
                 <thead>
                   <tr className="border-b border-dark-border bg-primary-900/50 text-left text-white">
                     <th className="py-4 px-6 font-medium">Producto</th>
@@ -257,24 +257,24 @@ export default function AdminProducts() {
                             )}
                           </div>
                         </td>
-                        <td className="py-4 px-6">
+                        <td className="py-4 px-6 whitespace-nowrap">
                           <div className="flex items-center justify-end gap-2">
-                            <Link to={`/admin/productos/${product.id}/editar`} className="p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Editar ${product.name}`}>
+                            <Link to={`/admin/productos/${product.id}/editar`} className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Editar ${product.name}`}>
                               <Edit className="w-5 h-5" />
                             </Link>
-                            <Link to={`/producto/${product.slug}`} target="_blank" className="p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Ver ${product.name}`}>
+                            <Link to={`/producto/${product.slug}`} target="_blank" className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Ver ${product.name}`}>
                               <Eye className="w-5 h-5" />
                             </Link>
-                            <button onClick={() => handleDuplicate(product.id)} className="p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Duplicar ${product.name}`}>
+                            <button onClick={() => handleDuplicate(product.id)} className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Duplicar ${product.name}`}>
                               <Copy className="w-5 h-5" />
                             </button>
-                            <button onClick={() => handleToggleFeatured(product.id)} className={`p-2 rounded-lg transition-colors ${product.is_featured ? 'text-red-400 hover:bg-red-600/10' : 'text-white hover:text-red-400 hover:bg-primary-700'}`} aria-label={`Marcar como destacado ${product.name}`}>
+                            <button onClick={() => handleToggleFeatured(product.id)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${product.is_featured ? 'text-red-400 hover:bg-red-600/10' : 'text-white hover:text-red-400 hover:bg-primary-700'}`} aria-label={`Marcar como destacado ${product.name}`}>
                               <Package className="w-5 h-5" />
                             </button>
-                            <button onClick={() => handleToggleStatus(product.id)} className={`p-2 rounded-lg transition-colors ${product.is_active ? 'text-white hover:text-red-400 hover:bg-red-600/10' : 'text-white hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${product.is_active ? 'Desactivar' : 'Activar'} ${product.name}`}>
+                            <button onClick={() => handleToggleStatus(product.id)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${product.is_active ? 'text-white hover:text-red-400 hover:bg-red-600/10' : 'text-white hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${product.is_active ? 'Desactivar' : 'Activar'} ${product.name}`}>
                               {product.is_active ? <Trash2 className="w-5 h-5" /> : <Package className="w-5 h-5" />}
                             </button>
-                            <button onClick={() => handleDelete(product.id, product.name)} className={`p-2 rounded-lg transition-colors ${deleteConfirm === product.id ? 'text-red-400 bg-red-600/10' : 'text-white hover:text-red-400 hover:bg-red-600/10'}`} aria-label={`Eliminar ${product.name}`}>
+                            <button onClick={() => handleDelete(product.id, product.name)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${deleteConfirm === product.id ? 'text-red-400 bg-red-600/10' : 'text-white hover:text-red-400 hover:bg-red-600/10'}`} aria-label={`Eliminar ${product.name}`}>
                               <Trash2 className="w-5 h-5" />
                             </button>
                           </div>
@@ -288,7 +288,7 @@ export default function AdminProducts() {
           )}
 
           {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-2 p-6 border-t border-dark-border">
+            <div className="flex flex-wrap items-center justify-center gap-2 p-4 sm:p-6 border-t border-dark-border">
               <button onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={currentPage === 1} className="btn-secondary px-4 py-2 disabled:opacity-50">Anterior</button>
               {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
                 let pageNum

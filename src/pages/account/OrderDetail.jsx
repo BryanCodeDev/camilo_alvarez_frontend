@@ -104,21 +104,21 @@ export default function OrderDetail() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2 space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2 space-y-6">
               <motion.section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-primary-800/50 border border-dark-border rounded-2xl p-6"
+                className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
               >
-                <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
+                <h2 className="font-display font-semibold text-xl text-white mb-5 flex items-center gap-2">
                   <Package className="w-6 h-6 text-red-500" />
                   Productos
                 </h2>
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {order.items.map((item, index) => (
-                    <div key={index} className="flex items-center gap-4 p-4 bg-primary-700/50 border border-dark-border rounded-xl">
-                      <div className="w-16 h-16 rounded-lg overflow-hidden bg-primary-700 flex-shrink-0">
+                    <div key={index} className="flex items-center gap-3 p-3 bg-primary-700/50 border border-dark-border rounded-xl">
+                      <div className="w-14 h-14 rounded-lg overflow-hidden bg-primary-700 flex-shrink-0">
                         <img src={item.main_image || item.image || '/placeholder-product.svg'} alt={item.product_name} className="w-full h-full object-cover" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -126,7 +126,7 @@ export default function OrderDetail() {
                         <p className="text-white text-sm">SKU: {item.product_sku || 'N/A'}</p>
                         <p className="text-white text-sm">Cantidad: {item.quantity} × {formatPrice(item.discount_price || item.unit_price)}</p>
                       </div>
-                      <span className="font-display font-bold text-lg text-red-400">{formatPrice(item.subtotal)}</span>
+                      <span className="font-display font-bold text-lg text-red-400 whitespace-nowrap">{formatPrice(item.subtotal)}</span>
                     </div>
                   ))}
                 </div>
@@ -136,22 +136,22 @@ export default function OrderDetail() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="bg-primary-800/50 border border-dark-border rounded-2xl p-6"
+                className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
               >
-                <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
+                <h2 className="font-display font-semibold text-xl text-white mb-5 flex items-center gap-2">
                   <Clock className="w-6 h-6 text-red-500" />
                   Historial de cambios
                 </h2>
                 <div className="space-y-0">
                   {(order.history || []).map((event, index) => (
-                    <div key={index} className="flex gap-4">
+                    <div key={index} className="flex gap-3">
                       <div className="flex flex-col items-center">
-                        <div className={`w-3 h-3 rounded-full ${index === 0 ? 'bg-red-500' : 'bg-primary-600'}`} />
+                        <div className={`w-2.5 h-2.5 rounded-full ${index === 0 ? 'bg-red-500' : 'bg-primary-600'}`} />
                         {index < (order.history || []).length - 1 && <div className="w-px flex-1 bg-dark-border my-1" />}
                       </div>
-                      <div className="flex-1 pb-6">
-                        <p className="font-medium text-white">{event.status}</p>
-                        <p className="text-white text-sm">{event.notes || 'Estado actualizado'}</p>
+                      <div className="flex-1 pb-4 min-w-0">
+                        <p className="font-medium text-white truncate">{event.status}</p>
+                        <p className="text-white text-sm truncate">{event.notes || 'Estado actualizado'}</p>
                         <p className="text-white text-xs mt-1">{formatDateTime(event.created_at)} · {event.first_name ? `${event.first_name} ${event.last_name}` : 'Sistema'}</p>
                       </div>
                     </div>
@@ -160,15 +160,15 @@ export default function OrderDetail() {
               </motion.section>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-6">
               <motion.section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="bg-primary-800/50 border border-dark-border rounded-2xl p-6"
+                className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
               >
-                <h2 className="font-display font-semibold text-xl text-white mb-6">Resumen del pedido</h2>
-                <div className="space-y-3 mb-6">
+                <h2 className="font-display font-semibold text-xl text-white mb-5">Resumen del pedido</h2>
+                <div className="space-y-2 mb-5">
                   <div className="flex justify-between text-sm">
                     <span className="text-white">Subtotal</span>
                     <span className="text-white">{formatPrice(order.subtotal)}</span>
@@ -196,29 +196,29 @@ export default function OrderDetail() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 space-y-4"
+                className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 space-y-4"
               >
                 <h2 className="font-display font-semibold text-xl text-white">Información del cliente</h2>
-                <div className="flex items-start gap-3">
+                <div className="flex flex-col sm:flex-row items-start gap-3">
                   <User className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium text-white">{order.customer_name}</p>
-                    <p className="text-white text-sm">{order.customer_email}</p>
-                    <p className="text-white text-sm">{order.customer_phone}</p>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-white truncate">{order.customer_name}</p>
+                    <p className="text-white text-sm truncate">{order.customer_email}</p>
+                    <p className="text-white text-sm truncate">{order.customer_phone}</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
+                <div className="flex flex-col sm:flex-row items-start gap-3">
                   <MapPin className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium text-white">{order.address}</p>
-                    <p className="text-white text-sm">{order.city}, {order.province}</p>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-white truncate">{order.address}</p>
+                    <p className="text-white text-sm truncate">{order.city}, {order.province}</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
+                <div className="flex flex-col sm:flex-row items-start gap-3">
                   <CreditCard className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium text-white capitalize">{order.payment_method}</p>
-                    <p className="text-white text-sm">{order.payment_status === 'approved' ? 'Pago confirmado' : 'Pago pendiente'}</p>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-white capitalize truncate">{order.payment_method}</p>
+                    <p className="text-white text-sm truncate">{order.payment_status === 'approved' ? 'Pago confirmado' : 'Pago pendiente'}</p>
                   </div>
                 </div>
               </motion.section>
@@ -227,13 +227,15 @@ export default function OrderDetail() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="bg-primary-800/50 border border-dark-border rounded-2xl p-6"
+                className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
               >
                 <h2 className="font-display font-semibold text-xl text-white mb-4">Seguimiento</h2>
                 {order.status === 'delivered' ? (
-                  <div className="flex items-center gap-3 text-green-500">
-                    <CheckCircle className="w-8 h-8" />
-                    <p className="font-medium">Pedido entregado correctamente</p>
+                  <div className="flex flex-col sm:flex-row items-start gap-3 text-green-500">
+                    <CheckCircle className="w-8 h-8 flex-shrink-0" />
+                    <div>
+                      <p className="font-medium">Pedido entregado correctamente</p>
+                    </div>
                   </div>
                 ) : order.status === 'shipped' ? (
                   <div className="space-y-2">

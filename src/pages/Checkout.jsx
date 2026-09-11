@@ -190,20 +190,20 @@ export default function Checkout() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2">
               {step === 1 && (
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-6"
+                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
                 >
                   <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
                     <Truck className="w-6 h-6 text-red-500" />
                     Información de envío
                   </h2>
 
-                  <form onSubmit={(e) => { e.preventDefault(); handleNext() }} className="space-y-6">
+                  <form onSubmit={(e) => { e.preventDefault(); handleNext() }} className="space-y-5">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="firstName" className="label">Nombre *</label>
@@ -342,14 +342,14 @@ export default function Checkout() {
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="space-y-6"
+                  className="space-y-5"
                 >
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-primary-800/50 border border-dark-border rounded-2xl p-6"
+                    className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
                   >
-                    <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
+                    <h2 className="font-display font-semibold text-xl text-white mb-5 flex items-center gap-2">
                       <CreditCard className="w-6 h-6 text-red-500" />
                       Método de pago
                     </h2>
@@ -366,12 +366,12 @@ export default function Checkout() {
                           }`}
                         >
                           <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 rounded-xl bg-primary-700 flex items-center justify-center">
+                            <div className="w-12 h-12 rounded-xl bg-primary-700 flex items-center justify-center flex-shrink-0">
                               <method.icon className="w-6 h-6 text-red-400" />
                             </div>
-                            <div>
-                              <p className="font-medium text-white">{method.label}</p>
-                              <p className="text-white text-sm">{method.description}</p>
+                            <div className="min-w-0">
+                              <p className="font-medium text-white truncate">{method.label}</p>
+                              <p className="text-white text-sm truncate">{method.description}</p>
                             </div>
                           </div>
                           {paymentMethod === method.id && (
@@ -388,7 +388,7 @@ export default function Checkout() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="bg-primary-800/50 border border-dark-border rounded-2xl p-6"
+                    className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
                   >
                     <h2 className="font-display font-semibold text-xl text-white mb-4 flex items-center gap-2">
                       <Shield className="w-6 h-6 text-red-500" />
@@ -398,12 +398,12 @@ export default function Checkout() {
                     <div className="space-y-2 mb-4">
                       {items.map((item, index) => (
                         <div key={index} className="flex items-center gap-3 py-2 border-b border-dark-border/50">
-                          <img src={item.image} alt={item.name} className="w-12 h-12 rounded-lg object-cover" />
+                          <img src={item.image} alt={item.name} className="w-12 h-12 rounded-lg object-cover flex-shrink-0" />
                           <div className="flex-1 min-w-0">
                             <p className="text-sm font-medium text-white truncate">{item.name}</p>
                             <p className="text-white text-xs">x{item.quantity}</p>
                           </div>
-                          <span className="text-white font-medium">{formatPrice((item.discountPrice || item.price) * item.quantity)}</span>
+                          <span className="text-white font-medium whitespace-nowrap">{formatPrice((item.discountPrice || item.price) * item.quantity)}</span>
                         </div>
                       ))}
                     </div>
@@ -435,34 +435,36 @@ export default function Checkout() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
                   >
-                    <button
-                      onClick={handleBack}
-                      className="btn-secondary w-full sm:w-auto py-3 mb-4"
-                    >
-                      Volver a datos
-                    </button>
-                    <button
-                      onClick={handleSubmit}
-                      disabled={processing}
-                      className={`btn-primary w-full py-4 text-lg gap-3 ${paymentMethod === 'whatsapp' ? 'btn-whatsapp' : ''}`}
-                    >
-                      {processing ? (
-                        <>
-                          <Loader2 className="w-6 h-6 animate-spin" />
-                          Procesando...
-                        </>
-                      ) : paymentMethod === 'mercadopago' ? (
-                        <>
-                          <CreditCard className="w-6 h-6" />
-                          Pagar con Mercado Pago
-                        </>
-                      ) : (
-                        <>
-                          <MessageSquare className="w-6 h-6" />
-                          Comprar por WhatsApp
-                        </>
-                      )}
-                    </button>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <button
+                        onClick={handleBack}
+                        className="btn-secondary w-full py-3"
+                      >
+                        Volver a datos
+                      </button>
+                      <button
+                        onClick={handleSubmit}
+                        disabled={processing}
+                        className={`btn-primary w-full py-4 text-lg gap-3 ${paymentMethod === 'whatsapp' ? 'btn-whatsapp' : ''}`}
+                      >
+                        {processing ? (
+                          <>
+                            <Loader2 className="w-6 h-6 animate-spin" />
+                            Procesando...
+                          </>
+                        ) : paymentMethod === 'mercadopago' ? (
+                          <>
+                            <CreditCard className="w-6 h-6" />
+                            Pagar con Mercado Pago
+                          </>
+                        ) : (
+                          <>
+                            <MessageSquare className="w-6 h-6" />
+                            Comprar por WhatsApp
+                          </>
+                        )}
+                      </button>
+                    </div>
                   </motion.div>
                 </motion.div>
               )}
@@ -471,7 +473,7 @@ export default function Checkout() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-8 text-center"
+                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-8 text-center"
                 >
                   <motion.div
                     initial={{ scale: 0 }}
@@ -488,7 +490,7 @@ export default function Checkout() {
                   )}
                   <button
                     onClick={() => navigate(`/checkout/success?order=${orderId}`)}
-                    className="btn-primary"
+                    className="btn-primary w-full sm:w-auto"
                   >
                     Ver confirmación
                   </button>
@@ -501,7 +503,7 @@ export default function Checkout() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
-                className="sticky top-24 bg-primary-800/50 border border-dark-border rounded-2xl p-6"
+                className="sticky top-24 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
               >
                 <h2 className="font-display font-semibold text-xl text-white mb-6">Resumen</h2>
 

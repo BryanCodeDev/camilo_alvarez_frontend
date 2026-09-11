@@ -80,7 +80,7 @@ export default function CartDrawer() {
               <h2 className="font-display font-bold text-xl text-white">Carrito ({itemCount})</h2>
               <button
                 onClick={toggleCart}
-                className="p-2 rounded-lg text-white hover:text-red-400 hover:bg-primary-700 transition-colors"
+                className="p-2 rounded-lg text-white hover:text-red-400 hover:bg-primary-700 transition-colors lg:hidden"
                 aria-label="Cerrar carrito"
               >
                 <X className="w-6 h-6" aria-hidden="true" />

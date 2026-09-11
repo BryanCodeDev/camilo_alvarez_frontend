@@ -91,7 +91,7 @@ export default function Offers() {
           <p className="text-white max-w-2xl mx-auto">Descuentos por tiempo limitado en productos seleccionados</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" role="list">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6" role="list">
           {demoOffers.map((product, index) => (
             <motion.div
               key={product.id}

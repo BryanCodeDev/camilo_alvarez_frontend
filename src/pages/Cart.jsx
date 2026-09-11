@@ -63,18 +63,18 @@ export default function Cart() {
             </motion.div>
           ) : (
             <>
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2">
                   <div className="bg-primary-800/50 border border-dark-border rounded-2xl overflow-hidden">
                     <div className="overflow-x-auto">
-                      <table className="w-full" role="table">
+                      <table className="w-full min-w-[600px]" role="table">
                         <thead>
                           <tr className="border-b border-dark-border bg-primary-900/50">
-                            <th className="px-6 py-4 text-left text-sm font-medium text-white">Producto</th>
-                            <th className="px-6 py-4 text-center text-sm font-medium text-white hidden sm:table-cell">Precio</th>
-                            <th className="px-6 py-4 text-center text-sm font-medium text-white">Cantidad</th>
-                            <th className="px-6 py-4 text-right text-sm font-medium text-white">Subtotal</th>
-                            <th className="px-6 py-4 text-center text-sm font-medium text-white"></th>
+                            <th className="px-4 py-3 text-left text-sm font-medium text-white">Producto</th>
+                            <th className="px-4 py-3 text-center text-sm font-medium text-white hidden sm:table-cell">Precio</th>
+                            <th className="px-4 py-3 text-center text-sm font-medium text-white">Cantidad</th>
+                            <th className="px-4 py-3 text-right text-sm font-medium text-white">Subtotal</th>
+                            <th className="px-4 py-3 text-center text-sm font-medium text-white"></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -86,9 +86,9 @@ export default function Cart() {
                               transition={{ duration: 0.4, delay: index * 0.05 }}
                               className="border-b border-dark-border/50 hover:bg-primary-900/50"
                             >
-                              <td className="px-6 py-4">
-                                <Link to={`/producto/${item.slug}`} className="flex items-center gap-4">
-                                  <div className="w-16 h-16 rounded-lg overflow-hidden bg-primary-700 flex-shrink-0">
+                              <td className="px-4 py-3">
+                                <Link to={`/producto/${item.slug}`} className="flex items-center gap-3">
+                                  <div className="w-14 h-14 rounded-lg overflow-hidden bg-primary-700 flex-shrink-0">
                                     <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
                                   </div>
                                   <div className="min-w-0">
@@ -100,7 +100,7 @@ export default function Cart() {
                                   </div>
                                 </Link>
                               </td>
-                              <td className="px-6 py-4 text-center hidden sm:table-cell">
+                              <td className="px-4 py-3 text-center hidden sm:table-cell">
                                 <div className="flex flex-col items-center gap-1">
                                   <span className="font-medium text-white">{formatPrice(item.discountPrice || item.price)}</span>
                                   {item.discountPrice && item.price > item.discountPrice && (
@@ -108,12 +108,12 @@ export default function Cart() {
                                   )}
                                 </div>
                               </td>
-                              <td className="px-6 py-4 text-center">
+                              <td className="px-4 py-3 text-center">
                                 <div className="flex items-center justify-center gap-2">
                                   <button
                                     onClick={() => updateQuantity(item.productId, item.quantity - 1)}
                                     disabled={item.quantity <= 1}
-                                    className="w-10 h-10 rounded-lg bg-primary-700 border border-dark-border flex items-center justify-center text-white hover:border-red-600 hover:text-red-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                    className="w-9 h-9 rounded-lg bg-primary-700 border border-dark-border flex items-center justify-center text-white hover:border-red-600 hover:text-red-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                                     aria-label="Disminuir cantidad"
                                   >
                                     <Minus className="w-4 h-4" />
@@ -127,23 +127,23 @@ export default function Cart() {
                                     }}
                                     min="1"
                                     max={item.stock}
-                                    className="w-16 text-center bg-primary-700 border border-dark-border rounded-lg text-white focus:outline-none focus:border-red-500"
+                                    className="w-14 text-center bg-primary-700 border border-dark-border rounded-lg text-white focus:outline-none focus:border-red-500"
                                     aria-label="Cantidad"
                                   />
                                   <button
                                     onClick={() => updateQuantity(item.productId, item.quantity + 1)}
                                     disabled={item.quantity >= item.stock}
-                                    className="w-10 h-10 rounded-lg bg-primary-700 border border-dark-border flex items-center justify-center text-white hover:border-red-600 hover:text-red-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                    className="w-9 h-9 rounded-lg bg-primary-700 border border-dark-border flex items-center justify-center text-white hover:border-red-600 hover:text-red-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                                     aria-label="Aumentar cantidad"
                                   >
                                     <Plus className="w-4 h-4" />
                                   </button>
                                 </div>
                               </td>
-                              <td className="px-6 py-4 text-right font-semibold text-white">
+                              <td className="px-4 py-3 text-right font-semibold text-white">
                                 {formatPrice((item.discountPrice || item.price) * item.quantity)}
                               </td>
-                              <td className="px-6 py-4 text-center">
+                              <td className="px-4 py-3 text-center">
                                 <button
                                   onClick={() => removeItem(item.productId)}
                                   className="p-2 text-white hover:text-red-400 hover:bg-red-600/10 rounded-lg transition-colors"
@@ -170,8 +170,8 @@ export default function Cart() {
                     )}
                   </div>
 
-                  <div className="mt-6 flex flex-wrap gap-4">
-                    <Link to="/tienda" className="btn-secondary">
+                  <div className="mt-4 flex flex-col sm:flex-row gap-3">
+                    <Link to="/tienda" className="btn-secondary w-full sm:w-auto">
                       <ArrowLeft className="w-5 h-5" />
                       Seguir comprando
                     </Link>
@@ -183,7 +183,7 @@ export default function Cart() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="sticky top-24 bg-primary-800/50 border border-dark-border rounded-2xl p-6"
+                    className="sticky top-24 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
                   >
                     <h2 className="font-display font-semibold text-xl text-white mb-6">Resumen del pedido</h2>
 

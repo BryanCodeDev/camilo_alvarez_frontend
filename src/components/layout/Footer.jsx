@@ -192,7 +192,7 @@ export default function Footer() {
 
               <form className="space-y-4 max-w-md" action="/contacto" method="POST">
                 <h5 className="font-medium text-white">Suscríbete a nuestro newsletter</h5>
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <input
                     type="email"
                     placeholder="Tu correo electrónico"

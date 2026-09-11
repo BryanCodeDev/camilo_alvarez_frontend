@@ -211,7 +211,7 @@ export default function ProductDetail() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12"
           >
             <div className="space-y-4">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-primary-800 border border-dark-border">
@@ -273,14 +273,14 @@ export default function ProductDetail() {
                 </div>
               )}
 
-              <div className="flex items-center gap-4 flex-wrap">
-                <button onClick={handleShare} className="btn-secondary px-4" aria-label="Compartir producto">
+              <div className="flex items-center gap-3 flex-wrap">
+                <button onClick={handleShare} className="btn-secondary px-3 sm:px-4" aria-label="Compartir producto">
                   <Share2 className="w-4 h-4" />
                   <span className="hidden sm:inline">Compartir</span>
                 </button>
                 <button
                   onClick={() => toggleItem(product)}
-                  className={`btn-secondary px-4 ${isInWishlist(product.id) ? 'bg-red-600/20 border-red-600/30 text-red-400' : ''}`}
+                  className={`btn-secondary px-3 sm:px-4 ${isInWishlist(product.id) ? 'bg-red-600/20 border-red-600/30 text-red-400' : ''}`}
                   aria-label={isInWishlist(product.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'}
                   aria-pressed={isInWishlist(product.id)}
                 >
@@ -341,12 +341,12 @@ export default function ProductDetail() {
               <div className="border-t border-dark-border pt-6 space-y-4">
                 <div>
                   <label htmlFor="quantity" className="label">Cantidad</label>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 sm:gap-3">
                     <div className="flex items-center border border-dark-border rounded-lg overflow-hidden">
                       <button
                         onClick={() => setQuantity(Math.max(1, quantity - 1))}
                         disabled={quantity <= 1}
-                        className="px-4 py-3 text-white hover:text-red-400 hover:bg-primary-700 disabled:opacity-50 transition-colors"
+                        className="px-3 sm:px-4 py-2 sm:py-3 text-white hover:text-red-400 hover:bg-primary-700 disabled:opacity-50 transition-colors"
                         aria-label="Disminuir cantidad"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" /></svg>
@@ -364,7 +364,7 @@ export default function ProductDetail() {
                       <button
                         onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
                         disabled={quantity >= product.stock}
-                        className="px-4 py-3 text-white hover:text-red-400 hover:bg-primary-700 disabled:opacity-50 transition-colors"
+                        className="px-3 sm:px-4 py-2 sm:py-3 text-white hover:text-red-400 hover:bg-primary-700 disabled:opacity-50 transition-colors"
                         aria-label="Aumentar cantidad"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
@@ -378,7 +378,7 @@ export default function ProductDetail() {
                   <button
                     onClick={handleAddToCart}
                     disabled={adding || !canBuy}
-                    className="flex-1 btn-primary py-4 text-lg gap-3"
+                    className="flex-1 btn-primary py-3 sm:py-4 text-base sm:text-lg gap-3"
                   >
                     {adding ? (
                       <motion.svg className="w-6 h-6 animate-spin" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M12 2a10 10 0 0 1 10 10A10 10 0 0 1 12 22 10 10 0 0 1 2 12 10 10 0 0 1 12 2" /></motion.svg>
@@ -392,14 +392,14 @@ export default function ProductDetail() {
                   <button
                     onClick={handleBuyNow}
                     disabled={!canBuy}
-                    className="flex-1 btn-secondary py-4 text-lg gap-3"
+                    className="flex-1 btn-secondary py-3 sm:py-4 text-base sm:text-lg gap-3"
                   >
                     <Zap className="w-5 h-5" />
                     <span>Comprar ahora</span>
                   </button>
                   <button
                     onClick={handleWhatsApp}
-                    className="flex-1 btn-whatsapp py-4 text-lg gap-3"
+                    className="flex-1 btn-whatsapp py-3 sm:py-4 text-base sm:text-lg gap-3"
                   >
                     <MessageSquare className="w-5 h-5" />
                     <span className="hidden sm:inline">WhatsApp</span>
@@ -407,23 +407,23 @@ export default function ProductDetail() {
                 </div>
               </div>
 
-              <div className="border-t border-dark-border pt-6 grid grid-cols-2 sm:grid-cols-3 gap-4">
-                <div className="flex items-start gap-3 p-4 bg-primary-800/50 rounded-xl">
-                  <Truck className="w-6 h-6 text-red-500 flex-shrink-0" />
+              <div className="border-t border-dark-border pt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+                <div className="flex items-start gap-3 p-3 sm:p-4 bg-primary-800/50 rounded-xl">
+                  <Truck className="w-5 h-5 sm:w-6 sm:h-6 text-red-500 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-white">Envío gratis</p>
                     <p className="text-white text-sm">En compras mayores a $100.000</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 p-4 bg-primary-800/50 rounded-xl">
-                  <Shield className="w-6 h-6 text-red-500 flex-shrink-0" />
+                <div className="flex items-start gap-3 p-3 sm:p-4 bg-primary-800/50 rounded-xl">
+                  <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-red-500 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-white">Garantía oficial</p>
                     <p className="text-white text-sm">{product.warranty || '12 meses de garantía'}</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 p-4 bg-primary-800/50 rounded-xl">
-                  <RotateCcw className="w-6 h-6 text-red-500 flex-shrink-0" />
+                <div className="flex items-start gap-3 p-3 sm:p-4 bg-primary-800/50 rounded-xl">
+                  <RotateCcw className="w-5 h-5 sm:w-6 sm:h-6 text-red-500 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-white">Devoluciones fáciles</p>
                     <p className="text-white text-sm">30 días sin complicaciones</p>
@@ -443,17 +443,17 @@ export default function ProductDetail() {
             >
               <div className="border border-dark-border rounded-2xl overflow-hidden">
                 <div className="border-b border-dark-border">
-                  <nav className="flex gap-1 p-1" aria-label="Pestañas de producto">
-                    <button className="tab-btn px-6 py-4 font-medium text-white hover:text-white transition-colors relative">
+                  <nav className="flex gap-1 p-1 overflow-x-auto" aria-label="Pestañas de producto">
+                    <button className="tab-btn px-4 py-3 font-medium text-white hover:text-white transition-colors relative whitespace-nowrap">
                       Descripción
                     </button>
-                    <button className="tab-btn px-6 py-4 font-medium text-white hover:text-white transition-colors relative">
+                    <button className="tab-btn px-4 py-3 font-medium text-white hover:text-white transition-colors relative whitespace-nowrap">
                       Especificaciones
                     </button>
-                    <button className="tab-btn px-6 py-4 font-medium text-white hover:text-white transition-colors relative">
+                    <button className="tab-btn px-4 py-3 font-medium text-white hover:text-white transition-colors relative whitespace-nowrap">
                       Características
                     </button>
-                    <button className="tab-btn px-6 py-4 font-medium text-white hover:text-white transition-colors relative">
+                    <button className="tab-btn px-4 py-3 font-medium text-white hover:text-white transition-colors relative whitespace-nowrap">
                       Garantía
                     </button>
                   </nav>
@@ -466,9 +466,9 @@ export default function ProductDetail() {
                   {product.specifications && (
                     <div className="mt-12">
                       <h3 className="font-display font-semibold text-xl text-white mb-6">Especificaciones técnicas</h3>
-                      <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         {Object.entries(product.specifications).map(([key, value]) => (
-                          <div key={key} className="flex flex-col sm:flex-row gap-2 p-4 bg-primary-800/50 rounded-xl">
+                          <div key={key} className="flex flex-col sm:flex-row gap-2 p-3 sm:p-4 bg-primary-800/50 rounded-xl">
                             <dt className="text-white font-medium sm:w-1/3">{key}</dt>
                             <dd className="text-white">{value}</dd>
                           </div>
@@ -482,7 +482,7 @@ export default function ProductDetail() {
                       <h3 className="font-display font-semibold text-xl text-white mb-6">Características destacadas</h3>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {product.features.map((feature, index) => (
-                          <li key={index} className="flex items-center gap-3 p-4 bg-primary-800/50 rounded-xl">
+                          <li key={index} className="flex items-center gap-3 p-3 sm:p-4 bg-primary-800/50 rounded-xl">
                             <svg className="w-5 h-5 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                             <span className="text-white">{feature}</span>
                           </li>
@@ -518,7 +518,7 @@ export default function ProductDetail() {
                   Ver más
                 </Link>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" role="list">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6" role="list">
                 {relatedProducts.map((related, index) => (
                   <motion.div
                     key={related.id}

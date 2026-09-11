@@ -30,7 +30,7 @@ export default function Categories() {
           <p className="text-white max-w-2xl mx-auto">Encuentra lo que necesitas en nuestra selección curada por expertos</p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
           {categories.map((category, index) => (
             <motion.article
               key={category.slug}

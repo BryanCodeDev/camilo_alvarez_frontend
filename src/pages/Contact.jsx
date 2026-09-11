@@ -90,7 +90,7 @@ export default function Contact() {
               <p className="text-white max-w-2xl mx-auto">Elige el que prefieras, nosotros nos adaptamos a ti</p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
               {contactInfo.map((info, index) => (
                 <motion.article
                   key={info.title}
@@ -132,7 +132,7 @@ export default function Contact() {
 
         <section className="py-20 lg:py-28" aria-labelledby="form-title">
           <div className="container-custom">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -261,7 +261,7 @@ export default function Contact() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
-                className="lg:pl-8"
+                className="lg:pl-0 mt-8 lg:mt-0"
               >
                 <h2 id="faq-title" className="section-title mb-8">PREGUNTAS FRECUENTES</h2>
                 <div className="space-y-4">

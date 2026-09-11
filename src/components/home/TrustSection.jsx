@@ -25,7 +25,7 @@ export default function TrustSection() {
           <p className="text-white max-w-2xl mx-auto">Más de 10.000 clientes confían en nosotros</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" role="list">
           {trustItems.map((item, index) => (
             <motion.article
               key={item.title}

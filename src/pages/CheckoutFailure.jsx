@@ -66,7 +66,7 @@ export default function CheckoutFailure() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
+              className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8"
             >
               <Link to="/checkout" className="btn-primary w-full sm:w-auto flex items-center justify-center gap-2">
                 <RefreshCw className="w-5 h-5" />
@@ -107,7 +107,7 @@ export default function CheckoutFailure() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
             >
-              <Link to="/tienda" className="btn-secondary inline-flex items-center gap-2">
+              <Link to="/tienda" className="btn-secondary w-full sm:w-auto inline-flex items-center gap-2">
                 <ArrowLeft className="w-5 h-5" />
                 Volver a la tienda
               </Link>

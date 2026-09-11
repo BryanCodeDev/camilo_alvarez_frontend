@@ -165,16 +165,16 @@ export default function Account() {
             <p className="text-white mt-2">Gestiona tu perfil, pedidos y preferencias</p>
           </motion.div>
 
-          <div className="flex flex-col lg:flex-row gap-8">
+          <div className="flex flex-col lg:flex-row gap-6">
             <aside className="lg:w-64 flex-shrink-0">
-              <div className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 sticky top-24">
-                <div className="flex items-center gap-4 mb-6 pb-6 border-b border-dark-border">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center text-white font-bold text-2xl">
+              <div className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 sticky top-24">
+                <div className="flex items-center gap-3 mb-5 pb-5 border-b border-dark-border">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center text-white font-bold text-xl">
                     {user?.firstName?.charAt(0)}{user?.lastName?.charAt(0)}
                   </div>
-                  <div>
-                    <h2 className="font-display font-semibold text-xl text-white">{user?.firstName} {user?.lastName}</h2>
-                    <p className="text-white text-sm">{user?.email}</p>
+                  <div className="min-w-0">
+                    <h2 className="font-display font-semibold text-lg text-white truncate">{user?.firstName} {user?.lastName}</h2>
+                    <p className="text-white text-sm truncate">{user?.email}</p>
                     <span className="inline-block mt-1 px-2 py-0.5 bg-red-600/20 text-red-400 text-xs font-medium rounded-full border border-red-600/30">
                       {user?.role === 'admin' ? 'Administrador' : 'Cliente'}
                     </span>
@@ -189,7 +189,7 @@ export default function Account() {
                       <button
                         key={tab.id}
                         onClick={() => setActiveTab(tab.id)}
-                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                        className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                           isActive
                             ? 'bg-red-600/20 text-red-400 border border-red-600/30'
                             : 'text-white hover:bg-primary-700 hover:text-white hover:border-red-600/30'
@@ -203,10 +203,10 @@ export default function Account() {
                   })}
                 </nav>
 
-                <div className="mt-6 pt-6 border-t border-dark-border">
+                <div className="mt-5 pt-5 border-t border-dark-border">
                   <button
                     onClick={handleLogout}
-                    className="w-full flex items-center gap-3 px-4 py-3 text-white hover:text-red-400 hover:bg-red-600/10 rounded-xl transition-colors"
+                    className="w-full flex items-center gap-3 px-3 py-2.5 text-white hover:text-red-400 hover:bg-red-600/10 rounded-xl transition-colors"
                   >
                     <LogOut className="w-5 h-5" />
                     Cerrar sesión
@@ -220,11 +220,11 @@ export default function Account() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8"
+                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
                 >
-                  <h2 className="font-display font-semibold text-xl text-white mb-6">Información personal</h2>
-                  <form onSubmit={handleProfileSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <h2 className="font-display font-semibold text-xl text-white mb-5">Información personal</h2>
+                  <form onSubmit={handleProfileSubmit} className="space-y-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label htmlFor="firstName" className="label">Nombre *</label>
                         <input
@@ -286,7 +286,7 @@ export default function Account() {
                         placeholder="Calle, número, piso, departamento"
                       />
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label htmlFor="city" className="label">Ciudad</label>
                         <input
@@ -321,24 +321,24 @@ export default function Account() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8"
+                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
                 >
-                  <h2 className="font-display font-semibold text-xl text-white mb-6">Historial de pedidos</h2>
+                  <h2 className="font-display font-semibold text-xl text-white mb-5">Historial de pedidos</h2>
                   {ordersLoading ? (
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                       {[...Array(3)].map((_, i) => (
-                        <motion.div key={i} className="skeleton h-24 rounded-xl" />
+                        <motion.div key={i} className="skeleton h-20 rounded-xl" />
                       ))}
                     </div>
                   ) : orders.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center py-16 text-center">
-                      <Package className="w-16 h-16 text-primary-600 mb-4" />
+                    <div className="flex flex-col items-center justify-center py-12 text-center">
+                      <Package className="w-14 h-14 text-primary-600 mb-4" />
                       <h3 className="font-display font-semibold text-xl text-white mb-2">No tienes pedidos aún</h3>
-                      <p className="text-white mb-6">Tu historial de compras aparecerá aquí</p>
-                      <Link to="/tienda" className="btn-primary">Explorar productos</Link>
+                      <p className="text-white mb-5">Tu historial de compras aparecerá aquí</p>
+                      <Link to="/tienda" className="btn-primary w-full sm:w-auto">Explorar productos</Link>
                     </div>
                   ) : (
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                       {orders.map(order => {
                         const statusConfig = getStatusConfig(order.status)
                         const paymentConfig = getPaymentStatusConfig(order.payment_status)
@@ -348,25 +348,25 @@ export default function Account() {
                             to={`/cuenta/pedido/${order.id}`}
                             className="block p-4 bg-primary-700/50 border border-dark-border rounded-xl hover:border-red-600/50 transition-all"
                           >
-                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                              <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-lg bg-primary-800 flex items-center justify-center">
-                                  <Package className="w-6 h-6 text-red-500" />
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                              <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-lg bg-primary-800 flex items-center justify-center flex-shrink-0">
+                                  <Package className="w-5 h-5 text-red-500" />
                                 </div>
-                                <div>
-                                  <p className="font-medium text-white">Pedido #{order.order_number}</p>
+                                <div className="min-w-0">
+                                  <p className="font-medium text-white truncate">Pedido #{order.order_number}</p>
                                   <p className="text-white text-sm">{formatDate(order.created_at)}</p>
                                 </div>
                               </div>
-                              <div className="flex items-center gap-4 sm:ml-auto">
-                                <span className={`px-3 py-1 rounded-full text-xs font-medium ${statusConfig.bg} ${statusConfig.text} ${statusConfig.border}`}>
+                              <div className="flex flex-wrap items-center gap-2 sm:ml-auto">
+                                <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${statusConfig.bg} ${statusConfig.text} ${statusConfig.border}`}>
                                   {statusConfig.label}
                                 </span>
-                                <span className={`px-3 py-1 rounded-full text-xs font-medium ${paymentConfig.color === 'green' ? 'bg-green-600/20 text-green-400 border border-green-600/30' : paymentConfig.color === 'red' ? 'bg-red-600/20 text-red-400 border border-red-600/30' : 'bg-red-600/20 text-red-400 border border-red-600/30'}`}>
+                                <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${paymentConfig.color === 'green' ? 'bg-green-600/20 text-green-400 border border-green-600/30' : paymentConfig.color === 'red' ? 'bg-red-600/20 text-red-400 border border-red-600/30' : 'bg-red-600/20 text-red-400 border border-red-600/30'}`}>
                                   {paymentConfig.label}
                                 </span>
-                                <span className="font-display font-bold text-lg text-red-400">{formatPrice(order.total)}</span>
-                                <ChevronRight className="w-5 h-5 text-primary-500" />
+                                <span className="font-display font-bold text-lg text-red-400 whitespace-nowrap">{formatPrice(order.total)}</span>
+                                <ChevronRight className="w-4 h-4 text-primary-500 flex-shrink-0" />
                               </div>
                             </div>
                           </Link>
@@ -381,14 +381,14 @@ export default function Account() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8"
+                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
                 >
-                  <h2 className="font-display font-semibold text-xl text-white mb-6">Direcciones guardadas</h2>
-                  <p className="text-white mb-6">Gestiona tus direcciones de envío para compras más rápidas.</p>
-                  <div className="space-y-4">
+                  <h2 className="font-display font-semibold text-xl text-white mb-5">Direcciones guardadas</h2>
+                  <p className="text-white mb-5">Gestiona tus direcciones de envío para compras más rápidas.</p>
+                  <div className="space-y-3">
                     {(user?.address ? [{ ...formData, isDefault: true }] : []).map((addr, i) => (
                       <div key={i} className="p-4 bg-primary-700/50 border border-dark-border rounded-xl">
-                        <div className="flex items-start justify-between">
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                           <div className="flex-1">
                             <p className="font-medium text-white">{addr.address}</p>
                             <p className="text-white text-sm">{addr.city}, {addr.province}</p>
@@ -401,7 +401,7 @@ export default function Account() {
                       <p className="text-white text-center py-8">No tienes direcciones guardadas</p>
                     )}
                   </div>
-                  <button className="btn-outline mt-6">Agregar dirección</button>
+                  <button className="btn-outline mt-5 w-full sm:w-auto">Agregar dirección</button>
                 </motion.div>
               )}
 
@@ -409,10 +409,10 @@ export default function Account() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8"
+                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
                 >
-                  <h2 className="font-display font-semibold text-xl text-white mb-6">Seguridad</h2>
-                  <form onSubmit={handleSecuritySubmit} className="space-y-6 max-w-md">
+                  <h2 className="font-display font-semibold text-xl text-white mb-5">Seguridad</h2>
+                  <form onSubmit={handleSecuritySubmit} className="space-y-5 max-w-md">
                     <div>
                       <label htmlFor="currentPassword" className="label">Contraseña actual *</label>
                       <input
@@ -462,18 +462,18 @@ export default function Account() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8"
+                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
                 >
-                  <h2 className="font-display font-semibold text-xl text-white mb-6">Notificaciones</h2>
-                  <p className="text-white mb-6">Configura cómo quieres recibir actualizaciones.</p>
-                  <div className="space-y-4">
+                  <h2 className="font-display font-semibold text-xl text-white mb-5">Notificaciones</h2>
+                  <p className="text-white mb-5">Configura cómo quieres recibir actualizaciones.</p>
+                  <div className="space-y-3">
                     {['Pedidos y envíos', 'Ofertas y promociones', 'Novedades y lanzamientos', 'Newsletter semanal'].map((item, i) => (
                       <label key={i} className="flex items-center justify-between p-4 bg-primary-700/50 border border-dark-border rounded-xl cursor-pointer">
-                        <span className="text-white">{item}</span>
+                        <span className="text-white pr-3">{item}</span>
                         <input
                           type="checkbox"
                           defaultChecked={i < 2}
-                          className="w-5 h-5 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                          className="w-5 h-5 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded flex-shrink-0"
                         />
                       </label>
                     ))}

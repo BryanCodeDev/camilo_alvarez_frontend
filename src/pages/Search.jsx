@@ -152,7 +152,7 @@ export default function Search() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" role="list">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6" role="list">
                 {results.map((product, index) => (
                   <motion.div
                     key={product.id}
@@ -169,7 +169,7 @@ export default function Search() {
           )}
 
           {loading && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" role="list" aria-busy="true">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6" role="list" aria-busy="true">
               {[...Array(8)].map((_, i) => (
                 <ProductSkeleton key={i} variant="default" />
               ))}
