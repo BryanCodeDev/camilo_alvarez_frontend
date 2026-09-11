@@ -60,7 +60,7 @@ const trustItems = [
 
 const contactInfo = [
   { icon: MapPin, text: 'Av. Corrientes 1234, CABA, Argentina' },
-  { icon: Phone, text: '+54 11 0000-0000' },
+  { icon: Phone, text: '+57 320 9088777' },
   { icon: Mail, text: 'hola@techstore.com' },
 ]
 

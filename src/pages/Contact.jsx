@@ -8,7 +8,7 @@ const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER
 
 const contactInfo = [
   { icon: Mail, title: 'Email', value: 'hola@techstore.com', desc: 'Respondemos en menos de 24hs' },
-  { icon: Phone, title: 'Teléfono', value: '+54 11 0000-0000', desc: 'Lunes a Viernes 9:00 - 18:00' },
+  { icon: Phone, title: 'Teléfono', value: '+57 320 9088777', desc: 'Lunes a Viernes 9:00 - 18:00' },
   { icon: MapPin, title: 'Showroom', value: 'Av. Corrientes 1234, CABA', desc: 'Visítanos con cita previa' },
   { icon: Clock, title: 'Horarios', value: 'Lun-Vie 9:00-18:00', desc: 'Sábados 10:00-14:00' },
 ]
@@ -200,7 +200,7 @@ export default function Contact() {
                           value={formData.phone}
                           onChange={handleChange}
                           className="input"
-                          placeholder="+54 11 0000 0000"
+                          placeholder="+57 320 9088777"
                         />
                       </div>
                       <div>

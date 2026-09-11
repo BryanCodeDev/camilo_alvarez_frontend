@@ -91,7 +91,7 @@ export default function SEO({
     ],
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+54-11-0000-0000',
+      telephone: '+57-320-9088777',
       contactType: 'customer service',
       availableLanguage: ['Spanish'],
     },

@@ -258,7 +258,7 @@ export default function Checkout() {
                         onChange={handleInputChange}
                         className={`input ${errors.phone ? 'border-red-500' : ''}`}
                         required
-                        placeholder="+54 11 0000 0000"
+                        placeholder="+57 320 9088777"
                       />
                       {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
                     </div>
