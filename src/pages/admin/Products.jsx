@@ -151,7 +151,7 @@ export default function AdminProducts() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Buscar por nombre, SKU o slug..."
-                className="w-full pl-12 pr-4 py-3 bg-primary-700 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                className="w-full pl-12 pr-4 py-3 bg-primary-700 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500"
               />
             </div>
             <select
@@ -230,7 +230,7 @@ export default function AdminProducts() {
                         <td className="py-4 px-6 text-white">{product.category_name || 'Sin categoría'}</td>
                         <td className="py-4 px-6">
                           <div>
-                            <p className="font-medium text-red-400">{formatPrice(product.price)}</p>
+                            <p className="font-medium text-gold-400">{formatPrice(product.price)}</p>
                             {product.original_price && product.original_price > product.price && (
                               <p className="text-white text-xs line-through">{formatPrice(product.original_price)}</p>
                             )}
@@ -251,7 +251,7 @@ export default function AdminProducts() {
                               {product.is_active ? 'Activo' : 'Inactivo'}
                             </span>
                             {product.is_featured && (
-                              <span className="px-2 py-1 rounded-full text-xs font-medium bg-red-600/20 text-red-400 border border-red-600/30">
+                              <span className="px-2 py-1 rounded-full text-xs font-medium bg-gold-600/20 text-gold-400 border border-gold-600/30">
                                 Destacado
                               </span>
                             )}
@@ -259,19 +259,19 @@ export default function AdminProducts() {
                         </td>
                         <td className="py-4 px-6 whitespace-nowrap">
                           <div className="flex items-center justify-end gap-2">
-                            <Link to={`/admin/productos/${product.id}/editar`} className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Editar ${product.name}`}>
+                            <Link to={`/admin/productos/${product.id}/editar`} className="min-h-10 min-w-10 p-2 text-white hover:text-gold-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Editar ${product.name}`}>
                               <Edit className="w-5 h-5" />
                             </Link>
-                            <Link to={`/producto/${product.slug}`} target="_blank" className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Ver ${product.name}`}>
+                            <Link to={`/producto/${product.slug}`} target="_blank" className="min-h-10 min-w-10 p-2 text-white hover:text-gold-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Ver ${product.name}`}>
                               <Eye className="w-5 h-5" />
                             </Link>
-                            <button onClick={() => handleDuplicate(product.id)} className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Duplicar ${product.name}`}>
+                            <button onClick={() => handleDuplicate(product.id)} className="min-h-10 min-w-10 p-2 text-white hover:text-gold-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Duplicar ${product.name}`}>
                               <Copy className="w-5 h-5" />
                             </button>
-                            <button onClick={() => handleToggleFeatured(product.id)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${product.is_featured ? 'text-red-400 hover:bg-red-600/10' : 'text-white hover:text-red-400 hover:bg-primary-700'}`} aria-label={`Marcar como destacado ${product.name}`}>
+                            <button onClick={() => handleToggleFeatured(product.id)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${product.is_featured ? 'text-gold-400 hover:bg-gold-600/10' : 'text-white hover:text-gold-400 hover:bg-primary-700'}`} aria-label={`Marcar como destacado ${product.name}`}>
                               <Package className="w-5 h-5" />
                             </button>
-                            <button onClick={() => handleToggleStatus(product.id)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${product.is_active ? 'text-white hover:text-red-400 hover:bg-red-600/10' : 'text-white hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${product.is_active ? 'Desactivar' : 'Activar'} ${product.name}`}>
+                            <button onClick={() => handleToggleStatus(product.id)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${product.is_active ? 'text-white hover:text-gold-400 hover:bg-gold-600/10' : 'text-white hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${product.is_active ? 'Desactivar' : 'Activar'} ${product.name}`}>
                               {product.is_active ? <Trash2 className="w-5 h-5" /> : <Package className="w-5 h-5" />}
                             </button>
                             <button onClick={() => handleDelete(product.id, product.name)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${deleteConfirm === product.id ? 'text-red-400 bg-red-600/10' : 'text-white hover:text-red-400 hover:bg-red-600/10'}`} aria-label={`Eliminar ${product.name}`}>
@@ -297,7 +297,7 @@ export default function AdminProducts() {
                 else if (currentPage >= totalPages - 2) pageNum = totalPages - 4 + i
                 else pageNum = currentPage - 2 + i
                 return (
-                  <button key={pageNum} onClick={() => setCurrentPage(pageNum)} className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-red-600 text-white' : 'bg-primary-700 text-white hover:bg-primary-600 hover:text-white border border-dark-border'}`}>
+                  <button key={pageNum} onClick={() => setCurrentPage(pageNum)} className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-gold-600 text-primary-900' : 'bg-primary-700 text-white hover:bg-primary-600 hover:text-white border border-dark-border'}`}>
                     {pageNum}
                   </button>
                 )

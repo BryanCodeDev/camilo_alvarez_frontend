@@ -49,18 +49,19 @@ export default function AdminLayout() {
         initial={{ x: -280 }}
         animate={{ x: isMobile ? (sidebarOpen ? 0 : -280) : 0 }}
         transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-        className="fixed lg:static z-50 w-72 bg-primary-800 border-r border-dark-border flex flex-col h-screen transition-transform duration-300"
+        className="fixed lg:static z-50 w-72 bg-primary-800 border-r border-dark-border flex flex-col h-screen lg:h-full transition-transform duration-300"
+        style={{ overflow: 'hidden' }}
       >
-        <div className="p-6 border-b border-dark-border">
+        <div className="p-6 border-b border-dark-border flex-shrink-0">
           <Link to="/admin" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-600 to-gold-400 flex items-center justify-center">
               <Box className="w-6 h-6 text-primary-900" />
             </div>
             <span className="font-display font-bold text-xl text-white">TechStore Admin</span>
           </Link>
         </div>
 
-        <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
+        <nav className="flex-1 p-4 space-y-1 overflow-y-auto min-h-0" style={{ overflowY: 'auto' }}>
           {adminNavItems.map(item => {
             const Icon = item.icon
             const isActive = location.pathname === item.path || (item.path !== '/admin' && location.pathname.startsWith(item.path))
@@ -70,8 +71,8 @@ export default function AdminLayout() {
                 to={item.path}
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                   isActive
-                    ? 'bg-red-600/20 text-red-400 border border-red-600/30'
-                    : 'text-white hover:bg-primary-700 hover:text-white hover:border-red-600/30'
+                    ? 'bg-gold-600/20 text-gold-400 border border-gold-600/30'
+                    : 'text-white hover:bg-primary-700 hover:text-white hover:border-gold-600/30'
                 }`}
                 onClick={() => setSidebarOpen(false)}
               >
@@ -82,9 +83,9 @@ export default function AdminLayout() {
           })}
         </nav>
 
-        <div className="p-4 border-t border-dark-border">
+        <div className="p-4 border-t border-dark-border flex-shrink-0">
           <div className="flex items-center gap-3 px-4 py-3 text-sm text-white">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center text-white font-medium">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gold-600 to-gold-400 flex items-center justify-center text-white font-medium">
               {user?.name?.charAt(0).toUpperCase()}
             </div>
             <div className="flex-1 min-w-0">
@@ -94,7 +95,7 @@ export default function AdminLayout() {
           </div>
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-white hover:text-red-400 hover:bg-primary-700 rounded-xl transition-colors mt-2"
+            className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-white hover:text-gold-400 hover:bg-primary-700 rounded-xl transition-colors mt-2"
           >
             <LogOut className="w-5 h-5" aria-hidden="true" />
             Cerrar sesión

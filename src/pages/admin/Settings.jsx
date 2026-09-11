@@ -86,7 +86,7 @@ export default function AdminSettings() {
   if (loading) {
     return (
       <div className="min-h-screen bg-primary-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-red-600 border-t-transparent" />
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-gold-600 border-t-transparent" />
       </div>
     )
   }
@@ -120,7 +120,7 @@ export default function AdminSettings() {
             <div className="lg:col-span-2 space-y-8">
               <section className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8">
                 <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
-                  <Globe className="w-6 h-6 text-red-500" />
+                  <Globe className="w-6 h-6 text-gold-500" />
                   Información general
                 </h2>
                 <div className="space-y-6">
@@ -181,7 +181,7 @@ export default function AdminSettings() {
 
               <section className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8">
                 <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
-                  <MessageSquare className="w-6 h-6 text-red-500" />
+                  <MessageSquare className="w-6 h-6 text-gold-500" />
                   WhatsApp y atención
                 </h2>
                 <div className="space-y-6">
@@ -203,7 +203,7 @@ export default function AdminSettings() {
 
               <section className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8">
                 <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
-                  <DollarSign className="w-6 h-6 text-red-500" />
+                  <DollarSign className="w-6 h-6 text-gold-500" />
                   Envíos y pagos
                 </h2>
                 <div className="space-y-6">
@@ -228,7 +228,7 @@ export default function AdminSettings() {
                       name="mercadopago_enabled"
                       checked={settings.mercadopago_enabled}
                       onChange={handleChange}
-                      className="w-5 h-5 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                      className="w-5 h-5 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
                     />
                     <span className="text-white font-medium">Habilitar Mercado Pago como método de pago</span>
                   </label>
@@ -237,7 +237,7 @@ export default function AdminSettings() {
 
               <section className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8">
                 <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
-                  <Shield className="w-6 h-6 text-red-500" />
+                  <Shield className="w-6 h-6 text-gold-500" />
                   Mantenimiento
                 </h2>
                 <div className="space-y-6">
@@ -247,7 +247,7 @@ export default function AdminSettings() {
                       name="maintenance_mode"
                       checked={settings.maintenance_mode}
                       onChange={handleChange}
-                      className="w-5 h-5 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                      className="w-5 h-5 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
                     />
                     <span className="text-white font-medium">Modo mantenimiento</span>
                   </label>
@@ -259,7 +259,7 @@ export default function AdminSettings() {
             <div className="space-y-8">
               <section className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8">
                 <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
-                  <ImageIcon className="w-6 h-6 text-red-500" />
+                  <ImageIcon className="w-6 h-6 text-gold-500" />
                   Branding
                 </h2>
                 <div className="space-y-4">
@@ -273,7 +273,7 @@ export default function AdminSettings() {
                         <ImageIcon className="w-10 h-10 text-primary-500" />
                       </div>
                     )}
-                    <label className="flex-1 border-2 border-dashed border-dark-border hover:border-red-600/50 rounded-xl p-4 text-center cursor-pointer transition-colors">
+                    <label className="flex-1 border-2 border-dashed border-dark-border hover:border-gold-600/50 rounded-xl p-4 text-center cursor-pointer transition-colors">
                       <Upload className="w-8 h-8 text-primary-500 mx-auto mb-2" />
                       <p className="text-white text-sm font-medium">Subir logo</p>
                       <p className="text-white text-xs">PNG, JPG, SVG</p>
@@ -286,14 +286,14 @@ export default function AdminSettings() {
 
               <section className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 lg:p-8">
                 <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
-                  <Bell className="w-6 h-6 text-red-500" />
+                  <Bell className="w-6 h-6 text-gold-500" />
                   Notificaciones
                 </h2>
                 <div className="space-y-3">
                   {['Nuevos pedidos', 'Pedidos pagados', 'Stock bajo', 'Usuarios registrados', 'Errores del sistema'].map((item, index) => (
                     <label key={item} className="flex items-center justify-between p-3 bg-primary-700/50 border border-dark-border rounded-xl cursor-pointer">
                       <span className="text-white">{item}</span>
-                      <input type="checkbox" defaultChecked={index < 4} className="w-5 h-5 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded" />
+                      <input type="checkbox" defaultChecked={index < 4} className="w-5 h-5 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded" />
                     </label>
                   ))}
                 </div>

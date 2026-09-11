@@ -225,7 +225,7 @@ export default function AdminProductForm() {
   if (loading) {
     return (
       <div className="min-h-screen bg-primary-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-red-600 border-t-transparent" />
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-gold-600 border-t-transparent" />
       </div>
     )
   }
@@ -247,7 +247,7 @@ export default function AdminProductForm() {
         >
           <div>
             <div className="flex items-center gap-2 text-white mb-2">
-              <Link to="/admin/productos" className="min-h-10 min-w-10 inline-flex items-center justify-center hover:text-red-400 transition-colors" aria-label="Volver a productos">
+              <Link to="/admin/productos" className="min-h-10 min-w-10 inline-flex items-center justify-center hover:text-gold-400 transition-colors" aria-label="Volver a productos">
                 <ArrowLeft className="w-5 h-5" />
               </Link>
               <span>Productos</span>
@@ -283,7 +283,7 @@ export default function AdminProductForm() {
                 className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
                 <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
-                  <Sparkles className="w-6 h-6 text-red-500" />
+                  <Sparkles className="w-6 h-6 text-gold-500" />
                   Información básica
                 </h2>
                 <div className="space-y-6">
@@ -388,7 +388,7 @@ export default function AdminProductForm() {
                 className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
                 <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
-                  <Tag className="w-6 h-6 text-red-500" />
+                  <Tag className="w-6 h-6 text-gold-500" />
                   Precio e inventario
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 min-w-0">
@@ -461,7 +461,7 @@ export default function AdminProductForm() {
                         name="isOnSale"
                         checked={form.isOnSale}
                         onChange={handleChange}
-                        className="w-5 h-5 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                        className="w-5 h-5 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
                       />
                       <span className="text-white font-medium">Producto en oferta</span>
                     </label>
@@ -476,7 +476,7 @@ export default function AdminProductForm() {
                 className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
                 <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
-                  <Layers className="w-6 h-6 text-red-500" />
+                  <Layers className="w-6 h-6 text-gold-500" />
                   Características y especificaciones
                 </h2>
                   <div className="space-y-8 min-w-0">
@@ -512,7 +512,7 @@ export default function AdminProductForm() {
                       {form.features.map((feature, index) => (
                         <span key={index} className="inline-flex min-w-0 max-w-full items-center gap-2 px-3 py-2 bg-primary-700 border border-dark-border rounded-full text-sm text-white">
                           <span className="truncate">{feature}</span>
-                          <button type="button" onClick={() => removeFeature(index)} className="min-h-8 min-w-8 text-white hover:text-red-400 transition-colors flex-shrink-0" aria-label={`Eliminar ${feature}`}>
+                          <button type="button" onClick={() => removeFeature(index)} className="min-h-8 min-w-8 text-white hover:text-gold-400 transition-colors flex-shrink-0" aria-label={`Eliminar ${feature}`}>
                             <X className="w-4 h-4" />
                           </button>
                         </span>
@@ -551,7 +551,7 @@ export default function AdminProductForm() {
                             <p className="font-medium text-white truncate">{key}</p>
                             <p className="text-white text-sm truncate">{value}</p>
                           </div>
-                          <button type="button" onClick={() => removeSpecification(key)} className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 transition-colors flex-shrink-0" aria-label={`Eliminar ${key}`}>
+                          <button type="button" onClick={() => removeSpecification(key)} className="min-h-10 min-w-10 p-2 text-white hover:text-gold-400 transition-colors flex-shrink-0" aria-label={`Eliminar ${key}`}>
                             <X className="w-5 h-5" />
                           </button>
                         </div>
@@ -568,7 +568,7 @@ export default function AdminProductForm() {
                 className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
                 <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
-                  <Tag className="w-6 h-6 text-red-500" />
+                  <Tag className="w-6 h-6 text-gold-500" />
                   SEO
                 </h2>
                 <div className="space-y-6">
@@ -611,7 +611,7 @@ export default function AdminProductForm() {
                 className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
                 <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
-                  <Tag className="w-6 h-6 text-red-500" />
+                  <Tag className="w-6 h-6 text-gold-500" />
                   Categoría y estado
                 </h2>
                 <div className="space-y-6">
@@ -639,7 +639,7 @@ export default function AdminProductForm() {
                         name="isActive"
                         checked={form.isActive}
                         onChange={handleChange}
-                        className="w-5 h-5 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                        className="w-5 h-5 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
                       />
                       <span className="text-white font-medium">Producto activo</span>
                     </label>
@@ -649,7 +649,7 @@ export default function AdminProductForm() {
                         name="isFeatured"
                         checked={form.isFeatured}
                         onChange={handleChange}
-                        className="w-5 h-5 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                        className="w-5 h-5 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
                       />
                       <span className="text-white font-medium">Destacado en home</span>
                     </label>
@@ -659,7 +659,7 @@ export default function AdminProductForm() {
                         name="isNew"
                         checked={form.isNew}
                         onChange={handleChange}
-                        className="w-5 h-5 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                        className="w-5 h-5 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
                       />
                       <span className="text-white font-medium">Nuevo ingreso</span>
                     </label>
@@ -669,7 +669,7 @@ export default function AdminProductForm() {
                         name="isOnSale"
                         checked={form.isOnSale}
                         onChange={handleChange}
-                        className="w-5 h-5 text-red-600 border-dark-border bg-primary-700 focus:ring-red-500 rounded"
+                        className="w-5 h-5 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
                       />
                       <span className="text-white font-medium">En oferta</span>
                     </label>
@@ -684,11 +684,11 @@ export default function AdminProductForm() {
                 className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
                 <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
-                  <ImageIcon className="w-6 h-6 text-red-500" />
+                  <ImageIcon className="w-6 h-6 text-gold-500" />
                   Imágenes
                 </h2>
                 <div className="space-y-4">
-                  <label className="block w-full border-2 border-dashed border-dark-border hover:border-red-600/50 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-colors">
+                  <label className="block w-full border-2 border-dashed border-dark-border hover:border-gold-600/50 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-colors">
                     <Upload className="w-8 h-8 text-primary-500 mx-auto mb-3" />
                     <p className="text-white font-medium mb-1">Subir imágenes</p>
                     <p className="text-white text-sm">PNG, JPG, WebP · Máx 10MB cada una</p>
@@ -700,13 +700,13 @@ export default function AdminProductForm() {
                       <div key={index} className="relative aspect-square rounded-xl overflow-hidden bg-primary-700 border border-dark-border group">
                         <img src={preview} alt={`Vista previa ${index + 1}`} className="w-full h-full object-cover" />
                         {index === 0 && (
-                          <span className="absolute top-2 left-2 px-2 py-1 bg-red-600 text-white text-xs font-bold rounded-full">Principal</span>
+                          <span className="absolute top-2 left-2 px-2 py-1 bg-gold-600 text-primary-900 text-xs font-bold rounded-full">Principal</span>
                         )}
                         <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-                          <button type="button" onClick={() => setMainImage(index)} className="min-h-10 min-w-10 p-2 bg-primary-800 hover:bg-red-600 rounded-lg transition-colors" aria-label="Establecer como principal">
+                          <button type="button" onClick={() => setMainImage(index)} className="min-h-10 min-w-10 p-2 bg-primary-800 hover:bg-gold-600 rounded-lg transition-colors" aria-label="Establecer como principal">
                             <Sparkles className="w-5 h-5 text-primary-500" />
                           </button>
-                          <button type="button" onClick={() => removeImage(index)} className="min-h-10 min-w-10 p-2 bg-primary-800 hover:bg-red-600 rounded-lg transition-colors" aria-label={`Eliminar imagen ${index + 1}`}>
+                          <button type="button" onClick={() => removeImage(index)} className="min-h-10 min-w-10 p-2 bg-primary-800 hover:bg-gold-600 rounded-lg transition-colors" aria-label={`Eliminar imagen ${index + 1}`}>
                             <Trash2 className="w-5 h-5 text-primary-500" />
                           </button>
                         </div>

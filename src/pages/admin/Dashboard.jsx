@@ -48,20 +48,20 @@ export default function AdminDashboard() {
   if (loading) {
     return (
       <div className="min-h-screen bg-primary-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-red-600 border-t-transparent" />
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-gold-600 border-t-transparent" />
       </div>
     )
   }
 
   const statCards = [
-    { label: 'Ventas totales', value: stats.totalSales, icon: DollarSign, color: 'red', format: 'money' },
-    { label: 'Ventas de hoy', value: stats.todaySales, icon: TrendingUp, color: 'green', format: 'money' },
-    { label: 'Ventas del mes', value: stats.monthSales, icon: ShoppingCart, color: 'blue', format: 'money' },
-    { label: 'Pedidos totales', value: stats.totalOrders, icon: Package, color: 'purple', format: 'number' },
-    { label: 'Pedidos pendientes', value: stats.pendingOrders, icon: Clock, color: 'red', format: 'number' },
-    { label: 'Productos', value: stats.totalProducts, icon: Package, color: 'red', format: 'number' },
-    { label: 'Usuarios', value: stats.totalUsers, icon: Users, color: 'blue', format: 'number' },
-    { label: 'Stock bajo', value: stats.lowStockCount, icon: AlertTriangle, color: 'red', format: 'number' },
+    { label: 'Ventas totales', value: stats.totalSales, icon: DollarSign, color: 'gold', format: 'money' },
+    { label: 'Ventas de hoy', value: stats.todaySales, icon: TrendingUp, color: 'gold', format: 'money' },
+    { label: 'Ventas del mes', value: stats.monthSales, icon: ShoppingCart, color: 'gold', format: 'money' },
+    { label: 'Pedidos totales', value: stats.totalOrders, icon: Package, color: 'gold', format: 'number' },
+    { label: 'Pedidos pendientes', value: stats.pendingOrders, icon: Clock, color: 'gold', format: 'number' },
+    { label: 'Productos', value: stats.totalProducts, icon: Package, color: 'gold', format: 'number' },
+    { label: 'Usuarios', value: stats.totalUsers, icon: Users, color: 'gold', format: 'number' },
+    { label: 'Stock bajo', value: stats.lowStockCount, icon: AlertTriangle, color: 'gold', format: 'number' },
   ]
 
   const salesData = salesChart?.labels?.map((label, index) => ({
@@ -106,10 +106,7 @@ export default function AdminDashboard() {
             const Icon = card.icon
             const value = card.format === 'money' ? formatPrice(card.value) : card.value
             const colorClasses = {
-              red: 'bg-red-600/20 text-red-400 border-red-600/30',
-              green: 'bg-green-600/20 text-green-400 border-green-600/30',
-              blue: 'bg-blue-600/20 text-blue-400 border-blue-600/30',
-              purple: 'bg-purple-600/20 text-purple-400 border-purple-600/30',
+              gold: 'bg-gold-600/20 text-gold-400 border-gold-600/30',
             }
             return (
               <motion.div
@@ -117,13 +114,13 @@ export default function AdminDashboard() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="min-w-0 p-4 sm:p-6 bg-primary-800/50 border border-dark-border rounded-2xl hover:border-red-600/50 hover:shadow-red transition-all duration-300"
+                className="min-w-0 p-4 sm:p-6 bg-primary-800/50 border border-dark-border rounded-2xl hover:border-gold-600/50 hover:shadow-gold transition-all duration-300"
               >
                 <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center ${colorClasses[card.color]}`}>
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center ${colorClasses.gold}`}>
                     <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
-                  <span className={`min-w-0 text-xs font-medium px-2 py-1 rounded-full ${colorClasses[card.color]}`}>
+                  <span className={`min-w-0 text-xs font-medium px-2 py-1 rounded-full ${colorClasses.gold}`}>
                     {card.label}
                   </span>
                 </div>
@@ -236,22 +233,22 @@ export default function AdminDashboard() {
           >
             <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
               <h2 className="font-display font-semibold text-xl text-white">Productos más vendidos</h2>
-              <Link to="/admin/productos" className="text-red-400 hover:text-red-300 text-sm font-medium transition-colors">Ver todos</Link>
+              <Link to="/admin/productos" className="text-gold-400 hover:text-gold-300 text-sm font-medium transition-colors">Ver todos</Link>
             </div>
             <div className="space-y-4">
               {topProducts.length === 0 ? (
                 <p className="text-white text-center py-8">No hay productos vendidos aún</p>
               ) : topProducts.slice(0, 5).map((product, index) => (
                 <div key={product.id} className="flex flex-wrap items-center gap-3 p-3 bg-primary-700/50 rounded-xl border border-dark-border">
-                  <div className="w-10 h-10 rounded-lg bg-primary-800 flex items-center justify-center text-red-400 font-bold flex-shrink-0">
-                    {index + 1}
-                  </div>
+<div className="w-10 h-10 rounded-lg bg-primary-800 flex items-center justify-center text-gold-400 font-bold flex-shrink-0">
+                      {index + 1}
+                    </div>
                   <img src={product.image || '/assets/images/producto1.webp'} alt={product.name} className="w-12 h-12 rounded-lg object-cover flex-shrink-0" />
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-white truncate">{product.name}</p>
                     <p className="text-white text-sm">{product.total_sold} vendidos</p>
                   </div>
-                  <span className="flex-shrink-0 font-display font-bold text-red-400 text-sm sm:text-base">{formatPrice(product.revenue)}</span>
+                  <span className="flex-shrink-0 font-display font-bold text-gold-400 text-sm sm:text-base">{formatPrice(product.revenue)}</span>
                 </div>
               ))}
             </div>
@@ -266,7 +263,7 @@ export default function AdminDashboard() {
         >
           <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
             <h2 className="font-display font-semibold text-xl text-white">Alertas de stock bajo</h2>
-            <Link to="/admin/productos?filter=low-stock" className="text-red-400 hover:text-red-300 text-sm font-medium transition-colors">Ver inventario</Link>
+            <Link to="/admin/productos?filter=low-stock" className="text-gold-400 hover:text-gold-300 text-sm font-medium transition-colors">Ver inventario</Link>
           </div>
           {lowStock.length === 0 ? (
             <div className="flex flex-wrap items-center gap-3 text-green-500">
@@ -293,9 +290,9 @@ export default function AdminDashboard() {
                       <td className="py-3 pr-4 text-white">{product.sku}</td>
                       <td className={`py-3 pr-4 font-medium ${product.stock <= product.min_stock ? 'text-red-400' : 'text-white'}`}>{product.stock}</td>
                       <td className="py-3 pr-4 text-white">{product.min_stock}</td>
-                      <td className="py-3 pr-4 text-red-400">{formatPrice(product.price)}</td>
+                      <td className="py-3 pr-4 text-gold-400">{formatPrice(product.price)}</td>
                       <td className="py-3 pr-4">
-                        <span className="px-2 py-1 rounded-full text-xs font-medium bg-red-600/20 text-red-400 border border-red-600/30">Bajo</span>
+                        <span className="px-2 py-1 rounded-full text-xs font-medium bg-gold-600/20 text-gold-400 border border-gold-600/30">Bajo</span>
                       </td>
                     </tr>
                   ))}

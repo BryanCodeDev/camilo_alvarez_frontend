@@ -165,7 +165,7 @@ export default function AdminCategories() {
           >
             <div className="flex flex-wrap items-center justify-between gap-3 mb-6 min-w-0">
               <h2 className="font-display font-semibold text-lg sm:text-xl text-white min-w-0">{editingId ? 'Editar categoría' : 'Nueva categoría'}</h2>
-              <button onClick={closeForm} className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 transition-colors flex-shrink-0" aria-label="Cerrar formulario">
+              <button onClick={closeForm} className="min-h-10 min-w-10 p-2 text-white hover:text-gold-400 transition-colors flex-shrink-0" aria-label="Cerrar formulario">
                 <Trash2 className="w-5 h-5" />
               </button>
             </div>
@@ -222,7 +222,7 @@ export default function AdminCategories() {
                       <img src={preview} alt="Vista previa" className="w-full h-full object-cover" />
                     </div>
                   )}
-                  <label className="flex-1 min-w-0 border-2 border-dashed border-dark-border hover:border-red-600/50 rounded-xl p-4 text-center cursor-pointer transition-colors">
+                  <label className="flex-1 min-w-0 border-2 border-dashed border-dark-border hover:border-gold-600/50 rounded-xl p-4 text-center cursor-pointer transition-colors">
                     <ImageIcon className="w-8 h-8 text-primary-500 mx-auto mb-2" />
                     <p className="text-white text-sm font-medium">Subir imagen</p>
                     <p className="text-white text-xs">PNG, JPG, WebP</p>
@@ -331,13 +331,13 @@ export default function AdminCategories() {
                       </td>
                       <td className="py-4 px-6">
                         <div className="flex items-center justify-end gap-2">
-                          <Link to={`/categoria/${category.slug}`} target="_blank" className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Ver ${category.name}`}>
+                          <Link to={`/categoria/${category.slug}`} target="_blank" className="min-h-10 min-w-10 p-2 text-white hover:text-gold-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Ver ${category.name}`}>
                             <Eye className="w-5 h-5" />
                           </Link>
-                          <button onClick={() => openForm(category)} className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Editar ${category.name}`}>
+                          <button onClick={() => openForm(category)} className="min-h-10 min-w-10 p-2 text-white hover:text-gold-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Editar ${category.name}`}>
                             <Edit className="w-5 h-5" />
                           </button>
-                          <button onClick={() => handleToggleStatus(category.id)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${category.is_active ? 'text-white hover:text-red-400 hover:bg-red-600/10' : 'text-white hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${category.is_active ? 'Desactivar' : 'Activar'} ${category.name}`}>
+                          <button onClick={() => handleToggleStatus(category.id)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${category.is_active ? 'text-white hover:text-gold-400 hover:bg-gold-600/10' : 'text-white hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${category.is_active ? 'Desactivar' : 'Activar'} ${category.name}`}>
                             {category.is_active ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                           </button>
                           <button onClick={() => handleDelete(category.id)} className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 hover:bg-red-600/10 rounded-lg transition-colors" aria-label={`Eliminar ${category.name}`}>

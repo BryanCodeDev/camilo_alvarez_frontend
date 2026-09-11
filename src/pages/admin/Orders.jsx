@@ -129,8 +129,8 @@ export default function AdminOrders() {
                 onClick={() => { setStatus(s.value); setCurrentPage(1) }}
                 className={`px-4 py-2 rounded-full text-sm font-medium border transition-all ${
                   status === s.value
-                    ? 'bg-red-600/20 text-red-400 border-red-600/50'
-                    : 'bg-primary-800 border-dark-border text-white hover:border-red-600/50 hover:text-white'
+                    ? 'bg-gold-600/20 text-gold-400 border-gold-600/50'
+                    : 'bg-primary-800 border-dark-border text-white hover:border-gold-600/50 hover:text-white'
                 }`}
               >
                 {s.label}
@@ -153,7 +153,7 @@ export default function AdminOrders() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Buscar por número, cliente o email..."
-                className="w-full pl-12 pr-4 py-3 bg-primary-700 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                className="w-full pl-12 pr-4 py-3 bg-primary-700 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500"
               />
             </div>
             <select
@@ -233,7 +233,7 @@ export default function AdminOrders() {
                           </div>
                         </td>
                         <td className="py-4 px-6 text-white whitespace-nowrap">{formatDate(order.created_at)}</td>
-                        <td className="py-4 px-6 font-display font-bold text-red-400">{formatPrice(order.total)}</td>
+                        <td className="py-4 px-6 font-display font-bold text-gold-400">{formatPrice(order.total)}</td>
                         <td className="py-4 px-6">
                           <span className={`px-2 py-1 rounded-full text-xs font-medium ${paymentStatus.color === 'green' ? 'bg-green-600/20 text-green-400 border border-green-600/30' : paymentStatus.color === 'red' ? 'bg-red-600/20 text-red-400 border border-red-600/30' : 'bg-red-600/20 text-red-400 border border-red-600/30'}`}>
                             {paymentStatus.label}
@@ -246,7 +246,7 @@ export default function AdminOrders() {
                         </td>
                         <td className="py-4 px-6">
                           <div className="flex items-center justify-end gap-2">
-                            <button onClick={() => openStatusModal(order)} className="p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Gestionar ${order.order_number}`}>
+                            <button onClick={() => openStatusModal(order)} className="p-2 text-white hover:text-gold-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Gestionar ${order.order_number}`}>
                               <Eye className="w-5 h-5" />
                             </button>
                           </div>
@@ -269,7 +269,7 @@ export default function AdminOrders() {
                 else if (currentPage >= totalPages - 2) pageNum = totalPages - 4 + i
                 else pageNum = currentPage - 2 + i
                 return (
-                  <button key={pageNum} onClick={() => setCurrentPage(pageNum)} className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-red-600 text-white' : 'bg-primary-700 text-white hover:bg-primary-600 hover:text-white border border-dark-border'}`}>
+                  <button key={pageNum} onClick={() => setCurrentPage(pageNum)} className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-gold-600 text-primary-900' : 'bg-primary-700 text-white hover:bg-primary-600 hover:text-white border border-dark-border'}`}>
                     {pageNum}
                   </button>
                 )
@@ -296,7 +296,7 @@ export default function AdminOrders() {
                 <h2 className="font-display font-bold text-2xl text-white">Pedido #{selectedOrder.order_number}</h2>
                 <p className="text-white text-sm">{formatDateTime(selectedOrder.created_at)}</p>
               </div>
-              <button onClick={() => setStatusModalOpen(false)} className="p-2 text-white hover:text-red-400 transition-colors" aria-label="Cerrar">
+              <button onClick={() => setStatusModalOpen(false)} className="p-2 text-white hover:text-gold-400 transition-colors" aria-label="Cerrar">
                 <Trash2 className="w-6 h-6" />
               </button>
             </div>
@@ -325,7 +325,7 @@ export default function AdminOrders() {
                         <p className="font-medium text-white">{item.product_name}</p>
                         <p className="text-white text-xs">{item.quantity} × {formatPrice(item.discount_price || item.unit_price)}</p>
                       </div>
-                      <span className="font-display font-bold text-red-400">{formatPrice(item.subtotal)}</span>
+                      <span className="font-display font-bold text-gold-400">{formatPrice(item.subtotal)}</span>
                     </div>
                   ))}
                 </div>
@@ -333,7 +333,7 @@ export default function AdminOrders() {
 
               <div className="flex justify-between text-xl font-bold border-t border-dark-border pt-4">
                 <span className="text-white">Total</span>
-                <span className="text-red-400">{formatPrice(selectedOrder.total)}</span>
+                <span className="text-gold-400">{formatPrice(selectedOrder.total)}</span>
               </div>
 
               <div>

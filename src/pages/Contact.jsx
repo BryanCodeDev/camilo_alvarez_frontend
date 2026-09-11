@@ -12,6 +12,15 @@ const contactInfo = [
   { icon: MapPin, title: 'Zonas de Atención', value: 'Bogotá, Mosquera, Funza, Ibagué, Madrid', desc: 'Envíos a todo Colombia' },
 ]
 
+const serviceZones = [
+  { zone: 'Bogotá', icon: MapPin, desc: 'Atención inmediata y envíos en 24-48 horas. Zona central con cobertura total.' },
+  { zone: 'Mosquera', icon: MapPin, desc: 'Zona metropolitana. Entregas rápidas y asesoramiento 24/7 por WhatsApp.' },
+  { zone: 'Funza', icon: MapPin, desc: 'Atención presencial con cita previa. Envíos a todo el país.' },
+  { zone: 'Ibagué', icon: MapPin, desc: 'Cobertura propia y envíos seguros. Asesoramiento personalizado.' },
+  { zone: 'Madrid', icon: MapPin, desc: 'Zona metropolitana. Entregas en 24-48 horas y atención 24/7.' },
+  { zone: 'Envíos Nacionales', icon: Send, desc: 'Llegamos a cualquier ciudad de Colombia. Envío gratis en compras superiores a $100.000.' },
+]
+
 const faqs = [
   { q: '¿Hacen envíos a todo el país?', a: 'Sí, enviamos a todo Colombia. El envío es gratis en compras superiores a $100.000. Los tiempos de entrega varían según la localidad: 24-48hs en Bogotá/Área Metropolitana, 3-5 días en el interior.' },
   { q: '¿Cuál es la política de devoluciones?', a: 'Tienes 30 días para devolver o cambiar cualquier producto. Debe estar en su estado original, con embalaje y accesorios completos. Los costos de envío de devolución corren por nuestra cuenta si el producto tiene falla de fábrica.' },

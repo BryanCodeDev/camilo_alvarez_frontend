@@ -107,7 +107,7 @@ export default function AdminUsers() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Buscar por nombre, email o teléfono..."
-                className="w-full pl-12 pr-4 py-3 bg-primary-700 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                className="w-full pl-12 pr-4 py-3 bg-primary-700 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500"
               />
             </div>
             <select
@@ -158,7 +158,7 @@ export default function AdminUsers() {
                     >
                       <td className="py-4 px-6">
                         <div className="flex items-center gap-4">
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-600 to-red-400 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold-600 to-gold-400 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                             {user.firstName?.charAt(0)}{user.lastName?.charAt(0)}
                           </div>
                           <div>
@@ -169,7 +169,7 @@ export default function AdminUsers() {
                       </td>
                       <td className="py-4 px-6 text-white truncate max-w-xs">{user.email}</td>
                       <td className="py-4 px-6">
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${user.role === 'admin' ? 'bg-red-600/20 text-red-400 border border-red-600/30' : 'bg-blue-600/20 text-blue-400 border border-blue-600/30'}`}>
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${user.role === 'admin' ? 'bg-gold-600/20 text-gold-400 border border-gold-600/30' : 'bg-blue-600/20 text-blue-400 border border-blue-600/30'}`}>
                           {user.role === 'admin' ? 'Admin' : 'Usuario'}
                         </span>
                       </td>
@@ -181,10 +181,10 @@ export default function AdminUsers() {
                       <td className="py-4 px-6 text-white whitespace-nowrap">{formatDate(user.createdAt)}</td>
                       <td className="py-4 px-6">
                         <div className="flex items-center justify-end gap-2">
-                          <button onClick={() => openUser(user)} className="p-2 text-white hover:text-red-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Ver ${user.email}`}>
+                          <button onClick={() => openUser(user)} className="p-2 text-white hover:text-gold-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Ver ${user.email}`}>
                             <Eye className="w-5 h-5" />
                           </button>
-                          <button onClick={() => handleToggleStatus(user)} className={`p-2 rounded-lg transition-colors ${user.isActive ? 'text-white hover:text-red-400 hover:bg-red-600/10' : 'text-white hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${user.isActive ? 'Desactivar' : 'Activar'} ${user.email}`}>
+                          <button onClick={() => handleToggleStatus(user)} className={`p-2 rounded-lg transition-colors ${user.isActive ? 'text-white hover:text-gold-400 hover:bg-gold-600/10' : 'text-white hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${user.isActive ? 'Desactivar' : 'Activar'} ${user.email}`}>
                             {user.isActive ? <UserX className="w-5 h-5" /> : <UserCheck className="w-5 h-5" />}
                           </button>
                         </div>
@@ -206,7 +206,7 @@ export default function AdminUsers() {
                 else if (currentPage >= totalPages - 2) pageNum = totalPages - 4 + i
                 else pageNum = currentPage - 2 + i
                 return (
-                  <button key={pageNum} onClick={() => setCurrentPage(pageNum)} className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-red-600 text-white' : 'bg-primary-700 text-white hover:bg-primary-600 hover:text-white border border-dark-border'}`}>
+                  <button key={pageNum} onClick={() => setCurrentPage(pageNum)} className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-gold-600 text-primary-900' : 'bg-primary-700 text-white hover:bg-primary-600 hover:text-white border border-dark-border'}`}>
                     {pageNum}
                   </button>
                 )
@@ -256,7 +256,7 @@ export default function AdminUsers() {
                     <option value="user">Usuario</option>
                     <option value="admin">Administrador</option>
                   </select>
-                  {saving && <Loader2 className="w-5 h-5 animate-spin text-red-500" />}
+                  {saving && <Loader2 className="w-5 h-5 animate-spin text-gold-500" />}
                 </div>
               </div>
               <div className="flex justify-end pt-4 border-t border-dark-border">

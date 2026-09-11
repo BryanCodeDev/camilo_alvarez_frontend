@@ -38,13 +38,19 @@ export default function Store() {
 
   const currentPage = parseInt(searchParams.get('page')) || 1
   const sort = searchParams.get('sort') || 'newest'
-  const category = searchParams.get('category')
+  let category = searchParams.get('category')
   const minPrice = searchParams.get('minPrice')
   const maxPrice = searchParams.get('maxPrice')
-  const onSale = searchParams.get('onSale') === 'true'
+  let onSale = searchParams.get('onSale') === 'true'
   const inStock = searchParams.get('inStock') === 'true'
   const brand = searchParams.get('brand')
   const searchQuery = searchParams.get('q')
+
+  // "ofertas" is a virtual category that maps to the on-sale filter
+  if (category === 'ofertas') {
+    category = null
+    onSale = true
+  }
 
   const activeFiltersCount = [
     category,
@@ -54,6 +60,8 @@ export default function Store() {
     inStock,
     brand,
   ].filter(Boolean).length
+
+  const categoryName = category ? (categories.find(c => c.slug === category)?.name || category) : (onSale ? 'Ofertas' : null)
 
   const fetchProducts = useCallback(async () => {
     setLoading(true)
@@ -141,8 +149,8 @@ export default function Store() {
   return (
     <>
       <SEO
-        title={searchQuery ? `Resultados para "${searchQuery}" | TechStore` : category ? `${categories.find(c => c.slug === category)?.name || 'Categoría'} | TechStore` : 'Tienda - TechStore'}
-        description={searchQuery ? `Resultados de búsqueda para "${searchQuery}"` : 'Explora nuestro catálogo completo de productos tecnológicos premium. Filtrá por categoría, precio, marca y más.'}
+        title={searchQuery ? `Resultados para "${searchQuery}" | TechStore` : category ? `${categoryName} | TechStore` : onSale ? `Ofertas | TechStore` : 'Tienda - TechStore'}
+        description={searchQuery ? `Resultados de búsqueda para "${searchQuery}"` : onSale ? 'Todos los productos en oferta y descuento.' : 'Explora nuestro catálogo completo de productos tecnológicos premium. Filtrá por categoría, precio, marca y más.'}
         type="website"
       />
 
@@ -161,7 +169,13 @@ export default function Store() {
               {category && (
                 <>
                   <span>/</span>
-                  <span className="text-white">{categories.find(c => c.slug === category)?.name || category}</span>
+                  <span className="text-white">{categoryName}</span>
+                </>
+              )}
+              {onSale && !category && (
+                <>
+                  <span>/</span>
+                  <span className="text-white">Ofertas</span>
                 </>
               )}
               {searchQuery && (
@@ -172,7 +186,7 @@ export default function Store() {
               )}
             </nav>
             <h1 className="font-display font-bold text-3xl sm:text-4xl text-white">
-              {searchQuery ? `Resultados para "${searchQuery}"` : category ? categories.find(c => c.slug === category)?.name || 'Categoría' : 'Todos los productos'}
+              {searchQuery ? `Resultados para "${searchQuery}"` : category ? categoryName : onSale ? 'Ofertas' : 'Todos los productos'}
             </h1>
             <p className="text-white mt-2">{totalProducts} {totalProducts === 1 ? 'producto' : 'productos'} encontrado{totalProducts !== 1 ? 's' : ''}</p>
           </motion.div>
