@@ -57,7 +57,9 @@ export default function Hero() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-primary-900 mb-6"
           >
-            TECNOLOGÍA QUE{' '}
+            <span className="text-white">
+              TECNOLOGÍA QUE{' '}
+            </span>
             <span className="text-charcoal-600">
               MARCA LA DIFERENCIA
             </span>

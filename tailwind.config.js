@@ -45,7 +45,7 @@ export default {
             900: '#6A591A',
           },
           silver: {
-            50: '#FFFFFFF',
+            50: '#FFFFFF',
             100: '#FAFAFA',
             200: '#F5F5F5',
             300: '#EEEEEE',
