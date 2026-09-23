@@ -29,9 +29,10 @@ export default function Login() {
 
     setLoading(true)
     try {
-      await login(formData.email, formData.password)
+      const data = await login(formData.email, formData.password)
       toast.success('¡Bienvenido de nuevo!')
-      navigate(redirect, { replace: true })
+      const destination = data.user?.role === 'admin' ? '/admin' : redirect
+      navigate(destination, { replace: true })
     } catch (error) {
       console.error('Login error:', error)
       toast.error(error.response?.data?.error || 'Error al iniciar sesión')

@@ -1,7 +1,7 @@
-import { Navigate, useLocation } from 'react-router-dom'
+import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 
-export function ProtectedRoute({ children }) {
+export function ProtectedRoute() {
   const { isAuthenticated, loading } = useAuth()
   const location = useLocation()
 
@@ -17,10 +17,10 @@ export function ProtectedRoute({ children }) {
     return <Navigate to="/login" state={{ from: location }} replace />
   }
 
-  return children
+  return <Outlet />
 }
 
-export function AdminRoute({ children }) {
+export function AdminRoute() {
   const { isAuthenticated, isAdmin, loading } = useAuth()
 
   if (loading) {
@@ -35,5 +35,5 @@ export function AdminRoute({ children }) {
     return <Navigate to="/" replace />
   }
 
-  return children
+  return <Outlet />
 }
