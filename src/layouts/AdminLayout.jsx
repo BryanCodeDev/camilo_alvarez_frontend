@@ -1,6 +1,6 @@
 import { Link, Outlet, NavLink, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import { LayoutDashboard, Package, Tag, ShoppingCart, Users, Settings, LogOut, Box, Home } from 'lucide-react'
+import { LayoutDashboard, Package, Tag, ShoppingCart, Users, Settings, LogOut, Box } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navbar from '../components/layout/Navbar'
@@ -47,7 +47,7 @@ export default function AdminLayout() {
         )}
       </AnimatePresence>
 
-      <aside className="fixed lg:static z-50 w-72 bg-primary-50 border-r border-dark-border flex flex-col h-full transition-transform duration-300 lg:translate-x-0">
+      <aside className="fixed lg:static z-50 w-72 bg-primary-50 border-r border-dark-border flex flex-col h-full transition-transform duration-300 lg:translate-x-0 pt-16 lg:pt-20">
         <div className="p-6 border-b border-dark-border flex-shrink-0">
           <Link to="/admin" className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-charcoal-600 to-charcoal-700 flex items-center justify-center">
@@ -99,19 +99,7 @@ export default function AdminLayout() {
         </div>
       </aside>
 
-      <div className="flex-1 flex flex-col min-w-0 lg:ml-0">
-        <header className="lg:hidden bg-primary-50 border-b border-dark-border px-4 py-3 flex items-center justify-between">
-          <button
-            onClick={() => setSidebarOpen(true)}
-            className="p-2 rounded-lg text-primary-900 hover:bg-primary-100 transition-colors"
-            aria-label="Abrir menú"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
-          </button>
-          <span className="font-display font-bold text-xl text-primary-900">TechStore Admin</span>
-          <div className="w-10" />
-        </header>
-
+      <div className="flex-1 flex flex-col min-w-0 lg:ml-0 pt-16 lg:pt-20">
         <main className="flex-1 p-6 lg:p-8 overflow-y-auto min-w-0">
           <Outlet />
         </main>
