@@ -1,9 +1,8 @@
 import { Link, Outlet, NavLink, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import { LayoutDashboard, Package, Tag, ShoppingCart, Users, Settings, LogOut, Box } from 'lucide-react'
+import { LayoutDashboard, Package, Tag, ShoppingCart, Users, Settings, LogOut, Box, Menu, X } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import Navbar from '../components/layout/Navbar'
 
 const adminNavItems = [
   { path: '/admin', label: 'Dashboard', icon: LayoutDashboard },
@@ -21,33 +20,57 @@ export default function AdminLayout() {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 1024)
+    const handleResize = () => {
+      const mobile = window.innerWidth < 1024
+      setIsMobile(mobile)
+      if (!mobile) setSidebarOpen(false)
+    }
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isMobile && sidebarOpen) {
+        setSidebarOpen(false)
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isMobile, sidebarOpen])
+
   const handleLogout = async () => {
     await logout()
   }
 
+  useEffect(() => {
+    if (isMobile && sidebarOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isMobile, sidebarOpen])
+
   return (
-    <div className="min-h-screen bg-white flex h-screen overflow-x-hidden">
-      <Navbar />
+    <div className="min-h-screen bg-white flex overflow-x-hidden">
       <AnimatePresence>
-        {sidebarOpen && (
+        {isMobile && sidebarOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20 z-40 lg:hidden"
+            className="fixed inset-0 bg-black/20 z-40"
             onClick={() => setSidebarOpen(false)}
             aria-hidden="true"
           />
         )}
       </AnimatePresence>
 
-      <aside className="fixed lg:static z-50 w-72 bg-primary-50 border-r border-dark-border flex flex-col h-full transition-transform duration-300 lg:translate-x-0 pt-16 lg:pt-20">
+      <aside className={`${isMobile ? 'fixed inset-y-0 left-0 z-50 transform transition-transform duration-300 ease-in-out' : 'static'} w-72 bg-primary-50 border-r border-dark-border flex flex-col h-full lg:translate-x-0 ${isMobile && !sidebarOpen ? '-translate-x-full' : 'translate-x-0'} pt-16 lg:pt-20`}>
         <div className="p-6 border-b border-dark-border flex-shrink-0">
           <Link to="/admin" className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-charcoal-600 to-charcoal-700 flex items-center justify-center">
@@ -100,7 +123,20 @@ export default function AdminLayout() {
       </aside>
 
       <div className="flex-1 flex flex-col min-w-0 lg:ml-0 pt-16 lg:pt-20">
-        <main className="flex-1 p-6 lg:p-8 overflow-y-auto min-w-0">
+        <header className="lg:hidden bg-primary-50 border-b border-dark-border px-4 py-3 flex items-center justify-between">
+          <button
+            onClick={() => setSidebarOpen(true)}
+            className="p-2 rounded-lg text-primary-900 hover:bg-primary-100 transition-colors"
+            aria-label="Abrir menú"
+            aria-expanded={sidebarOpen}
+          >
+            {sidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+          <span className="font-display font-bold text-xl text-primary-900">TechStore Admin</span>
+          <div className="w-10" />
+        </header>
+
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto min-w-0">
           <Outlet />
         </main>
       </div>
