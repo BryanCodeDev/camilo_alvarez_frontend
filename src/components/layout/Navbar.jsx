@@ -124,7 +124,7 @@ export default function Navbar() {
 
             <div className="flex items-center gap-3 lg:gap-4">
               <div className="lg:hidden flex items-center gap-2">
-                <Link to="/carrito" onClick={toggleCart} className={`relative p-2 transition-colors ${scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-white hover:text-charcoal-300'}`} aria-label={`Carrito: ${itemCount} productos`}>
+                <Link to="/carrito" onClick={toggleCart} className={`relative p-2 transition-colors ${scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-primary-900 hover:text-charcoal-600'}`} aria-label={`Carrito: ${itemCount} productos`}>
                   <ShoppingCart className={`w-6 h-6 ${scrolled ? '' : ''}`} aria-hidden="true" />
                   {itemCount > 0 && (
                     <motion.span
@@ -138,7 +138,7 @@ export default function Navbar() {
                 </Link>
                 <button
                   onClick={() => setMobileSearchOpen(!mobileSearchOpen)}
-                  className={`p-2 transition-colors ${scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-white hover:text-charcoal-300'}`}
+                  className={`p-2 transition-colors ${scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-primary-900 hover:text-charcoal-600'}`}
                   aria-label="Buscar productos"
                   aria-expanded={mobileSearchOpen}
                 >
@@ -148,7 +148,7 @@ export default function Navbar() {
 
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className={`lg:hidden p-2 transition-colors flex items-center gap-1 ${scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-white hover:text-charcoal-300'}`}
+                className={`lg:hidden p-2 transition-colors flex items-center gap-1 ${scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-primary-900 hover:text-charcoal-600'}`}
                 aria-label="Abrir menú"
                 aria-expanded={mobileMenuOpen}
               >
@@ -169,7 +169,7 @@ export default function Navbar() {
                 ))}
               </div>
               <div className="hidden lg:flex items-center gap-4">
-                <Link to="/carrito" onClick={toggleCart} className={`relative p-2 transition-colors ${scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-white hover:text-charcoal-300'}`} aria-label={`Carrito: ${itemCount} productos`}>
+                <Link to="/carrito" onClick={toggleCart} className={`relative p-2 transition-colors ${scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-primary-900 hover:text-charcoal-600'}`} aria-label={`Carrito: ${itemCount} productos`}>
                   <ShoppingCart className="w-6 h-6" aria-hidden="true" />
                   {itemCount > 0 && (
                     <motion.span
@@ -184,7 +184,7 @@ export default function Navbar() {
                 <div className="relative">
                    <button
                      onClick={() => setSearchOpen(!searchOpen)}
-                     className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${scrolled ? 'bg-primary-50 border border-dark-border text-primary-900 hover:border-charcoal-300' : 'bg-white/10 border border-charcoal-700/30 text-white hover:bg-white/20'}`}
+                     className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${scrolled ? 'bg-primary-50 border border-dark-border text-primary-900 hover:border-charcoal-300' : 'bg-primary-50 border border-dark-border text-primary-900 hover:border-charcoal-300'}`}
                      aria-label="Buscar productos"
                    >
                      <Search className="w-5 h-5" aria-hidden="true" />
@@ -199,22 +199,22 @@ export default function Navbar() {
                          className="absolute right-0 top-full mt-2 w-72 max-w-[90vw]"
                        >
                          <form onSubmit={handleSearch} className="relative">
-                           <input
-                             type="search"
-                             value={searchQuery}
-                             onChange={(e) => setSearchQuery(e.target.value)}
-                             placeholder="Buscar productos..."
-                             className={`w-full px-4 py-3 pr-12 rounded-xl focus:outline-none transition-colors ${scrolled ? 'bg-white border border-dark-border text-primary-900 placeholder:text-charcoal-500 focus:border-charcoal-400' : 'bg-white/5 border border-charcoal-700/30 text-white placeholder:text-charcoal-300 focus:border-charcoal-400'}`}
-                             autoFocus
-                             aria-label="Buscar productos"
-                           />
-                           <button
-                             type="submit"
-                             className={`absolute right-3 top-1/2 -translate-y-1/2 p-1 transition-colors ${scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-white hover:text-charcoal-300'}`}
-                             aria-label="Buscar"
-                           >
-                            <Search className="w-5 h-5" aria-hidden="true" />
-                          </button>
+<input
+                              type="search"
+                              value={searchQuery}
+                              onChange={(e) => setSearchQuery(e.target.value)}
+                              placeholder="Buscar productos..."
+                              className={`w-full px-4 py-3 pr-12 rounded-xl focus:outline-none transition-colors ${scrolled ? 'bg-white border border-dark-border text-primary-900 placeholder:text-charcoal-500 focus:border-charcoal-400' : 'bg-white border border-dark-border text-primary-900 placeholder:text-charcoal-500 focus:border-charcoal-400'}`}
+                              autoFocus
+                              aria-label="Buscar productos"
+                            />
+                            <button
+                              type="submit"
+                              className={`absolute right-3 top-1/2 -translate-y-1/2 p-1 transition-colors ${scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-primary-700 hover:text-charcoal-600'}`}
+                              aria-label="Buscar"
+                            >
+                             <Search className="w-5 h-5" aria-hidden="true" />
+                           </button>
                         </form>
                       </motion.div>
                     )}
@@ -228,15 +228,15 @@ export default function Navbar() {
                         e.stopPropagation()
                         setDropdownOpen(dropdownOpen === 'user' ? null : 'user')
                       }}
-                      className="flex items-center gap-2 px-4 py-2 bg-white/10 border border-charcoal-700/30 rounded-full hover:bg-white/20 transition-all duration-300"
+                      className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${scrolled ? 'bg-primary-50 border border-dark-border text-primary-900 hover:bg-primary-100' : 'bg-primary-50 border border-dark-border text-primary-900 hover:bg-primary-100'}`}
                       aria-haspopup="true"
                       aria-expanded={dropdownOpen === 'user'}
                     >
                       <div className="w-8 h-8 rounded-full bg-charcoal-600 flex items-center justify-center text-white font-medium text-sm">
                         {user?.name?.charAt(0).toUpperCase()}
                       </div>
-                      <span className="hidden sm:inline text-sm font-medium text-white">{user?.name}</span>
-                      <ChevronDown className={`w-4 h-4 text-white transition-transform ${dropdownOpen === 'user' ? 'rotate-180' : ''}`} aria-hidden="true" />
+                      <span className="hidden sm:inline text-sm font-medium text-primary-900">{user?.name}</span>
+                      <ChevronDown className={`w-4 h-4 text-primary-900 transition-transform ${dropdownOpen === 'user' ? 'rotate-180' : ''}`} aria-hidden="true" />
                     </button>
                     <AnimatePresence>
                       {dropdownOpen === 'user' && (
