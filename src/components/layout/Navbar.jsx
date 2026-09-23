@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '../../context/AuthContext'
 import { useCart } from '../../context/CartContext'
-import { Search, Menu, X, User, ShoppingCart, ChevronDown, LayoutDashboard, LogOut } from 'lucide-react'
+import { Search, Menu, X, User, ShoppingCart, ChevronDown, LayoutDashboard, LogOut, Home } from 'lucide-react'
 import CartDrawer from '../cart/CartDrawer'
 
 const navLinks = [
@@ -26,8 +26,8 @@ function NavLink({ to, label, active, index, children, scrolled }) {
         to={to}
         className={`text-sm font-medium transition-colors duration-300 ${
           active
-            ? (scrolled ? 'text-charcoal-600' : 'text-white')
-            : (scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-white/70 hover:text-white')
+            ? (scrolled ? 'text-charcoal-600' : 'text-primary-900')
+            : (scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-primary-900/70 hover:text-primary-900')
         }`}
       >
         {children || label}
@@ -119,7 +119,7 @@ export default function Navbar() {
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
                 </svg>
               </motion.div>
-              <span className={`font-display font-bold text-xl lg:text-2xl hidden sm:block ${scrolled ? 'text-primary-900' : 'text-white'}`}>TechStore</span>
+              <span className={`font-display font-bold text-xl lg:text-2xl hidden sm:block ${scrolled ? 'text-primary-900' : 'text-primary-900'}`}>TechStore</span>
             </Link>
 
             <div className="flex items-center gap-3 lg:gap-4">
@@ -256,6 +256,11 @@ export default function Navbar() {
                               Panel Admin
                             </Link>
                           )}
+                          <hr className="my-2 border-charcoal-700/30" />
+                          <Link to="/" className="flex items-center gap-3 px-4 py-2 text-white hover:text-charcoal-300 hover:bg-white/5" onClick={() => setDropdownOpen(null)}>
+                            <Home className="w-5 h-5" aria-hidden="true" />
+                            Volver al inicio
+                          </Link>
                           <hr className="my-2 border-charcoal-700/30" />
                           <button onClick={logout} className="w-full flex items-center gap-3 px-4 py-2 text-white hover:text-charcoal-300 hover:bg-white/5 text-left">
                             <LogOut className="w-5 h-5" aria-hidden="true" />

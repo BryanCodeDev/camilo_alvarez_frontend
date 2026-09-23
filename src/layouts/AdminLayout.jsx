@@ -1,8 +1,9 @@
 import { Link, Outlet, NavLink, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import { LayoutDashboard, Package, Tag, ShoppingCart, Users, Settings, LogOut, Box } from 'lucide-react'
+import { LayoutDashboard, Package, Tag, ShoppingCart, Users, Settings, LogOut, Box, Home } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Navbar from '../components/layout/Navbar'
 
 const adminNavItems = [
   { path: '/admin', label: 'Dashboard', icon: LayoutDashboard },
@@ -32,6 +33,7 @@ export default function AdminLayout() {
 
   return (
     <div className="min-h-screen bg-white flex h-screen overflow-x-hidden">
+      <Navbar />
       <AnimatePresence>
         {sidebarOpen && (
           <motion.div
