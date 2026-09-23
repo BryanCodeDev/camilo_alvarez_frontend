@@ -169,50 +169,50 @@ export default function Navbar() {
                 ))}
               </div>
               <div className="hidden lg:flex items-center gap-4">
-                <Link to="/carrito" onClick={toggleCart} className="relative p-2 text-white hover:text-charcoal-300 transition-colors" aria-label={`Carrito: ${itemCount} productos`}>
+                <Link to="/carrito" onClick={toggleCart} className={`relative p-2 transition-colors ${scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-white hover:text-charcoal-300'}`} aria-label={`Carrito: ${itemCount} productos`}>
                   <ShoppingCart className="w-6 h-6" aria-hidden="true" />
                   {itemCount > 0 && (
                     <motion.span
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className="absolute -top-1 -right-1 w-5 h-5 bg-white text-charcoal-900 text-xs font-bold rounded-full flex items-center justify-center"
+                      className={`absolute -top-1 -right-1 w-5 h-5 text-xs font-bold rounded-full flex items-center justify-center ${scrolled ? 'bg-charcoal-600 text-white' : 'bg-white text-charcoal-900'}`}
                     >
                       {itemCount > 99 ? '99+' : itemCount}
                     </motion.span>
                   )}
                 </Link>
                 <div className="relative">
-                  <button
-                    onClick={() => setSearchOpen(!searchOpen)}
-                    className="flex items-center gap-2 px-4 py-2 bg-white/10 border border-charcoal-700/30 rounded-full text-white hover:bg-white/20 transition-all duration-300"
-                    aria-label="Buscar productos"
-                  >
-                    <Search className="w-5 h-5" aria-hidden="true" />
-                    <span className="hidden sm:inline">Buscar</span>
-                  </button>
-                  <AnimatePresence>
-                    {searchOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 20 }}
-                    className="absolute right-0 top-full mt-2 w-72 max-w-[90vw]"
-                  >
-                    <form onSubmit={handleSearch} className="relative">
-                      <input
-                        type="search"
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        placeholder="Buscar productos..."
-                        className="w-full px-4 py-3 pr-12 bg-white/5 border border-charcoal-700/30 rounded-xl text-white placeholder:text-charcoal-300 focus:outline-none focus:border-charcoal-400"
-                        autoFocus
-                        aria-label="Buscar productos"
-                      />
-                      <button
-                        type="submit"
-                        className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-white hover:text-charcoal-300"
-                        aria-label="Buscar"
-                      >
+                   <button
+                     onClick={() => setSearchOpen(!searchOpen)}
+                     className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${scrolled ? 'bg-primary-50 border border-dark-border text-primary-900 hover:border-charcoal-300' : 'bg-white/10 border border-charcoal-700/30 text-white hover:bg-white/20'}`}
+                     aria-label="Buscar productos"
+                   >
+                     <Search className="w-5 h-5" aria-hidden="true" />
+                     <span className="hidden sm:inline">Buscar</span>
+                   </button>
+                   <AnimatePresence>
+                     {searchOpen && (
+                       <motion.div
+                         initial={{ opacity: 0, x: 20 }}
+                         animate={{ opacity: 1, x: 0 }}
+                         exit={{ opacity: 0, x: 20 }}
+                         className="absolute right-0 top-full mt-2 w-72 max-w-[90vw]"
+                       >
+                         <form onSubmit={handleSearch} className="relative">
+                           <input
+                             type="search"
+                             value={searchQuery}
+                             onChange={(e) => setSearchQuery(e.target.value)}
+                             placeholder="Buscar productos..."
+                             className={`w-full px-4 py-3 pr-12 rounded-xl focus:outline-none transition-colors ${scrolled ? 'bg-white border border-dark-border text-primary-900 placeholder:text-charcoal-500 focus:border-charcoal-400' : 'bg-white/5 border border-charcoal-700/30 text-white placeholder:text-charcoal-300 focus:border-charcoal-400'}`}
+                             autoFocus
+                             aria-label="Buscar productos"
+                           />
+                           <button
+                             type="submit"
+                             className={`absolute right-3 top-1/2 -translate-y-1/2 p-1 transition-colors ${scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-white hover:text-charcoal-300'}`}
+                             aria-label="Buscar"
+                           >
                             <Search className="w-5 h-5" aria-hidden="true" />
                           </button>
                         </form>

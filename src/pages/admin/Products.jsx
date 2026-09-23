@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useSearchParams } from 'react-router-dom'
-import { Plus, Search, Edit, Trash2, Copy, Eye, AlertTriangle, Package, Loader2 } from 'lucide-react'
+import { Plus, Search, Edit, Trash2, Copy, Eye, AlertTriangle, Package, Loader2, X } from 'lucide-react'
 import SEO from '../../components/seo/SEO'
 import { adminProductService } from '../../services/admin'
 import { formatPrice, getStockStatus } from '../../utils/helpers'
@@ -17,7 +17,7 @@ export default function AdminProducts() {
   const [totalPages, setTotalPages] = useState(1)
   const [totalProducts, setTotalProducts] = useState(0)
   const [selectedProduct, setSelectedProduct] = useState(null)
-  const [deleteConfirm, setDeleteConfirm] = useState(null)
+  const [deleteModal, setDeleteModal] = useState(null)
 
   useEffect(() => {
     fetchProducts()
@@ -45,21 +45,23 @@ export default function AdminProducts() {
     }
   }
 
-  const handleDelete = async (id, name) => {
-    if (deleteConfirm !== id) {
-      setDeleteConfirm(id)
-      return
+  const handleDelete = async (id) => {
+    const product = products.find(p => p.id === id)
+    if (product) {
+      setDeleteModal(product)
     }
+  }
+
+  const confirmDelete = async () => {
+    if (!deleteModal) return
     try {
-      await adminProductService.delete(id)
+      await adminProductService.delete(deleteModal.id)
       toast.success('Producto eliminado correctamente')
-      setDeleteConfirm(null)
+      setDeleteModal(null)
       fetchProducts()
     } catch (error) {
       console.error('Delete product error:', error)
       toast.error('Error al eliminar producto')
-    } finally {
-      setDeleteConfirm(null)
     }
   }
 
@@ -213,7 +215,11 @@ export default function AdminProducts() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: index * 0.03 }}
-                        className="border-b border-dark-border/50 hover:bg-primary-50/50"
+                        onClick={() => setSelectedProduct(product.id)}
+                        className={`border-b border-dark-border/50 hover:bg-primary-50/50 cursor-pointer transition-colors ${
+                          selectedProduct === product.id 
+                            ? 'bg-yellow-100 border-yellow-300 shadow-[0_0_0_2px_theme(colors.yellow.300)]' 
+                            : ''}`}
                       >
                         <td className="py-4 px-6">
                           <div className="flex items-center gap-4">
@@ -274,7 +280,7 @@ export default function AdminProducts() {
                             <button onClick={() => handleToggleStatus(product.id)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${product.is_active ? 'text-primary-900 hover:text-charcoal-600 hover:bg-charcoal-600/10' : 'text-primary-900 hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${product.is_active ? 'Desactivar' : 'Activar'} ${product.name}`}>
                               {product.is_active ? <Trash2 className="w-5 h-5" /> : <Package className="w-5 h-5" />}
                             </button>
-                            <button onClick={() => handleDelete(product.id, product.name)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${deleteConfirm === product.id ? 'text-red-500 bg-red-600/10' : 'text-primary-900 hover:text-red-500 hover:bg-red-600/10'}`} aria-label={`Eliminar ${product.name}`}>
+                            <button onClick={() => handleDelete(product.id)} className="min-h-10 min-w-10 p-2 text-primary-900 hover:text-red-500 hover:bg-red-600/10 rounded-lg transition-colors" aria-label={`Eliminar ${product.name}`}>
                               <Trash2 className="w-5 h-5" />
                             </button>
                           </div>
@@ -307,6 +313,57 @@ export default function AdminProducts() {
           )}
         </motion.div>
       </div>
+
+      <AnimatePresence>
+        {deleteModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+            onClick={() => setDeleteModal(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="delete-modal-title"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="bg-primary-50 border border-dark-border rounded-2xl p-6 sm:p-8 w-full max-w-md shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between mb-4">
+                <h2 id="delete-modal-title" className="font-display font-bold text-xl text-primary-900">Eliminar producto</h2>
+                <button
+                  onClick={() => setDeleteModal(null)}
+                  className="min-h-10 min-w-10 p-1 text-primary-900 hover:text-charcoal-600 hover:bg-primary-100 rounded-lg transition-colors"
+                  aria-label="Cerrar"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <p className="text-primary-900 mb-6">
+                ¿Estás seguro de que quieres eliminar <strong className="text-charcoal-600">"{deleteModal.name}"</strong>? Esta acción no se puede deshacer.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-end">
+                <button
+                  onClick={() => setDeleteModal(null)}
+                  className="btn-secondary w-full sm:w-auto"
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={confirmDelete}
+                  className="bg-red-500 hover:bg-red-600 text-white font-medium py-2.5 px-6 rounded-xl transition-colors w-full sm:w-auto"
+                >
+                  Eliminar
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }
