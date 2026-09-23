@@ -14,7 +14,7 @@ const navLinks = [
   { path: '/contacto', label: 'Contacto' },
 ]
 
-function NavLink({ to, label, active, index, children }) {
+function NavLink({ to, label, active, index, children, scrolled }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: -10 }}
@@ -25,7 +25,9 @@ function NavLink({ to, label, active, index, children }) {
       <Link
         to={to}
         className={`text-sm font-medium transition-colors duration-300 ${
-          active ? 'text-white' : 'text-primary-300 hover:text-white'
+          active
+            ? (scrolled ? 'text-charcoal-600' : 'text-white')
+            : (scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-white/70 hover:text-white')
         }`}
       >
         {children || label}
@@ -38,12 +40,19 @@ export default function Navbar() {
   const { user, logout, isAuthenticated, isAdmin } = useAuth()
   const { itemCount, toggleCart } = useCart()
   const location = useLocation()
+  const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [dropdownOpen, setDropdownOpen] = useState(null)
   const mobileMenuRef = useRef(null)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     setMobileMenuOpen(false)
@@ -92,7 +101,11 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-charcoal-900/90 backdrop-blur-sm border-b border-charcoal-700/30 transition-all duration-500">
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? 'bg-white/95 border-b border-dark-border shadow-card'
+          : 'bg-transparent'
+      }`}>
         <nav className="container-custom" aria-label="Navegación principal">
           <div className="flex items-center justify-between h-16 lg:h-20">
             <Link to="/" className="flex items-center gap-2 z-10" aria-label="TechStore - Inicio">
@@ -106,13 +119,13 @@ export default function Navbar() {
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
                 </svg>
               </motion.div>
-              <span className="font-display font-bold text-xl lg:text-2xl text-white hidden sm:block">TechStore</span>
+              <span className={`font-display font-bold text-xl lg:text-2xl hidden sm:block ${scrolled ? 'text-primary-900' : 'text-white'}`}>TechStore</span>
             </Link>
 
             <div className="flex items-center gap-3 lg:gap-4">
               <div className="lg:hidden flex items-center gap-2">
-                <Link to="/carrito" onClick={toggleCart} className="relative p-2 text-white hover:text-charcoal-300 transition-colors" aria-label={`Carrito: ${itemCount} productos`}>
-                  <ShoppingCart className="w-6 h-6" aria-hidden="true" />
+                <Link to="/carrito" onClick={toggleCart} className={`relative p-2 transition-colors ${scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-white hover:text-charcoal-300'}`} aria-label={`Carrito: ${itemCount} productos`}>
+                  <ShoppingCart className={`w-6 h-6 ${scrolled ? '' : ''}`} aria-hidden="true" />
                   {itemCount > 0 && (
                     <motion.span
                       initial={{ scale: 0 }}
@@ -125,7 +138,7 @@ export default function Navbar() {
                 </Link>
                 <button
                   onClick={() => setMobileSearchOpen(!mobileSearchOpen)}
-                  className="p-2 text-white hover:text-charcoal-300 transition-colors"
+                  className={`p-2 transition-colors ${scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-white hover:text-charcoal-300'}`}
                   aria-label="Buscar productos"
                   aria-expanded={mobileSearchOpen}
                 >
@@ -135,7 +148,7 @@ export default function Navbar() {
 
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="lg:hidden p-2 text-white hover:text-charcoal-300 transition-colors flex items-center gap-1"
+                className={`lg:hidden p-2 transition-colors flex items-center gap-1 ${scrolled ? 'text-primary-700 hover:text-charcoal-600' : 'text-white hover:text-charcoal-300'}`}
                 aria-label="Abrir menú"
                 aria-expanded={mobileMenuOpen}
               >
@@ -151,6 +164,7 @@ export default function Navbar() {
                     label={link.label}
                     active={isActive(link.path)}
                     index={index}
+                    scrolled={scrolled}
                   />
                 ))}
               </div>

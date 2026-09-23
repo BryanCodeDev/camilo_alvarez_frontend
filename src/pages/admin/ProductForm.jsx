@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft, Save, Upload, X, Plus, Trash2, Loader2, Image as ImageIcon, Tag, DollarSign, Package, Layers, Sparkles, Link as LinkIcon } from 'lucide-react'
 import SEO from '../../components/seo/SEO'
