@@ -151,7 +151,7 @@ export default function Checkout() {
         noindex
       />
 
-      <div className="min-h-screen bg-primary-900 pt-20">
+      <div className="min-h-screen bg-white pt-20">
         <div className="container-custom py-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -159,8 +159,8 @@ export default function Checkout() {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <h1 className="font-display font-bold text-3xl sm:text-4xl text-white">Finalizar compra</h1>
-            <p className="text-white mt-2">Revisa tu pedido y completa la información de envío</p>
+            <h1 className="font-display font-bold text-3xl sm:text-4xl text-primary-900">Finalizar compra</h1>
+            <p className="text-primary-900 mt-2">Revisa tu pedido y completa la información de envío</p>
           </motion.div>
 
           <div className="mb-8">
@@ -175,16 +175,16 @@ export default function Checkout() {
                 >
                   <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold transition-all ${
                     step >= s.number
-                      ? 'bg-gold-600 text-white'
-                      : 'bg-primary-800 border border-dark-border text-white'
+                      ? 'bg-charcoal-600 text-white'
+                      : 'bg-primary-50 border border-dark-border text-primary-900'
                   }`}>
                     {step > s.number ? <CheckCircle className="w-6 h-6" /> : <s.Icon className="w-6 h-6" />}
                   </div>
-                  <span className={`text-sm font-medium mt-2 ${step >= s.number ? 'text-white' : 'text-white'}`}>
+                  <span className={`text-sm font-medium mt-2 ${step >= s.number ? 'text-primary-900' : 'text-primary-900'}`}>
                     {s.label}
                   </span>
                   {index < steps.length - 1 && (
-                    <div className={`absolute top-6 left-1/2 w-full h-1 -translate-x-1/2 ${step > index + 1 ? 'bg-gold-600' : 'bg-dark-border'} hidden md:block`} />
+                    <div className={`absolute top-6 left-1/2 w-full h-1 -translate-x-1/2 ${step > index + 1 ? 'bg-charcoal-600' : 'bg-dark-border'} hidden md:block`} />
                   )}
                 </motion.div>
               ))}
@@ -197,10 +197,10 @@ export default function Checkout() {
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
+                  className="bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6"
                 >
-                  <h2 className="font-display font-semibold text-xl text-white mb-6 flex items-center gap-2">
-                    <Truck className="w-6 h-6 text-gold-500" />
+                  <h2 className="font-display font-semibold text-xl text-primary-900 mb-6 flex items-center gap-2">
+                    <Truck className="w-6 h-6 text-charcoal-500" />
                     Información de envío
                   </h2>
 
@@ -325,9 +325,9 @@ export default function Checkout() {
                     </div>
 
                     {!isAuthenticated && (
-                      <div className="p-4 bg-primary-700/50 border border-dark-border rounded-xl">
-                        <p className="text-white text-sm">
-                          ¿Ya tienes cuenta? <Link to="/login?redirect=/checkout" className="text-gold-400 hover:underline font-medium">Inicia sesión</Link> para guardar tus datos y ver tu historial de pedidos.
+                      <div className="p-4 bg-primary-100 border border-dark-border rounded-xl">
+                        <p className="text-primary-900 text-sm">
+                          ¿Ya tienes cuenta? <Link to="/login?redirect=/checkout" className="text-charcoal-600 hover:underline font-medium">Inicia sesión</Link> para guardar tus datos y ver tu historial de pedidos.
                         </p>
                       </div>
                     )}
@@ -348,10 +348,10 @@ export default function Checkout() {
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
+                    className="bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6"
                   >
-                    <h2 className="font-display font-semibold text-xl text-white mb-5 flex items-center gap-2">
-                      <CreditCard className="w-6 h-6 text-gold-500" />
+                    <h2 className="font-display font-semibold text-xl text-primary-900 mb-5 flex items-center gap-2">
+                      <CreditCard className="w-6 h-6 text-charcoal-500" />
                       Método de pago
                     </h2>
 
@@ -362,21 +362,21 @@ export default function Checkout() {
                           onClick={() => setPaymentMethod(method.id)}
                           className={`relative p-4 rounded-xl border-2 transition-all ${
                             paymentMethod === method.id
-                              ? 'border-gold-500 bg-gold-600/10'
-                              : 'border-dark-border hover:border-gold-600/50'
+                              ? 'border-charcoal-500 bg-charcoal-600/10'
+                              : 'border-dark-border hover:border-charcoal-300'
                           }`}
                         >
                           <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 rounded-xl bg-primary-700 flex items-center justify-center flex-shrink-0">
-                              <method.icon className="w-6 h-6 text-gold-400" />
+                            <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center flex-shrink-0">
+                              <method.icon className="w-6 h-6 text-charcoal-600" />
                             </div>
                             <div className="min-w-0">
-                              <p className="font-medium text-white truncate">{method.label}</p>
-                              <p className="text-white text-sm truncate">{method.description}</p>
+                              <p className="font-medium text-primary-900 truncate">{method.label}</p>
+                              <p className="text-primary-900 text-sm truncate">{method.description}</p>
                             </div>
                           </div>
                           {paymentMethod === method.id && (
-                            <div className="absolute top-2 right-2 w-6 h-6 bg-gold-600 rounded-full flex items-center justify-center">
+                            <div className="absolute top-2 right-2 w-6 h-6 bg-charcoal-600 rounded-full flex items-center justify-center">
                               <CheckCircle className="w-4 h-4 text-primary-900" />
                             </div>
                           )}
@@ -389,10 +389,10 @@ export default function Checkout() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
+                    className="bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6"
                   >
-                    <h2 className="font-display font-semibold text-xl text-white mb-4 flex items-center gap-2">
-                      <Shield className="w-6 h-6 text-gold-500" />
+                    <h2 className="font-display font-semibold text-xl text-primary-900 mb-4 flex items-center gap-2">
+                      <Shield className="w-6 h-6 text-charcoal-500" />
                       Resumen del pedido
                     </h2>
 
@@ -401,32 +401,32 @@ export default function Checkout() {
                         <div key={index} className="flex items-center gap-3 py-2 border-b border-dark-border/50">
                           <img src={item.image} alt={item.name} className="w-12 h-12 rounded-lg object-cover flex-shrink-0" />
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium text-white truncate">{item.name}</p>
-                            <p className="text-white text-xs">x{item.quantity}</p>
+                            <p className="text-sm font-medium text-primary-900 truncate">{item.name}</p>
+                            <p className="text-primary-900 text-xs">x{item.quantity}</p>
                           </div>
-                          <span className="text-white font-medium whitespace-nowrap">{formatPrice((item.discountPrice || item.price) * item.quantity)}</span>
+                          <span className="text-primary-900 font-medium whitespace-nowrap">{formatPrice((item.discountPrice || item.price) * item.quantity)}</span>
                         </div>
                       ))}
                     </div>
 
                     <div className="space-y-2 border-t border-dark-border pt-4">
                       <div className="flex justify-between text-sm">
-                        <span className="text-white">Subtotal</span>
-                        <span className="text-white">{formatPrice(subtotal)}</span>
+                        <span className="text-primary-900">Subtotal</span>
+                        <span className="text-primary-900">{formatPrice(subtotal)}</span>
                       </div>
                       {discount > 0 && (
-                        <div className="flex justify-between text-sm text-green-500">
+                        <div className="flex justify-between text-sm text-green-600">
                           <span>Descuento</span>
                           <span>-{formatPrice(discount)}</span>
                         </div>
                       )}
-                      <div className="flex justify-between text-sm text-white">
+                      <div className="flex justify-between text-sm text-primary-900">
                         <span>Envío</span>
                         <span>Calcular según ubicación</span>
                       </div>
                       <div className="flex justify-between text-xl font-bold border-t border-dark-border pt-3">
-                        <span className="text-white">Total</span>
-                        <span className="text-gold-400">{formatPrice(total)}</span>
+                        <span className="text-primary-900">Total</span>
+                        <span className="text-charcoal-600">{formatPrice(total)}</span>
                       </div>
                     </div>
                   </motion.div>
@@ -474,7 +474,7 @@ export default function Checkout() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-8 text-center"
+                  className="bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-8 text-center"
                 >
                   <motion.div
                     initial={{ scale: 0 }}
@@ -482,12 +482,12 @@ export default function Checkout() {
                     transition={{ type: 'spring', damping: 15, stiffness: 200 }}
                     className="w-20 h-20 rounded-full bg-green-600/20 border border-green-500 flex items-center justify-center mx-auto mb-6"
                   >
-                    <CheckCircle className="w-10 h-10 text-green-500" />
+                    <CheckCircle className="w-10 h-10 text-green-600" />
                   </motion.div>
-                  <h2 className="font-display font-bold text-2xl text-white mb-2">¡Pedido creado!</h2>
-                  <p className="text-white mb-6">Tu orden <strong className="text-white">#{orderId}</strong> ha sido generada exitosamente.</p>
+                  <h2 className="font-display font-bold text-2xl text-primary-900 mb-2">¡Pedido creado!</h2>
+                  <p className="text-primary-900 mb-6">Tu orden <strong className="text-primary-900">#{orderId}</strong> ha sido generada exitosamente.</p>
                   {paymentMethod === 'mercadopago' && (
-                    <p className="text-white mb-6">Serás redirigido a Mercado Pago para completar el pago...</p>
+                    <p className="text-primary-900 mb-6">Serás redirigido a Mercado Pago para completar el pago...</p>
                   )}
                   <button
                     onClick={() => navigate(`/checkout/success?order=${orderId}`)}
@@ -504,56 +504,56 @@ export default function Checkout() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
-                className="sticky top-24 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6"
+                className="sticky top-24 bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6"
               >
-                <h2 className="font-display font-semibold text-xl text-white mb-6">Resumen</h2>
+                <h2 className="font-display font-semibold text-xl text-primary-900 mb-6">Resumen</h2>
 
                 <div className="space-y-3 mb-6 max-h-64 overflow-y-auto pr-2">
                   {items.map((item, index) => (
                     <div key={index} className="flex gap-3 py-2">
                       <img src={item.image} alt={item.name} className="w-12 h-12 rounded-lg object-cover flex-shrink-0" />
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-white truncate">{item.name}</p>
-                        <p className="text-white text-xs">x{item.quantity} · {formatPrice(item.discountPrice || item.price)} c/u</p>
+                        <p className="text-sm font-medium text-primary-900 truncate">{item.name}</p>
+                        <p className="text-primary-900 text-xs">x{item.quantity} · {formatPrice(item.discountPrice || item.price)} c/u</p>
                       </div>
-                      <span className="text-white font-medium whitespace-nowrap">{formatPrice((item.discountPrice || item.price) * item.quantity)}</span>
+                      <span className="text-primary-900 font-medium whitespace-nowrap">{formatPrice((item.discountPrice || item.price) * item.quantity)}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="space-y-2 border-t border-dark-border pt-4">
                   <div className="flex justify-between text-sm">
-                    <span className="text-white">Subtotal ({itemCount} items)</span>
-                    <span className="text-white">{formatPrice(subtotal)}</span>
+                    <span className="text-primary-900">Subtotal ({itemCount} items)</span>
+                    <span className="text-primary-900">{formatPrice(subtotal)}</span>
                   </div>
                   {discount > 0 && (
-                    <div className="flex justify-between text-sm text-green-500">
+                    <div className="flex justify-between text-sm text-green-600">
                       <span>Descuento</span>
                       <span>-{formatPrice(discount)}</span>
                     </div>
                   )}
-                  <div className="flex justify-between text-sm text-white">
+                  <div className="flex justify-between text-sm text-primary-900">
                     <span>Envío</span>
                     <span>Calcular en checkout</span>
                   </div>
                 </div>
 
                 <div className="flex justify-between text-xl font-bold mt-4 border-t border-dark-border pt-4">
-                  <span className="text-white">Total</span>
-                  <span className="text-gold-400">{formatPrice(total)}</span>
+                  <span className="text-primary-900">Total</span>
+                  <span className="text-charcoal-600">{formatPrice(total)}</span>
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-dark-border space-y-3">
-                  <div className="flex items-center gap-3 text-sm text-white">
-                    <Shield className="w-5 h-5 text-gold-500" />
+                  <div className="flex items-center gap-3 text-sm text-primary-900">
+                    <Shield className="w-5 h-5 text-charcoal-500" />
                     <span>Pago seguro garantizado</span>
                   </div>
-                  <div className="flex items-center gap-3 text-sm text-white">
-                    <Truck className="w-5 h-5 text-gold-500" />
+                  <div className="flex items-center gap-3 text-sm text-primary-900">
+                    <Truck className="w-5 h-5 text-charcoal-500" />
                     <span>Envío a todo el país</span>
                   </div>
-                  <div className="flex items-center gap-3 text-sm text-white">
-                    <AlertCircle className="w-5 h-5 text-gold-500" />
+                  <div className="flex items-center gap-3 text-sm text-primary-900">
+                    <AlertCircle className="w-5 h-5 text-charcoal-500" />
                     <span>30 días para devoluciones</span>
                   </div>
                 </div>

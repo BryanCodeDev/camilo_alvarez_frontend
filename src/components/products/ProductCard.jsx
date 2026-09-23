@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ShoppingCart, Zap, Tag, MessageSquare, Star } from 'lucide-react'
+import { ShoppingCart, Zap, MessageSquare, Star } from 'lucide-react'
 import { formatPrice, calculateDiscount, getStockStatus, getWhatsAppUrl } from '../../utils/helpers'
 import { useCart } from '../../context/CartContext'
 import { useWishlist } from '../../context/WishlistContext'
@@ -51,6 +51,8 @@ export default function ProductCard({ product, variant = 'default' }) {
   if (product.featured) badges.push({ label: 'DESTACADO', class: 'badge-gold' })
   if (product.stock > 0 && product.stock <= 5) badges.push({ label: `Últimos ${product.stock}`, class: 'badge-stock' })
 
+  const commonImageOverlay = "absolute inset-0 bg-gradient-to-t from-primary-900/10 via-transparent to-transparent"
+
   if (variant === 'featured') {
     return (
       <article className="card group relative" role="article" aria-labelledby={`product-${product.id}-title`}>
@@ -68,7 +70,7 @@ export default function ProductCard({ product, variant = 'default' }) {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary-900/60 via-transparent to-transparent" />
+          <div className={commonImageOverlay} />
 
           {badges.length > 0 && (
             <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
@@ -123,8 +125,8 @@ export default function ProductCard({ product, variant = 'default' }) {
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleItem(product) }}
             className={`absolute top-3 right-3 p-2 rounded-full transition-all duration-300 ${
               isInWishlist(product.id)
-                ? 'bg-gold-600/90 text-white'
-                : 'bg-primary-900/80 text-white hover:text-gold-500 hover:bg-primary-900'
+                ? 'bg-charcoal-600/90 text-white'
+                : 'bg-white/80 text-primary-900 hover:text-charcoal-600 hover:bg-primary-50'
             }`}
             aria-label={isInWishlist(product.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'}
             aria-pressed={isInWishlist(product.id)}
@@ -139,13 +141,13 @@ export default function ProductCard({ product, variant = 'default' }) {
         </div>
 
         <div className="p-3 sm:p-4 space-y-2 sm:space-y-3">
-          <div className="flex items-center gap-2 text-xs text-white">
-            <span className="px-2 py-0.5 bg-primary-800 rounded-full">{product.category}</span>
+          <div className="flex items-center gap-2 text-xs text-primary-600">
+            <span className="px-2 py-0.5 bg-primary-100 rounded-full">{product.category}</span>
             {product.brand && <span>· {product.brand}</span>}
           </div>
 
           <Link to={`/producto/${product.slug}`} className="block">
-            <h3 id={`product-${product.id}-title`} className="font-display font-semibold text-base sm:text-lg text-white line-clamp-2 group-hover:text-gold-400 transition-colors">
+            <h3 id={`product-${product.id}-title`} className="font-display font-semibold text-base sm:text-lg text-primary-900 line-clamp-2 group-hover:text-charcoal-600 transition-colors">
               {product.name}
             </h3>
           </Link>
@@ -153,20 +155,20 @@ export default function ProductCard({ product, variant = 'default' }) {
           {product.rating && (
             <div className="flex items-center gap-2">
               <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" />
-              <span className="text-sm font-medium text-white">{product.rating.toFixed(1)}</span>
-              <span className="text-white text-sm">({product.reviewCount || 0})</span>
+              <span className="text-sm font-medium text-primary-900">{product.rating.toFixed(1)}</span>
+              <span className="text-primary-600 text-sm">({product.reviewCount || 0})</span>
             </div>
           )}
 
           <div className="flex items-baseline gap-3">
-            <span className="font-display font-bold text-xl text-gold-400">{formatPrice(product.price)}</span>
+            <span className="font-display font-bold text-xl text-charcoal-600">{formatPrice(product.price)}</span>
             {product.originalPrice && product.price < product.originalPrice && (
-              <span className="text-white line-through text-sm">{formatPrice(product.originalPrice)}</span>
+              <span className="text-primary-600 line-through text-sm">{formatPrice(product.originalPrice)}</span>
             )}
           </div>
 
-          <div className={`flex items-center gap-2 ${stockStatus.class.replace('badge-', 'badge-')}`}>
-            <span className="text-xs font-medium">{stockStatus.label}</span>
+          <div className={`flex items-center gap-2`}>
+            <span className={`${stockStatus.class} text-xs font-medium`}>{stockStatus.label}</span>
           </div>
 
           <div className="flex gap-2 pt-2 border-t border-dark-border">
@@ -213,7 +215,7 @@ export default function ProductCard({ product, variant = 'default' }) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-900/60 via-transparent to-transparent" />
+        <div className={commonImageOverlay} />
 
         {badges.length > 0 && (
           <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
@@ -268,8 +270,8 @@ export default function ProductCard({ product, variant = 'default' }) {
           onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleItem(product) }}
           className={`absolute top-3 right-3 p-2 rounded-full transition-all duration-300 ${
             isInWishlist(product.id)
-              ? 'bg-gold-600/90 text-white'
-              : 'bg-primary-900/80 text-white hover:text-gold-500 hover:bg-primary-900'
+              ? 'bg-charcoal-600/90 text-white'
+              : 'bg-white/80 text-primary-900 hover:text-charcoal-600 hover:bg-primary-50'
           }`}
           aria-label={isInWishlist(product.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'}
           aria-pressed={isInWishlist(product.id)}
@@ -284,13 +286,13 @@ export default function ProductCard({ product, variant = 'default' }) {
       </div>
 
       <div className="p-4 space-y-2">
-        <div className="flex items-center gap-2 text-xs text-white">
-          <span className="px-2 py-0.5 bg-primary-800 rounded-full">{product.category}</span>
+        <div className="flex items-center gap-2 text-xs text-primary-600">
+          <span className="px-2 py-0.5 bg-primary-100 rounded-full">{product.category}</span>
           {product.brand && <span>· {product.brand}</span>}
         </div>
 
         <Link to={`/producto/${product.slug}`} className="block">
-          <h3 id={`product-${product.id}-title`} className="font-display font-semibold text-base text-white line-clamp-2 group-hover:text-gold-400 transition-colors">
+          <h3 id={`product-${product.id}-title`} className="font-display font-semibold text-base text-primary-900 line-clamp-2 group-hover:text-charcoal-600 transition-colors">
             {product.name}
           </h3>
         </Link>
@@ -298,20 +300,20 @@ export default function ProductCard({ product, variant = 'default' }) {
         {product.rating && (
           <div className="flex items-center gap-2">
             <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" aria-hidden="true" />
-            <span className="text-sm font-medium text-white">{product.rating.toFixed(1)}</span>
-            <span className="text-white text-sm">({product.reviewCount || 0})</span>
+            <span className="text-sm font-medium text-primary-900">{product.rating.toFixed(1)}</span>
+            <span className="text-primary-600 text-sm">({product.reviewCount || 0})</span>
           </div>
         )}
 
         <div className="flex items-baseline gap-3">
-          <span className="font-display font-bold text-lg text-gold-400">{formatPrice(product.price)}</span>
+          <span className="font-display font-bold text-lg text-charcoal-600">{formatPrice(product.price)}</span>
           {product.originalPrice && product.price < product.originalPrice && (
-            <span className="text-white line-through text-sm">{formatPrice(product.originalPrice)}</span>
+            <span className="text-primary-600 line-through text-sm">{formatPrice(product.originalPrice)}</span>
           )}
         </div>
 
-        <div className={`flex items-center gap-2 ${stockStatus.class.replace('badge-', 'badge-')}`}>
-          <span className="text-xs font-medium">{stockStatus.label}</span>
+        <div className="flex items-center gap-2">
+          <span className={`${stockStatus.class} text-xs font-medium`}>{stockStatus.label}</span>
         </div>
       </div>
     </article>

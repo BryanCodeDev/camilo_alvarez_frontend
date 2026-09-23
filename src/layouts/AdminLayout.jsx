@@ -31,27 +31,27 @@ export default function AdminLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-primary-900 flex h-screen overflow-x-hidden">
+    <div className="min-h-screen bg-white flex h-screen overflow-x-hidden">
       <AnimatePresence>
         {sidebarOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+            className="fixed inset-0 bg-black/20 z-40 lg:hidden"
             onClick={() => setSidebarOpen(false)}
             aria-hidden="true"
           />
         )}
       </AnimatePresence>
 
-      <aside className="fixed lg:static z-50 w-72 bg-primary-800 border-r border-dark-border flex flex-col h-full transition-transform duration-300 lg:translate-x-0">
+      <aside className="fixed lg:static z-50 w-72 bg-primary-50 border-r border-dark-border flex flex-col h-full transition-transform duration-300 lg:translate-x-0">
         <div className="p-6 border-b border-dark-border flex-shrink-0">
           <Link to="/admin" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-600 to-gold-400 flex items-center justify-center">
-              <Box className="w-6 h-6 text-primary-900" />
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-charcoal-600 to-charcoal-700 flex items-center justify-center">
+              <Box className="w-6 h-6 text-white" />
             </div>
-            <span className="font-display font-bold text-xl text-white">TechStore Admin</span>
+            <span className="font-display font-bold text-xl text-primary-900">TechStore Admin</span>
           </Link>
         </div>
 
@@ -65,8 +65,8 @@ export default function AdminLayout() {
                 to={item.path}
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                   isActive
-                    ? 'bg-gold-600/20 text-gold-400 border border-gold-600/30'
-                    : 'text-white hover:bg-primary-700 hover:text-white hover:border-gold-600/30'
+                    ? 'bg-charcoal-600/10 text-charcoal-600 border border-charcoal-600/20'
+                    : 'text-primary-900 hover:bg-primary-100 hover:text-primary-900 hover:border-charcoal-600/20'
                 }`}
                 onClick={() => setSidebarOpen(false)}
               >
@@ -78,18 +78,18 @@ export default function AdminLayout() {
         </nav>
 
         <div className="p-4 border-t border-dark-border flex-shrink-0">
-          <div className="flex items-center gap-3 px-4 py-3 text-sm text-white">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gold-600 to-gold-400 flex items-center justify-center text-white font-medium">
+          <div className="flex items-center gap-3 px-4 py-3 text-sm text-primary-900">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-charcoal-600 to-charcoal-700 flex items-center justify-center text-white font-medium">
               {user?.name?.charAt(0).toUpperCase()}
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-medium text-white truncate">{user?.name}</p>
-              <p className="text-xs text-white">{user?.role}</p>
+              <p className="font-medium text-primary-900 truncate">{user?.name}</p>
+              <p className="text-xs text-primary-900">{user?.role}</p>
             </div>
           </div>
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-white hover:text-gold-400 hover:bg-primary-700 rounded-xl transition-colors mt-2"
+            className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-primary-900 hover:text-charcoal-600 hover:bg-primary-100 rounded-xl transition-colors mt-2"
           >
             <LogOut className="w-5 h-5" aria-hidden="true" />
             Cerrar sesión
@@ -98,15 +98,15 @@ export default function AdminLayout() {
       </aside>
 
       <div className="flex-1 flex flex-col min-w-0 lg:ml-0">
-        <header className="lg:hidden bg-primary-800 border-b border-dark-border px-4 py-3 flex items-center justify-between">
+        <header className="lg:hidden bg-primary-50 border-b border-dark-border px-4 py-3 flex items-center justify-between">
           <button
             onClick={() => setSidebarOpen(true)}
-            className="p-2 rounded-lg text-white hover:bg-primary-700 transition-colors"
+            className="p-2 rounded-lg text-primary-900 hover:bg-primary-100 transition-colors"
             aria-label="Abrir menú"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
           </button>
-          <span className="font-display font-bold text-xl text-white">TechStore Admin</span>
+          <span className="font-display font-bold text-xl text-primary-900">TechStore Admin</span>
           <div className="w-10" />
         </header>
 

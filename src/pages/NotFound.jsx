@@ -12,7 +12,7 @@ export default function NotFound() {
         noindex
       />
 
-      <div className="min-h-screen bg-primary-900 pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-white pt-20 flex items-center justify-center">
         <div className="container-custom py-20 px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -24,16 +24,16 @@ export default function NotFound() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: 'spring', damping: 15, stiffness: 200, delay: 0.2 }}
-              className="w-32 h-32 rounded-full bg-primary-800/50 border border-dark-border flex items-center justify-center mx-auto mb-8"
+              className="w-32 h-32 rounded-full bg-primary-50 border border-dark-border flex items-center justify-center mx-auto mb-8"
             >
-              <SearchX className="w-16 h-16 text-gold-500" />
+              <SearchX className="w-16 h-16 text-charcoal-500" />
             </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="font-display font-bold text-8xl text-gold-400 mb-2"
+              className="font-display font-bold text-8xl text-charcoal-600 mb-2"
             >
               404
             </motion.p>
@@ -42,7 +42,7 @@ export default function NotFound() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="font-display font-bold text-3xl sm:text-4xl text-white mb-4"
+              className="font-display font-bold text-3xl sm:text-4xl text-primary-900 mb-4"
             >
               Página no encontrada
             </motion.h1>
@@ -51,7 +51,7 @@ export default function NotFound() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-white text-lg mb-8"
+              className="text-primary-900 text-lg mb-8"
             >
               La página que buscas no existe o fue movida.
             </motion.p>

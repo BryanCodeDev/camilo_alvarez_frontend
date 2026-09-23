@@ -71,7 +71,7 @@ export default function LegalPage({ pageKey }) {
         noindex
       />
 
-      <div className="min-h-screen bg-primary-900 pt-20">
+      <div className="min-h-screen bg-white pt-20">
         <section className="py-12 lg:py-20">
           <div className="container-custom">
             <motion.div
@@ -80,14 +80,14 @@ export default function LegalPage({ pageKey }) {
               transition={{ duration: 0.6 }}
               className="max-w-3xl mx-auto"
             >
-              <h1 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-white mb-6 text-center">
+              <h1 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-primary-900 mb-6 text-center">
                 {pageTitle}
               </h1>
-              <p className="text-white text-center mb-10">
+              <p className="text-primary-900 text-center mb-10">
                 Última actualización: {new Date().toLocaleDateString('es-AR', { year: 'numeric', month: 'long', day: 'numeric' })}
               </p>
 
-              <div className="prose prose-invert max-w-none text-white space-y-6">
+              <div className="prose prose max-w-none text-primary-900 space-y-6">
                 {page.sections.map((section, index) => (
                   <motion.section
                     key={section.h2}
@@ -96,8 +96,8 @@ export default function LegalPage({ pageKey }) {
                     viewport={{ once: true, margin: '-50px' }}
                     transition={{ duration: 0.5, delay: index * 0.05 }}
                   >
-                    <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-3">{section.h2}</h2>
-                    <div className="text-white leading-relaxed space-y-3 text-sm sm:text-base">
+                    <h2 className="font-display font-semibold text-lg sm:text-xl text-primary-900 mb-3">{section.h2}</h2>
+                    <div className="text-primary-900 leading-relaxed space-y-3 text-sm sm:text-base">
                       {section.content.split('\n\n').map((para, i) => (
                         <p key={i}>{para}</p>
                       ))}
@@ -110,10 +110,10 @@ export default function LegalPage({ pageKey }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="mt-10 p-5 bg-primary-800/50 border border-dark-border rounded-xl text-center"
+                className="mt-10 p-5 bg-primary-50 border border-dark-border rounded-xl text-center"
               >
-                <p className="text-white text-sm">
-                  ¿Dudas sobre esta política? <a href="/contacto" className="text-gold-400 hover:underline">Contactanos</a>
+                <p className="text-primary-900 text-sm">
+                  ¿Dudas sobre esta política? <a href="/contacto" className="text-charcoal-600 hover:underline">Contactanos</a>
                 </p>
               </motion.div>
             </motion.div>

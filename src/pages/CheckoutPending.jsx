@@ -18,7 +18,7 @@ export default function CheckoutPending() {
         noindex
       />
 
-      <div className="min-h-screen bg-primary-900 pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-white pt-20 flex items-center justify-center">
         <div className="container-custom py-20 px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -29,13 +29,13 @@ export default function CheckoutPending() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: 'spring', damping: 15, stiffness: 200, delay: 0.2 }}
-              className="w-24 h-24 rounded-full bg-gold-600/20 border border-gold-500 flex items-center justify-center mx-auto mb-8"
+              className="w-24 h-24 rounded-full bg-charcoal-600/10 border border-charcoal-500 flex items-center justify-center mx-auto mb-8"
             >
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
               >
-                <Loader2 className="w-12 h-12 text-gold-500" />
+                <Loader2 className="w-12 h-12 text-charcoal-500" />
               </motion.div>
             </motion.div>
 
@@ -43,7 +43,7 @@ export default function CheckoutPending() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="font-display font-bold text-3xl sm:text-4xl text-white mb-4"
+              className="font-display font-bold text-3xl sm:text-4xl text-primary-900 mb-4"
             >
               Pago pendiente
             </motion.h1>
@@ -52,7 +52,7 @@ export default function CheckoutPending() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-white text-lg mb-8"
+              className="text-primary-900 text-lg mb-8"
             >
               Tu pago está siendo procesado. Esto puede tomar unos minutos dependiendo del método elegido.
             </motion.p>
@@ -62,10 +62,10 @@ export default function CheckoutPending() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 mb-8"
+                className="bg-primary-50 border border-dark-border rounded-2xl p-6 mb-8"
               >
-                <p className="font-medium text-white mb-2">Número de pedido</p>
-                <p className="font-mono text-2xl font-bold text-gold-400 tracking-wider">{orderNumber}</p>
+                <p className="font-medium text-primary-900 mb-2">Número de pedido</p>
+                <p className="font-mono text-2xl font-bold text-charcoal-600 tracking-wider">{orderNumber}</p>
               </motion.div>
             )}
 
@@ -75,20 +75,20 @@ export default function CheckoutPending() {
               transition={{ delay: 0.6 }}
               className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8"
             >
-              <div className="p-4 bg-primary-800/50 border border-dark-border rounded-xl">
-                <Clock className="w-8 h-8 text-gold-500 mb-2" />
-                <p className="font-medium text-white">Tiempo estimado</p>
-                <p className="text-white text-sm">5-30 minutos</p>
+              <div className="p-4 bg-primary-50 border border-dark-border rounded-xl">
+                <Clock className="w-8 h-8 text-charcoal-500 mb-2" />
+                <p className="font-medium text-primary-900">Tiempo estimado</p>
+                <p className="text-primary-900 text-sm">5-30 minutos</p>
               </div>
-              <div className="p-4 bg-primary-800/50 border border-dark-border rounded-xl">
-                <CreditCard className="w-8 h-8 text-gold-500 mb-2" />
-                <p className="font-medium text-white">Métodos rápidos</p>
-                <p className="text-white text-sm">Tarjeta, efectivo</p>
+              <div className="p-4 bg-primary-50 border border-dark-border rounded-xl">
+                <CreditCard className="w-8 h-8 text-charcoal-500 mb-2" />
+                <p className="font-medium text-primary-900">Métodos rápidos</p>
+                <p className="text-primary-900 text-sm">Tarjeta, efectivo</p>
               </div>
-              <div className="p-4 bg-primary-800/50 border border-dark-border rounded-xl">
-                <Clock className="w-8 h-8 text-gold-500 mb-2" />
-                <p className="font-medium text-white">Transferencia</p>
-                <p className="text-white text-sm">Hasta 24hs</p>
+              <div className="p-4 bg-primary-50 border border-dark-border rounded-xl">
+                <Clock className="w-8 h-8 text-charcoal-500 mb-2" />
+                <p className="font-medium text-primary-900">Transferencia</p>
+                <p className="text-primary-900 text-sm">Hasta 24hs</p>
               </div>
             </motion.div>
 
@@ -96,13 +96,13 @@ export default function CheckoutPending() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
-              className="p-4 bg-primary-800/50 border border-dark-border rounded-xl text-left mb-8"
+              className="p-4 bg-primary-50 border border-dark-border rounded-xl text-left mb-8"
             >
-              <h3 className="font-medium text-white mb-3 flex items-center gap-2">
-                <MessageSquare className="w-5 h-5 text-gold-500" />
+              <h3 className="font-medium text-primary-900 mb-3 flex items-center gap-2">
+                <MessageSquare className="w-5 h-5 text-charcoal-500" />
                 ¿Qué sucede ahora?
               </h3>
-              <ul className="space-y-2 text-white text-sm">
+              <ul className="space-y-2 text-primary-900 text-sm">
                 <li className="flex items-start gap-2">• Recibirás un email cuando el pago se confirme</li>
                 <li className="flex items-start gap-2">• El estado del pedido se actualizará automáticamente</li>
                 <li className="flex items-start gap-2">• Si pagaste en efectivo, tenés 48hs para abonar</li>

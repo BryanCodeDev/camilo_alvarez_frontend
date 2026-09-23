@@ -128,8 +128,8 @@ export default function AdminProducts() {
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
         >
           <div>
-            <h1 className="font-display font-bold text-2xl sm:text-3xl text-white">Productos</h1>
-            <p className="text-white mt-2">{totalProducts} productos en el catálogo</p>
+            <h1 className="font-display font-bold text-2xl sm:text-3xl text-primary-900">Productos</h1>
+            <p className="text-primary-900 mt-2">{totalProducts} productos en el catálogo</p>
           </div>
           <Link to="/admin/productos/nuevo" className="btn-primary w-full sm:w-auto justify-center">
             <Plus className="w-5 h-5" />
@@ -141,23 +141,23 @@ export default function AdminProducts() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="min-w-0 p-4 sm:p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
+          className="min-w-0 p-4 sm:p-6 bg-primary-50 border border-dark-border rounded-2xl"
         >
           <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-4 min-w-0">
             <div className="relative flex-1 min-w-0">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary-500" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary-700" />
               <input
                 type="search"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Buscar por nombre, SKU o slug..."
-                className="w-full pl-12 pr-4 py-3 bg-primary-700 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500"
+                className="w-full pl-12 pr-4 py-3 bg-primary-100 border border-dark-border rounded-xl text-primary-900 placeholder:text-primary-700 focus:outline-none focus:border-charcoal-500 focus:ring-1 focus:ring-charcoal-500"
               />
             </div>
             <select
               value={status}
               onChange={(e) => { setStatus(e.target.value); setCurrentPage(1) }}
-              className="input py-3 px-4 bg-primary-700 w-full sm:w-auto"
+              className="input py-3 px-4 bg-primary-100 w-full sm:w-auto"
             >
               <option value="">Todos los estados</option>
               <option value="active">Activos</option>
@@ -175,7 +175,7 @@ export default function AdminProducts() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-primary-800/50 border border-dark-border rounded-2xl overflow-hidden"
+          className="bg-primary-50 border border-dark-border rounded-2xl overflow-hidden"
         >
           {loading ? (
             <div className="p-6 space-y-4" role="list" aria-busy="true">
@@ -185,16 +185,16 @@ export default function AdminProducts() {
             </div>
           ) : products.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 px-4 text-center">
-              <Package className="w-20 h-20 text-primary-600 mb-4" />
-              <h2 className="font-display font-bold text-2xl text-white mb-2">No se encontraron productos</h2>
-              <p className="text-white mb-6">Prueba con otros filtros o crea un nuevo producto</p>
+              <Package className="w-20 h-20 text-primary-800 mb-4" />
+              <h2 className="font-display font-bold text-2xl text-primary-900 mb-2">No se encontraron productos</h2>
+              <p className="text-primary-900 mb-6">Prueba con otros filtros o crea un nuevo producto</p>
               <Link to="/admin/productos/nuevo" className="btn-primary w-full sm:w-auto">Crear producto</Link>
             </div>
           ) : (
             <div className="overflow-x-auto min-w-0">
               <table className="w-full min-w-[840px] text-sm">
                 <thead>
-                  <tr className="border-b border-dark-border bg-primary-900/50 text-left text-white">
+                  <tr className="border-b border-dark-border bg-primary-50/50 text-left text-primary-900">
                     <th className="py-4 px-6 font-medium">Producto</th>
                     <th className="py-4 px-6 font-medium">SKU</th>
                     <th className="py-4 px-6 font-medium">Categoría</th>
@@ -213,45 +213,45 @@ export default function AdminProducts() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: index * 0.03 }}
-                        className="border-b border-dark-border/50 hover:bg-primary-900/50"
+                        className="border-b border-dark-border/50 hover:bg-primary-50/50"
                       >
                         <td className="py-4 px-6">
                           <div className="flex items-center gap-4">
-                            <div className="w-14 h-14 rounded-xl overflow-hidden bg-primary-700 flex-shrink-0">
+                            <div className="w-14 h-14 rounded-xl overflow-hidden bg-primary-100 flex-shrink-0">
                               <img src={product.main_image || '/assets/images/producto1.webp'} alt={product.name} className="w-full h-full object-cover" />
                             </div>
                             <div className="min-w-0">
-                              <p className="font-medium text-white truncate max-w-xs">{product.name}</p>
-                              <p className="text-white text-xs truncate">{product.slug}</p>
+                              <p className="font-medium text-primary-900 truncate max-w-xs">{product.name}</p>
+                              <p className="text-primary-900 text-xs truncate">{product.slug}</p>
                             </div>
                           </div>
                         </td>
-                        <td className="py-4 px-6 text-white">{product.sku}</td>
-                        <td className="py-4 px-6 text-white">{product.category_name || 'Sin categoría'}</td>
+                        <td className="py-4 px-6 text-primary-900">{product.sku}</td>
+                        <td className="py-4 px-6 text-primary-900">{product.category_name || 'Sin categoría'}</td>
                         <td className="py-4 px-6">
                           <div>
-                            <p className="font-medium text-gold-400">{formatPrice(product.price)}</p>
+                            <p className="font-medium text-charcoal-600">{formatPrice(product.price)}</p>
                             {product.original_price && product.original_price > product.price && (
-                              <p className="text-white text-xs line-through">{formatPrice(product.original_price)}</p>
+                              <p className="text-primary-900 text-xs line-through">{formatPrice(product.original_price)}</p>
                             )}
                           </div>
                         </td>
                         <td className="py-4 px-6">
                           <div className="flex items-center gap-2">
-                            <span className={`font-medium ${stockStatus.level === 'out' ? 'text-red-400' : stockStatus.level === 'low' ? 'text-yellow-400' : 'text-green-400'}`}>
+                            <span className={`font-medium ${stockStatus.level === 'out' ? 'text-red-500' : stockStatus.level === 'low' ? 'text-yellow-400' : 'text-green-400'}`}>
                               {product.stock}
                             </span>
                             {stockStatus.level === 'low' && <AlertTriangle className="w-4 h-4 text-yellow-400" />}
-                            {stockStatus.level === 'out' && <AlertTriangle className="w-4 h-4 text-red-400" />}
+                            {stockStatus.level === 'out' && <AlertTriangle className="w-4 h-4 text-red-500" />}
                           </div>
                         </td>
                         <td className="py-4 px-6">
                           <div className="flex items-center gap-2">
-                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${product.is_active ? 'bg-green-600/20 text-green-400 border border-green-600/30' : 'bg-red-600/20 text-red-400 border border-red-600/30'}`}>
+                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${product.is_active ? 'bg-green-600/20 text-green-400 border border-green-600/30' : 'bg-red-600/20 text-red-500 border border-red-600/30'}`}>
                               {product.is_active ? 'Activo' : 'Inactivo'}
                             </span>
                             {product.is_featured && (
-                              <span className="px-2 py-1 rounded-full text-xs font-medium bg-gold-600/20 text-gold-400 border border-gold-600/30">
+                              <span className="px-2 py-1 rounded-full text-xs font-medium bg-charcoal-600/10 text-charcoal-600 border border-charcoal-600/20">
                                 Destacado
                               </span>
                             )}
@@ -259,22 +259,22 @@ export default function AdminProducts() {
                         </td>
                         <td className="py-4 px-6 whitespace-nowrap">
                           <div className="flex items-center justify-end gap-2">
-                            <Link to={`/admin/productos/${product.id}/editar`} className="min-h-10 min-w-10 p-2 text-white hover:text-gold-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Editar ${product.name}`}>
+                            <Link to={`/admin/productos/${product.id}/editar`} className="min-h-10 min-w-10 p-2 text-primary-900 hover:text-charcoal-600 hover:bg-primary-100 rounded-lg transition-colors" aria-label={`Editar ${product.name}`}>
                               <Edit className="w-5 h-5" />
                             </Link>
-                            <Link to={`/producto/${product.slug}`} target="_blank" className="min-h-10 min-w-10 p-2 text-white hover:text-gold-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Ver ${product.name}`}>
+                            <Link to={`/producto/${product.slug}`} target="_blank" className="min-h-10 min-w-10 p-2 text-primary-900 hover:text-charcoal-600 hover:bg-primary-100 rounded-lg transition-colors" aria-label={`Ver ${product.name}`}>
                               <Eye className="w-5 h-5" />
                             </Link>
-                            <button onClick={() => handleDuplicate(product.id)} className="min-h-10 min-w-10 p-2 text-white hover:text-gold-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Duplicar ${product.name}`}>
+                            <button onClick={() => handleDuplicate(product.id)} className="min-h-10 min-w-10 p-2 text-primary-900 hover:text-charcoal-600 hover:bg-primary-100 rounded-lg transition-colors" aria-label={`Duplicar ${product.name}`}>
                               <Copy className="w-5 h-5" />
                             </button>
-                            <button onClick={() => handleToggleFeatured(product.id)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${product.is_featured ? 'text-gold-400 hover:bg-gold-600/10' : 'text-white hover:text-gold-400 hover:bg-primary-700'}`} aria-label={`Marcar como destacado ${product.name}`}>
+                            <button onClick={() => handleToggleFeatured(product.id)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${product.is_featured ? 'text-charcoal-600 hover:bg-charcoal-600/10' : 'text-primary-900 hover:text-charcoal-600 hover:bg-primary-100'}`} aria-label={`Marcar como destacado ${product.name}`}>
                               <Package className="w-5 h-5" />
                             </button>
-                            <button onClick={() => handleToggleStatus(product.id)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${product.is_active ? 'text-white hover:text-gold-400 hover:bg-gold-600/10' : 'text-white hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${product.is_active ? 'Desactivar' : 'Activar'} ${product.name}`}>
+                            <button onClick={() => handleToggleStatus(product.id)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${product.is_active ? 'text-primary-900 hover:text-charcoal-600 hover:bg-charcoal-600/10' : 'text-primary-900 hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${product.is_active ? 'Desactivar' : 'Activar'} ${product.name}`}>
                               {product.is_active ? <Trash2 className="w-5 h-5" /> : <Package className="w-5 h-5" />}
                             </button>
-                            <button onClick={() => handleDelete(product.id, product.name)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${deleteConfirm === product.id ? 'text-red-400 bg-red-600/10' : 'text-white hover:text-red-400 hover:bg-red-600/10'}`} aria-label={`Eliminar ${product.name}`}>
+                            <button onClick={() => handleDelete(product.id, product.name)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${deleteConfirm === product.id ? 'text-red-500 bg-red-600/10' : 'text-primary-900 hover:text-red-500 hover:bg-red-600/10'}`} aria-label={`Eliminar ${product.name}`}>
                               <Trash2 className="w-5 h-5" />
                             </button>
                           </div>
@@ -297,7 +297,7 @@ export default function AdminProducts() {
                 else if (currentPage >= totalPages - 2) pageNum = totalPages - 4 + i
                 else pageNum = currentPage - 2 + i
                 return (
-                  <button key={pageNum} onClick={() => setCurrentPage(pageNum)} className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-gold-600 text-primary-900' : 'bg-primary-700 text-white hover:bg-primary-600 hover:text-white border border-dark-border'}`}>
+                  <button key={pageNum} onClick={() => setCurrentPage(pageNum)} className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-charcoal-600 text-white' : 'bg-primary-100 text-primary-900 hover:bg-primary-200 hover:text-primary-900 border border-dark-border'}`}>
                     {pageNum}
                   </button>
                 )

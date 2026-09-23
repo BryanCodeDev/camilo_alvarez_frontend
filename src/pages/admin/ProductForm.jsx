@@ -224,8 +224,8 @@ export default function AdminProductForm() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-primary-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-gold-600 border-t-transparent" />
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-charcoal-600 border-t-transparent" />
       </div>
     )
   }
@@ -246,13 +246,13 @@ export default function AdminProductForm() {
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
         >
           <div>
-            <div className="flex items-center gap-2 text-white mb-2">
-              <Link to="/admin/productos" className="min-h-10 min-w-10 inline-flex items-center justify-center hover:text-gold-400 transition-colors" aria-label="Volver a productos">
+            <div className="flex items-center gap-2 text-primary-900 mb-2">
+              <Link to="/admin/productos" className="min-h-10 min-w-10 inline-flex items-center justify-center hover:text-charcoal-600 transition-colors" aria-label="Volver a productos">
                 <ArrowLeft className="w-5 h-5" />
               </Link>
               <span>Productos</span>
             </div>
-            <h1 className="font-display font-bold text-2xl sm:text-3xl text-white">{isEditing ? 'Editar producto' : 'Nuevo producto'}</h1>
+            <h1 className="font-display font-bold text-2xl sm:text-3xl text-primary-900">{isEditing ? 'Editar producto' : 'Nuevo producto'}</h1>
           </div>
           <button
             onClick={handleSubmit}
@@ -280,10 +280,10 @@ export default function AdminProductForm() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
+                className="min-w-0 bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
-                <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
-                  <Sparkles className="w-6 h-6 text-gold-500" />
+                <h2 className="font-display font-semibold text-lg sm:text-xl text-primary-900 mb-6 flex flex-wrap items-center gap-2">
+                  <Sparkles className="w-6 h-6 text-charcoal-500" />
                   Información básica
                 </h2>
                 <div className="space-y-6">
@@ -376,7 +376,7 @@ export default function AdminProductForm() {
                       className="input min-h-[180px] resize-y font-mono text-sm"
                       placeholder="Descripción HTML o texto completo del producto"
                     />
-                    <p className="text-white text-xs mt-1">Puedes usar HTML básico (&lt;h3&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;)</p>
+                    <p className="text-primary-900 text-xs mt-1">Puedes usar HTML básico (&lt;h3&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;)</p>
                   </div>
                 </div>
               </motion.section>
@@ -385,17 +385,17 @@ export default function AdminProductForm() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
+                className="min-w-0 bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
-                <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
-                  <Tag className="w-6 h-6 text-gold-500" />
+                <h2 className="font-display font-semibold text-lg sm:text-xl text-primary-900 mb-6 flex flex-wrap items-center gap-2">
+                  <Tag className="w-6 h-6 text-charcoal-500" />
                   Precio e inventario
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 min-w-0">
                   <div>
                     <label htmlFor="price" className="label">Precio actual *</label>
                     <div className="relative">
-                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white">$</span>
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary-900">$</span>
                       <input
                         id="price"
                         name="price"
@@ -413,7 +413,7 @@ export default function AdminProductForm() {
                   <div>
                     <label htmlFor="originalPrice" className="label">Precio anterior</label>
                     <div className="relative">
-                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white">$</span>
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary-900">$</span>
                       <input
                         id="originalPrice"
                         name="originalPrice"
@@ -461,9 +461,9 @@ export default function AdminProductForm() {
                         name="isOnSale"
                         checked={form.isOnSale}
                         onChange={handleChange}
-                        className="w-5 h-5 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
+                        className="w-5 h-5 text-charcoal-600 border-dark-border bg-primary-100 focus:ring-charcoal-500 rounded"
                       />
-                      <span className="text-white font-medium">Producto en oferta</span>
+                      <span className="text-primary-900 font-medium">Producto en oferta</span>
                     </label>
                   </div>
                 </div>
@@ -473,10 +473,10 @@ export default function AdminProductForm() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
+                className="min-w-0 bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
-                <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
-                  <Layers className="w-6 h-6 text-gold-500" />
+                <h2 className="font-display font-semibold text-lg sm:text-xl text-primary-900 mb-6 flex flex-wrap items-center gap-2">
+                  <Layers className="w-6 h-6 text-charcoal-500" />
                   Características y especificaciones
                 </h2>
                   <div className="space-y-8 min-w-0">
@@ -510,9 +510,9 @@ export default function AdminProductForm() {
                     </div>
                     <div className="flex flex-wrap gap-2 min-w-0">
                       {form.features.map((feature, index) => (
-                        <span key={index} className="inline-flex min-w-0 max-w-full items-center gap-2 px-3 py-2 bg-primary-700 border border-dark-border rounded-full text-sm text-white">
+                        <span key={index} className="inline-flex min-w-0 max-w-full items-center gap-2 px-3 py-2 bg-primary-100 border border-dark-border rounded-full text-sm text-primary-900">
                           <span className="truncate">{feature}</span>
-                          <button type="button" onClick={() => removeFeature(index)} className="min-h-8 min-w-8 text-white hover:text-gold-400 transition-colors flex-shrink-0" aria-label={`Eliminar ${feature}`}>
+                          <button type="button" onClick={() => removeFeature(index)} className="min-h-8 min-w-8 text-primary-900 hover:text-charcoal-600 transition-colors flex-shrink-0" aria-label={`Eliminar ${feature}`}>
                             <X className="w-4 h-4" />
                           </button>
                         </span>
@@ -546,12 +546,12 @@ export default function AdminProductForm() {
                     </div>
                     <div className="space-y-2">
                       {Object.entries(form.specifications).map(([key, value]) => (
-                        <div className="flex min-w-0 flex-wrap items-center justify-between gap-2 p-3 bg-primary-700/50 border border-dark-border rounded-xl">
+                        <div className="flex min-w-0 flex-wrap items-center justify-between gap-2 p-3 bg-primary-100 border border-dark-border rounded-xl">
                           <div className="min-w-0">
-                            <p className="font-medium text-white truncate">{key}</p>
-                            <p className="text-white text-sm truncate">{value}</p>
+                            <p className="font-medium text-primary-900 truncate">{key}</p>
+                            <p className="text-primary-900 text-sm truncate">{value}</p>
                           </div>
-                          <button type="button" onClick={() => removeSpecification(key)} className="min-h-10 min-w-10 p-2 text-white hover:text-gold-400 transition-colors flex-shrink-0" aria-label={`Eliminar ${key}`}>
+                          <button type="button" onClick={() => removeSpecification(key)} className="min-h-10 min-w-10 p-2 text-primary-900 hover:text-charcoal-600 transition-colors flex-shrink-0" aria-label={`Eliminar ${key}`}>
                             <X className="w-5 h-5" />
                           </button>
                         </div>
@@ -565,10 +565,10 @@ export default function AdminProductForm() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
+                className="min-w-0 bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
-                <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
-                  <Tag className="w-6 h-6 text-gold-500" />
+                <h2 className="font-display font-semibold text-lg sm:text-xl text-primary-900 mb-6 flex flex-wrap items-center gap-2">
+                  <Tag className="w-6 h-6 text-charcoal-500" />
                   SEO
                 </h2>
                 <div className="space-y-6">
@@ -584,7 +584,7 @@ export default function AdminProductForm() {
                       maxLength={200}
                       placeholder={`${form.name || 'Nombre del producto'} | TechStore`}
                     />
-                    <p className="text-white text-xs mt-1">Recomendado: menos de 60 caracteres</p>
+                    <p className="text-primary-900 text-xs mt-1">Recomendado: menos de 60 caracteres</p>
                   </div>
                   <div>
                     <label htmlFor="metaDescription" className="label">Meta description</label>
@@ -597,7 +597,7 @@ export default function AdminProductForm() {
                       maxLength={300}
                       placeholder="Descripción para motores de búsqueda"
                     />
-                    <p className="text-white text-xs mt-1">Recomendado: 150-160 caracteres</p>
+                    <p className="text-primary-900 text-xs mt-1">Recomendado: 150-160 caracteres</p>
                   </div>
                 </div>
               </motion.section>
@@ -608,10 +608,10 @@ export default function AdminProductForm() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
+                className="min-w-0 bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
-                <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
-                  <Tag className="w-6 h-6 text-gold-500" />
+                <h2 className="font-display font-semibold text-lg sm:text-xl text-primary-900 mb-6 flex flex-wrap items-center gap-2">
+                  <Tag className="w-6 h-6 text-charcoal-500" />
                   Categoría y estado
                 </h2>
                 <div className="space-y-6">
@@ -639,9 +639,9 @@ export default function AdminProductForm() {
                         name="isActive"
                         checked={form.isActive}
                         onChange={handleChange}
-                        className="w-5 h-5 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
+                        className="w-5 h-5 text-charcoal-600 border-dark-border bg-primary-100 focus:ring-charcoal-500 rounded"
                       />
-                      <span className="text-white font-medium">Producto activo</span>
+                      <span className="text-primary-900 font-medium">Producto activo</span>
                     </label>
                     <label className="flex items-center gap-3 cursor-pointer">
                       <input
@@ -649,9 +649,9 @@ export default function AdminProductForm() {
                         name="isFeatured"
                         checked={form.isFeatured}
                         onChange={handleChange}
-                        className="w-5 h-5 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
+                        className="w-5 h-5 text-charcoal-600 border-dark-border bg-primary-100 focus:ring-charcoal-500 rounded"
                       />
-                      <span className="text-white font-medium">Destacado en home</span>
+                      <span className="text-primary-900 font-medium">Destacado en home</span>
                     </label>
                     <label className="flex items-center gap-3 cursor-pointer">
                       <input
@@ -659,9 +659,9 @@ export default function AdminProductForm() {
                         name="isNew"
                         checked={form.isNew}
                         onChange={handleChange}
-                        className="w-5 h-5 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
+                        className="w-5 h-5 text-charcoal-600 border-dark-border bg-primary-100 focus:ring-charcoal-500 rounded"
                       />
-                      <span className="text-white font-medium">Nuevo ingreso</span>
+                      <span className="text-primary-900 font-medium">Nuevo ingreso</span>
                     </label>
                     <label className="flex items-center gap-3 cursor-pointer">
                       <input
@@ -669,9 +669,9 @@ export default function AdminProductForm() {
                         name="isOnSale"
                         checked={form.isOnSale}
                         onChange={handleChange}
-                        className="w-5 h-5 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
+                        className="w-5 h-5 text-charcoal-600 border-dark-border bg-primary-100 focus:ring-charcoal-500 rounded"
                       />
-                      <span className="text-white font-medium">En oferta</span>
+                      <span className="text-primary-900 font-medium">En oferta</span>
                     </label>
                   </div>
                 </div>
@@ -681,33 +681,33 @@ export default function AdminProductForm() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
+                className="min-w-0 bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
               >
-                <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6 flex flex-wrap items-center gap-2">
-                  <ImageIcon className="w-6 h-6 text-gold-500" />
+                <h2 className="font-display font-semibold text-lg sm:text-xl text-primary-900 mb-6 flex flex-wrap items-center gap-2">
+                  <ImageIcon className="w-6 h-6 text-charcoal-500" />
                   Imágenes
                 </h2>
                 <div className="space-y-4">
-                  <label className="block w-full border-2 border-dashed border-dark-border hover:border-gold-600/50 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-colors">
-                    <Upload className="w-8 h-8 text-primary-500 mx-auto mb-3" />
-                    <p className="text-white font-medium mb-1">Subir imágenes</p>
-                    <p className="text-white text-sm">PNG, JPG, WebP · Máx 10MB cada una</p>
+                  <label className="block w-full border-2 border-dashed border-dark-border hover:border-charcoal-300 rounded-xl p-6 sm:p-8 text-center cursor-pointer transition-colors">
+                    <Upload className="w-8 h-8 text-primary-700 mx-auto mb-3" />
+                    <p className="text-primary-900 font-medium mb-1">Subir imágenes</p>
+                    <p className="text-primary-900 text-sm">PNG, JPG, WebP · Máx 10MB cada una</p>
                     <input type="file" multiple accept="image/*" onChange={handleImageChange} className="hidden" />
                   </label>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 min-w-0">
                     {previews.map((preview, index) => (
-                      <div key={index} className="relative aspect-square rounded-xl overflow-hidden bg-primary-700 border border-dark-border group">
+                      <div key={index} className="relative aspect-square rounded-xl overflow-hidden bg-primary-100 border border-dark-border group">
                         <img src={preview} alt={`Vista previa ${index + 1}`} className="w-full h-full object-cover" />
                         {index === 0 && (
-                          <span className="absolute top-2 left-2 px-2 py-1 bg-gold-600 text-primary-900 text-xs font-bold rounded-full">Principal</span>
+                          <span className="absolute top-2 left-2 px-2 py-1 bg-charcoal-600 text-white text-xs font-bold rounded-full">Principal</span>
                         )}
-                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-                          <button type="button" onClick={() => setMainImage(index)} className="min-h-10 min-w-10 p-2 bg-primary-800 hover:bg-gold-600 rounded-lg transition-colors" aria-label="Establecer como principal">
-                            <Sparkles className="w-5 h-5 text-primary-500" />
+                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                          <button type="button" onClick={() => setMainImage(index)} className="min-h-10 min-w-10 p-2 bg-primary-50 hover:bg-charcoal-600 rounded-lg transition-colors" aria-label="Establecer como principal">
+                            <Sparkles className="w-5 h-5 text-white" />
                           </button>
-                          <button type="button" onClick={() => removeImage(index)} className="min-h-10 min-w-10 p-2 bg-primary-800 hover:bg-gold-600 rounded-lg transition-colors" aria-label={`Eliminar imagen ${index + 1}`}>
-                            <Trash2 className="w-5 h-5 text-primary-500" />
+                          <button type="button" onClick={() => removeImage(index)} className="min-h-10 min-w-10 p-2 bg-primary-50 hover:bg-charcoal-600 rounded-lg transition-colors" aria-label={`Eliminar imagen ${index + 1}`}>
+                            <Trash2 className="w-5 h-5 text-white" />
                           </button>
                         </div>
                       </div>
@@ -715,7 +715,7 @@ export default function AdminProductForm() {
                   </div>
 
                   {previews.length === 0 && (
-                    <p className="text-white text-sm text-center">La primera imagen será la principal</p>
+                    <p className="text-primary-900 text-sm text-center">La primera imagen será la principal</p>
                   )}
                 </div>
               </motion.section>

@@ -148,8 +148,8 @@ export default function AdminCategories() {
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
         >
           <div>
-            <h1 className="font-display font-bold text-2xl sm:text-3xl text-white">Categorías</h1>
-            <p className="text-white mt-2">{categories.length} categorías en el catálogo</p>
+            <h1 className="font-display font-bold text-2xl sm:text-3xl text-primary-900">Categorías</h1>
+            <p className="text-primary-900 mt-2">{categories.length} categorías en el catálogo</p>
           </div>
           <button onClick={() => openForm()} className="btn-primary w-full sm:w-auto justify-center">
             <Plus className="w-5 h-5" />
@@ -161,11 +161,11 @@ export default function AdminCategories() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="min-w-0 bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
+            className="min-w-0 bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
           >
             <div className="flex flex-wrap items-center justify-between gap-3 mb-6 min-w-0">
-              <h2 className="font-display font-semibold text-lg sm:text-xl text-white min-w-0">{editingId ? 'Editar categoría' : 'Nueva categoría'}</h2>
-              <button onClick={closeForm} className="min-h-10 min-w-10 p-2 text-white hover:text-gold-400 transition-colors flex-shrink-0" aria-label="Cerrar formulario">
+              <h2 className="font-display font-semibold text-lg sm:text-xl text-primary-900 min-w-0">{editingId ? 'Editar categoría' : 'Nueva categoría'}</h2>
+              <button onClick={closeForm} className="min-h-10 min-w-10 p-2 text-primary-900 hover:text-charcoal-600 transition-colors flex-shrink-0" aria-label="Cerrar formulario">
                 <Trash2 className="w-5 h-5" />
               </button>
             </div>
@@ -218,14 +218,14 @@ export default function AdminCategories() {
                 <label htmlFor="image" className="label">Imagen</label>
                 <div className="flex flex-wrap items-center gap-4 min-w-0">
                   {preview && (
-                    <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-primary-700 border border-dark-border flex-shrink-0">
+                    <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-primary-100 border border-dark-border flex-shrink-0">
                       <img src={preview} alt="Vista previa" className="w-full h-full object-cover" />
                     </div>
                   )}
-                  <label className="flex-1 min-w-0 border-2 border-dashed border-dark-border hover:border-gold-600/50 rounded-xl p-4 text-center cursor-pointer transition-colors">
-                    <ImageIcon className="w-8 h-8 text-primary-500 mx-auto mb-2" />
-                    <p className="text-white text-sm font-medium">Subir imagen</p>
-                    <p className="text-white text-xs">PNG, JPG, WebP</p>
+                  <label className="flex-1 min-w-0 border-2 border-dashed border-dark-border hover:border-charcoal-300 rounded-xl p-4 text-center cursor-pointer transition-colors">
+                    <ImageIcon className="w-8 h-8 text-primary-700 mx-auto mb-2" />
+                    <p className="text-primary-900 text-sm font-medium">Subir imagen</p>
+                    <p className="text-primary-900 text-xs">PNG, JPG, WebP</p>
                     <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
                   </label>
                 </div>
@@ -278,7 +278,7 @@ export default function AdminCategories() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-primary-800/50 border border-dark-border rounded-2xl overflow-hidden"
+          className="bg-primary-50 border border-dark-border rounded-2xl overflow-hidden"
         >
           {loading ? (
             <div className="p-6 space-y-4" role="list" aria-busy="true">
@@ -290,7 +290,7 @@ export default function AdminCategories() {
             <div className="overflow-x-auto min-w-0">
               <table className="w-full min-w-[720px] text-sm">
                 <thead>
-                  <tr className="border-b border-dark-border bg-primary-900/50 text-left text-white">
+                  <tr className="border-b border-dark-border bg-primary-50/50 text-left text-primary-900">
                     <th className="py-4 px-6 font-medium">Categoría</th>
                     <th className="py-4 px-6 font-medium">Slug</th>
                     <th className="py-4 px-6 font-medium">Productos</th>
@@ -305,42 +305,42 @@ export default function AdminCategories() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.03 }}
-                      className="border-b border-dark-border/50 hover:bg-primary-900/50"
+                      className="border-b border-dark-border/50 hover:bg-primary-50/50"
                     >
                       <td className="py-4 px-6">
                         <div className="flex items-center gap-4">
                           {category.image_url ? (
                             <img src={category.image_url} alt={category.name} className="w-12 h-12 rounded-xl object-cover" />
                           ) : (
-                            <div className="w-12 h-12 rounded-xl bg-primary-700 flex items-center justify-center">
-                              <ImageIcon className="w-5 h-5 text-primary-500" />
+                            <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center">
+                              <ImageIcon className="w-5 h-5 text-primary-700" />
                             </div>
                           )}
                           <div className="min-w-0">
-                            <p className="font-medium text-white truncate">{category.name}</p>
-                            <p className="text-white text-xs truncate">{category.description || 'Sin descripción'}</p>
+                            <p className="font-medium text-primary-900 truncate">{category.name}</p>
+                            <p className="text-primary-900 text-xs truncate">{category.description || 'Sin descripción'}</p>
                           </div>
                         </div>
                       </td>
-                      <td className="py-4 px-6 text-white">{category.slug}</td>
-                      <td className="py-4 px-6 text-white">{category.product_count || 0}</td>
+                      <td className="py-4 px-6 text-primary-900">{category.slug}</td>
+                      <td className="py-4 px-6 text-primary-900">{category.product_count || 0}</td>
                       <td className="py-4 px-6">
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${category.is_active ? 'bg-green-600/20 text-green-400 border border-green-600/30' : 'bg-red-600/20 text-red-400 border border-red-600/30'}`}>
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${category.is_active ? 'bg-green-600/20 text-green-400 border border-green-600/30' : 'bg-red-600/20 text-red-500 border border-red-600/30'}`}>
                           {category.is_active ? 'Activa' : 'Inactiva'}
                         </span>
                       </td>
                       <td className="py-4 px-6">
                         <div className="flex items-center justify-end gap-2">
-                          <Link to={`/categoria/${category.slug}`} target="_blank" className="min-h-10 min-w-10 p-2 text-white hover:text-gold-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Ver ${category.name}`}>
+                          <Link to={`/categoria/${category.slug}`} target="_blank" className="min-h-10 min-w-10 p-2 text-primary-900 hover:text-charcoal-600 hover:bg-primary-100 rounded-lg transition-colors" aria-label={`Ver ${category.name}`}>
                             <Eye className="w-5 h-5" />
                           </Link>
-                          <button onClick={() => openForm(category)} className="min-h-10 min-w-10 p-2 text-white hover:text-gold-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Editar ${category.name}`}>
+                          <button onClick={() => openForm(category)} className="min-h-10 min-w-10 p-2 text-primary-900 hover:text-charcoal-600 hover:bg-primary-100 rounded-lg transition-colors" aria-label={`Editar ${category.name}`}>
                             <Edit className="w-5 h-5" />
                           </button>
-                          <button onClick={() => handleToggleStatus(category.id)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${category.is_active ? 'text-white hover:text-gold-400 hover:bg-gold-600/10' : 'text-white hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${category.is_active ? 'Desactivar' : 'Activar'} ${category.name}`}>
+                          <button onClick={() => handleToggleStatus(category.id)} className={`min-h-10 min-w-10 p-2 rounded-lg transition-colors ${category.is_active ? 'text-primary-900 hover:text-charcoal-600 hover:bg-charcoal-600/10' : 'text-primary-900 hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${category.is_active ? 'Desactivar' : 'Activar'} ${category.name}`}>
                             {category.is_active ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                           </button>
-                          <button onClick={() => handleDelete(category.id)} className="min-h-10 min-w-10 p-2 text-white hover:text-red-400 hover:bg-red-600/10 rounded-lg transition-colors" aria-label={`Eliminar ${category.name}`}>
+                          <button onClick={() => handleDelete(category.id)} className="min-h-10 min-w-10 p-2 text-primary-900 hover:text-red-500 hover:bg-red-600/10 rounded-lg transition-colors" aria-label={`Eliminar ${category.name}`}>
                             <Trash2 className="w-5 h-5" />
                           </button>
                         </div>

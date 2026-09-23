@@ -103,7 +103,7 @@ export function getOrderStatusConfig(status) {
     shipped: { label: 'Enviado', color: 'indigo', bg: 'bg-indigo-600/20', text: 'text-indigo-400', border: 'border-indigo-600/30' },
     delivered: { label: 'Entregado', color: 'green', bg: 'bg-green-600/20', text: 'text-green-400', border: 'border-green-600/30' },
     cancelled: { label: 'Cancelado', color: 'red', bg: 'bg-red-600/20', text: 'text-red-400', border: 'border-red-600/30' },
-    refunded: { label: 'Reembolsado', color: 'gray', bg: 'bg-gray-600/20', text: 'text-white', border: 'border-gray-600/30' },
+    refunded: { label: 'Reembolsado', color: 'gray', bg: 'bg-gray-600/20', text: 'text-primary-900', border: 'border-gray-600/30' },
   }
   return configs[status] || configs.pending
 }

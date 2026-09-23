@@ -88,8 +88,8 @@ export default function AdminUsers() {
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
         >
           <div>
-            <h1 className="font-display font-bold text-2xl sm:text-3xl text-white">Usuarios</h1>
-            <p className="text-white mt-2">Gestiona cuentas, roles y permisos</p>
+            <h1 className="font-display font-bold text-2xl sm:text-3xl text-primary-900">Usuarios</h1>
+            <p className="text-primary-900 mt-2">Gestiona cuentas, roles y permisos</p>
           </div>
         </motion.div>
 
@@ -97,23 +97,23 @@ export default function AdminUsers() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
+          className="p-6 bg-primary-50 border border-dark-border rounded-2xl"
         >
           <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-4">
             <div className="relative flex-1">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary-500" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary-700" />
               <input
                 type="search"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Buscar por nombre, email o teléfono..."
-                className="w-full pl-12 pr-4 py-3 bg-primary-700 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500"
+                className="w-full pl-12 pr-4 py-3 bg-primary-100 border border-dark-border rounded-xl text-primary-900 placeholder:text-primary-700 focus:outline-none focus:border-charcoal-500 focus:ring-1 focus:ring-charcoal-500"
               />
             </div>
             <select
               value={role}
               onChange={(e) => { setRole(e.target.value); setCurrentPage(1) }}
-              className="input py-3 px-4 bg-primary-700"
+              className="input py-3 px-4 bg-primary-100"
             >
               <option value="">Todos los roles</option>
               <option value="admin">Administradores</option>
@@ -126,7 +126,7 @@ export default function AdminUsers() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-primary-800/50 border border-dark-border rounded-2xl overflow-hidden"
+          className="bg-primary-50 border border-dark-border rounded-2xl overflow-hidden"
         >
           {loading ? (
             <div className="p-6 space-y-4" role="list" aria-busy="true">
@@ -138,7 +138,7 @@ export default function AdminUsers() {
             <div className="overflow-x-auto min-w-0">
               <table className="w-full min-w-[720px] text-sm">
                 <thead>
-                  <tr className="border-b border-dark-border bg-primary-900/50 text-left text-white">
+                  <tr className="border-b border-dark-border bg-primary-50/50 text-left text-primary-900">
                     <th className="py-4 px-6 font-medium">Usuario</th>
                     <th className="py-4 px-6 font-medium">Email</th>
                     <th className="py-4 px-6 font-medium">Rol</th>
@@ -154,37 +154,37 @@ export default function AdminUsers() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.03 }}
-                      className="border-b border-dark-border/50 hover:bg-primary-900/50"
+                      className="border-b border-dark-border/50 hover:bg-primary-50/50"
                     >
                       <td className="py-4 px-6">
                         <div className="flex items-center gap-4">
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold-600 to-gold-400 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-charcoal-600 to-charcoal-700 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                             {user.firstName?.charAt(0)}{user.lastName?.charAt(0)}
                           </div>
                           <div>
-                            <p className="font-medium text-white">{user.firstName} {user.lastName}</p>
-                            <p className="text-white text-xs">{user.phone || 'Sin teléfono'}</p>
+                            <p className="font-medium text-primary-900">{user.firstName} {user.lastName}</p>
+                            <p className="text-primary-900 text-xs">{user.phone || 'Sin teléfono'}</p>
                           </div>
                         </div>
                       </td>
-                      <td className="py-4 px-6 text-white truncate max-w-xs">{user.email}</td>
+                      <td className="py-4 px-6 text-primary-900 truncate max-w-xs">{user.email}</td>
                       <td className="py-4 px-6">
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${user.role === 'admin' ? 'bg-gold-600/20 text-gold-400 border border-gold-600/30' : 'bg-blue-600/20 text-blue-400 border border-blue-600/30'}`}>
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${user.role === 'admin' ? 'bg-charcoal-600/10 text-charcoal-600 border border-charcoal-600/20' : 'bg-blue-600/20 text-blue-400 border border-blue-600/30'}`}>
                           {user.role === 'admin' ? 'Admin' : 'Usuario'}
                         </span>
                       </td>
                       <td className="py-4 px-6">
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${user.isActive ? 'bg-green-600/20 text-green-400 border border-green-600/30' : 'bg-red-600/20 text-red-400 border border-red-600/30'}`}>
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${user.isActive ? 'bg-green-600/20 text-green-400 border border-green-600/30' : 'bg-red-600/20 text-red-500 border border-red-600/30'}`}>
                           {user.isActive ? 'Activo' : 'Inactivo'}
                         </span>
                       </td>
-                      <td className="py-4 px-6 text-white whitespace-nowrap">{formatDate(user.createdAt)}</td>
+                      <td className="py-4 px-6 text-primary-900 whitespace-nowrap">{formatDate(user.createdAt)}</td>
                       <td className="py-4 px-6">
                         <div className="flex items-center justify-end gap-2">
-                          <button onClick={() => openUser(user)} className="p-2 text-white hover:text-gold-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Ver ${user.email}`}>
+                          <button onClick={() => openUser(user)} className="p-2 text-primary-900 hover:text-charcoal-600 hover:bg-primary-100 rounded-lg transition-colors" aria-label={`Ver ${user.email}`}>
                             <Eye className="w-5 h-5" />
                           </button>
-                          <button onClick={() => handleToggleStatus(user)} className={`p-2 rounded-lg transition-colors ${user.isActive ? 'text-white hover:text-gold-400 hover:bg-gold-600/10' : 'text-white hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${user.isActive ? 'Desactivar' : 'Activar'} ${user.email}`}>
+                          <button onClick={() => handleToggleStatus(user)} className={`p-2 rounded-lg transition-colors ${user.isActive ? 'text-primary-900 hover:text-charcoal-600 hover:bg-charcoal-600/10' : 'text-primary-900 hover:text-green-400 hover:bg-green-600/10'}`} aria-label={`${user.isActive ? 'Desactivar' : 'Activar'} ${user.email}`}>
                             {user.isActive ? <UserX className="w-5 h-5" /> : <UserCheck className="w-5 h-5" />}
                           </button>
                         </div>
@@ -206,7 +206,7 @@ export default function AdminUsers() {
                 else if (currentPage >= totalPages - 2) pageNum = totalPages - 4 + i
                 else pageNum = currentPage - 2 + i
                 return (
-                  <button key={pageNum} onClick={() => setCurrentPage(pageNum)} className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-gold-600 text-primary-900' : 'bg-primary-700 text-white hover:bg-primary-600 hover:text-white border border-dark-border'}`}>
+                  <button key={pageNum} onClick={() => setCurrentPage(pageNum)} className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-charcoal-600 text-white' : 'bg-primary-100 text-primary-900 hover:bg-primary-200 hover:text-primary-900 border border-dark-border'}`}>
                     {pageNum}
                   </button>
                 )
@@ -226,37 +226,37 @@ export default function AdminUsers() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            className="bg-primary-800 border border-dark-border rounded-2xl w-full max-w-md"
+            className="bg-primary-50 border border-dark-border rounded-2xl w-full max-w-md"
           >
             <div className="p-6 border-b border-dark-border">
-              <h2 className="font-display font-bold text-xl text-white">Detalles del usuario</h2>
+              <h2 className="font-display font-bold text-xl text-primary-900">Detalles del usuario</h2>
             </div>
             <div className="p-6 space-y-4">
               <div>
-                <p className="text-white text-sm">Nombre</p>
-                <p className="font-medium text-white">{selectedUser.firstName} {selectedUser.lastName}</p>
+                <p className="text-primary-900 text-sm">Nombre</p>
+                <p className="font-medium text-primary-900">{selectedUser.firstName} {selectedUser.lastName}</p>
               </div>
               <div>
-                <p className="text-white text-sm">Email</p>
-                <p className="font-medium text-white">{selectedUser.email}</p>
+                <p className="text-primary-900 text-sm">Email</p>
+                <p className="font-medium text-primary-900">{selectedUser.email}</p>
               </div>
               <div>
-                <p className="text-white text-sm">Teléfono</p>
-                <p className="font-medium text-white">{selectedUser.phone || 'No registrado'}</p>
+                <p className="text-primary-900 text-sm">Teléfono</p>
+                <p className="font-medium text-primary-900">{selectedUser.phone || 'No registrado'}</p>
               </div>
               <div>
-                <p className="text-white text-sm">Rol</p>
+                <p className="text-primary-900 text-sm">Rol</p>
                 <div className="flex items-center gap-2 mt-2">
                   <select
                     value={selectedUser.role}
                     onChange={(e) => handleChangeRole(selectedUser, e.target.value)}
-                    className="input py-2 px-3 bg-primary-700 text-sm"
+                    className="input py-2 px-3 bg-primary-100 text-sm"
                     disabled={saving}
                   >
                     <option value="user">Usuario</option>
                     <option value="admin">Administrador</option>
                   </select>
-                  {saving && <Loader2 className="w-5 h-5 animate-spin text-gold-500" />}
+                  {saving && <Loader2 className="w-5 h-5 animate-spin text-charcoal-500" />}
                 </div>
               </div>
               <div className="flex justify-end pt-4 border-t border-dark-border">

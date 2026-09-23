@@ -47,8 +47,8 @@ export default function AdminDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-primary-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-gold-600 border-t-transparent" />
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-charcoal-600 border-t-transparent" />
       </div>
     )
   }
@@ -97,8 +97,8 @@ export default function AdminDashboard() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="font-display font-bold text-2xl sm:text-3xl text-white">Dashboard</h1>
-          <p className="text-white mt-2">Bienvenido al panel de administración de TechStore</p>
+          <h1 className="font-display font-bold text-2xl sm:text-3xl text-primary-900">Dashboard</h1>
+          <p className="text-primary-900 mt-2">Bienvenido al panel de administración de TechStore</p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -106,7 +106,7 @@ export default function AdminDashboard() {
             const Icon = card.icon
             const value = card.format === 'money' ? formatPrice(card.value) : card.value
             const colorClasses = {
-              gold: 'bg-gold-600/20 text-gold-400 border-gold-600/30',
+              gold: 'bg-charcoal-600/10 text-charcoal-600 border-charcoal-600/20',
             }
             return (
               <motion.div
@@ -114,7 +114,7 @@ export default function AdminDashboard() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="min-w-0 p-4 sm:p-6 bg-primary-800/50 border border-dark-border rounded-2xl hover:border-gold-600/50 hover:shadow-gold transition-all duration-300"
+                className="min-w-0 p-4 sm:p-6 bg-primary-50 border border-dark-border rounded-2xl hover:border-charcoal-300 hover:shadow-card-hover transition-all duration-300"
               >
                 <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                   <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center ${colorClasses.gold}`}>
@@ -124,8 +124,8 @@ export default function AdminDashboard() {
                     {card.label}
                   </span>
                 </div>
-                <p className="min-w-0 font-display font-bold text-xl sm:text-2xl text-white mb-1 break-words">{value}</p>
-                <p className="text-white text-sm">{card.label}</p>
+                <p className="min-w-0 font-display font-bold text-xl sm:text-2xl text-primary-900 mb-1 break-words">{value}</p>
+                <p className="text-primary-900 text-sm">{card.label}</p>
               </motion.div>
             )
           })}
@@ -136,11 +136,11 @@ export default function AdminDashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="min-w-0 lg:col-span-2 p-4 sm:p-6 bg-primary-800/50 border border-dark-border rounded-2xl overflow-hidden"
+            className="min-w-0 lg:col-span-2 p-4 sm:p-6 bg-primary-50 border border-dark-border rounded-2xl overflow-hidden"
           >
             <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-              <h2 className="font-display font-semibold text-xl text-white">Ventas de los últimos 30 días</h2>
-              <span className="text-white text-sm">Últimos 30 días</span>
+              <h2 className="font-display font-semibold text-xl text-primary-900">Ventas de los últimos 30 días</h2>
+              <span className="text-primary-900 text-sm">Últimos 30 días</span>
             </div>
             <ResponsiveContainer width="100%" height={320}>
               <BarChart data={salesData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
@@ -161,9 +161,9 @@ export default function AdminDashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="min-w-0 p-4 sm:p-6 bg-primary-800/50 border border-dark-border rounded-2xl overflow-hidden"
+            className="min-w-0 p-4 sm:p-6 bg-primary-50 border border-dark-border rounded-2xl overflow-hidden"
           >
-            <h2 className="font-display font-semibold text-lg sm:text-xl text-white mb-6">Estado de pedidos</h2>
+            <h2 className="font-display font-semibold text-lg sm:text-xl text-primary-900 mb-6">Estado de pedidos</h2>
             <ResponsiveContainer width="100%" height={260}>
               <PieChart>
                 <Pie
@@ -190,8 +190,8 @@ export default function AdminDashboard() {
               {pieData.map((entry, index) => (
                 <div key={entry.name} className="flex items-center gap-2 text-sm">
                   <span className="w-3 h-3 rounded-full" style={{ background: COLORS[index] }} />
-                  <span className="text-white">{entry.name}</span>
-                  <span className="text-white font-medium">{entry.value}</span>
+                  <span className="text-primary-900">{entry.name}</span>
+                  <span className="text-primary-900 font-medium">{entry.value}</span>
                 </div>
               ))}
             </div>
@@ -203,11 +203,11 @@ export default function AdminDashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="min-w-0 p-4 sm:p-6 bg-primary-800/50 border border-dark-border rounded-2xl overflow-hidden"
+            className="min-w-0 p-4 sm:p-6 bg-primary-50 border border-dark-border rounded-2xl overflow-hidden"
           >
             <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-              <h2 className="font-display font-semibold text-xl text-white">Pedidos por estado</h2>
-              <span className="text-white text-sm">Últimos 30 días</span>
+              <h2 className="font-display font-semibold text-xl text-primary-900">Pedidos por estado</h2>
+              <span className="text-primary-900 text-sm">Últimos 30 días</span>
             </div>
             <ResponsiveContainer width="100%" height={280}>
               <LineChart data={ordersData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
@@ -229,26 +229,26 @@ export default function AdminDashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="min-w-0 p-4 sm:p-6 bg-primary-800/50 border border-dark-border rounded-2xl overflow-hidden"
+            className="min-w-0 p-4 sm:p-6 bg-primary-50 border border-dark-border rounded-2xl overflow-hidden"
           >
             <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-              <h2 className="font-display font-semibold text-xl text-white">Productos más vendidos</h2>
-              <Link to="/admin/productos" className="text-gold-400 hover:text-gold-300 text-sm font-medium transition-colors">Ver todos</Link>
+              <h2 className="font-display font-semibold text-xl text-primary-900">Productos más vendidos</h2>
+              <Link to="/admin/productos" className="text-charcoal-600 hover:text-charcoal-500 text-sm font-medium transition-colors">Ver todos</Link>
             </div>
             <div className="space-y-4">
               {topProducts.length === 0 ? (
-                <p className="text-white text-center py-8">No hay productos vendidos aún</p>
+                <p className="text-primary-900 text-center py-8">No hay productos vendidos aún</p>
               ) : topProducts.slice(0, 5).map((product, index) => (
-                <div key={product.id} className="flex flex-wrap items-center gap-3 p-3 bg-primary-700/50 rounded-xl border border-dark-border">
-<div className="w-10 h-10 rounded-lg bg-primary-800 flex items-center justify-center text-gold-400 font-bold flex-shrink-0">
+                <div key={product.id} className="flex flex-wrap items-center gap-3 p-3 bg-primary-100 rounded-xl border border-dark-border">
+<div className="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center text-charcoal-600 font-bold flex-shrink-0">
                       {index + 1}
                     </div>
                   <img src={product.image || '/assets/images/producto1.webp'} alt={product.name} className="w-12 h-12 rounded-lg object-cover flex-shrink-0" />
                   <div className="flex-1 min-w-0">
-                    <p className="font-medium text-white truncate">{product.name}</p>
-                    <p className="text-white text-sm">{product.total_sold} vendidos</p>
+                    <p className="font-medium text-primary-900 truncate">{product.name}</p>
+                    <p className="text-primary-900 text-sm">{product.total_sold} vendidos</p>
                   </div>
-                  <span className="flex-shrink-0 font-display font-bold text-gold-400 text-sm sm:text-base">{formatPrice(product.revenue)}</span>
+                  <span className="flex-shrink-0 font-display font-bold text-charcoal-600 text-sm sm:text-base">{formatPrice(product.revenue)}</span>
                 </div>
               ))}
             </div>
@@ -259,14 +259,14 @@ export default function AdminDashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.7 }}
-          className="min-w-0 p-4 sm:p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
+          className="min-w-0 p-4 sm:p-6 bg-primary-50 border border-dark-border rounded-2xl"
         >
           <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-            <h2 className="font-display font-semibold text-xl text-white">Alertas de stock bajo</h2>
-            <Link to="/admin/productos?filter=low-stock" className="text-gold-400 hover:text-gold-300 text-sm font-medium transition-colors">Ver inventario</Link>
+            <h2 className="font-display font-semibold text-xl text-primary-900">Alertas de stock bajo</h2>
+            <Link to="/admin/productos?filter=low-stock" className="text-charcoal-600 hover:text-charcoal-500 text-sm font-medium transition-colors">Ver inventario</Link>
           </div>
           {lowStock.length === 0 ? (
-            <div className="flex flex-wrap items-center gap-3 text-green-500">
+            <div className="flex flex-wrap items-center gap-3 text-green-600">
               <CheckCircle className="w-6 h-6" />
                 <p className="font-medium min-w-0">No hay productos con stock bajo</p>
             </div>
@@ -274,7 +274,7 @@ export default function AdminDashboard() {
             <div className="overflow-x-auto min-w-0">
               <table className="w-full min-w-[720px] text-sm">
                 <thead>
-                  <tr className="border-b border-dark-border text-left text-white">
+                  <tr className="border-b border-dark-border text-left text-primary-900">
                     <th className="py-3 pr-4">Producto</th>
                     <th className="py-3 pr-4">SKU</th>
                     <th className="py-3 pr-4">Stock</th>
@@ -285,14 +285,14 @@ export default function AdminDashboard() {
                 </thead>
                 <tbody>
                   {lowStock.map((product) => (
-                    <tr key={product.id} className="border-b border-dark-border/50 hover:bg-primary-900/50">
-                      <td className="py-3 pr-4 font-medium text-white truncate max-w-xs">{product.name}</td>
-                      <td className="py-3 pr-4 text-white">{product.sku}</td>
-                      <td className={`py-3 pr-4 font-medium ${product.stock <= product.min_stock ? 'text-red-400' : 'text-white'}`}>{product.stock}</td>
-                      <td className="py-3 pr-4 text-white">{product.min_stock}</td>
-                      <td className="py-3 pr-4 text-gold-400">{formatPrice(product.price)}</td>
+                    <tr key={product.id} className="border-b border-dark-border/50 hover:bg-primary-50/50">
+                      <td className="py-3 pr-4 font-medium text-primary-900 truncate max-w-xs">{product.name}</td>
+                      <td className="py-3 pr-4 text-primary-900">{product.sku}</td>
+                      <td className={`py-3 pr-4 font-medium ${product.stock <= product.min_stock ? 'text-red-500' : 'text-primary-900'}`}>{product.stock}</td>
+                      <td className="py-3 pr-4 text-primary-900">{product.min_stock}</td>
+                      <td className="py-3 pr-4 text-charcoal-600">{formatPrice(product.price)}</td>
                       <td className="py-3 pr-4">
-                        <span className="px-2 py-1 rounded-full text-xs font-medium bg-gold-600/20 text-gold-400 border border-gold-600/30">Bajo</span>
+                        <span className="px-2 py-1 rounded-full text-xs font-medium bg-charcoal-600/10 text-charcoal-600 border border-charcoal-600/20">Bajo</span>
                       </td>
                     </tr>
                   ))}

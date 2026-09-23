@@ -154,7 +154,7 @@ export default function Store() {
         type="website"
       />
 
-      <div className="min-h-screen bg-primary-900 pt-20">
+      <div className="min-h-screen bg-white pt-20">
         <div className="container-custom py-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -162,33 +162,33 @@ export default function Store() {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <nav className="flex items-center gap-2 text-sm text-white mb-4" aria-label="Breadcrumb">
-              <Link to="/" className="hover:text-gold-400 transition-colors">Inicio</Link>
+            <nav className="flex items-center gap-2 text-sm text-primary-900 mb-4" aria-label="Breadcrumb">
+              <Link to="/" className="hover:text-charcoal-600 transition-colors">Inicio</Link>
               <span>/</span>
-              <Link to="/tienda" className="hover:text-gold-400 transition-colors">Tienda</Link>
+              <Link to="/tienda" className="hover:text-charcoal-600 transition-colors">Tienda</Link>
               {category && (
                 <>
                   <span>/</span>
-                  <span className="text-white">{categoryName}</span>
+                  <span className="text-primary-900">{categoryName}</span>
                 </>
               )}
               {onSale && !category && (
                 <>
                   <span>/</span>
-                  <span className="text-white">Ofertas</span>
+                  <span className="text-primary-900">Ofertas</span>
                 </>
               )}
               {searchQuery && (
                 <>
                   <span>/</span>
-                  <span className="text-white">Búsqueda: "{searchQuery}"</span>
+                  <span className="text-primary-900">Búsqueda: "{searchQuery}"</span>
                 </>
               )}
             </nav>
-            <h1 className="font-display font-bold text-3xl sm:text-4xl text-white">
+            <h1 className="font-display font-bold text-3xl sm:text-4xl text-primary-900">
               {searchQuery ? `Resultados para "${searchQuery}"` : category ? categoryName : onSale ? 'Ofertas' : 'Todos los productos'}
             </h1>
-            <p className="text-white mt-2">{totalProducts} {totalProducts === 1 ? 'producto' : 'productos'} encontrado{totalProducts !== 1 ? 's' : ''}</p>
+            <p className="text-primary-900 mt-2">{totalProducts} {totalProducts === 1 ? 'producto' : 'productos'} encontrado{totalProducts !== 1 ? 's' : ''}</p>
           </motion.div>
 
           <div className="flex flex-col lg:flex-row gap-8">
@@ -196,13 +196,13 @@ export default function Store() {
               className={`lg:w-64 flex-shrink-0 ${mobileFiltersOpen ? 'block' : 'hidden'} lg:block`}
               aria-label="Filtros"
             >
-              <div className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 sticky top-24">
+              <div className="bg-primary-50 border border-dark-border rounded-2xl p-6 sticky top-24">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="font-display font-semibold text-lg text-white">Filtros</h2>
+                  <h2 className="font-display font-semibold text-lg text-primary-900">Filtros</h2>
                   {hasActiveFilters && (
                     <button
                       onClick={clearFilters}
-                      className="text-xs text-gold-400 hover:text-gold-300 transition-colors"
+                      className="text-xs text-charcoal-600 hover:text-charcoal-500 transition-colors"
                     >
                       Limpiar todo
                     </button>
@@ -211,8 +211,8 @@ export default function Store() {
 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="font-medium text-white mb-3 flex items-center gap-2">
-                      <Filter className="w-4 h-4 text-gold-500" aria-hidden="true" />
+                    <h3 className="font-medium text-primary-900 mb-3 flex items-center gap-2">
+                      <Filter className="w-4 h-4 text-charcoal-500" aria-hidden="true" />
                       Categoría
                     </h3>
                     <div className="space-y-2 max-h-48 overflow-y-auto">
@@ -224,17 +224,17 @@ export default function Store() {
                             value={cat.slug}
                             checked={category === cat.slug}
                             onChange={(e) => handleCategoryChange(e.target.value)}
-                            className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500"
+                            className="w-4 h-4 text-charcoal-600 border-dark-border bg-primary-100 focus:ring-charcoal-500"
                           />
-                          <span className="text-sm text-white flex-1 truncate">{cat.name}</span>
-                          <span className="text-white text-xs">({cat.productCount || 0})</span>
+                          <span className="text-sm text-primary-900 flex-1 truncate">{cat.name}</span>
+                          <span className="text-primary-900 text-xs">({cat.productCount || 0})</span>
                         </label>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <h3 className="font-medium text-white mb-3">Rango de precio</h3>
+                    <h3 className="font-medium text-primary-900 mb-3">Rango de precio</h3>
                     <div className="space-y-2">
                       {priceRanges.map(range => (
                         <label key={`${range.min}-${range.max}`} className="flex items-center gap-3 cursor-pointer">
@@ -243,9 +243,9 @@ export default function Store() {
                             name="priceRange"
                             checked={minPrice == range.min && (maxPrice == range.max || (range.max === 0 && !maxPrice))}
                             onChange={() => handlePriceRangeChange(range.min === 0 ? null : range.min, range.max === 0 ? null : range.max)}
-                            className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500"
+                            className="w-4 h-4 text-charcoal-600 border-dark-border bg-primary-100 focus:ring-charcoal-500"
                           />
-                          <span className="text-sm text-white">{range.label}</span>
+                          <span className="text-sm text-primary-900">{range.label}</span>
                         </label>
                       ))}
                       <div className="flex gap-2 pt-2 border-t border-dark-border">
@@ -270,7 +270,7 @@ export default function Store() {
                   </div>
 
                   <div>
-                    <h3 className="font-medium text-white mb-3">Marcas</h3>
+                    <h3 className="font-medium text-primary-900 mb-3">Marcas</h3>
                     <div className="space-y-2 max-h-40 overflow-y-auto">
                       {brands.map(brandItem => (
                         <label key={brandItem} className="flex items-center gap-3 cursor-pointer">
@@ -278,34 +278,34 @@ export default function Store() {
                             type="checkbox"
                             checked={brand === brandItem}
                             onChange={(e) => handleBrandChange(e.target.checked ? brandItem : null)}
-                            className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
+                            className="w-4 h-4 text-charcoal-600 border-dark-border bg-primary-100 focus:ring-charcoal-500 rounded"
                           />
-                          <span className="text-sm text-white">{brandItem}</span>
+                          <span className="text-sm text-primary-900">{brandItem}</span>
                         </label>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <h3 className="font-medium text-white mb-3">Disponibilidad</h3>
+                    <h3 className="font-medium text-primary-900 mb-3">Disponibilidad</h3>
                     <div className="space-y-2">
                       <label className="flex items-center gap-3 cursor-pointer">
                         <input
                           type="checkbox"
                           checked={inStock}
                           onChange={(e) => handleInStockChange(e.target.checked)}
-                          className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
+                          className="w-4 h-4 text-charcoal-600 border-dark-border bg-primary-100 focus:ring-charcoal-500 rounded"
                         />
-                        <span className="text-sm text-white">Solo en stock</span>
+                        <span className="text-sm text-primary-900">Solo en stock</span>
                       </label>
                       <label className="flex items-center gap-3 cursor-pointer">
                         <input
                           type="checkbox"
                           checked={onSale}
                           onChange={(e) => handleOnSaleChange(e.target.checked)}
-                          className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
+                          className="w-4 h-4 text-charcoal-600 border-dark-border bg-primary-100 focus:ring-charcoal-500 rounded"
                         />
-                        <span className="text-sm text-white">Solo ofertas</span>
+                        <span className="text-sm text-primary-900">Solo ofertas</span>
                       </label>
                     </div>
                   </div>
@@ -316,12 +316,12 @@ export default function Store() {
             <main className="flex-1 min-w-0">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
                 <div className="flex items-center gap-3">
-                  <label htmlFor="sort" className="text-sm text-white hidden sm:block">Ordenar:</label>
+                  <label htmlFor="sort" className="text-sm text-primary-900 hidden sm:block">Ordenar:</label>
                   <select
                     id="sort"
                     value={sort}
                     onChange={(e) => handleSortChange(e.target.value)}
-                    className="input py-2 px-4 text-sm bg-primary-800 max-w-xs"
+                    className="input py-2 px-4 text-sm bg-primary-50 max-w-xs"
                     aria-label="Ordenar productos"
                   >
                     {sortOptions.map(opt => (
@@ -336,7 +336,7 @@ export default function Store() {
                     <Filter className="w-4 h-4" aria-hidden="true" />
                     <span>Filtros</span>
                     {hasActiveFilters && (
-                      <span className="w-5 h-5 bg-gold-600 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                      <span className="w-5 h-5 bg-charcoal-600 text-white text-xs font-bold rounded-full flex items-center justify-center">
                         {activeFiltersCount}
                       </span>
                     )}
@@ -345,7 +345,7 @@ export default function Store() {
                   <div className="hidden sm:flex items-center gap-2 ml-auto">
                     <button
                       onClick={() => setViewMode('grid')}
-                      className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? 'bg-gold-600/20 text-gold-400 border border-gold-600/30' : 'text-white hover:text-white hover:bg-primary-700'}`}
+                      className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? 'bg-charcoal-600/10 text-charcoal-600 border border-charcoal-600/20' : 'text-primary-900 hover:text-primary-900 hover:bg-primary-100'}`}
                       aria-label="Vista en cuadrícula"
                       aria-pressed={viewMode === 'grid'}
                     >
@@ -353,7 +353,7 @@ export default function Store() {
                     </button>
                     <button
                       onClick={() => setViewMode('list')}
-                      className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? 'bg-gold-600/20 text-gold-400 border border-gold-600/30' : 'text-white hover:text-white hover:bg-primary-700'}`}
+                      className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? 'bg-charcoal-600/10 text-charcoal-600 border border-charcoal-600/20' : 'text-primary-900 hover:text-primary-900 hover:bg-primary-100'}`}
                       aria-label="Vista en lista"
                       aria-pressed={viewMode === 'list'}
                     >
@@ -375,9 +375,9 @@ export default function Store() {
                   animate={{ opacity: 1 }}
                   className="flex flex-col items-center justify-center py-20 px-4 text-center"
                 >
-                  <svg className="w-20 h-20 text-primary-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" /></svg>
-                  <h3 className="font-display font-semibold text-xl text-white mb-2">No se encontraron productos</h3>
-                  <p className="text-white mb-6 max-w-md">Intenta ajustar tus filtros o busca con otros términos</p>
+                  <svg className="w-20 h-20 text-primary-800 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" /></svg>
+                  <h3 className="font-display font-semibold text-xl text-primary-900 mb-2">No se encontraron productos</h3>
+                  <p className="text-primary-900 mb-6 max-w-md">Intenta ajustar tus filtros o busca con otros términos</p>
                   <button onClick={clearFilters} className="btn-outline">Limpiar filtros</button>
                 </motion.div>
               ) : (
@@ -430,7 +430,7 @@ export default function Store() {
                           <button
                             key={pageNum}
                             onClick={() => handlePageChange(pageNum)}
-                            className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-gold-600 text-white' : 'bg-primary-800 text-white hover:bg-primary-700 hover:text-white border border-dark-border'}`}
+                            className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-charcoal-600 text-white' : 'bg-primary-50 text-primary-900 hover:bg-primary-100 hover:text-primary-900 border border-dark-border'}`}
                             aria-label={`Página ${pageNum}`}
                             aria-current={currentPage === pageNum ? 'page' : undefined}
                           >
@@ -462,7 +462,7 @@ export default function Store() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/50 lg:hidden"
+            className="fixed inset-0 z-50 bg-black/20 lg:hidden"
             onClick={() => setMobileFiltersOpen(false)}
           />
         )}
@@ -475,13 +475,13 @@ export default function Store() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed right-0 top-0 h-full w-full max-w-sm z-50 bg-primary-800 border-l border-dark-border flex flex-col lg:hidden"
+            className="fixed right-0 top-0 h-full w-full max-w-sm z-50 bg-primary-50 border-l border-dark-border flex flex-col lg:hidden"
           >
             <div className="p-4 border-b border-dark-border flex items-center justify-between">
-              <h2 className="font-display font-semibold text-lg text-white">Filtros</h2>
+              <h2 className="font-display font-semibold text-lg text-primary-900">Filtros</h2>
               <button
                 onClick={() => setMobileFiltersOpen(false)}
-                className="p-2 text-white hover:text-gold-400"
+                className="p-2 text-primary-900 hover:text-charcoal-600"
               >
                 <X className="w-6 h-6" aria-hidden="true" />
               </button>
@@ -489,7 +489,7 @@ export default function Store() {
             <div className="flex-1 overflow-y-auto p-4">
               <div className="space-y-6">
                 <div>
-                  <h3 className="font-medium text-white mb-3">Categoría</h3>
+                  <h3 className="font-medium text-primary-900 mb-3">Categoría</h3>
                   <div className="space-y-2 max-h-48 overflow-y-auto">
                     {categories.map(cat => (
                       <label key={cat.slug} className="flex items-center gap-3 cursor-pointer">
@@ -499,17 +499,17 @@ export default function Store() {
                           value={cat.slug}
                           checked={category === cat.slug}
                           onChange={(e) => { handleCategoryChange(e.target.value); setMobileFiltersOpen(false) }}
-                          className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500"
+                          className="w-4 h-4 text-charcoal-600 border-dark-border bg-primary-100 focus:ring-charcoal-500"
                         />
-                        <span className="text-sm text-white flex-1 truncate">{cat.name}</span>
-                        <span className="text-white text-xs">({cat.productCount || 0})</span>
+                        <span className="text-sm text-primary-900 flex-1 truncate">{cat.name}</span>
+                        <span className="text-primary-900 text-xs">({cat.productCount || 0})</span>
                       </label>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="font-medium text-white mb-3">Rango de precio</h3>
+                  <h3 className="font-medium text-primary-900 mb-3">Rango de precio</h3>
                   <div className="space-y-2">
                     {priceRanges.map(range => (
                       <label key={`${range.min}-${range.max}`} className="flex items-center gap-3 cursor-pointer">
@@ -518,34 +518,34 @@ export default function Store() {
                           name="priceRange"
                           checked={minPrice == range.min && (maxPrice == range.max || (range.max === 0 && !maxPrice))}
                           onChange={() => { handlePriceRangeChange(range.min === 0 ? null : range.min, range.max === 0 ? null : range.max); setMobileFiltersOpen(false) }}
-                          className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500"
+                          className="w-4 h-4 text-charcoal-600 border-dark-border bg-primary-100 focus:ring-charcoal-500"
                         />
-                        <span className="text-sm text-white">{range.label}</span>
+                        <span className="text-sm text-primary-900">{range.label}</span>
                       </label>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="font-medium text-white mb-3">Disponibilidad</h3>
+                  <h3 className="font-medium text-primary-900 mb-3">Disponibilidad</h3>
                   <div className="space-y-2">
                     <label className="flex items-center gap-3 cursor-pointer">
                       <input
                         type="checkbox"
                         checked={inStock}
                         onChange={(e) => handleInStockChange(e.target.checked)}
-                        className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
+                        className="w-4 h-4 text-charcoal-600 border-dark-border bg-primary-100 focus:ring-charcoal-500 rounded"
                       />
-                      <span className="text-sm text-white">Solo en stock</span>
+                      <span className="text-sm text-primary-900">Solo en stock</span>
                     </label>
                     <label className="flex items-center gap-3 cursor-pointer">
                       <input
                         type="checkbox"
                         checked={onSale}
                         onChange={(e) => handleOnSaleChange(e.target.checked)}
-                        className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded"
+                        className="w-4 h-4 text-charcoal-600 border-dark-border bg-primary-100 focus:ring-charcoal-500 rounded"
                       />
-                      <span className="text-sm text-white">Solo ofertas</span>
+                      <span className="text-sm text-primary-900">Solo ofertas</span>
                     </label>
                   </div>
                 </div>

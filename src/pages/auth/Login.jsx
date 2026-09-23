@@ -55,32 +55,32 @@ export default function Login() {
         noindex
       />
 
-      <div className="min-h-screen bg-primary-900 pt-20 flex items-center justify-center py-8 px-4">
+      <div className="min-h-screen bg-white pt-20 flex items-center justify-center py-8 px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="w-full max-w-md"
         >
-          <Link to="/" className="inline-flex items-center gap-2 text-white hover:text-gold-400 transition-colors mb-6">
+          <Link to="/" className="inline-flex items-center gap-2 text-primary-900 hover:text-charcoal-600 transition-colors mb-6">
             <ArrowLeft className="w-5 h-5" />
             Volver al inicio
           </Link>
 
-          <div className="bg-primary-800/50 border border-dark-border rounded-2xl p-6 sm:p-8 shadow-card">
+          <div className="bg-primary-50 border border-dark-border rounded-2xl p-6 sm:p-8 shadow-card">
             <div className="text-center mb-6">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold-600 to-gold-400 flex items-center justify-center mx-auto mb-5">
-                <LockKeyhole className="w-7 h-7 text-primary-900" />
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-charcoal-600 to-charcoal-700 flex items-center justify-center mx-auto mb-5">
+                <LockKeyhole className="w-7 h-7 text-white" />
               </div>
-              <h1 className="font-display font-bold text-2xl sm:text-3xl text-white mb-2">Bienvenido de nuevo</h1>
-              <p className="text-white">Inicia sesión para continuar comprando</p>
+              <h1 className="font-display font-bold text-2xl sm:text-3xl text-primary-900 mb-2">Bienvenido de nuevo</h1>
+              <p className="text-primary-900">Inicia sesión para continuar comprando</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5" noValidate>
               <div>
                 <label htmlFor="email" className="label">Email</label>
                 <div className="relative">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary-500" />
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary-700" />
                   <input
                     id="email"
                     name="email"
@@ -99,7 +99,7 @@ export default function Login() {
               <div>
                 <label htmlFor="password" className="label">Contraseña</label>
                 <div className="relative">
-                  <LockKeyhole className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary-500" />
+                  <LockKeyhole className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary-700" />
                   <input
                     id="password"
                     name="password"
@@ -114,7 +114,7 @@ export default function Login() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gold-400 transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-primary-900 hover:text-charcoal-600 transition-colors"
                     aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                   >
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -124,11 +124,11 @@ export default function Login() {
               </div>
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                <label className="flex items-center gap-2 text-sm text-white cursor-pointer">
-                  <input type="checkbox" className="w-4 h-4 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded" />
+                <label className="flex items-center gap-2 text-sm text-primary-900 cursor-pointer">
+                  <input type="checkbox" className="w-4 h-4 text-charcoal-600 border-dark-border bg-primary-100 focus:ring-charcoal-500 rounded" />
                   Recordarme
                 </label>
-                <Link to="/recuperar-password" className="text-sm text-gold-400 hover:text-gold-300 transition-colors">
+                <Link to="/recuperar-password" className="text-sm text-charcoal-600 hover:text-charcoal-500 transition-colors">
                   ¿Olvidaste tu contraseña?
                 </Link>
               </div>
@@ -152,17 +152,17 @@ export default function Login() {
             <div className="my-5 border-t border-dark-border" />
 
             <div className="text-center">
-              <p className="text-white text-sm">
+              <p className="text-primary-900 text-sm">
                 ¿No tienes cuenta?{' '}
-                <Link to="/registro" className="text-gold-400 hover:text-gold-300 font-medium transition-colors">
+                <Link to="/registro" className="text-charcoal-600 hover:text-charcoal-500 font-medium transition-colors">
                   Regístrate aquí
                 </Link>
               </p>
             </div>
           </div>
 
-          <div className="mt-5 text-center text-white text-xs">
-            <p>Al iniciar sesión aceptas nuestros <Link to="/terminos" className="underline hover:text-gold-400">Términos y condiciones</Link>.</p>
+          <div className="mt-5 text-center text-primary-900 text-xs">
+            <p>Al iniciar sesión aceptas nuestros <Link to="/terminos" className="underline hover:text-charcoal-600">Términos y condiciones</Link>.</p>
           </div>
         </motion.div>
       </div>

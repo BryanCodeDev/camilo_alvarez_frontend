@@ -120,8 +120,8 @@ export default function Account() {
       preparing: { label: 'Preparando', color: 'purple', bg: 'bg-purple-600/20', text: 'text-purple-400', border: 'border-purple-600/30' },
       shipped: { label: 'Enviado', color: 'indigo', bg: 'bg-indigo-600/20', text: 'text-indigo-400', border: 'border-indigo-600/30' },
       delivered: { label: 'Entregado', color: 'green', bg: 'bg-green-600/20', text: 'text-green-400', border: 'border-green-600/30' },
-      cancelled: { label: 'Cancelado', color: 'red', bg: 'bg-red-600/20', text: 'text-red-400', border: 'border-red-600/30' },
-      refunded: { label: 'Reembolsado', color: 'gray', bg: 'bg-gray-600/20', text: 'text-white', border: 'border-gray-600/30' },
+      cancelled: { label: 'Cancelado', color: 'red', bg: 'bg-red-600/20', text: 'text-red-500', border: 'border-red-600/30' },
+      refunded: { label: 'Reembolsado', color: 'gray', bg: 'bg-gray-600/20', text: 'text-primary-900', border: 'border-gray-600/30' },
     }
     return configs[status] || configs.pending
   }
@@ -139,8 +139,8 @@ export default function Account() {
 
   if (authLoading) {
     return (
-      <div className="min-h-screen bg-primary-900 pt-20 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-gold-600 border-t-transparent" />
+      <div className="min-h-screen bg-white pt-20 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-charcoal-600 border-t-transparent" />
       </div>
     )
   }
@@ -153,7 +153,7 @@ export default function Account() {
         noindex
       />
 
-      <div className="min-h-screen bg-primary-900 pt-20">
+      <div className="min-h-screen bg-white pt-20">
         <div className="container-custom py-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -161,21 +161,21 @@ export default function Account() {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <h1 className="font-display font-bold text-3xl sm:text-4xl text-white">Mi cuenta</h1>
-            <p className="text-white mt-2">Gestiona tu perfil, pedidos y preferencias</p>
+            <h1 className="font-display font-bold text-3xl sm:text-4xl text-primary-900">Mi cuenta</h1>
+            <p className="text-primary-900 mt-2">Gestiona tu perfil, pedidos y preferencias</p>
           </motion.div>
 
           <div className="flex flex-col lg:flex-row gap-6">
             <aside className="lg:w-64 flex-shrink-0">
-              <div className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 sticky top-24">
+              <div className="bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6 sticky top-24">
                 <div className="flex items-center gap-3 mb-5 pb-5 border-b border-dark-border">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gold-600 to-gold-400 flex items-center justify-center text-white font-bold text-xl">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-charcoal-600 to-charcoal-700 flex items-center justify-center text-white font-bold text-xl">
                     {user?.firstName?.charAt(0)}{user?.lastName?.charAt(0)}
                   </div>
                   <div className="min-w-0">
-                    <h2 className="font-display font-semibold text-lg text-white truncate">{user?.firstName} {user?.lastName}</h2>
-                    <p className="text-white text-sm truncate">{user?.email}</p>
-                    <span className="inline-block mt-1 px-2 py-0.5 bg-gold-600/20 text-gold-400 text-xs font-medium rounded-full border border-gold-600/30">
+                    <h2 className="font-display font-semibold text-lg text-primary-900 truncate">{user?.firstName} {user?.lastName}</h2>
+                    <p className="text-primary-900 text-sm truncate">{user?.email}</p>
+                    <span className="inline-block mt-1 px-2 py-0.5 bg-charcoal-600/10 text-charcoal-600 text-xs font-medium rounded-full border border-charcoal-600/20">
                       {user?.role === 'admin' ? 'Administrador' : 'Cliente'}
                     </span>
                   </div>
@@ -191,8 +191,8 @@ export default function Account() {
                         onClick={() => setActiveTab(tab.id)}
                         className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                           isActive
-                            ? 'bg-gold-600/20 text-gold-400 border border-gold-600/30'
-                            : 'text-white hover:bg-primary-700 hover:text-white hover:border-gold-600/30'
+                            ? 'bg-charcoal-600/10 text-charcoal-600 border border-charcoal-600/20'
+                            : 'text-primary-900 hover:bg-primary-100 hover:text-primary-900 hover:border-charcoal-600/20'
                         }`}
                         aria-current={isActive ? 'page' : undefined}
                       >
@@ -206,7 +206,7 @@ export default function Account() {
                 <div className="mt-5 pt-5 border-t border-dark-border">
                   <button
                     onClick={handleLogout}
-                    className="w-full flex items-center gap-3 px-3 py-2.5 text-white hover:text-gold-400 hover:bg-gold-600/10 rounded-xl transition-colors"
+                    className="w-full flex items-center gap-3 px-3 py-2.5 text-primary-900 hover:text-charcoal-600 hover:bg-charcoal-600/10 rounded-xl transition-colors"
                   >
                     <LogOut className="w-5 h-5" />
                     Cerrar sesión
@@ -220,9 +220,9 @@ export default function Account() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
+                  className="bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
                 >
-                  <h2 className="font-display font-semibold text-xl text-white mb-5">Información personal</h2>
+                  <h2 className="font-display font-semibold text-xl text-primary-900 mb-5">Información personal</h2>
                   <form onSubmit={handleProfileSubmit} className="space-y-5">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
@@ -321,9 +321,9 @@ export default function Account() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
+                  className="bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
                 >
-                  <h2 className="font-display font-semibold text-xl text-white mb-5">Historial de pedidos</h2>
+                  <h2 className="font-display font-semibold text-xl text-primary-900 mb-5">Historial de pedidos</h2>
                   {ordersLoading ? (
                     <div className="space-y-3">
                       {[...Array(3)].map((_, i) => (
@@ -332,9 +332,9 @@ export default function Account() {
                     </div>
                   ) : orders.length === 0 ? (
                     <div className="flex flex-col items-center justify-center py-12 text-center">
-                      <Package className="w-14 h-14 text-primary-600 mb-4" />
-                      <h3 className="font-display font-semibold text-xl text-white mb-2">No tienes pedidos aún</h3>
-                      <p className="text-white mb-5">Tu historial de compras aparecerá aquí</p>
+                      <Package className="w-14 h-14 text-primary-800 mb-4" />
+                      <h3 className="font-display font-semibold text-xl text-primary-900 mb-2">No tienes pedidos aún</h3>
+                      <p className="text-primary-900 mb-5">Tu historial de compras aparecerá aquí</p>
                       <Link to="/tienda" className="btn-primary w-full sm:w-auto">Explorar productos</Link>
                     </div>
                   ) : (
@@ -346,27 +346,27 @@ export default function Account() {
                           <Link
                             key={order.id}
                             to={`/cuenta/pedido/${order.id}`}
-                            className="block p-4 bg-primary-700/50 border border-dark-border rounded-xl hover:border-gold-600/50 transition-all"
+                            className="block p-4 bg-primary-100 border border-dark-border rounded-xl hover:border-charcoal-300 transition-all"
                           >
                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                               <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-lg bg-primary-800 flex items-center justify-center flex-shrink-0">
-                                  <Package className="w-5 h-5 text-gold-500" />
+                                <div className="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0">
+                                  <Package className="w-5 h-5 text-charcoal-500" />
                                 </div>
                                 <div className="min-w-0">
-                                  <p className="font-medium text-white truncate">Pedido #{order.order_number}</p>
-                                  <p className="text-white text-sm">{formatDate(order.created_at)}</p>
+                                  <p className="font-medium text-primary-900 truncate">Pedido #{order.order_number}</p>
+                                  <p className="text-primary-900 text-sm">{formatDate(order.created_at)}</p>
                                 </div>
                               </div>
                               <div className="flex flex-wrap items-center gap-2 sm:ml-auto">
                                 <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${statusConfig.bg} ${statusConfig.text} ${statusConfig.border}`}>
                                   {statusConfig.label}
                                 </span>
-                                <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${paymentConfig.color === 'green' ? 'bg-green-600/20 text-green-400 border border-green-600/30' : paymentConfig.color === 'red' ? 'bg-gold-600/20 text-gold-400 border border-gold-600/30' : 'bg-gold-600/20 text-gold-400 border border-gold-600/30'}`}>
+                                <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${paymentConfig.color === 'green' ? 'bg-green-600/20 text-green-400 border border-green-600/30' : paymentConfig.color === 'red' ? 'bg-charcoal-600/10 text-charcoal-600 border border-charcoal-600/20' : 'bg-charcoal-600/10 text-charcoal-600 border border-charcoal-600/20'}`}>
                                   {paymentConfig.label}
                                 </span>
-                                <span className="font-display font-bold text-lg text-gold-400 whitespace-nowrap">{formatPrice(order.total)}</span>
-                                <ChevronRight className="w-4 h-4 text-primary-500 flex-shrink-0" />
+                                <span className="font-display font-bold text-lg text-charcoal-600 whitespace-nowrap">{formatPrice(order.total)}</span>
+                                <ChevronRight className="w-4 h-4 text-primary-700 flex-shrink-0" />
                               </div>
                             </div>
                           </Link>
@@ -381,24 +381,24 @@ export default function Account() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
+                  className="bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
                 >
-                  <h2 className="font-display font-semibold text-xl text-white mb-5">Direcciones guardadas</h2>
-                  <p className="text-white mb-5">Gestiona tus direcciones de envío para compras más rápidas.</p>
+                  <h2 className="font-display font-semibold text-xl text-primary-900 mb-5">Direcciones guardadas</h2>
+                  <p className="text-primary-900 mb-5">Gestiona tus direcciones de envío para compras más rápidas.</p>
                   <div className="space-y-3">
                     {(user?.address ? [{ ...formData, isDefault: true }] : []).map((addr, i) => (
-                      <div key={i} className="p-4 bg-primary-700/50 border border-dark-border rounded-xl">
+                      <div key={i} className="p-4 bg-primary-100 border border-dark-border rounded-xl">
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                           <div className="flex-1">
-                            <p className="font-medium text-white">{addr.address}</p>
-                            <p className="text-white text-sm">{addr.city}, {addr.province}</p>
+                            <p className="font-medium text-primary-900">{addr.address}</p>
+                            <p className="text-primary-900 text-sm">{addr.city}, {addr.province}</p>
                           </div>
-                          <span className="px-2 py-1 bg-gold-600/20 text-gold-400 text-xs font-medium rounded-full border border-gold-600/30">Predeterminada</span>
+                          <span className="px-2 py-1 bg-charcoal-600/10 text-charcoal-600 text-xs font-medium rounded-full border border-charcoal-600/20">Predeterminada</span>
                         </div>
                       </div>
                     ))}
                     {(!user?.address || user?.address.length === 0) && (
-                      <p className="text-white text-center py-8">No tienes direcciones guardadas</p>
+                      <p className="text-primary-900 text-center py-8">No tienes direcciones guardadas</p>
                     )}
                   </div>
                   <button className="btn-outline mt-5 w-full sm:w-auto">Agregar dirección</button>
@@ -409,9 +409,9 @@ export default function Account() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
+                  className="bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
                 >
-                  <h2 className="font-display font-semibold text-xl text-white mb-5">Seguridad</h2>
+                  <h2 className="font-display font-semibold text-xl text-primary-900 mb-5">Seguridad</h2>
                   <form onSubmit={handleSecuritySubmit} className="space-y-5 max-w-md">
                     <div>
                       <label htmlFor="currentPassword" className="label">Contraseña actual *</label>
@@ -437,7 +437,7 @@ export default function Account() {
                         required
                         minLength={8}
                       />
-                      <p className="text-white text-xs mt-1">Mínimo 8 caracteres</p>
+                      <p className="text-primary-900 text-xs mt-1">Mínimo 8 caracteres</p>
                     </div>
                     <div>
                       <label htmlFor="confirmPassword" className="label">Confirmar nueva contraseña *</label>
@@ -462,18 +462,18 @@ export default function Account() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-primary-800/50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
+                  className="bg-primary-50 border border-dark-border rounded-2xl p-4 sm:p-6 lg:p-8"
                 >
-                  <h2 className="font-display font-semibold text-xl text-white mb-5">Notificaciones</h2>
-                  <p className="text-white mb-5">Configura cómo quieres recibir actualizaciones.</p>
+                  <h2 className="font-display font-semibold text-xl text-primary-900 mb-5">Notificaciones</h2>
+                  <p className="text-primary-900 mb-5">Configura cómo quieres recibir actualizaciones.</p>
                   <div className="space-y-3">
                     {['Pedidos y envíos', 'Ofertas y promociones', 'Novedades y lanzamientos', 'Newsletter semanal'].map((item, i) => (
-                      <label key={i} className="flex items-center justify-between p-4 bg-primary-700/50 border border-dark-border rounded-xl cursor-pointer">
-                        <span className="text-white pr-3">{item}</span>
+                      <label key={i} className="flex items-center justify-between p-4 bg-primary-100 border border-dark-border rounded-xl cursor-pointer">
+                        <span className="text-primary-900 pr-3">{item}</span>
                         <input
                           type="checkbox"
                           defaultChecked={i < 2}
-                          className="w-5 h-5 text-gold-600 border-dark-border bg-primary-700 focus:ring-gold-500 rounded flex-shrink-0"
+                          className="w-5 h-5 text-charcoal-600 border-dark-border bg-primary-100 focus:ring-charcoal-500 rounded flex-shrink-0"
                         />
                       </label>
                     ))}

@@ -66,7 +66,7 @@ export default function Search() {
         noindex
       />
 
-      <div className="min-h-screen bg-primary-900 pt-20">
+      <div className="min-h-screen bg-white pt-20">
         <div className="container-custom py-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -81,16 +81,16 @@ export default function Search() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Buscar productos, marcas, categorías..."
-                  className="w-full px-6 py-4 pl-14 pr-14 bg-primary-800 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 text-lg"
+                  className="w-full px-6 py-4 pl-14 pr-14 bg-primary-50 border border-dark-border rounded-xl text-primary-900 placeholder:text-primary-700 focus:outline-none focus:border-charcoal-500 focus:ring-1 focus:ring-charcoal-500 text-lg"
                   autoFocus
                   autoComplete="off"
                 />
-                <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-primary-500" aria-hidden="true" />
+                <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-primary-700" aria-hidden="true" />
                 {query && (
                   <button
                     type="button"
                     onClick={clearSearch}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 p-1 text-white hover:text-gold-400 transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-1 text-primary-900 hover:text-charcoal-600 transition-colors"
                     aria-label="Limpiar búsqueda"
                   >
                     <X className="w-6 h-6" />
@@ -100,7 +100,7 @@ export default function Search() {
             </form>
 
             {query && (
-              <p className="text-center text-white mt-4">
+              <p className="text-center text-primary-900 mt-4">
                 {loading ? 'Buscando...' : `${totalResults} resultado${totalResults !== 1 ? 's' : ''} para "${query}"`}
               </p>
             )}
@@ -112,15 +112,15 @@ export default function Search() {
               animate={{ opacity: 1 }}
               className="flex flex-col items-center justify-center py-20 px-4 text-center"
             >
-              <SearchIcon className="w-20 h-20 text-primary-600 mb-4" />
-              <h2 className="font-display font-bold text-2xl text-white mb-2">No se encontraron resultados</h2>
-              <p className="text-white mb-6 max-w-md">Intenta con otros términos de búsqueda o revisa la ortografía</p>
+              <SearchIcon className="w-20 h-20 text-primary-800 mb-4" />
+              <h2 className="font-display font-bold text-2xl text-primary-900 mb-2">No se encontraron resultados</h2>
+              <p className="text-primary-900 mb-6 max-w-md">Intenta con otros términos de búsqueda o revisa la ortografía</p>
               <div className="flex flex-wrap justify-center gap-2">
                 {['airpods', 'iphone', 'samsung', 'sony', 'logitech', 'gaming', 'smartwatch'].map(term => (
                   <button
                     key={term}
                     onClick={() => { setQuery(term); setSearchParams({ q: term }) }}
-                    className="px-4 py-2 bg-primary-800 border border-dark-border rounded-full text-white hover:border-gold-600 hover:text-white transition-colors text-sm"
+                    className="px-4 py-2 bg-primary-50 border border-dark-border rounded-full text-primary-900 hover:border-charcoal-600 hover:text-primary-900 transition-colors text-sm"
                   >
                     {term}
                   </button>
@@ -132,16 +132,16 @@ export default function Search() {
           {query && results.length > 0 && (
             <>
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-                <p className="text-white">
+                <p className="text-primary-900">
                   {totalResults} {totalResults === 1 ? 'producto' : 'productos'} encontrado{totalResults !== 1 ? 's' : ''}
                 </p>
                 <div className="flex items-center gap-3">
-                  <label htmlFor="sort" className="text-sm text-white hidden sm:block">Ordenar:</label>
+                  <label htmlFor="sort" className="text-sm text-primary-900 hidden sm:block">Ordenar:</label>
                   <select
                     id="sort"
                     value={sort}
                     onChange={(e) => setSort(e.target.value)}
-                    className="input py-2 px-4 text-sm bg-primary-800 max-w-xs"
+                    className="input py-2 px-4 text-sm bg-primary-50 max-w-xs"
                   >
                     <option value="relevance">Relevancia</option>
                     <option value="newest">Más recientes</option>

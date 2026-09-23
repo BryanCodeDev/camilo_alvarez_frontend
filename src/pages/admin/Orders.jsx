@@ -119,8 +119,8 @@ export default function AdminOrders() {
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
         >
           <div>
-            <h1 className="font-display font-bold text-2xl sm:text-3xl text-white">Pedidos</h1>
-            <p className="text-white mt-2">Gestiona y da seguimiento a todos los pedidos</p>
+            <h1 className="font-display font-bold text-2xl sm:text-3xl text-primary-900">Pedidos</h1>
+            <p className="text-primary-900 mt-2">Gestiona y da seguimiento a todos los pedidos</p>
           </div>
           <div className="flex flex-wrap gap-2">
             {orderStatuses.map((s) => (
@@ -129,8 +129,8 @@ export default function AdminOrders() {
                 onClick={() => { setStatus(s.value); setCurrentPage(1) }}
                 className={`px-4 py-2 rounded-full text-sm font-medium border transition-all ${
                   status === s.value
-                    ? 'bg-gold-600/20 text-gold-400 border-gold-600/50'
-                    : 'bg-primary-800 border-dark-border text-white hover:border-gold-600/50 hover:text-white'
+                    ? 'bg-charcoal-600/10 text-charcoal-600 border-charcoal-300'
+                    : 'bg-primary-50 border-dark-border text-primary-900 hover:border-charcoal-300 hover:text-primary-900'
                 }`}
               >
                 {s.label}
@@ -143,23 +143,23 @@ export default function AdminOrders() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl"
+          className="p-6 bg-primary-50 border border-dark-border rounded-2xl"
         >
           <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-4">
             <div className="relative flex-1">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary-500" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary-700" />
               <input
                 type="search"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Buscar por número, cliente o email..."
-                className="w-full pl-12 pr-4 py-3 bg-primary-700 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500"
+                className="w-full pl-12 pr-4 py-3 bg-primary-100 border border-dark-border rounded-xl text-primary-900 placeholder:text-primary-700 focus:outline-none focus:border-charcoal-500 focus:ring-1 focus:ring-charcoal-500"
               />
             </div>
             <select
               value={paymentStatus}
               onChange={(e) => { setPaymentStatus(e.target.value); setCurrentPage(1) }}
-              className="input py-3 px-4 bg-primary-700"
+              className="input py-3 px-4 bg-primary-100"
             >
               <option value="">Todos los pagos</option>
               <option value="pending">Pendiente</option>
@@ -180,7 +180,7 @@ export default function AdminOrders() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-primary-800/50 border border-dark-border rounded-2xl overflow-hidden"
+          className="bg-primary-50 border border-dark-border rounded-2xl overflow-hidden"
         >
           {loading ? (
             <div className="p-6 space-y-4" role="list" aria-busy="true">
@@ -190,15 +190,15 @@ export default function AdminOrders() {
             </div>
           ) : orders.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 px-4 text-center">
-              <Package className="w-20 h-20 text-primary-600 mb-4" />
-              <h2 className="font-display font-bold text-2xl text-white mb-2">No se encontraron pedidos</h2>
-              <p className="text-white mb-6">Prueba con otros filtros o espera a que lleguen nuevos pedidos</p>
+              <Package className="w-20 h-20 text-primary-800 mb-4" />
+              <h2 className="font-display font-bold text-2xl text-primary-900 mb-2">No se encontraron pedidos</h2>
+              <p className="text-primary-900 mb-6">Prueba con otros filtros o espera a que lleguen nuevos pedidos</p>
             </div>
           ) : (
             <div className="overflow-x-auto min-w-0">
               <table className="w-full min-w-[840px] text-sm">
                 <thead>
-                  <tr className="border-b border-dark-border bg-primary-900/50 text-left text-white">
+                  <tr className="border-b border-dark-border bg-primary-50/50 text-left text-primary-900">
                     <th className="py-4 px-6 font-medium">Pedido</th>
                     <th className="py-4 px-6 font-medium">Cliente</th>
                     <th className="py-4 px-6 font-medium">Fecha</th>
@@ -218,24 +218,24 @@ export default function AdminOrders() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: index * 0.03 }}
-                        className="border-b border-dark-border/50 hover:bg-primary-900/50"
+                        className="border-b border-dark-border/50 hover:bg-primary-50/50"
                       >
                         <td className="py-4 px-6">
                           <div>
-                            <p className="font-mono font-medium text-white">{order.order_number}</p>
-                            <p className="text-white text-xs">{order.item_count} producto{order.item_count !== 1 ? 's' : ''}</p>
+                            <p className="font-mono font-medium text-primary-900">{order.order_number}</p>
+                            <p className="text-primary-900 text-xs">{order.item_count} producto{order.item_count !== 1 ? 's' : ''}</p>
                           </div>
                         </td>
                         <td className="py-4 px-6">
                           <div>
-                            <p className="font-medium text-white">{order.customer_name}</p>
-                            <p className="text-white text-xs truncate max-w-xs">{order.customer_email}</p>
+                            <p className="font-medium text-primary-900">{order.customer_name}</p>
+                            <p className="text-primary-900 text-xs truncate max-w-xs">{order.customer_email}</p>
                           </div>
                         </td>
-                        <td className="py-4 px-6 text-white whitespace-nowrap">{formatDate(order.created_at)}</td>
-                        <td className="py-4 px-6 font-display font-bold text-gold-400">{formatPrice(order.total)}</td>
+                        <td className="py-4 px-6 text-primary-900 whitespace-nowrap">{formatDate(order.created_at)}</td>
+                        <td className="py-4 px-6 font-display font-bold text-charcoal-600">{formatPrice(order.total)}</td>
                         <td className="py-4 px-6">
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${paymentStatus.color === 'green' ? 'bg-green-600/20 text-green-400 border border-green-600/30' : paymentStatus.color === 'red' ? 'bg-red-600/20 text-red-400 border border-red-600/30' : 'bg-red-600/20 text-red-400 border border-red-600/30'}`}>
+                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${paymentStatus.color === 'green' ? 'bg-green-600/20 text-green-400 border border-green-600/30' : paymentStatus.color === 'red' ? 'bg-red-600/20 text-red-500 border border-red-600/30' : 'bg-red-600/20 text-red-500 border border-red-600/30'}`}>
                             {paymentStatus.label}
                           </span>
                         </td>
@@ -246,7 +246,7 @@ export default function AdminOrders() {
                         </td>
                         <td className="py-4 px-6">
                           <div className="flex items-center justify-end gap-2">
-                            <button onClick={() => openStatusModal(order)} className="p-2 text-white hover:text-gold-400 hover:bg-primary-700 rounded-lg transition-colors" aria-label={`Gestionar ${order.order_number}`}>
+                            <button onClick={() => openStatusModal(order)} className="p-2 text-primary-900 hover:text-charcoal-600 hover:bg-primary-100 rounded-lg transition-colors" aria-label={`Gestionar ${order.order_number}`}>
                               <Eye className="w-5 h-5" />
                             </button>
                           </div>
@@ -269,7 +269,7 @@ export default function AdminOrders() {
                 else if (currentPage >= totalPages - 2) pageNum = totalPages - 4 + i
                 else pageNum = currentPage - 2 + i
                 return (
-                  <button key={pageNum} onClick={() => setCurrentPage(pageNum)} className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-gold-600 text-primary-900' : 'bg-primary-700 text-white hover:bg-primary-600 hover:text-white border border-dark-border'}`}>
+                  <button key={pageNum} onClick={() => setCurrentPage(pageNum)} className={`w-10 h-10 rounded-xl font-medium transition-all ${currentPage === pageNum ? 'bg-charcoal-600 text-white' : 'bg-primary-100 text-primary-900 hover:bg-primary-200 hover:text-primary-900 border border-dark-border'}`}>
                     {pageNum}
                   </button>
                 )
@@ -289,14 +289,14 @@ export default function AdminOrders() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            className="bg-primary-800 border border-dark-border rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+            className="bg-primary-50 border border-dark-border rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
           >
             <div className="p-6 border-b border-dark-border flex items-center justify-between">
               <div>
-                <h2 className="font-display font-bold text-2xl text-white">Pedido #{selectedOrder.order_number}</h2>
-                <p className="text-white text-sm">{formatDateTime(selectedOrder.created_at)}</p>
+                <h2 className="font-display font-bold text-2xl text-primary-900">Pedido #{selectedOrder.order_number}</h2>
+                <p className="text-primary-900 text-sm">{formatDateTime(selectedOrder.created_at)}</p>
               </div>
-              <button onClick={() => setStatusModalOpen(false)} className="p-2 text-white hover:text-gold-400 transition-colors" aria-label="Cerrar">
+              <button onClick={() => setStatusModalOpen(false)} className="p-2 text-primary-900 hover:text-charcoal-600 transition-colors" aria-label="Cerrar">
                 <Trash2 className="w-6 h-6" />
               </button>
             </div>
@@ -304,40 +304,40 @@ export default function AdminOrders() {
             <div className="p-6 space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-medium text-white mb-3">Cliente</h3>
-                  <p className="text-white">{selectedOrder.customer_name}</p>
-                  <p className="text-white text-sm">{selectedOrder.customer_email}</p>
-                  <p className="text-white text-sm">{selectedOrder.customer_phone}</p>
+                  <h3 className="font-medium text-primary-900 mb-3">Cliente</h3>
+                  <p className="text-primary-900">{selectedOrder.customer_name}</p>
+                  <p className="text-primary-900 text-sm">{selectedOrder.customer_email}</p>
+                  <p className="text-primary-900 text-sm">{selectedOrder.customer_phone}</p>
                 </div>
                 <div>
-                  <h3 className="font-medium text-white mb-3">Envío</h3>
-                  <p className="text-white">{selectedOrder.address}</p>
-                  <p className="text-white text-sm">{selectedOrder.city}, {selectedOrder.province}</p>
+                  <h3 className="font-medium text-primary-900 mb-3">Envío</h3>
+                  <p className="text-primary-900">{selectedOrder.address}</p>
+                  <p className="text-primary-900 text-sm">{selectedOrder.city}, {selectedOrder.province}</p>
                 </div>
               </div>
 
               <div>
-                <h3 className="font-medium text-white mb-3">Productos</h3>
+                <h3 className="font-medium text-primary-900 mb-3">Productos</h3>
                 <div className="space-y-2">
                   {(selectedOrder.items || []).map((item, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-primary-700/50 rounded-xl">
+                    <div key={index} className="flex items-center justify-between p-3 bg-primary-100 rounded-xl">
                       <div>
-                        <p className="font-medium text-white">{item.product_name}</p>
-                        <p className="text-white text-xs">{item.quantity} × {formatPrice(item.discount_price || item.unit_price)}</p>
+                        <p className="font-medium text-primary-900">{item.product_name}</p>
+                        <p className="text-primary-900 text-xs">{item.quantity} × {formatPrice(item.discount_price || item.unit_price)}</p>
                       </div>
-                      <span className="font-display font-bold text-gold-400">{formatPrice(item.subtotal)}</span>
+                      <span className="font-display font-bold text-charcoal-600">{formatPrice(item.subtotal)}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               <div className="flex justify-between text-xl font-bold border-t border-dark-border pt-4">
-                <span className="text-white">Total</span>
-                <span className="text-gold-400">{formatPrice(selectedOrder.total)}</span>
+                <span className="text-primary-900">Total</span>
+                <span className="text-charcoal-600">{formatPrice(selectedOrder.total)}</span>
               </div>
 
               <div>
-                <h3 className="font-medium text-white mb-3">Cambiar estado</h3>
+                <h3 className="font-medium text-primary-900 mb-3">Cambiar estado</h3>
                 <select
                   value={newStatus}
                   onChange={(e) => setNewStatus(e.target.value)}
@@ -361,13 +361,13 @@ export default function AdminOrders() {
 
               {history.length > 0 && (
                 <div>
-                  <h3 className="font-medium text-white mb-3">Historial de cambios</h3>
+                  <h3 className="font-medium text-primary-900 mb-3">Historial de cambios</h3>
                   <div className="space-y-2">
                     {history.map((event, index) => (
-                      <div key={index} className="p-3 bg-primary-700/50 rounded-xl">
-                        <p className="font-medium text-white">{event.status}</p>
-                        <p className="text-white text-sm">{event.notes || 'Sin notas'}</p>
-                        <p className="text-white text-xs">{formatDateTime(event.created_at)} · {event.first_name ? `${event.first_name} ${event.last_name}` : 'Sistema'}</p>
+                      <div key={index} className="p-3 bg-primary-100 rounded-xl">
+                        <p className="font-medium text-primary-900">{event.status}</p>
+                        <p className="text-primary-900 text-sm">{event.notes || 'Sin notas'}</p>
+                        <p className="text-primary-900 text-xs">{formatDateTime(event.created_at)} · {event.first_name ? `${event.first_name} ${event.last_name}` : 'Sistema'}</p>
                       </div>
                     ))}
                   </div>

@@ -26,19 +26,19 @@ export default class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-primary-900 flex items-center justify-center px-4" role="alert">
+        <div className="min-h-screen bg-white flex items-center justify-center px-4" role="alert">
           <div className="max-w-md w-full text-center space-y-6">
-            <div className="w-20 h-20 mx-auto bg-gold-600/20 rounded-full flex items-center justify-center">
-              <svg className="w-10 h-10 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-20 h-20 mx-auto bg-charcoal-600/10 rounded-full flex items-center justify-center">
+              <svg className="w-10 h-10 text-charcoal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
               </svg>
             </div>
             <div>
-              <h1 className="font-display font-bold text-2xl text-white mb-2">Algo salió mal</h1>
-              <p className="text-white/70 text-sm leading-relaxed">
+              <h1 className="font-display font-bold text-2xl text-primary-900 mb-2">Algo salió mal</h1>
+              <p className="text-primary-800/70 text-sm leading-relaxed">
                 Ocurrió un error inesperado. Por favor, intenta recargar la página.
                 {this.state.error?.message && (
-                  <span className="block mt-2 text-xs text-white/40 bg-primary-800/50 rounded-lg p-2">
+                  <span className="block mt-2 text-xs text-primary-700/40 bg-primary-50 rounded-lg p-2">
                     {this.state.error.message}
                   </span>
                 )}
@@ -60,10 +60,10 @@ export default class ErrorBoundary extends Component {
             </div>
             {this.state.errorInfo && (
               <details className="text-left">
-                <summary className="text-xs text-white/40 cursor-pointer hover:text-white/60 transition-colors">
+                <summary className="text-xs text-primary-700/40 cursor-pointer hover:text-primary-700/60 transition-colors">
                   Ver detalles técnicos
                 </summary>
-                <pre className="mt-2 text-xs text-white/50 bg-primary-800/30 rounded-lg p-3 overflow-auto max-h-40">
+                <pre className="mt-2 text-xs text-primary-700/50 bg-primary-50 rounded-lg p-3 overflow-auto max-h-40">
                   {this.state.errorInfo.componentStack}
                 </pre>
               </details>

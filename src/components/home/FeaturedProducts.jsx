@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ShoppingCart, Zap, Tag, MessageSquare } from 'lucide-react'
 import { formatPrice, calculateDiscount, getStockStatus } from '../../utils/helpers'
 import ProductCard from '../products/ProductCard'
 import { productService } from '../../services/products'
@@ -26,7 +25,7 @@ export default function FeaturedProducts() {
 
   if (loading) {
     return (
-      <section className="py-20 lg:py-28 bg-primary-900">
+      <section className="py-20 lg:py-28 bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {[...Array(4)].map((_, i) => (
@@ -41,7 +40,7 @@ export default function FeaturedProducts() {
   if (products.length === 0) return null
 
   return (
-    <section className="py-20 lg:py-28 bg-primary-900" aria-labelledby="featured-title">
+    <section className="py-20 lg:py-28 bg-white" aria-labelledby="featured-title">
       <div className="container-custom">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
           <motion.div
@@ -51,7 +50,7 @@ export default function FeaturedProducts() {
             transition={{ duration: 0.6 }}
           >
             <h2 id="featured-title" className="section-title">PRODUCTOS DESTACADOS</h2>
-            <p className="text-white mt-2">Nuestra selección premium de la semana</p>
+            <p className="text-primary-600 mt-2">Nuestra selección premium de la semana</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}

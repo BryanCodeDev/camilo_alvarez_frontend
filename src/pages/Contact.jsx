@@ -68,7 +68,7 @@ export default function Contact() {
         description="TechStore atiende 24/7 por WhatsApp al +57 320 9088777. Tienda virtual en Bogotá, Mosquera, Funza, Ibagué y Madrid. Envíos a todo Colombia. Email, WhatsApp y asesoramiento personalizado."
       />
 
-      <div className="min-h-screen bg-primary-900 pt-20">
+      <div className="min-h-screen bg-white pt-20">
         <section className="py-20 lg:py-28" aria-labelledby="contact-hero">
           <div className="container-custom">
             <motion.div
@@ -77,10 +77,10 @@ export default function Contact() {
               transition={{ duration: 0.6 }}
               className="max-w-3xl mx-auto text-center"
             >
-              <h1 id="contact-hero" className="font-display font-bold text-4xl sm:text-5xl text-white mb-6">
+              <h1 id="contact-hero" className="font-display font-bold text-4xl sm:text-5xl text-primary-900 mb-6">
                 HABLEMOS
               </h1>
-              <p className="text-lg text-white leading-relaxed">
+              <p className="text-lg text-primary-900 leading-relaxed">
                 Estamos aquí para ayudarte. Ya sea que necesites asesoramiento para tu compra,
                 tengas dudas sobre un pedido o quieras visitarnos en el showroom.
               </p>
@@ -88,7 +88,7 @@ export default function Contact() {
           </div>
         </section>
 
-        <section className="py-20 lg:py-28 bg-primary-900/50" aria-labelledby="contact-info-title">
+        <section className="py-20 lg:py-28 bg-primary-50/50" aria-labelledby="contact-info-title">
           <div className="container-custom">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -98,7 +98,7 @@ export default function Contact() {
               className="text-center mb-16"
             >
               <h2 id="contact-info-title" className="section-title mx-auto mb-4">CANALES DE CONTACTO</h2>
-              <p className="text-white max-w-2xl mx-auto">Elige el que prefieras, nosotros nos adaptamos a ti</p>
+              <p className="text-primary-900 max-w-2xl mx-auto">Elige el que prefieras, nosotros nos adaptamos a ti</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -109,14 +109,14 @@ export default function Contact() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-100px' }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl hover:border-gold-600/50 transition-all duration-300"
+                  className="p-6 bg-primary-50 border border-dark-border rounded-2xl hover:border-charcoal-300 transition-all duration-300"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold-600/20 to-gold-500/10 border border-gold-600/30 flex items-center justify-center mb-4">
-                    <info.icon className="w-6 h-6 text-gold-400" aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-charcoal-600/10 to-charcoal-500/5 border border-charcoal-600/20 flex items-center justify-center mb-4">
+                    <info.icon className="w-6 h-6 text-charcoal-600" aria-hidden="true" />
                   </div>
-                  <h3 className="font-display font-semibold text-lg text-white mb-2">{info.title}</h3>
-                  <p className="text-white font-medium mb-1">{info.value}</p>
-                  <p className="text-white text-sm">{info.desc}</p>
+                  <h3 className="font-display font-semibold text-lg text-primary-900 mb-2">{info.title}</h3>
+                  <p className="text-primary-900 font-medium mb-1">{info.value}</p>
+                  <p className="text-primary-900 text-sm">{info.desc}</p>
                 </motion.article>
               ))}
             </div>
@@ -141,7 +141,7 @@ export default function Contact() {
           </div>
         </section>
 
-        <section className="py-20 lg:py-28 bg-primary-900/50" aria-labelledby="zones-title">
+        <section className="py-20 lg:py-28 bg-primary-50/50" aria-labelledby="zones-title">
           <div className="container-custom">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -151,7 +151,7 @@ export default function Contact() {
               className="text-center mb-16"
             >
               <h2 id="zones-title" className="section-title mx-auto mb-4">ZONAS DE ATENCIÓN Y ENVÍO</h2>
-              <p className="text-white max-w-2xl mx-auto">Atendemos las 24 horas en Bogotá, Mosquera, Funza, Ibagué y Madrid. Envíos a todo Colombia.</p>
+              <p className="text-primary-900 max-w-2xl mx-auto">Atendemos las 24 horas en Bogotá, Mosquera, Funza, Ibagué y Madrid. Envíos a todo Colombia.</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -162,13 +162,13 @@ export default function Contact() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-100px' }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="p-6 bg-primary-800/50 border border-dark-border rounded-2xl hover:border-gold-600/50 transition-all duration-300"
+                  className="p-6 bg-primary-50 border border-dark-border rounded-2xl hover:border-charcoal-300 transition-all duration-300"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold-600/20 to-gold-500/10 border border-gold-600/30 flex items-center justify-center mb-4">
-                    <zone.icon className="w-6 h-6 text-gold-400" aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-charcoal-600/10 to-charcoal-500/5 border border-charcoal-600/20 flex items-center justify-center mb-4">
+                    <zone.icon className="w-6 h-6 text-charcoal-600" aria-hidden="true" />
                   </div>
-                  <h3 className="font-display font-semibold text-lg text-white mb-2">{zone.zone}</h3>
-                  <p className="text-white text-sm">{zone.desc}</p>
+                  <h3 className="font-display font-semibold text-lg text-primary-900 mb-2">{zone.zone}</h3>
+                  <p className="text-primary-900 text-sm">{zone.desc}</p>
                 </motion.article>
               ))}
             </div>
@@ -184,17 +184,17 @@ export default function Contact() {
                 transition={{ duration: 0.6 }}
               >
                 <h2 id="form-title" className="section-title mb-6">ENVIANOS UN MENSAJE</h2>
-                <p className="text-white mb-8">Completa el formulario y te responderemos en menos de 2 horas. También puedes contactarnos por WhatsApp las 24 horas al +57 320 9088777.</p>
+                <p className="text-primary-900 mb-8">Completa el formulario y te responderemos en menos de 2 horas. También puedes contactarnos por WhatsApp las 24 horas al +57 320 9088777.</p>
 
                 {submitted ? (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="p-8 bg-primary-800/50 border border-green-500/30 rounded-2xl text-center"
+                    className="p-8 bg-primary-50 border border-green-500/30 rounded-2xl text-center"
                   >
-                    <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                    <h3 className="font-display font-bold text-xl text-white mb-2">¡Mensaje enviado!</h3>
-                    <p className="text-white mb-6">Gracias por contactarnos. Te responderemos a la brevedad.</p>
+                    <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+                    <h3 className="font-display font-bold text-xl text-primary-900 mb-2">¡Mensaje enviado!</h3>
+                    <p className="text-primary-900 mb-6">Gracias por contactarnos. Te responderemos a la brevedad.</p>
                     <button
                       onClick={() => setSubmitted(false)}
                       className="btn-outline"
@@ -326,14 +326,14 @@ export default function Contact() {
 function DetailsFAQ({ question, answer, index }) {
   const [open, setOpen] = useState(false)
   return (
-    <details className="group bg-primary-800/50 border border-dark-border rounded-xl overflow-hidden">
+    <details className="group bg-primary-50 border border-dark-border rounded-xl overflow-hidden">
       <summary className="flex items-center justify-between p-5 cursor-pointer list-none">
-        <span className="font-medium text-white pr-4">{question}</span>
-        <span className="flex-shrink-0 w-6 h-6 text-gold-400 transition-transform duration-300 group-open:rotate-180">
+        <span className="font-medium text-primary-900 pr-4">{question}</span>
+        <span className="flex-shrink-0 w-6 h-6 text-charcoal-600 transition-transform duration-300 group-open:rotate-180">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
         </span>
       </summary>
-      <div className="px-5 pb-5 text-white leading-relaxed animate-fade-in">{answer}</div>
+      <div className="px-5 pb-5 text-primary-900 leading-relaxed animate-fade-in">{answer}</div>
     </details>
   )
 }

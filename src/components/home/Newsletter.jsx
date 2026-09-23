@@ -29,7 +29,7 @@ export default function Newsletter() {
   }
 
   return (
-    <section className="py-20 lg:py-28 bg-gradient-to-b from-primary-900 to-primary-950" aria-labelledby="newsletter-title">
+    <section className="py-20 lg:py-28 bg-white" aria-labelledby="newsletter-title">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -38,17 +38,16 @@ export default function Newsletter() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto text-center relative"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold-600/10 via-transparent to-transparent rounded-3xl" aria-hidden="true" />
-          <div className="relative p-8 lg:p-12 bg-primary-900/50 backdrop-blur-sm border border-dark-border rounded-3xl">
+          <div className="relative p-8 lg:p-12 bg-primary-50 border border-dark-border rounded-3xl">
             {subscribed ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center gap-4"
               >
-                <CheckCircle className="w-16 h-16 text-green-500" aria-hidden="true" />
-                <h2 id="newsletter-title" className="font-display font-bold text-3xl text-white">¡Gracias por suscribirte!</h2>
-                <p className="text-white">Pronto recibirás nuestras mejores ofertas y novedades.</p>
+                <CheckCircle className="w-16 h-16 text-green-600" aria-hidden="true" />
+                <h2 id="newsletter-title" className="font-display font-bold text-3xl text-primary-900">¡Gracias por suscribirte!</h2>
+                <p className="text-primary-600">Pronto recibirás nuestras mejores ofertas y novedades.</p>
                 <button
                   onClick={() => setSubscribed(false)}
                   className="btn-outline mt-4"
@@ -59,20 +58,20 @@ export default function Newsletter() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <h2 id="newsletter-title" className="font-display font-bold text-3xl sm:text-4xl text-white mb-3">
+                  <h2 id="newsletter-title" className="font-display font-bold text-3xl sm:text-4xl text-primary-900 mb-3">
                     No te pierdas nuestras ofertas
                   </h2>
-                  <p className="text-white">Suscríbete y recibe descuentos exclusivos, lanzamientos y más.</p>
+                  <p className="text-primary-600">Suscríbete y recibe descuentos exclusivos, lanzamientos y más.</p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
                   <div className="relative flex-1">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-primary-500" aria-hidden="true" />
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-primary-700" aria-hidden="true" />
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="tu@email.com"
-                      className="w-full pl-10 pr-4 py-3 sm:py-4 bg-primary-800 border border-dark-border rounded-xl text-white placeholder:text-primary-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500"
+                      className="w-full pl-10 pr-4 py-3 sm:py-4 bg-white border border-dark-border rounded-xl text-primary-900 placeholder:text-charcoal-500 focus:outline-none focus:border-charcoal-400 focus:ring-1 focus:ring-charcoal-300/50"
                       required
                       autoComplete="email"
                       aria-label="Correo electrónico"
@@ -82,7 +81,7 @@ export default function Newsletter() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="btn-primary px-8 py-4 flex items-center gap-2 whitespace-nowrap group-hover:scale-105 transition-transform disabled:opacity-50"
+                    className="btn-primary px-8 py-4 flex items-center gap-2 whitespace-nowrap"
                   >
                     {loading ? (
                       <motion.svg className="w-5 h-5 animate-spin" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M12 2a10 10 0 0 1 10 10A10 10 0 0 1 12 22 10 10 0 0 1 2 12 10 10 0 0 1 12 2" /></motion.svg>
@@ -94,7 +93,7 @@ export default function Newsletter() {
                     )}
                   </button>
                 </div>
-                <p className="text-white text-xs">Al suscribirte aceptas nuestra <a href="/politica-privacidad" className="underline hover:text-gold-400">Política de privacidad</a>. Sin spam, solo lo mejor.</p>
+                <p className="text-primary-600 text-xs">Al suscribirte aceptas nuestra <a href="/politica-privacidad" className="underline hover:text-charcoal-600">Política de privacidad</a>. Sin spam, solo lo mejor.</p>
               </form>
             )}
           </div>

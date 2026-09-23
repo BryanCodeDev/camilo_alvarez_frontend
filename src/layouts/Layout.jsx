@@ -6,7 +6,7 @@ import { ScrollToTop } from '../components/ui/ScrollToTop'
 
 export default function Layout() {
   return (
-    <div className="min-h-screen flex flex-col bg-primary-900 overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-hidden">
       <Navbar />
       <main className="flex-1 min-h-0">
         <ScrollToTop />
