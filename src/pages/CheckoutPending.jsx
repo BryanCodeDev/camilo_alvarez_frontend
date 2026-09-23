@@ -105,8 +105,8 @@ export default function CheckoutPending() {
               <ul className="space-y-2 text-primary-900 text-sm">
                 <li className="flex items-start gap-2">• Recibirás un email cuando el pago se confirme</li>
                 <li className="flex items-start gap-2">• El estado del pedido se actualizará automáticamente</li>
-                <li className="flex items-start gap-2">• Si pagaste en efectivo, tenés 48hs para abonar</li>
-                <li className="flex items-start gap-2">• Ante dudas, contactanos por WhatsApp</li>
+                <li className="flex items-start gap-2">• Si pagaste en efectivo, tienes hasta 48 horas para realizar el pago</li>
+                <li className="flex items-start gap-2">• Ante dudas, contáctanos por WhatsApp</li>
               </ul>
             </motion.div>
 

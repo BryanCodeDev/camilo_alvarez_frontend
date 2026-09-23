@@ -1,4 +1,4 @@
-export function formatPrice(price, currency = 'ARS', locale = 'es-AR') {
+export function formatPrice(price, currency = 'COP', locale = 'es-CO') {
   if (price === null || price === undefined) return '$0'
   return new Intl.NumberFormat(locale, {
     style: 'currency',
@@ -8,7 +8,7 @@ export function formatPrice(price, currency = 'ARS', locale = 'es-AR') {
   }).format(price)
 }
 
-export function formatNumber(num, locale = 'es-AR') {
+export function formatNumber(num, locale = 'es-CO') {
   return new Intl.NumberFormat(locale).format(num)
 }
 
@@ -67,11 +67,11 @@ export function formatDate(date, options = {}) {
     day: 'numeric',
     ...options,
   }
-  return new Date(date).toLocaleDateString('es-AR', defaultOptions)
+  return new Date(date).toLocaleDateString('es-CO', defaultOptions)
 }
 
 export function formatDateTime(date) {
-  return new Date(date).toLocaleString('es-AR', {
+  return new Date(date).toLocaleString('es-CO', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
@@ -204,9 +204,9 @@ export function getWhatsAppUrl(message) {
 
 export function getWhatsAppUrlForCart(items, total) {
   const productsText = items.map(item =>
-    `- ${item.name} x${item.quantity} = $${((item.discountPrice || item.price) * item.quantity).toLocaleString('es-AR')}`
+    `- ${item.name} x${item.quantity} = $${((item.discountPrice || item.price) * item.quantity).toLocaleString('es-CO')}`
   ).join('\n')
-  const text = `Hola, quiero realizar el siguiente pedido:\n\n${productsText}\n\nTotal: $${total.toLocaleString('es-AR')}\n\n¿Me pueden brindar información para finalizar la compra?`
+  const text = `Hola, quiero realizar el siguiente pedido:\n\n${productsText}\n\nTotal: $${total.toLocaleString('es-CO')}\n\n¿Me pueden brindar información para finalizar la compra?`
   const number = import.meta.env.VITE_WHATSAPP_NUMBER
   return `https://wa.me/${number}?text=${encodeURIComponent(text)}`
 }

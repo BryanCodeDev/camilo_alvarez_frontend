@@ -131,7 +131,7 @@ export default function SEO({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content="TechStore" />
-      <meta property="og:locale" content="es_AR" />
+      <meta property="og:locale" content="es_CO" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content={twitterHandle} />

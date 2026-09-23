@@ -84,7 +84,7 @@ export default function CheckoutSuccess() {
               <div className="p-4 bg-primary-50 border border-dark-border rounded-xl">
                 <Package className="w-8 h-8 text-charcoal-500 mb-2" />
                 <p className="font-medium text-primary-900">Preparando envío</p>
-                <p className="text-primary-900 text-sm">24-48hs hábiles</p>
+                <p className="text-primary-900 text-sm">24-48 horas hábiles</p>
               </div>
               <div className="p-4 bg-primary-50 border border-dark-border rounded-xl">
                 <Clock className="w-8 h-8 text-charcoal-500 mb-2" />

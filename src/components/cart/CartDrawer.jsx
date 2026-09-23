@@ -199,9 +199,9 @@ export default function CartDrawer() {
 
 function getWhatsAppUrlForCart(items, total) {
   const productsText = items.map(item =>
-    `- ${item.name} x${item.quantity} = $${((item.discountPrice || item.price) * item.quantity).toLocaleString('es-AR')}`
+    `- ${item.name} x${item.quantity} = $${((item.discountPrice || item.price) * item.quantity).toLocaleString('es-CO')}`
   ).join('\n')
-  const text = `Hola, quiero realizar el siguiente pedido:\n\n${productsText}\n\nTotal: $${total.toLocaleString('es-AR')}\n\n¿Me pueden brindar información para finalizar la compra?`
+  const text = `Hola, quiero realizar el siguiente pedido:\n\n${productsText}\n\nTotal: $${total.toLocaleString('es-CO')}\n\n¿Me pueden brindar información para finalizar la compra?`
   const number = import.meta.env.VITE_WHATSAPP_NUMBER
   return `https://wa.me/${number}?text=${encodeURIComponent(text)}`
 }

@@ -22,7 +22,7 @@ const serviceZones = [
 ]
 
 const faqs = [
-  { q: '¿Hacen envíos a todo el país?', a: 'Sí, enviamos a todo Colombia. El envío es gratis en compras superiores a $100.000. Los tiempos de entrega varían según la localidad: 24-48hs en Bogotá/Área Metropolitana, 3-5 días en el interior.' },
+  { q: '¿Hacen envíos a todo el país?', a: 'Sí, enviamos a todo Colombia. El envío es gratis en compras superiores a $100.000. Los tiempos de entrega varían según la localidad: 24-48 horas en Bogotá y área metropolitana, 3-5 días en el interior.' },
   { q: '¿Cuál es la política de devoluciones?', a: 'Tienes 30 días para devolver o cambiar cualquier producto. Debe estar en su estado original, con embalaje y accesorios completos. Los costos de envío de devolución corren por nuestra cuenta si el producto tiene falla de fábrica.' },
   { q: '¿Los productos tienen garantía oficial?', a: 'Sí, todos nuestros productos cuentan con garantía oficial del fabricante (generalmente 12 meses). Nosotros gestionamos el trámite directamente con el service oficial.' },
   { q: '¿Puedo pagar en cuotas?', a: 'Sí, a través de Mercado Pago puedes pagar en hasta 12 cuotas sin interés con tarjetas seleccionadas, o en cuotas con interés según la tarjeta.' },
